@@ -1,0 +1,10 @@
+C:/game_project_new_2025_ss02/frame_creator_v2/windows/build_test/CMakeFiles/INSTALL.dir
+C:/game_project_new_2025_ss02/frame_creator_v2/windows/build_test/CMakeFiles/ALL_BUILD.dir
+C:/game_project_new_2025_ss02/frame_creator_v2/windows/build_test/CMakeFiles/ZERO_CHECK.dir
+C:/game_project_new_2025_ss02/frame_creator_v2/windows/build_test/flutter/CMakeFiles/flutter_wrapper_plugin.dir
+C:/game_project_new_2025_ss02/frame_creator_v2/windows/build_test/flutter/CMakeFiles/flutter_wrapper_app.dir
+C:/game_project_new_2025_ss02/frame_creator_v2/windows/build_test/flutter/CMakeFiles/flutter_assemble.dir
+C:/game_project_new_2025_ss02/frame_creator_v2/windows/build_test/flutter/CMakeFiles/INSTALL.dir
+C:/game_project_new_2025_ss02/frame_creator_v2/windows/build_test/runner/CMakeFiles/frame_creator_v2.dir
+C:/game_project_new_2025_ss02/frame_creator_v2/windows/build_test/runner/CMakeFiles/INSTALL.dir
+C:/game_project_new_2025_ss02/frame_creator_v2/windows/build_test/runner/CMakeFiles/ALL_BUILD.dir

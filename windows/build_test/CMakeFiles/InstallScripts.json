@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/game_project_new_2025_ss02/frame_creator_v2/windows/build_test/cmake_install.cmake",
+		"C:/game_project_new_2025_ss02/frame_creator_v2/windows/build_test/flutter/cmake_install.cmake",
+		"C:/game_project_new_2025_ss02/frame_creator_v2/windows/build_test/runner/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
