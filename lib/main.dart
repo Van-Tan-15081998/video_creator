@@ -1,6 +1,10 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:frame_creator_v2/screens/main_screen/main_screen.dart';
+import 'package:frame_creator_v2/state_managements/system_state_management.dart';
+import 'package:frame_creator_v2/system/sequential_execution_controller/models/sequential_execution_controller.dart';
 import 'package:window_size/window_size.dart';
 
 import 'component_for_test/ban_phim.dart';
@@ -10,13 +14,13 @@ main() async {
   // ✅ Khởi tạo binding trước khi gọi bất kỳ hàm nào khác
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Kích thước bạn muốn cố định
+  double windowWidth = 2560;
+  double windowHeight = 1440;
+
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     // Đặt tiêu đề cửa sổ
     setWindowTitle('My Flutter App');
-
-    // Kích thước bạn muốn cố định
-    const double windowWidth = 2560;
-    const double windowHeight = 1440;
 
     // Lấy thông tin màn hình hiện tại
     final screen = await getCurrentScreen();
@@ -34,15 +38,90 @@ main() async {
     }
 
     // Cố định kích thước cửa sổ
-    setWindowMinSize(const Size(windowWidth, windowHeight));
-    setWindowMaxSize(const Size(windowWidth, windowHeight));
+    setWindowMinSize(Size(windowWidth, windowHeight));
+    setWindowMaxSize(Size(windowWidth, windowHeight));
   }
 
-  runApp(const MyApp());
+  runApp(MyApp(sizeDx: windowWidth, sizeDy: windowHeight));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key, required this.sizeDx, required this.sizeDy});
+
+  final double sizeDx;
+  final double sizeDy;
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Timer? _timerMilliseconds;
+  Timer? _timerSeconds;
+
+  /// -----
+  /// TODO:
+  /// -----
+  SystemStateManagement? _systemStateManagement;
+  SystemStateManagement? get getSystemStateManagement => _systemStateManagement;
+  void setSystemStateManagement({required SystemStateManagement? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _systemStateManagement = value;
+    } else {
+      _systemStateManagement ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  SequentialExecutionController? _sequentialExecutionController;
+  SequentialExecutionController? get getSequentialExecutionController => _sequentialExecutionController;
+  void setSequentialExecutionController({required SequentialExecutionController? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _sequentialExecutionController = value;
+    } else {
+      _sequentialExecutionController ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    setSystemStateManagement(value: SystemStateManagement());
+    getSystemStateManagement?.onSetupRoot();
+    getSystemStateManagement?.onInitRoot();
+
+    setSequentialExecutionController(
+      value: SequentialExecutionController(systemStateManagement: getSystemStateManagement, sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
+    );
+    getSequentialExecutionController?.onSetupRoot();
+    getSequentialExecutionController?.onInitRoot();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      ///
+      _timerSeconds = Timer.periodic(const Duration(seconds: 1), (timer) {
+        getSequentialExecutionController?.updateSeconds();
+      });
+      _timerMilliseconds = Timer.periodic(const Duration(milliseconds: 1), (timer) {
+        getSequentialExecutionController?.updateMilliSeconds();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timerSeconds?.cancel();
+    _timerMilliseconds?.cancel();
+    super.dispose();
+  }
 
   // This widget is the root of your application.
   @override
@@ -68,12 +147,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: Scaffold(
-        body: Transform.scale(
-          scale: 0.7, // 👈 Scale toàn bộ giao diện 80%
-          alignment: Alignment.topLeft, // Giữ tâm khi scale
-          child: LayoutDemo(),
-        ),
-        // body: LayoutDemo(),
+        // body: Transform.scale(
+        //   scale: 0.7, // 👈 Scale toàn bộ giao diện 80%
+        //   alignment: Alignment.topLeft, // Giữ tâm khi scale
+        //   child: LayoutDemo(),
+        // ),
+        // body: LayoutDemo(systemStateManagement: getSystemStateManagement),
+        body: MainScreen(sequentialExecutionController: getSequentialExecutionController),
       ),
       // body: KeyboardDemo()),
       // const MyHomePage(title: 'Flutter Demo Home Page'),

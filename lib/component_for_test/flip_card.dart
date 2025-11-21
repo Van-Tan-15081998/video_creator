@@ -2,19 +2,21 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class FlipCard extends StatefulWidget {
-  const FlipCard({super.key, required this. id, required this.sizeDx, required this.sizeDy});
+  const FlipCard({super.key, required this.id, required this.sizeDx, required this.sizeDy, this.opacityRange, this.cellColor});
 
   final String id;
 
   final double sizeDx;
   final double sizeDy;
 
+  final double? opacityRange;
+  final Color? cellColor;
+
   @override
   State<FlipCard> createState() => _FlipCardState();
 }
 
-class _FlipCardState extends State<FlipCard>
-    with SingleTickerProviderStateMixin {
+class _FlipCardState extends State<FlipCard> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _rotationX;
   late Animation<double> _rotationY;
@@ -32,72 +34,97 @@ class _FlipCardState extends State<FlipCard>
 
     borderRadiusGeometry = BorderRadius.circular(borderRadius);
 
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    );
+    _controller = AnimationController(vsync: this, duration: const Duration(seconds: 2));
 
     _setupAnimations();
 
     _startRandomFlipLoop();
 
     switch (widget.id) {
-      case '01': {
-        flipColor = Colors.black.withValues(alpha: 0.8);
+      case '01':
+        {
+          flipColor = (widget.cellColor ?? Colors.black).withValues(alpha: 0.8 * (widget.opacityRange ?? 1.0));
 
-        borderRadius = 0;
-      } break;
+          borderRadius = 0;
+        }
+        break;
 
-      case '01A': {
-        flipColor = Colors.black.withValues(alpha: 0.8);
+      case '01A':
+        {
+          flipColor = (widget.cellColor ?? Colors.black).withValues(alpha: 0.8 * (widget.opacityRange ?? 1.0));
 
-        borderRadiusGeometry = BorderRadius.only(topLeft: Radius.circular(20.0));
-      } break;
+          borderRadiusGeometry = BorderRadius.only(topLeft: Radius.circular(5.0));
+        }
+        break;
 
-      case '01B': {
-        flipColor = Colors.black.withValues(alpha: 0.8);
+      case '01B':
+        {
+          flipColor = (widget.cellColor ?? Colors.black).withValues(alpha: 0.8 * (widget.opacityRange ?? 1.0));
 
-        borderRadiusGeometry = BorderRadius.only(topRight: Radius.circular(20.0));
-      } break;
+          borderRadiusGeometry = BorderRadius.only(topRight: Radius.circular(5.0));
+        }
+        break;
 
-      case '01C': {
-        flipColor = Colors.black.withValues(alpha: 0.8);
+      case '01C':
+        {
+          flipColor = (widget.cellColor ?? Colors.black).withValues(alpha: 0.8 * (widget.opacityRange ?? 1.0));
 
-        borderRadiusGeometry = BorderRadius.only(bottomLeft: Radius.circular(20.0));
-      } break;
+          borderRadiusGeometry = BorderRadius.only(bottomLeft: Radius.circular(5.0));
+        }
+        break;
 
-      case '01D': {
-        flipColor = Colors.black.withValues(alpha: 0.8);
+      case '01D':
+        {
+          flipColor = (widget.cellColor ?? Colors.black).withValues(alpha: 0.8 * (widget.opacityRange ?? 1.0));
 
-        borderRadiusGeometry = BorderRadius.only(bottomRight: Radius.circular(20.0));
-      } break;
-      case '02': {
-        flipColor = Colors.black.withValues(alpha: 0.7);
-      } break;
-      case '03': {
-        flipColor = Colors.black.withValues(alpha: 0.7);
-      } break;
-      case '04': {
-        flipColor = Colors.black.withValues(alpha: 0.6);
-      } break;
-      case '05': {
-        flipColor = Colors.black.withValues(alpha: 0.5);
-      } break;
-      case '06': {
-        flipColor = Colors.black.withValues(alpha: 0.4);
-      } break;
-      case '07': {
-        flipColor = Colors.black.withValues(alpha: 0.3);
-      } break;
-      case '08': {
-        flipColor = Colors.black.withValues(alpha: 0.2);
-      } break;
-      case '09': {
-        flipColor = Colors.black.withValues(alpha: 0.1);
-      } break;
-      case '10': {
-        flipColor = Colors.black.withValues(alpha: 0.05);
-      } break;
+          borderRadiusGeometry = BorderRadius.only(bottomRight: Radius.circular(5.0));
+        }
+        break;
+      case '02':
+        {
+          flipColor = (widget.cellColor ?? Colors.black).withValues(alpha: 0.7 * (widget.opacityRange ?? 1.0));
+        }
+        break;
+      case '03':
+        {
+          flipColor = (widget.cellColor ?? Colors.black).withValues(alpha: 0.7 * (widget.opacityRange ?? 1.0));
+        }
+        break;
+      case '04':
+        {
+          flipColor = (widget.cellColor ?? Colors.black).withValues(alpha: 0.6 * (widget.opacityRange ?? 1.0));
+        }
+        break;
+      case '05':
+        {
+          flipColor = (widget.cellColor ?? Colors.black).withValues(alpha: 0.5 * (widget.opacityRange ?? 1.0));
+        }
+        break;
+      case '06':
+        {
+          flipColor = (widget.cellColor ?? Colors.black).withValues(alpha: 0.4 * (widget.opacityRange ?? 1.0));
+        }
+        break;
+      case '07':
+        {
+          flipColor = (widget.cellColor ?? Colors.black).withValues(alpha: 0.3 * (widget.opacityRange ?? 1.0));
+        }
+        break;
+      case '08':
+        {
+          flipColor = (widget.cellColor ?? Colors.black).withValues(alpha: 0.2 * (widget.opacityRange ?? 1.0));
+        }
+        break;
+      case '09':
+        {
+          flipColor = (widget.cellColor ?? Colors.black).withValues(alpha: 0.1 * (widget.opacityRange ?? 1.0));
+        }
+        break;
+      case '10':
+        {
+          flipColor = (widget.cellColor ?? Colors.black).withValues(alpha: 0.05 * (widget.opacityRange ?? 1.0));
+        }
+        break;
     }
   }
 
@@ -108,13 +135,19 @@ class _FlipCardState extends State<FlipCard>
 
     _rotationX = TweenSequence([
       TweenSequenceItem(tween: Tween(begin: 0.0, end: xAngle), weight: 1),
-      TweenSequenceItem(tween: Tween(begin: xAngle, end: -xAngle), weight: 2),
+      TweenSequenceItem(
+        tween: Tween(begin: xAngle, end: -xAngle),
+        weight: 2,
+      ),
       TweenSequenceItem(tween: Tween(begin: -xAngle, end: 0.0), weight: 1),
     ]).chain(CurveTween(curve: Curves.easeInOutSine)).animate(_controller);
 
     _rotationY = TweenSequence([
       TweenSequenceItem(tween: Tween(begin: 0.0, end: yAngle), weight: 1),
-      TweenSequenceItem(tween: Tween(begin: yAngle, end: -yAngle), weight: 2),
+      TweenSequenceItem(
+        tween: Tween(begin: yAngle, end: -yAngle),
+        weight: 2,
+      ),
       TweenSequenceItem(tween: Tween(begin: -yAngle, end: 0.0), weight: 1),
     ]).chain(CurveTween(curve: Curves.easeInOutSine)).animate(_controller);
   }
@@ -139,8 +172,6 @@ class _FlipCardState extends State<FlipCard>
     _controller.stop(); // đảm bảo dừng ở trạng thái ban đầu
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -162,14 +193,7 @@ class _FlipCardState extends State<FlipCard>
           color: flipColor,
           borderRadius: borderRadiusGeometry,
 
-
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.25),
-              blurRadius: borderRadius,
-              offset: const Offset(4, 4),
-            ),
-          ],
+          boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.25 * (widget.opacityRange ?? 1.0)), blurRadius: borderRadius, offset: const Offset(4, 4))],
         ),
         alignment: Alignment.center,
         child: Text(

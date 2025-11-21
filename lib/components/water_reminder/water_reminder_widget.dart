@@ -52,7 +52,15 @@ class _WaterReminderWidgetState extends State<WaterReminderWidget> {
 
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.8), offset: Offset(1, 1), blurRadius: 2)],
+        boxShadow: [
+          // BoxShadow(color: Colors.black.withValues(alpha: 0.8), offset: Offset(1, 1), blurRadius: 2)
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.8),
+            blurRadius: 2,
+            spreadRadius: 1,
+            offset: Offset(0, 0),
+          ),
+        ],
       ),
       child: Stack(
         children: [

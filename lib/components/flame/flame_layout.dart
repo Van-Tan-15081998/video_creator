@@ -12,6 +12,8 @@ class MySpriteGame extends FlameGame {
   final double sizeDy;
 
   late SpriteAnimationComponent spriteComponent;
+  late SpriteAnimationComponent spriteComponentSS01;
+  late SpriteAnimationComponent spriteComponentSS02;
 
   @override
   Color backgroundColor() => Colors.transparent; // ví dụ: tím đậm
@@ -19,7 +21,7 @@ class MySpriteGame extends FlameGame {
   @override
   Future<void> onLoad() async {
     // Load sprite sheet
-    final image = await images.load('sprite_sheet/24A/monsterA.png');
+    final image = await images.load('sprite_sheet/24A/monster24A.png');
 
     // Cắt sprite sheet thành animation
     final spriteSheet = SpriteSheet(
@@ -43,9 +45,23 @@ class MySpriteGame extends FlameGame {
       ..size = Vector2(269.0, 230.0)
       ..position = Vector2(269.0 / 2 + 25.0, sizeDy - (230.0 / 2 + 25)); // đặt tại x=100, y=100
 
+    spriteComponentSS01 = SpriteAnimationComponent()
+      ..animation = spriteAnimation
+      ..size = Vector2(269.0, 230.0)
+      ..position = Vector2(269.0 / 2 + 25.0, sizeDy - (230.0 / 2 + 25)); // đặt tại x=100, y=100
+
+    spriteComponentSS02 = SpriteAnimationComponent()
+      ..animation = spriteAnimation
+      ..size = Vector2(269.0, 230.0)
+      ..position = Vector2(269.0 / 2 + 25.0, sizeDy - (230.0 / 2 + 25)); // đặt tại x=100, y=100
+
     spriteComponent.anchor = Anchor.center;
+    spriteComponentSS01.anchor = Anchor.center;
+    spriteComponentSS02.anchor = Anchor.center;
 
     add(spriteComponent);
+    add(spriteComponentSS01);
+    add(spriteComponentSS02);
   }
 
   @override

@@ -4,17 +4,17 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CountdownTimerWidget extends StatefulWidget {
-  const CountdownTimerWidget({super.key, required this.sizeDx, required this.sizeDy});
+class CountdownTimerWidget0 extends StatefulWidget {
+  const CountdownTimerWidget0({super.key, required this.sizeDx, required this.sizeDy});
 
   final double sizeDx;
   final double sizeDy;
 
   @override
-  State<CountdownTimerWidget> createState() => _CountdownTimerWidgetState();
+  State<CountdownTimerWidget0> createState() => _CountdownTimerWidgetState();
 }
 
-class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
+class _CountdownTimerWidgetState extends State<CountdownTimerWidget0> {
   Timer? _timer;
 
   int minute = 0;
@@ -679,6 +679,8 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
     });
   }
 
+  bool isStayFocused = true;
+
   @override
   void dispose() {
     // 🔒 Dừng timer khi widget bị huỷ (rất quan trọng để tránh leak)
@@ -691,6 +693,7 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
     return Stack(
       alignment: AlignmentDirectional.center,
       children: [
+        /// Thanh bóng dưới
         Positioned(
           bottom: 0,
           right: 3,
@@ -698,16 +701,27 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
             width: widget.sizeDx - 5.0,
             height: 16.0,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(0),
-                bottomLeft: Radius.circular(15.0),
-                topRight: Radius.circular(0),
-                bottomRight: Radius.circular(15.0),
-              ),
-              boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.8), offset: Offset(1, 1), blurRadius: 2)],
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(0), bottomLeft: Radius.circular(15.0), topRight: Radius.circular(0), bottomRight: Radius.circular(15.0)),
+              boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), offset: Offset(0, 2), blurRadius: 15)],
             ),
           ),
         ),
+
+        /// Thanh bóng trên
+        Positioned(
+          top: 0,
+          right: 3,
+          child: Container(
+            width: widget.sizeDx - 5.0,
+            height: 16.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), bottomLeft: Radius.circular(0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(0)),
+              boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), offset: Offset(0, -2), blurRadius: 15)],
+            ),
+          ),
+        ),
+
+        /// Thanh bóng phải
         Positioned(
           bottom: 6,
           right: 0,
@@ -715,125 +729,231 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
             width: 16.0,
             height: widget.sizeDy - 8.0,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(0),
-                bottomLeft: Radius.circular(0),
-                topRight: Radius.circular(15.0),
-                bottomRight: Radius.circular(15.0),
-              ),
-              boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.8), offset: Offset(2, 2), blurRadius: 2)],
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(0), bottomLeft: Radius.circular(0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0)),
+              boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), offset: Offset(2, 0), blurRadius: 15)],
             ),
           ),
         ),
 
+        /// Thanh bóng trái
+        Positioned(
+          bottom: 6,
+          left: 0,
+          child: Container(
+            width: 16.0,
+            height: widget.sizeDy - 8.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), bottomLeft: Radius.circular(15.0), topRight: Radius.circular(0), bottomRight: Radius.circular(0)),
+              boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), offset: Offset(-2, 0), blurRadius: 15)],
+            ),
+          ),
+        ),
+
+
+
         ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(15.0),
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            filter: ImageFilter.blur(sigmaX: 50, sigmaY: 10),
             child: Container(
               padding: EdgeInsets.all(5.0),
               width: widget.sizeDx,
               height: widget.sizeDy,
               decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(20.0),
+                color: Colors.black.withValues(alpha: 0.5),
+                borderRadius: BorderRadius.circular(15.0),
                 border: Border.all(width: 15.0, color: Colors.black),
               ),
               child: Stack(
                 alignment: AlignmentDirectional.center,
 
                 children: [
-                  AnimatedPositioned(
-                    duration: const Duration(milliseconds: 100),
+                  isStayFocused
+                      ? AnimatedPositioned(
+                          duration: const Duration(milliseconds: 100),
 
-                    left: widget.sizeDx * 0.02,
-                    child: Container(
-                      width: widget.sizeDx * 0.45,
-                      height: widget.sizeDy * 0.8,
-                      decoration: BoxDecoration(
-                        // color: Colors.white.withValues(alpha: 1.0),
-                        // border: Border.all(width: 2.0, color: Colors.black),
-                        // borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      ),
-                      // child: Center(
-                      //   child: Text(
-                      //     'STAY FOCUSED',
-                      //     // child: Text('BREAK TIME',
-                      //     style: GoogleFonts.bungee(
-                      //       textStyle: const TextStyle(color: Color(0xFF1C1C1C)),
-                      //       fontSize: 42.0,
-                      //       fontWeight: FontWeight.bold,
-                      //     ),
-                      //   ),
-                      // ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Flexible(
-                            child: Container(
-                              color: Colors.transparent,
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
+                          left: widget.sizeDx * 0.02,
+                          child: Container(
+                            width: widget.sizeDx * 0.45,
+                            height: widget.sizeDy * 0.8,
+                            decoration: BoxDecoration(
+                              // color: Colors.white.withValues(alpha: 1.0),
+                              // border: Border.all(width: 2.0, color: Colors.black),
+                              // borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                            ),
+
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Flexible(
+                                  child: Container(
+                                    color: Colors.transparent,
+                                    child: Stack(
                                       children: [
-                                        Flexible(
-                                          child: Text(
-                                            'STAY FOCUSED',
-                                            style: GoogleFonts.bungee(
-                                              textStyle: TextStyle(
-                                                fontSize: 50.0,
-                                                fontWeight: FontWeight.bold,
-                                                fontStyle: FontStyle.normal,
-                                                foreground: Paint()
-                                                  ..style = PaintingStyle.stroke
-                                                  ..strokeWidth = 5.0
-                                                  ..color = Colors.black, // Màu viền
+                                        Positioned(
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Flexible(
+                                                child: Text(
+                                                  'STAY FOCUSED',
+                                                  // style: GoogleFonts.coiny(
+                                                  style: GoogleFonts.poetsenOne(
+                                                    textStyle: TextStyle(
+                                                      fontSize: 55.0,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontStyle: FontStyle.normal,
+                                                      foreground: Paint()
+                                                        ..style = PaintingStyle.stroke
+                                                        ..strokeWidth = 10.0
+                                                        ..color = Colors.black, // Màu viền
+                                                      letterSpacing: 5.0,
+                                                    ),
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  maxLines: 2,
+                                                ),
                                               ),
-                                            ),
-                                            textAlign: TextAlign.start,
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 2,
+                                            ],
+                                          ),
+                                        ),
+                                        Positioned(
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Flexible(
+                                                child: Text(
+                                                  'STAY FOCUSED',
+                                                  style: GoogleFonts.poetsenOne(
+                                                    textStyle: TextStyle(fontSize: 55.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal, color: Color(0xFFFF3030), letterSpacing: 5.0),
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  maxLines: 2,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                  Positioned(
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Flexible(
-                                          child: Text(
-                                            'STAY FOCUSED',
-                                            style: GoogleFonts.bungee(
-                                                textStyle: TextStyle(
-                                                  fontSize: 50.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle: FontStyle.normal,
-                                                  color: Colors.red,
-                                                )),
-                                            textAlign: TextAlign.start,
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 2,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
+                        )
+                      : Container(),
+
+                  isStayFocused == false
+                      ? AnimatedPositioned(
+                          duration: const Duration(milliseconds: 100),
+
+                          left: widget.sizeDx * 0.02,
+                          child: Container(
+                            width: widget.sizeDx * 0.45,
+                            height: widget.sizeDy * 0.8,
+                            decoration: BoxDecoration(
+                              // color: Colors.white.withValues(alpha: 1.0),
+                              // border: Border.all(width: 2.0, color: Colors.black),
+                              // borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                            ),
+
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Flexible(
+                                  child: Container(
+                                    color: Colors.transparent,
+                                    child: Stack(
+                                      children: [
+                                        Positioned(
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Flexible(
+                                                child: Text(
+                                                  'BREAK TIME',
+                                                  style: GoogleFonts.bungee(
+                                                    textStyle: TextStyle(
+                                                      fontSize: 55.0,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontStyle: FontStyle.normal,
+                                                      foreground: Paint()
+                                                        ..style = PaintingStyle.stroke
+                                                        ..strokeWidth = 10.0
+                                                        ..color = Colors.black, // Màu viền
+                                                    ),
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  maxLines: 2,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Positioned(
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Flexible(
+                                                child: Text(
+                                                  'BREAK TIME',
+                                                  style: GoogleFonts.bungee(
+                                                    textStyle: TextStyle(fontSize: 55.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal, color: Color(0xFF54FF9F)),
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  maxLines: 2,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      : Container(),
+
+                  AnimatedPositioned(
+                    duration: const Duration(milliseconds: 10),
+                    top: 35.0,
+                    left: widget.sizeDx * 0.48 + 10.0,
+                    child: Container(
+                      width: widget.sizeDx * 0.22,
+                      height: widget.sizeDy * 0.7,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.8),
+                        border: Border.all(width: 8.0, color: Colors.black),
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                      ),
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 5.0),
+                          child: Text(
+                            minuteString,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.coiny(
+                              textStyle: const TextStyle(color: Color(0xFF363636)),
+                              fontSize: 88.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-
                   AnimatedPositioned(
-                    duration: const Duration(milliseconds: 100),
+                    duration: const Duration(milliseconds: 10),
 
                     left: widget.sizeDx * 0.48,
                     child: Container(
@@ -841,23 +961,54 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
                       height: widget.sizeDy * 0.7,
                       decoration: BoxDecoration(
                         color: Colors.white.withValues(alpha: 1.0),
-                        border: Border.all(width: 5.0, color: Colors.black),
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        border: Border.all(width: 8.0, color: Colors.black),
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
                       ),
                       child: Center(
-                        child: Text(
-                          minuteString,
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.comfortaa(
-                            textStyle: const TextStyle(color: Color(0xFF363636)),
-                            fontSize: 88.0,
-                            fontWeight: FontWeight.bold,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 5.0),
+                          child: Text(
+                            minuteString,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.coiny(
+                              textStyle: const TextStyle(color: Color(0xFF363636)),
+                              fontSize: 88.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
 
+                  AnimatedPositioned(
+                    duration: const Duration(milliseconds: 100),
+                    top: 35.0,
+                    left: widget.sizeDx * 0.50 + widget.sizeDx * 0.22 + 10.0,
+                    child: Container(
+                      width: widget.sizeDx * 0.22,
+                      height: widget.sizeDy * 0.7,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.8),
+                        border: Border.all(width: 8.0, color: Colors.black),
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                      ),
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 5.0),
+                          child: Text(
+                            secondString,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.coiny(
+                              textStyle: const TextStyle(color: Color(0xFF363636)),
+                              fontSize: 88.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   AnimatedPositioned(
                     duration: const Duration(milliseconds: 100),
 
@@ -867,17 +1018,20 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
                       height: widget.sizeDy * 0.7,
                       decoration: BoxDecoration(
                         color: Colors.white.withValues(alpha: 1.0),
-                        border: Border.all(width: 5.0, color: Colors.black),
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        border: Border.all(width: 8.0, color: Colors.black),
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
                       ),
                       child: Center(
-                        child: Text(
-                          secondString,
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.comfortaa(
-                            textStyle: const TextStyle(color: Color(0xFF363636)),
-                            fontSize: 88.0,
-                            fontWeight: FontWeight.bold,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 5.0),
+                          child: Text(
+                            secondString,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.coiny(
+                              textStyle: const TextStyle(color: Color(0xFF363636)),
+                              fontSize: 88.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -886,6 +1040,15 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> {
                 ],
               ),
             ),
+          ),
+        ),
+
+        Container(
+          width: widget.sizeDx - 8.0,
+          height: widget.sizeDy - 8.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(18.0),
+            border: Border.all(width: 10.0, color: Colors.black),
           ),
         ),
       ],

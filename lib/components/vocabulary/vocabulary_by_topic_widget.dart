@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:frame_creator_v2/animation_components/active_container/active_container_widget.dart';
+import 'package:frame_creator_v2/component_for_test/demo_animated_background.dart';
+import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class VocabularyByTopicWidget extends StatefulWidget {
@@ -275,12 +278,13 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
       width: widget.sizeDx,
       height: widget.sizeDy,
       decoration: BoxDecoration(
-        // color: Colors.black.withValues(alpha: 0.8),
+        color: Colors.black.withValues(alpha: 0.8),
         border: Border.all(width: 5.0, color: Colors.black),
-        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(30.0)),
         boxShadow: [
           // Bóng tối (dưới phải)
-          BoxShadow(color: Colors.black.withValues(alpha: 0.8), offset: Offset(1, 1), blurRadius: 2),
+          // BoxShadow(color: Colors.black.withValues(alpha: 0.8), offset: Offset(1, 1), blurRadius: 2),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 15.0, spreadRadius: 1.0, offset: Offset(0, 0)),
         ],
       ),
       child: Stack(
@@ -336,15 +340,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
-                                  '1.vocabulary',
+                                  'vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -388,15 +392,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '2.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -440,15 +444,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '3.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -492,15 +496,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '4.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -544,15 +548,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '5.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -596,15 +600,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '6.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -648,15 +652,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '7.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -700,15 +704,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '8.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -752,15 +756,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '9.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -804,15 +808,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '10.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -856,15 +860,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '11.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -908,15 +912,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '12.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -960,15 +964,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '13.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1012,15 +1016,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '14.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1064,15 +1068,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '15.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1116,15 +1120,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '16.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1168,15 +1172,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '17.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1220,15 +1224,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '18.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1272,15 +1276,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '19.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1324,15 +1328,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '20.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1376,15 +1380,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '21.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1428,15 +1432,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '22.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1480,15 +1484,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '23.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1532,15 +1536,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '24.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1584,15 +1588,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '25.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1636,15 +1640,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '26.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1688,15 +1692,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '27.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1740,15 +1744,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '28.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1792,15 +1796,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '29.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1844,15 +1848,15 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(6.0),
                               child: Center(
                                 child: Text(
                                   '30.vocabulary',
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.lilitaOne(
+                                  style: GoogleFonts.titanOne(
                                     textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w800,
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
@@ -1869,690 +1873,126 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
             ),
           ),
 
+          // AnimatedPositioned(
+          //   bottom: 0,
+          //   left: 0,
+          //   width: widget.sizeDx * 0.3,
+          //   height: widget.sizeDy - (widget.sizeDy * 0.15 + 30.0),
+          //   duration: const Duration(milliseconds: 100),
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(2.0),
+          //     child: Container(
+          //       width: widget.sizeDx - 10.0, //
+          //       height: widget.sizeDy * 0.15, //
+          //       decoration: BoxDecoration(
+          //         color: Colors.white,
+          //         border: Border.all(width: 2.0, color: Colors.black),
+          //         borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          //       ),
+          //     ),
+          //   ),
+          // ),
           AnimatedPositioned(
             bottom: 0,
-            left: 0,
-            width: widget.sizeDx * 0.3,
+            left: 5,
+            width: widget.sizeDx - 30.0,
             height: widget.sizeDy - (widget.sizeDy * 0.15 + 30.0),
             duration: const Duration(milliseconds: 100),
-            child: Padding(
-              padding: const EdgeInsets.all(2.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
               child: Container(
-                width: widget.sizeDx - 10.0, //
-                height: widget.sizeDy * 0.15, //
+                width: widget.sizeDx - 30.0,
+                height: widget.sizeDy - (widget.sizeDy * 0.15 + 30.0),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Color(0xFF002200).withValues(alpha: 0.4),
                   border: Border.all(width: 2.0, color: Colors.black),
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  // image: DecorationImage(image: AssetImage('assets/images/paper2.jpg'), fit: BoxFit.fitWidth),
+                ),
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      width: widget.sizeDx,
+                      height: widget.sizeDy - (widget.sizeDy * 0.15),
+                      child: Stack(
+                        alignment: AlignmentDirectional.center,
+                        children: [
+                          Positioned(
+                            child: TransparentEffectWallWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy - (widget.sizeDy * 0.15)),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    AnimatedPositioned(
+                      duration: const Duration(milliseconds: 100),
+                      top: 0,
+                      left: 0,
+                      width: widget.sizeDx - 30.0,
+                      height: widget.sizeDy - (widget.sizeDy * 0.15),
+                      child: Container(
+                        width: widget.sizeDx - 30.0,
+                        height: widget.sizeDy - (widget.sizeDy * 0.15),
+                        decoration: BoxDecoration(color: Colors.transparent),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 15.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+
+                            children: [
+                              Text.rich(
+                                TextSpan(
+                                  style: TextStyle(fontSize: 20, height: 1.0),
+                                  children: [
+                                    wordItem(word: 'enjoy', isActive: false),
+
+                                    wordItem(word: 'laugh', isActive: false),
+                                    //
+                                    wordItem(word: 'happiness', isActive: false),
+                                    //
+                                    wordItem(word: 'fun', isActive: false),
+                                    //
+                                    wordItem(word: 'fulfil', isActive: false),
+                                    //
+                                    wordItem(word: 'happy', isActive: false),
+                                    //
+                                    wordItem(word: 'blissful', isActive: false),
+                                    //
+                                    // wordItem(word: 'satisfied'),
+                                    // wordItem(word: 'glad'),
+                                    // wordItem(word: 'delighted'),
+                                    // wordItem(word: 'cheerful'),
+                                    // wordItem(word: 'joyful'),
+                                    // wordItem(word: 'thankful'),
+                                    // wordItem(word: 'honor'),
+                                    // wordItem(word: 'pleasure'),
+                                    // wordItem(word: 'self-satisfied', isActive: false),
+                                    // wordItem(word: 'self-satisfied'),
+                                    // wordItem(word: 'self-satisfied'),
+
+                                    wordItem(word: 'unbelievable', isActive: true),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
 
           AnimatedPositioned(
-            bottom: 0,
-            left: widget.sizeDx * 0.3 + 15.0,
-            width: widget.sizeDx - (widget.sizeDx * 0.3 + 40.0),
-            height: widget.sizeDy - (widget.sizeDy * 0.15 + 30.0),
-            duration: const Duration(milliseconds: 100),
-            child: Container(
-              width: widget.sizeDx - (widget.sizeDx * 0.3 + 40.0),
-              height: widget.sizeDy - (widget.sizeDy * 0.15 + 30.0),
-              decoration: BoxDecoration(
-                color: Colors.transparent.withValues(alpha: 0.7),
-                border: Border.all(width: 2.0, color: Colors.black),
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              ),
-              child: Stack(
-                alignment: AlignmentDirectional.center,
-                children: [
-                  AnimatedPositioned(
-                    duration: const Duration(milliseconds: 100),
-                    top: 0,
-                    left: 0,
-                    width: widget.sizeDx - (widget.sizeDx * 0.3 + 40.0),
-                    height: widget.sizeDy - (widget.sizeDy * 0.15),
-                    child: Container(
-                      width: widget.sizeDx - (widget.sizeDx * 0.3 + 40.0),
-                      height: widget.sizeDy - (widget.sizeDy * 0.15),
-                      decoration: BoxDecoration(color: Colors.transparent),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 15.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-
-                          children: [
-                            Text.rich(
-                              TextSpan(
-                                style: TextStyle(fontSize: 20, height: 1.0),
-                                children: [
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-
-                                        child: Stack(
-                                          children: [
-                                            Positioned(
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Flexible(
-                                                    child: Text(
-                                                      'enjoy',
-                                                      style: GoogleFonts.coiny(
-                                                        textStyle: TextStyle(
-                                                          fontSize: 22.0,
-                                                          fontWeight: FontWeight.bold,
-                                                          fontStyle: FontStyle.normal,
-                                                          foreground: Paint()
-                                                            ..style = PaintingStyle.stroke
-                                                            ..strokeWidth = 3.0
-                                                            ..color = Colors.black, // Màu viền
-                                                        ),
-                                                      ),
-                                                      textAlign: TextAlign.start,
-                                                      overflow: TextOverflow.ellipsis,
-                                                      maxLines: 2,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Positioned(
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Flexible(
-                                                    child: Text(
-                                                      'enjoy',
-                                                      style: GoogleFonts.coiny(
-                                                        textStyle: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal, color: Colors.red),
-                                                      ),
-                                                      textAlign: TextAlign.start,
-                                                      overflow: TextOverflow.ellipsis,
-                                                      maxLines: 2,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-
-                                        child: Stack(
-                                          children: [
-                                            Positioned(
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Flexible(
-                                                    child: Text(
-                                                      'laugh',
-                                                      style: GoogleFonts.coiny(
-                                                        textStyle: TextStyle(
-                                                          fontSize: 22.0,
-                                                          fontWeight: FontWeight.bold,
-                                                          fontStyle: FontStyle.normal,
-                                                          foreground: Paint()
-                                                            ..style = PaintingStyle.stroke
-                                                            ..strokeWidth = 3.0
-                                                            ..color = Colors.black, // Màu viền
-                                                        ),
-                                                      ),
-                                                      textAlign: TextAlign.start,
-                                                      overflow: TextOverflow.ellipsis,
-                                                      maxLines: 2,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Positioned(
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Flexible(
-                                                    child: Text(
-                                                      'laugh',
-                                                      style: GoogleFonts.coiny(
-                                                        textStyle: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal, color: Colors.red),
-                                                      ),
-                                                      textAlign: TextAlign.start,
-                                                      overflow: TextOverflow.ellipsis,
-                                                      maxLines: 2,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'happiness',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'fun',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'fulfill',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'happy',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'blissful',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'satisfied',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'glad',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'delighted',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'cheerful',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'joyful',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'thankful',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'honor',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'pleasure',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'self-satisfied',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'self-satisfied',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle, // ✅ Căn giữa theo chiều dọc
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 10.0, top: 10.0),
-                                      child: Container(
-                                        // height: 50.0,
-                                        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFFFFFFF),
-                                          border: Border.all(color: Color(0x00000000), width: 2),
-                                          borderRadius: BorderRadius.circular(3),
-                                        ),
-                                        child: Text(
-                                          'self-satisfied',
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.coiny(
-                                            textStyle: const TextStyle(color: Colors.black),
-                                            fontSize: 22.0,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                            // RichText(
-                            //   textAlign: TextAlign.start,
-                            //   overflow: TextOverflow.ellipsis,
-                            //   maxLines: 5,
-                            //   text: TextSpan(
-                            //     style: GoogleFonts.robotoSlab(textStyle: const TextStyle(color: Color(0xFFECECEC)), fontSize: 20.0),
-                            //     children: [
-                            //       TextSpan(
-                            //         text: 'book ',
-                            //         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                            //       ),
-                            //       TextSpan(
-                            //         text: '[C] noun\n',
-                            //         style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
-                            //       ),
-                            //       TextSpan(text: 'A written or printed work consisting of pages.\n'),
-                            //       TextSpan(
-                            //         text: 'Example: ',
-                            //         style: TextStyle(fontWeight: FontWeight.bold),
-                            //       ),
-                            //       TextSpan(
-                            //         text: 'I read a great book yesterday. ',
-                            //         style: TextStyle(fontStyle: FontStyle.italic),
-                            //         spellOut: true,
-                            //       ),
-                            //
-                            //     ],
-                            //   ),
-                            // ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          // Row(
-          //   mainAxisSize: MainAxisSize.max,
-          //   mainAxisAlignment: phanGiaiMainAxisAlignment(canhLe: widget.canhLeVanBan),
-          //   children: [
-          //     Flexible(
-          //       child: Container(
-          //         color: Colors.transparent,
-          //         child: Stack(
-          //           children: [
-          //             Positioned(
-          //               child: Row(
-          //                 mainAxisSize: MainAxisSize.min,
-          //                 children: [
-          //                   Flexible(
-          //                     child: Text(
-          //                       widget.vanBan ?? 'VAN_BAN',
-          //                       style: GoogleFonts.chewy(
-          //                         textStyle: TextStyle(
-          //                           fontSize: widget.kichThuocPhongChu ?? 10.0,
-          //                           fontWeight: widget.doDayPhongChu ?? FontWeight.normal,
-          //                           fontStyle: FontStyle.normal,
-          //                           foreground: Paint()
-          //                             ..style = PaintingStyle.stroke
-          //                             ..strokeWidth = 2.0
-          //                             ..color = mauSacKhungVien ?? Colors.black, // Màu viền
-          //                         ),
-          //                       ),
-          //                       textAlign: phanGiaiTextAlign(),
-          //                       overflow: TextOverflow.ellipsis,
-          //                       maxLines: widget.soDongToiDa ?? 1,
-          //                     ),
-          //                   ),
-          //                 ],
-          //               ),
-          //             ),
-          //             Positioned(
-          //               child: Row(
-          //                 mainAxisSize: MainAxisSize.min,
-          //                 children: [
-          //                   Flexible(
-          //                     child: Text(
-          //                       widget.vanBan ?? 'VAN_BAN',
-          //                       style: GoogleFonts.chewy(
-          //                         textStyle: TextStyle(
-          //                           fontSize: widget.kichThuocPhongChu ?? 10.0,
-          //                           fontWeight: widget.doDayPhongChu ?? FontWeight.normal,
-          //                           fontStyle: FontStyle.normal,
-          //                           color: mauSacKhungNen ?? Colors.black,
-          //                         ),
-          //                       ),
-          //                       textAlign: phanGiaiTextAlign(),
-          //                       overflow: TextOverflow.ellipsis,
-          //                       maxLines: widget.soDongToiDa ?? 1,
-          //                     ),
-          //                   ),
-          //                 ],
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          AnimatedPositioned(
-            bottom: 0,
-            left: widget.sizeDx * 0.3 + 15.0,
-            width: widget.sizeDx - (widget.sizeDx * 0.3 + 30.0),
+            bottom: 2.0,
+            left: 5.0,
+            width: widget.sizeDx - 30.0,
             height: widget.sizeDy * 0.035,
             duration: const Duration(milliseconds: 100),
             child: Padding(
@@ -2569,6 +2009,108 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  WidgetSpan wordItem({required String word, required bool isActive}) {
+    return WidgetSpan(
+      alignment: PlaceholderAlignment.middle,
+      child: ClipRect(
+        child: Stack(
+          alignment: AlignmentDirectional.center,
+          children: [
+
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 5, vertical: 3.0),
+              decoration: BoxDecoration(
+                // color: Color(0xFFFFFF00).withValues(alpha: 1.0),
+                border: Border.all(color: Color(0xFF000000), width: 3.0),
+                borderRadius: BorderRadius.circular(0),
+              ),
+
+              child: Stack(
+                children: [
+
+                  Positioned(
+                    top: -1.0,
+                    left: -1.0,
+                    height: 100.0, width: 500.0,
+                    child: Container(height: 25.0, width: 500.0, decoration: BoxDecoration(color: Color(0xFFFFFF00))),
+                  ),
+
+                  Positioned(
+                    bottom: -1.0,
+                    left: -1.0,
+                    height: 25.0, width: 500.0,
+                    child: Container(height: 25.0, width: 500.0, decoration: BoxDecoration(color: Color(0xFF1C1C1C))),
+                  ),
+
+                  isActive ? Positioned(
+                    top: -1.0,
+                    left: -1.0,
+                    child: Container(height: 35.0, width: 500.0, decoration: BoxDecoration(color: Colors.transparent),
+                      child: ActiveContainerWidget(),
+                    ),
+                  ) : Text(''),
+
+                  Positioned(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2.5),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              word,
+                              style: GoogleFonts.titanOne(
+                                textStyle: TextStyle(
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal,
+                                  foreground: Paint()
+                                    ..style = PaintingStyle.stroke
+                                    ..strokeWidth = 5.0
+                                    ..color = Color(0xFF000000), // Màu viền
+                                  letterSpacing: 3,
+                                ),
+                              ),
+                              textAlign: TextAlign.start,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2.5),
+
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              word,
+                              style: GoogleFonts.titanOne(
+                                textStyle: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w500, fontStyle: FontStyle.normal, color: Color(0xFFECECEC), letterSpacing: 3),
+                              ),
+                              textAlign: TextAlign.start,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

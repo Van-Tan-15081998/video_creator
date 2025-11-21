@@ -41,6 +41,8 @@ dependencies:
   google_fonts: 6.3.2
   window_size: ^0.1.0
 
+  animate_do: 4.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -69,6 +71,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   - assets/images/
   - assets/images/sprite_sheet/24A/
+  - assets/images/sprite_sheet/20A/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

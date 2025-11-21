@@ -1,0 +1,279 @@
+monster20A.png
+size: 3380, 1750
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+pma: false
+Comp
+  bounds: 0, 0, 260, 250
+  index: 0
+Comp
+  bounds: 260, 0, 260, 250
+  index: 1
+Comp
+  bounds: 520, 0, 260, 250
+  index: 2
+Comp
+  bounds: 780, 0, 260, 250
+  index: 3
+Comp
+  bounds: 1040, 0, 260, 250
+  index: 4
+Comp
+  bounds: 1300, 0, 260, 250
+  index: 5
+Comp
+  bounds: 1560, 0, 260, 250
+  index: 6
+Comp
+  bounds: 1820, 0, 260, 250
+  index: 7
+Comp
+  bounds: 2080, 0, 260, 250
+  index: 8
+Comp
+  bounds: 2340, 0, 260, 250
+  index: 9
+Comp
+  bounds: 2600, 0, 260, 250
+  index: 10
+Comp
+  bounds: 2860, 0, 260, 250
+  index: 11
+Comp
+  bounds: 3120, 0, 260, 250
+  index: 12
+Comp
+  bounds: 0, 250, 260, 250
+  index: 13
+Comp
+  bounds: 260, 250, 260, 250
+  index: 14
+Comp
+  bounds: 520, 250, 260, 250
+  index: 15
+Comp
+  bounds: 780, 250, 260, 250
+  index: 16
+Comp
+  bounds: 1040, 250, 260, 250
+  index: 17
+Comp
+  bounds: 1300, 250, 260, 250
+  index: 18
+Comp
+  bounds: 1560, 250, 260, 250
+  index: 19
+Comp
+  bounds: 1820, 250, 260, 250
+  index: 20
+Comp
+  bounds: 2080, 250, 260, 250
+  index: 21
+Comp
+  bounds: 2340, 250, 260, 250
+  index: 22
+Comp
+  bounds: 2600, 250, 260, 250
+  index: 23
+Comp
+  bounds: 2860, 250, 260, 250
+  index: 24
+Comp
+  bounds: 3120, 250, 260, 250
+  index: 25
+Comp
+  bounds: 0, 500, 260, 250
+  index: 26
+Comp
+  bounds: 260, 500, 260, 250
+  index: 27
+Comp
+  bounds: 520, 500, 260, 250
+  index: 28
+Comp
+  bounds: 780, 500, 260, 250
+  index: 29
+Comp
+  bounds: 1040, 500, 260, 250
+  index: 30
+Comp
+  bounds: 1300, 500, 260, 250
+  index: 31
+Comp
+  bounds: 1560, 500, 260, 250
+  index: 32
+Comp
+  bounds: 1820, 500, 260, 250
+  index: 33
+Comp
+  bounds: 2080, 500, 260, 250
+  index: 34
+Comp
+  bounds: 2340, 500, 260, 250
+  index: 35
+Comp
+  bounds: 2600, 500, 260, 250
+  index: 36
+Comp
+  bounds: 2860, 500, 260, 250
+  index: 37
+Comp
+  bounds: 3120, 500, 260, 250
+  index: 38
+Comp
+  bounds: 0, 750, 260, 250
+  index: 39
+Comp
+  bounds: 260, 750, 260, 250
+  index: 40
+Comp
+  bounds: 520, 750, 260, 250
+  index: 41
+Comp
+  bounds: 780, 750, 260, 250
+  index: 42
+Comp
+  bounds: 1040, 750, 260, 250
+  index: 43
+Comp
+  bounds: 1300, 750, 260, 250
+  index: 44
+Comp
+  bounds: 1560, 750, 260, 250
+  index: 45
+Comp
+  bounds: 1820, 750, 260, 250
+  index: 46
+Comp
+  bounds: 2080, 750, 260, 250
+  index: 47
+Comp
+  bounds: 2340, 750, 260, 250
+  index: 48
+Comp
+  bounds: 2600, 750, 260, 250
+  index: 49
+Comp
+  bounds: 2860, 750, 260, 250
+  index: 50
+Comp
+  bounds: 3120, 750, 260, 250
+  index: 51
+Comp
+  bounds: 0, 1000, 260, 250
+  index: 52
+Comp
+  bounds: 260, 1000, 260, 250
+  index: 53
+Comp
+  bounds: 520, 1000, 260, 250
+  index: 54
+Comp
+  bounds: 780, 1000, 260, 250
+  index: 55
+Comp
+  bounds: 1040, 1000, 260, 250
+  index: 56
+Comp
+  bounds: 1300, 1000, 260, 250
+  index: 57
+Comp
+  bounds: 1560, 1000, 260, 250
+  index: 58
+Comp
+  bounds: 1820, 1000, 260, 250
+  index: 59
+Comp
+  bounds: 2080, 1000, 260, 250
+  index: 60
+Comp
+  bounds: 2340, 1000, 260, 250
+  index: 61
+Comp
+  bounds: 2600, 1000, 260, 250
+  index: 62
+Comp
+  bounds: 2860, 1000, 260, 250
+  index: 63
+Comp
+  bounds: 3120, 1000, 260, 250
+  index: 64
+Comp
+  bounds: 0, 1250, 260, 250
+  index: 65
+Comp
+  bounds: 260, 1250, 260, 250
+  index: 66
+Comp
+  bounds: 520, 1250, 260, 250
+  index: 67
+Comp
+  bounds: 780, 1250, 260, 250
+  index: 68
+Comp
+  bounds: 1040, 1250, 260, 250
+  index: 69
+Comp
+  bounds: 1300, 1250, 260, 250
+  index: 70
+Comp
+  bounds: 1560, 1250, 260, 250
+  index: 71
+Comp
+  bounds: 1820, 1250, 260, 250
+  index: 72
+Comp
+  bounds: 2080, 1250, 260, 250
+  index: 73
+Comp
+  bounds: 2340, 1250, 260, 250
+  index: 74
+Comp
+  bounds: 2600, 1250, 260, 250
+  index: 75
+Comp
+  bounds: 2860, 1250, 260, 250
+  index: 76
+Comp
+  bounds: 3120, 1250, 260, 250
+  index: 77
+Comp
+  bounds: 0, 1500, 260, 250
+  index: 78
+Comp
+  bounds: 260, 1500, 260, 250
+  index: 79
+Comp
+  bounds: 520, 1500, 260, 250
+  index: 80
+Comp
+  bounds: 780, 1500, 260, 250
+  index: 81
+Comp
+  bounds: 1040, 1500, 260, 250
+  index: 82
+Comp
+  bounds: 1300, 1500, 260, 250
+  index: 83
+Comp
+  bounds: 1560, 1500, 260, 250
+  index: 84
+Comp
+  bounds: 1820, 1500, 260, 250
+  index: 85
+Comp
+  bounds: 2080, 1500, 260, 250
+  index: 86
+Comp
+  bounds: 2340, 1500, 260, 250
+  index: 87
+Comp
+  bounds: 2600, 1500, 260, 250
+  index: 88
+Comp
+  bounds: 2860, 1500, 260, 250
+  index: 89
+Comp
+  bounds: 3120, 1500, 260, 250
+  index: 90
