@@ -1,26 +1,5 @@
-import 'dart:math';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:frame_creator_v2/animation_components/active_container/active_container_widget.dart';
-import 'package:frame_creator_v2/component_for_test/demo_animated_background.dart';
-import 'package:frame_creator_v2/component_for_test/demo_animated_background_2.dart';
-import 'package:frame_creator_v2/component_for_test/flip_card.dart';
-import 'package:frame_creator_v2/components/blackboard/blackboard_widget.dart';
-import 'package:frame_creator_v2/components/countdown_timer/countdown_timer_widget.dart';
-import 'package:frame_creator_v2/components/example_sentence/example_sentence_widget.dart';
-import 'package:frame_creator_v2/components/flame/flame_widget.dart';
-import 'package:frame_creator_v2/components/global_announcement/global_announcement_widget.dart';
-import 'package:frame_creator_v2/components/pomodoro/pomodoro_widget.dart';
-import 'package:frame_creator_v2/components/system_timeline/system_timeline_widget.dart';
-import 'package:frame_creator_v2/components/vocabulary/vocabulary_by_topic_widget.dart';
-import 'package:frame_creator_v2/components/vocabulary/vocabulary_widget.dart';
-import 'package:frame_creator_v2/components/water_reminder/water_reminder_widget.dart';
-import 'package:frame_creator_v2/components/window/window_widget.dart';
-import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 import 'package:frame_creator_v2/system/sequential_execution_controller/models/sequential_execution_controller.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key, required this.sequentialExecutionController});

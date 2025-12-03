@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 
 ///
@@ -137,6 +138,73 @@ class BasicTimeline with ExecutionCore {
     }
 
     return;
+  }
+
+  ///
+  /// TODO:
+  ///
+  bool? _isPaused;
+  bool get getIsPaused => _isPaused ?? false;
+  void setIsPaused({required bool? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _isPaused = value;
+    } else {
+      _isPaused ??= value;
+    }
+
+    return;
+  }
+
+  bool isRunning() {
+    if (getIsPaused == false) {
+      return true;
+    }
+
+    return false;
+  }
+
+  void start() {
+    if (getIsPaused == true) {
+      setIsPaused(value: false, isPriorityOverride: true);
+      if (kDebugMode) {
+        print('STARTED||==========STARTED||==========STARTED||==========STARTED||==========STARTED||==========STARTED||==========STARTED||');
+        print('STARTED||==========STARTED||==========STARTED||==========STARTED||==========STARTED||==========STARTED||==========STARTED||');
+        print('STARTED||==========STARTED||==========STARTED||==========STARTED||==========STARTED||==========STARTED||==========STARTED||');
+      }
+    }
+  }
+
+  void pause() {
+    if (getIsPaused == false) {
+      setIsPaused(value: true, isPriorityOverride: true);
+      if (kDebugMode) {
+        print('PAUSED||==========PAUSED||==========PAUSED||==========PAUSED||==========PAUSED||==========PAUSED||==========PAUSED||');
+        print('PAUSED||==========PAUSED||==========PAUSED||==========PAUSED||==========PAUSED||==========PAUSED||==========PAUSED||');
+        print('PAUSED||==========PAUSED||==========PAUSED||==========PAUSED||==========PAUSED||==========PAUSED||==========PAUSED||');
+      }
+    }
+  }
+
+  void stop() {
+    if (getIsPaused == false) {
+      setIsPaused(value: true, isPriorityOverride: true);
+      if (kDebugMode) {
+        print('STOPPED||==========STOPPED||==========STOPPED||==========STOPPED||==========STOPPED||==========STOPPED||==========STOPPED||');
+        print('STOPPED||==========STOPPED||==========STOPPED||==========STOPPED||==========STOPPED||==========STOPPED||==========STOPPED||');
+        print('STOPPED||==========STOPPED||==========STOPPED||==========STOPPED||==========STOPPED||==========STOPPED||==========STOPPED||');
+      }
+    }
+  }
+
+  void resume() {
+    if (getIsPaused == true) {
+      setIsPaused(value: false, isPriorityOverride: true);
+      if (kDebugMode) {
+        print('RESUMED||==========RESUMED||==========RESUMED||==========RESUMED||==========RESUMED||==========RESUMED||==========RESUMED||');
+        print('RESUMED||==========RESUMED||==========RESUMED||==========RESUMED||==========RESUMED||==========RESUMED||==========RESUMED||');
+        print('RESUMED||==========RESUMED||==========RESUMED||==========RESUMED||==========RESUMED||==========RESUMED||==========RESUMED||');
+      }
+    }
   }
 
   String getTimeUnitString({bool? isSecond, bool? isMinute, bool? isHour}) {
@@ -466,36 +534,40 @@ class BasicTimeline with ExecutionCore {
   /// TODO:
   /// -----
   void onUpdate() {
-    if (getSeconds < 59) {
-      int newSecondsValue = getSeconds + 1;
-      int newTotalSecondsValue = getTotalSeconds + 1;
-      setSeconds(value: newSecondsValue, isPriorityOverride: true);
-      setTotalSeconds(value: newTotalSecondsValue, isPriorityOverride: true);
-    } else if (getSeconds == 59) {
-      ///  TODO: Reset Seconds
-      int newSecondsValue = 0;
-      int newTotalSecondsValue = getTotalSeconds + 1;
-      setSeconds(value: newSecondsValue, isPriorityOverride: true);
-      setTotalSeconds(value: newTotalSecondsValue, isPriorityOverride: true);
+    if (getIsPaused == true) {
+      ///
+    } else if (getIsPaused == false) {
+      if (getSeconds < 59) {
+        int newSecondsValue = getSeconds + 1;
+        int newTotalSecondsValue = getTotalSeconds + 1;
+        setSeconds(value: newSecondsValue, isPriorityOverride: true);
+        setTotalSeconds(value: newTotalSecondsValue, isPriorityOverride: true);
+      } else if (getSeconds == 59) {
+        ///  TODO: Reset Seconds
+        int newSecondsValue = 0;
+        int newTotalSecondsValue = getTotalSeconds + 1;
+        setSeconds(value: newSecondsValue, isPriorityOverride: true);
+        setTotalSeconds(value: newTotalSecondsValue, isPriorityOverride: true);
 
-      if (getMinutes < 59) {
-        /// TODO: Set Minutes
-        int newMinutesValue = getMinutes + 1;
-        int newTotalMinutesValue = getTotalMinutes + 1;
-        setMinutes(value: newMinutesValue, isPriorityOverride: true);
-        setTotalMinutes(value: newTotalMinutesValue, isPriorityOverride: true);
-      } else if (getMinutes == 59) {
-        ///  TODO: Reset Minutes
-        int newMinutesValue = 0;
-        int newTotalMinutesValue = getTotalMinutes + 1;
-        setMinutes(value: newMinutesValue, isPriorityOverride: true);
-        setTotalMinutes(value: newTotalMinutesValue, isPriorityOverride: true);
+        if (getMinutes < 59) {
+          /// TODO: Set Minutes
+          int newMinutesValue = getMinutes + 1;
+          int newTotalMinutesValue = getTotalMinutes + 1;
+          setMinutes(value: newMinutesValue, isPriorityOverride: true);
+          setTotalMinutes(value: newTotalMinutesValue, isPriorityOverride: true);
+        } else if (getMinutes == 59) {
+          ///  TODO: Reset Minutes
+          int newMinutesValue = 0;
+          int newTotalMinutesValue = getTotalMinutes + 1;
+          setMinutes(value: newMinutesValue, isPriorityOverride: true);
+          setTotalMinutes(value: newTotalMinutesValue, isPriorityOverride: true);
 
-        /// TODO: Set Hours
-        int newHoursValue = getHours + 1;
-        int newTotalHoursValue = getTotalHours + 1;
-        setHours(value: newHoursValue, isPriorityOverride: true);
-        setTotalHours(value: newTotalHoursValue, isPriorityOverride: true);
+          /// TODO: Set Hours
+          int newHoursValue = getHours + 1;
+          int newTotalHoursValue = getTotalHours + 1;
+          setHours(value: newHoursValue, isPriorityOverride: true);
+          setTotalHours(value: newTotalHoursValue, isPriorityOverride: true);
+        }
       }
     }
   }

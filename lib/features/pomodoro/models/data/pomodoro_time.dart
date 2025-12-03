@@ -129,15 +129,63 @@ class PomodoroTime with ExecutionCore {
   }
 
   void onUpdate() {
-     getStayFocusedSS01?.onUpdate();
-     getStayFocusedSS02?.onUpdate();
-     getStayFocusedSS03?.onUpdate();
-     getStayFocusedSS04?.onUpdate();
+    getStayFocusedSS01?.onUpdate();
+    getStayFocusedSS02?.onUpdate();
+    getStayFocusedSS03?.onUpdate();
+    getStayFocusedSS04?.onUpdate();
 
-     getBreakTimeSS01?.onUpdate();
-     getBreakTimeSS02?.onUpdate();
-     getBreakTimeSS03?.onUpdate();
-     getBreakTimeSS04?.onUpdate();
+    getBreakTimeSS01?.onUpdate();
+    getBreakTimeSS02?.onUpdate();
+    getBreakTimeSS03?.onUpdate();
+    getBreakTimeSS04?.onUpdate();
+  }
+
+  void pause() {
+    getStayFocusedSS01?.pause();
+    getStayFocusedSS02?.pause();
+    getStayFocusedSS03?.pause();
+    getStayFocusedSS04?.pause();
+
+    getBreakTimeSS01?.pause();
+    getBreakTimeSS02?.pause();
+    getBreakTimeSS03?.pause();
+    getBreakTimeSS04?.pause();
+  }
+
+  void resume() {
+    getStayFocusedSS01?.resume();
+    getStayFocusedSS02?.resume();
+    getStayFocusedSS03?.resume();
+    getStayFocusedSS04?.resume();
+
+    getBreakTimeSS01?.resume();
+    getBreakTimeSS02?.resume();
+    getBreakTimeSS03?.resume();
+    getBreakTimeSS04?.resume();
+  }
+
+  void stop() {
+    getStayFocusedSS01?.stop();
+    getStayFocusedSS02?.stop();
+    getStayFocusedSS03?.stop();
+    getStayFocusedSS04?.stop();
+
+    getBreakTimeSS01?.stop();
+    getBreakTimeSS02?.stop();
+    getBreakTimeSS03?.stop();
+    getBreakTimeSS04?.stop();
+  }
+
+  void start() {
+    getStayFocusedSS01?.start();
+    getStayFocusedSS02?.start();
+    getStayFocusedSS03?.start();
+    getStayFocusedSS04?.start();
+
+    getBreakTimeSS01?.start();
+    getBreakTimeSS02?.start();
+    getBreakTimeSS03?.start();
+    getBreakTimeSS04?.start();
   }
 
   /// -----

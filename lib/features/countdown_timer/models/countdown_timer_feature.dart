@@ -74,7 +74,7 @@ class CountdownTimerFeature with ExecutionCore, WindowFeature {
             return Stack(
               alignment: AlignmentDirectional.center, //
               children: [
-                Text('CountdownTimerFeature'), //
+                // Text('CountdownTimerFeature'), //
                 CountdownTimerWidget(countdownTimerFeature: this),
               ],
             );

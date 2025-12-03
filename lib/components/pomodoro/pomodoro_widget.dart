@@ -5,7 +5,6 @@ import 'package:frame_creator_v2/animation_components/active_container/active_co
 import 'package:frame_creator_v2/animation_components/active_container/inactive_container_widget.dart';
 import 'package:frame_creator_v2/components/pomodoro/total_elapsed_time.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
-import 'package:frame_creator_v2/state_managements/mixins/state_mixin.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -681,7 +680,7 @@ class _PomodoroWidgetState extends State<PomodoroWidget0> {
             duration: const Duration(milliseconds: 100),
             width: widget.sizeDx - 20.0,
             height: widget.sizeDy * 0.20,
-            child: TotalElapsedTime(
+            child: TotalElapsedTime0(
               systemStateManagement: widget.systemStateManagement,
               sizeDx: widget.sizeDx - 20.0,
               sizeDy: widget.sizeDy * 0.15,

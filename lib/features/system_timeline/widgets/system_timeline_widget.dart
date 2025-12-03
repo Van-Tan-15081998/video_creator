@@ -1,10 +1,7 @@
 import 'dart:async';
 
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:frame_creator_v2/components/flame/flame_layout.dart';
 import 'package:frame_creator_v2/features/system_timeline/models/system_timeline_feature.dart';
-import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 
 class SystemTimelineWidget extends StatefulWidget {
   const SystemTimelineWidget({super.key, required this.systemTimelineFeature});
@@ -28,6 +25,7 @@ class _SystemTimelineWidgetState extends State<SystemTimelineWidget> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _timer = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
         widget.systemTimelineFeature?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.onUpdate();
+        widget.systemTimelineFeature?.getSystemStateManagement?.getMainTimelineStateManagement?.getPomodoroTimeline?.onUpdate();
       });
     });
   }

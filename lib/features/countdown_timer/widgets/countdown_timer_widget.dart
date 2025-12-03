@@ -42,9 +42,15 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> with Simple
       if (widget.countdownTimerFeature?.isConditionActiveByTopDirection() == true && topPosition != widget.countdownTimerFeature?.getTopPosition) {
         topPosition = widget.countdownTimerFeature?.getTopPosition;
         isUpdate = true;
+      } else if (topPosition != widget.countdownTimerFeature?.getTopPosition) {
+        topPosition = widget.countdownTimerFeature?.getTopPosition;
+        isUpdate = true;
       }
 
       if (widget.countdownTimerFeature?.isConditionActiveByRightDirection() == true && rightPosition != widget.countdownTimerFeature?.getRightPosition) {
+        rightPosition = widget.countdownTimerFeature?.getRightPosition;
+        isUpdate = true;
+      } else if (rightPosition != widget.countdownTimerFeature?.getRightPosition) {
         rightPosition = widget.countdownTimerFeature?.getRightPosition;
         isUpdate = true;
       }
@@ -52,9 +58,15 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> with Simple
       if (widget.countdownTimerFeature?.isConditionActiveByBottomDirection() == true && bottomPosition != widget.countdownTimerFeature?.getBottomPosition) {
         bottomPosition = widget.countdownTimerFeature?.getBottomPosition;
         isUpdate = true;
+      } else if (bottomPosition != widget.countdownTimerFeature?.getBottomPosition) {
+        bottomPosition = widget.countdownTimerFeature?.getBottomPosition;
+        isUpdate = true;
       }
 
       if (widget.countdownTimerFeature?.isConditionActiveByLeftDirection() == true && leftPosition != widget.countdownTimerFeature?.getLeftPosition) {
+        leftPosition = widget.countdownTimerFeature?.getLeftPosition;
+        isUpdate = true;
+      } else if (leftPosition != widget.countdownTimerFeature?.getLeftPosition) {
         leftPosition = widget.countdownTimerFeature?.getLeftPosition;
         isUpdate = true;
       }

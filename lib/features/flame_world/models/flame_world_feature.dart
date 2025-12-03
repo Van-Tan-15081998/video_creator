@@ -74,7 +74,7 @@ class FlameWorldFeature with ExecutionCore, WindowFeature {
             return Stack(
               alignment: AlignmentDirectional.center, //
               children: [
-                Text('FlameWorldFeature'), //
+                // Text('FlameWorldFeature'), //
                 FlameWorldWidget(flameWorldFeature: this),
               ],
             );

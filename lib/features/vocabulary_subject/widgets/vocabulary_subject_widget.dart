@@ -1,6 +1,6 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:animate_do/animate_do.dart';
 import 'package:frame_creator_v2/core/simple_position_size.dart';
 import 'package:frame_creator_v2/features/vocabulary_subject/models/vocabulary_subject_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_subject/widgets/contents/vocabulary_subject_content_widget.dart';

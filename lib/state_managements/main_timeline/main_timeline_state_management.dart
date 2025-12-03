@@ -19,6 +19,22 @@ class MainTimelineStateManagement with ExecutionCore {
   }
 
   /// -----
+  /// TODO:
+  /// -----
+  BasicTimeline? _pomodoroTimeline;
+  BasicTimeline? get getPomodoroTimeline => _pomodoroTimeline;
+  void setPomodoroTimeline({required BasicTimeline? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _pomodoroTimeline = value;
+    } else {
+      _pomodoroTimeline ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
   /// TODO: Attach Root
   /// -----
   @override
@@ -76,6 +92,7 @@ class MainTimelineStateManagement with ExecutionCore {
       /// TODO:
       /// -----
       setTimeline(value: BasicTimeline());
+      setPomodoroTimeline(value: BasicTimeline());
 
       /// -----
       /// TODO: Setup Root For SubCom
@@ -142,7 +159,7 @@ class MainTimelineStateManagement with ExecutionCore {
       /// TODO:
       /// -----
       await getTimeline?.onSetupRoot();
-
+      await getPomodoroTimeline?.onSetupRoot();
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onSetupRootForSubCom]');
     }
@@ -161,7 +178,7 @@ class MainTimelineStateManagement with ExecutionCore {
       /// TODO:
       /// -----
       await getTimeline?.onInitRoot();
-
+      await getPomodoroTimeline?.onInitRoot();
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onInitRootForSubCom]');
     }

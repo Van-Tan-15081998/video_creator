@@ -795,89 +795,94 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
       height: widget.sizeDy,
       child: Stack(
         children: [
-          /// Thanh bóng dưới
-          Positioned(
-            bottom: 0,
-            right: 3,
-            child: Container(
-              width: widget.sizeDx - 5.0,
-              height: 16.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(0), bottomLeft: Radius.circular(15.0), topRight: Radius.circular(0), bottomRight: Radius.circular(15.0)),
-                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), offset: Offset(0, 2), blurRadius: 15)],
-              ),
-            ),
-          ),
-
-          /// Thanh bóng trên
-          Positioned(
-            top: 0,
-            right: 3,
-            child: Container(
-              width: widget.sizeDx - 5.0,
-              height: 16.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), bottomLeft: Radius.circular(0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(0)),
-                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), offset: Offset(0, -2), blurRadius: 15)],
-              ),
-            ),
-          ),
-
-          /// Thanh bóng phải
-          Positioned(
-            bottom: 6,
-            right: 0,
-            child: Container(
-              width: 16.0,
-              height: widget.sizeDy - 8.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(0), bottomLeft: Radius.circular(0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0)),
-                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), offset: Offset(2, 0), blurRadius: 15)],
-              ),
-            ),
-          ),
-
-          /// Thanh bóng trái
-          Positioned(
-            bottom: 6,
-            left: 0,
-            child: Container(
-              width: 16.0,
-              height: widget.sizeDy - 8.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), bottomLeft: Radius.circular(15.0), topRight: Radius.circular(0), bottomRight: Radius.circular(0)),
-                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), offset: Offset(-2, 0), blurRadius: 15)],
-              ),
-            ),
-          ),
+          // /// Thanh bóng dưới
+          // Positioned(
+          //   bottom: 0,
+          //   right: 3,
+          //   child: Container(
+          //     width: widget.sizeDx - 5.0,
+          //     height: 16.0,
+          //     decoration: BoxDecoration(
+          //       borderRadius: BorderRadius.only(topLeft: Radius.circular(0), bottomLeft: Radius.circular(15.0), topRight: Radius.circular(0), bottomRight: Radius.circular(15.0)),
+          //       boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), offset: Offset(0, 2), blurRadius: 15)],
+          //     ),
+          //   ),
+          // ),
+          //
+          // /// Thanh bóng trên
+          // Positioned(
+          //   top: 0,
+          //   right: 3,
+          //   child: Container(
+          //     width: widget.sizeDx - 5.0,
+          //     height: 16.0,
+          //     decoration: BoxDecoration(
+          //       borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), bottomLeft: Radius.circular(0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(0)),
+          //       boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), offset: Offset(0, -2), blurRadius: 15)],
+          //     ),
+          //   ),
+          // ),
+          //
+          // /// Thanh bóng phải
+          // Positioned(
+          //   bottom: 6,
+          //   right: 0,
+          //   child: Container(
+          //     width: 16.0,
+          //     height: widget.sizeDy - 8.0,
+          //     decoration: BoxDecoration(
+          //       borderRadius: BorderRadius.only(topLeft: Radius.circular(0), bottomLeft: Radius.circular(0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0)),
+          //       boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), offset: Offset(2, 0), blurRadius: 15)],
+          //     ),
+          //   ),
+          // ),
+          //
+          // /// Thanh bóng trái
+          // Positioned(
+          //   bottom: 6,
+          //   left: 0,
+          //   child: Container(
+          //     width: 16.0,
+          //     height: widget.sizeDy - 8.0,
+          //     decoration: BoxDecoration(
+          //       borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), bottomLeft: Radius.circular(15.0), topRight: Radius.circular(0), bottomRight: Radius.circular(0)),
+          //       boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), offset: Offset(-2, 0), blurRadius: 15)],
+          //     ),
+          //   ),
+          // ),
 
           ClipRRect(
-            borderRadius: BorderRadius.circular(15.0),
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 50, sigmaY: 10),
               child: Container(
-                padding: EdgeInsets.all(5.0),
+                // padding: EdgeInsets.all(5.0),
                 width: widget.sizeDx,
                 height: widget.sizeDy,
                 decoration: BoxDecoration(
                   color: Colors.white.withValues(alpha: 0.5),
-                  borderRadius: BorderRadius.circular(15.0),
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(20.0), bottomRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0)),
                   border: Border.all(width: 15.0, color: Colors.black),
                 ),
                 child: Stack(
                   alignment: AlignmentDirectional.center,
 
                   children: [
-                    Container(
+                    AnimatedPositioned(
+                      bottom: -45.0,
+                      right: -45.0,
+                      duration: const Duration(milliseconds: 100),
                       width: widget.sizeDx,
                       height: widget.sizeDy,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF1C1C1C).withValues(alpha: 1.0),
-                        border: Border.all(width: 5.0, color: Colors.transparent),
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                        boxShadow: [
-                          BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 15.0, spreadRadius: 1.0, offset: Offset(0, 0)),
-                        ],
+                      child: Container(
+                        width: widget.sizeDx,
+                        height: widget.sizeDy,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF1C1C1C).withValues(alpha: 1.0),
+                          border: Border.all(width: 5.0, color: Colors.transparent),
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                          boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 5.0, spreadRadius: 1.0, offset: Offset(0, 0))],
+                        ),
                       ),
                     ),
 
@@ -940,8 +945,7 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
                                                   child: Text(
                                                     'STAY FOCUSED',
                                                     style: GoogleFonts.poetsenOne(
-                                                      textStyle: TextStyle(fontSize: 55.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal,
-                                                          color: Color(0xFFFFFFFF), letterSpacing: 5.0),
+                                                      textStyle: TextStyle(fontSize: 55.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal, color: Color(0xFFFFFFFF), letterSpacing: 5.0),
                                                     ),
                                                     textAlign: TextAlign.center,
                                                     overflow: TextOverflow.ellipsis,
@@ -1040,8 +1044,8 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
 
                     AnimatedPositioned(
                       duration: const Duration(milliseconds: 10),
-                      top: 35.0,
-                      left: widget.sizeDx * 0.48 + 10.0,
+                      top: 40.0,
+                      left: widget.sizeDx * 0.48 + 15.0,
                       child: Container(
                         width: widget.sizeDx * 0.22,
                         height: widget.sizeDy * 0.7,
@@ -1097,8 +1101,8 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
 
                     AnimatedPositioned(
                       duration: const Duration(milliseconds: 100),
-                      top: 35.0,
-                      left: widget.sizeDx * 0.50 + widget.sizeDx * 0.22 + 10.0,
+                      top: 40.0,
+                      left: widget.sizeDx * 0.50 + widget.sizeDx * 0.22 + 15.0,
                       child: Container(
                         width: widget.sizeDx * 0.22,
                         height: widget.sizeDy * 0.7,
@@ -1158,11 +1162,11 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
           ),
 
           Container(
-            width: widget.sizeDx - 8.0,
-            height: widget.sizeDy - 8.0,
+            width: widget.sizeDx,
+            height: widget.sizeDy,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(18.0),
-              border: Border.all(width: 10.0, color: Colors.black),
+              borderRadius: BorderRadius.circular(15.0),
+              border: Border.all(width: 15.0, color: Colors.black),
             ),
           ),
         ],

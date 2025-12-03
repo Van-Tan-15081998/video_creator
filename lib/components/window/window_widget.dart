@@ -3,7 +3,6 @@ import 'package:frame_creator_v2/components/communication/communication_characte
 import 'package:frame_creator_v2/components/communication/communication_widget.dart';
 import 'package:frame_creator_v2/components/example_sentence/example_sentence_widget.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
-import 'package:frame_creator_v2/components/window/essay_component/essay_widget.dart';
 import 'package:frame_creator_v2/components/window/word_information_component/word_information_widget.dart';
 
 class WindowWidget extends StatefulWidget {

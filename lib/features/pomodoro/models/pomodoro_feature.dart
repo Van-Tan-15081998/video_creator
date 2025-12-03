@@ -97,7 +97,7 @@ class PomodoroFeature with ExecutionCore, WindowFeature {
             return Stack(
               alignment: AlignmentDirectional.center, //
               children: [
-                Text('PomodoroFeature'), //
+                // Text('PomodoroFeature'), //
                 PomodoroWidget(pomodoroFeature: this),
               ],
             );

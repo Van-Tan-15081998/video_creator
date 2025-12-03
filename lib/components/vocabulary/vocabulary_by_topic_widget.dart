@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/animation_components/active_container/active_container_widget.dart';
-import 'package:frame_creator_v2/component_for_test/demo_animated_background.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 

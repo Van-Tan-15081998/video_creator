@@ -223,7 +223,7 @@ class _ExampleSentenceWidgetState extends State<ExampleSentenceWidget> {
               height: 35.0,
               child: Text(
                 'Example: 1/3',
-                style: GoogleFonts.concertOne(color: Color(0xFF54FF9F), fontWeight: FontWeight.w600, fontSize: 20.0, letterSpacing: 1.1),
+                style: GoogleFonts.concertOne(color: Color(0xFF3CB371), fontWeight: FontWeight.w600, fontSize: 20.0, letterSpacing: 1.1),
               ),
             ),
           ),

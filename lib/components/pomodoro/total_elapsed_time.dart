@@ -1,10 +1,11 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TotalElapsedTime extends StatefulWidget {
-  const TotalElapsedTime({super.key, required this.systemStateManagement, required this.sizeDx, required this.sizeDy});
+class TotalElapsedTime0 extends StatefulWidget {
+  const TotalElapsedTime0({super.key, required this.systemStateManagement, required this.sizeDx, required this.sizeDy});
 
   /// -----
   /// TODO:
@@ -15,10 +16,10 @@ class TotalElapsedTime extends StatefulWidget {
   final double sizeDy;
 
   @override
-  State<TotalElapsedTime> createState() => _TotalElapsedTimeState();
+  State<TotalElapsedTime0> createState() => _TotalElapsedTimeState();
 }
 
-class _TotalElapsedTimeState extends State<TotalElapsedTime> {
+class _TotalElapsedTimeState extends State<TotalElapsedTime0> {
   Timer? _timer;
 
   String timeString = "00:00:00";

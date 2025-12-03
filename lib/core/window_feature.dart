@@ -389,6 +389,9 @@ mixin WindowFeature {
     return;
   }
 
+  VoidCallback? onActivatedWindow;
+  VoidCallback? onDeactivatedWindow;
+
   void setConditionActiveByLeftDirection() {
     setConditionActiveByDirection(value: '[LEFT]', isPriorityOverride: true);
   }
@@ -431,7 +434,6 @@ mixin WindowFeature {
     }
 
     if (getConditionActiveByDirection == '[RIGHT]') {
-
       if (getRightPosition == getActiveRightPosition) {
         result = true;
       }
@@ -452,7 +454,16 @@ mixin WindowFeature {
     return result;
   }
 
-  void inactiveWindow() {
+  void onDeactivateWindow({VoidCallback? onActivatedWindowAsParameter, VoidCallback? onDeactivatedWindowAsParameter}) {
+
+    if (onActivatedWindowAsParameter != null) {
+      onActivatedWindow = onActivatedWindowAsParameter;
+    }
+
+    if (onDeactivatedWindowAsParameter != null) {
+      onDeactivatedWindow = onDeactivatedWindowAsParameter;
+    }
+
     if (getConditionActiveByDirection == '[LEFT]') {
       if (getInActiveLeftPosition != null) {
         setLeftPosition(value: getInActiveLeftPosition, isPriorityOverride: true);
@@ -486,7 +497,71 @@ mixin WindowFeature {
     }
   }
 
-  void activeWindow() {
+  void onActivateWindow({VoidCallback? onActivatedWindowAsParameter, VoidCallback? onDeactivatedWindowAsParameter}) {
+
+    if (onActivatedWindowAsParameter != null) {
+      onActivatedWindow = onActivatedWindowAsParameter;
+    }
+
+    if (onDeactivatedWindowAsParameter != null) {
+      onDeactivatedWindow = onDeactivatedWindowAsParameter;
+    }
+
+    if (getConditionActiveByDirection == '[LEFT]') {
+      if (getActiveLeftPosition != null) {
+        setLeftPosition(value: getActiveLeftPosition, isPriorityOverride: true);
+      }
+      if (getActiveTopPosition != null) {
+        setTopPosition(value: getActiveTopPosition, isPriorityOverride: true);
+        setBottomPosition(value: null, isPriorityOverride: true);
+      } else if (getActiveBottomPosition != null) {
+        setTopPosition(value: null, isPriorityOverride: true);
+        setBottomPosition(value: getActiveBottomPosition, isPriorityOverride: true);
+      }
+    }
+
+    if (getConditionActiveByDirection == '[RIGHT]') {
+      if (getActiveRightPosition != null) {
+        setRightPosition(value: getActiveRightPosition, isPriorityOverride: true);
+      }
+
+      if (getActiveTopPosition != null) {
+        setTopPosition(value: getActiveTopPosition, isPriorityOverride: true);
+        setBottomPosition(value: null, isPriorityOverride: true);
+      } else if (getActiveBottomPosition != null) {
+        setTopPosition(value: null, isPriorityOverride: true);
+        setBottomPosition(value: getActiveBottomPosition, isPriorityOverride: true);
+      }
+    }
+
+    if (getConditionActiveByDirection == '[TOP]') {
+      if (getActiveTopPosition != null) {
+        setTopPosition(value: getActiveTopPosition, isPriorityOverride: true);
+      }
+      if (getActiveLeftPosition != null) {
+        setLeftPosition(value: getActiveLeftPosition, isPriorityOverride: true);
+        setRightPosition(value: null, isPriorityOverride: true);
+      } else if (getActiveRightPosition != null) {
+        setLeftPosition(value: null, isPriorityOverride: true);
+        setRightPosition(value: getActiveRightPosition, isPriorityOverride: true);
+      }
+    }
+
+    if (getConditionActiveByDirection == '[BOTTOM]') {
+      if (getActiveBottomPosition != null) {
+        setBottomPosition(value: getActiveBottomPosition, isPriorityOverride: true);
+      }
+      if (getActiveLeftPosition != null) {
+        setLeftPosition(value: getActiveLeftPosition, isPriorityOverride: true);
+        setRightPosition(value: null, isPriorityOverride: true);
+      } else if (getActiveRightPosition != null) {
+        setLeftPosition(value: null, isPriorityOverride: true);
+        setRightPosition(value: getActiveRightPosition, isPriorityOverride: true);
+      }
+    }
+  }
+
+  void onActivateWindowOnCorner({bool? isTopLeft, bool? isTopRight, bool? isBottomLeft, bool? isBottomRight, double? marginLeft, double? marginRight, double? marginTop, double? marginBottom}) {
     if (getConditionActiveByDirection == '[LEFT]') {
       if (getActiveLeftPosition != null) {
         setLeftPosition(value: getActiveLeftPosition, isPriorityOverride: true);
@@ -510,6 +585,35 @@ mixin WindowFeature {
         setBottomPosition(value: getActiveBottomPosition, isPriorityOverride: true);
       }
     }
+
+    if (isTopLeft == true) {
+      setTopPosition(value: 0, isPriorityOverride: true);
+      setBottomPosition(value: null, isPriorityOverride: true);
+    } else if (isTopRight == true) {
+      setTopPosition(value: 0, isPriorityOverride: true);
+      setBottomPosition(value: null, isPriorityOverride: true);
+    } else if (isBottomLeft == true) {
+      setTopPosition(value: null, isPriorityOverride: true);
+      setBottomPosition(value: 0, isPriorityOverride: true);
+    } else if (isBottomRight == true) {
+      setTopPosition(value: null, isPriorityOverride: true);
+      setBottomPosition(value: 0, isPriorityOverride: true);
+    }
+
+    if (marginLeft != null && marginLeft != 0 && getLeftPosition != null) {
+      setLeftPosition(value: (getLeftPosition ?? 0) + marginLeft, isPriorityOverride: true);
+    }
+    if (marginTop != null && marginTop != 0 && getTopPosition != null) {
+      setTopPosition(value: (getTopPosition ?? 0) + marginTop, isPriorityOverride: true);
+    }
+    if (marginRight != null && marginRight != 0 && getRightPosition != null) {
+      setRightPosition(value: (getRightPosition ?? 0) + marginRight, isPriorityOverride: true);
+    }
+    if (marginBottom != null && marginBottom != 0 && getBottomPosition != null) {
+      setBottomPosition(value: (getBottomPosition ?? 0) + marginBottom, isPriorityOverride: true);
+    }
+
+    return;
   }
 
   /// -----

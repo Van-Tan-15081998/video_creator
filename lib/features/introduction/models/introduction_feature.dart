@@ -5,11 +5,13 @@ import 'package:frame_creator_v2/features/introduction/widgets/introduction_widg
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 
 class IntroductionFeature with ExecutionCore, WindowFeature {
-  IntroductionFeature({required SystemStateManagement? systemStateManagement, required double? sizeDx, required double? sizeDy}) {
+  IntroductionFeature({required SystemStateManagement? systemStateManagement, required double? sizeDx, required double? sizeDy, required this.onComplete}) {
     setSystemStateManagement(value: systemStateManagement);
     setSizeDx(value: sizeDx, isPriorityOverride: true);
     setSizeDy(value: sizeDy, isPriorityOverride: true);
   }
+
+  final VoidCallback? onComplete;
 
   /// -----
   /// TODO: Attach Root
@@ -74,8 +76,13 @@ class IntroductionFeature with ExecutionCore, WindowFeature {
             return Stack(
               alignment: AlignmentDirectional.center, //
               children: [
-                Text('IntroductionFeature'), //
-                IntroductionWidget(introductionFeature: this),
+                // Text('IntroductionFeature'), //
+                IntroductionWidget(
+                  introductionFeature: this,
+                  onComplete: () {
+                    onComplete?.call();
+                  },
+                ),
               ],
             );
           },

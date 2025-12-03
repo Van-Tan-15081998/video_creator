@@ -1,12 +1,6 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:frame_creator_v2/components/subject/subject_widget.dart';
-import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget_light.dart';
-import 'package:frame_creator_v2/components/window/word_information_component/word_sub_information_widget.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class BlackboardContentWidget extends StatefulWidget {
   const BlackboardContentWidget({super.key, required this.systemStateManagement, required this.sizeDx, required this.sizeDy});
@@ -46,7 +40,7 @@ class _BlackboardContentWidgetState extends State<BlackboardContentWidget> {
             border: Border.all(width: 15.0, color: Colors.black),
             boxShadow: [
               // Bóng tối (dưới phải)
-              BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 15.0, spreadRadius: 1.0, offset: Offset(0, 0)),
+              // BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 15.0, spreadRadius: 1.0, offset: Offset(0, 0)),
             ],
           ),
           child: Stack(

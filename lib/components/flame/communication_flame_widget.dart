@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
-
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
-import 'package:flame/sprite.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CommunicationFlameWidget extends FlameGame {
@@ -135,9 +133,5 @@ class CommunicationFlameWidget extends FlameGame {
   void update(double dt) {
     super.update(dt);
     // logic game mỗi frame ở đây
-
-    if (kDebugMode) {
-      print('Flame');
-    }
   }
 }

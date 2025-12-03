@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
-import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget_light.dart';
-import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget_white.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WordSubInformationWidget extends StatefulWidget {

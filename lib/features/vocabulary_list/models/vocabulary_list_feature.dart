@@ -74,8 +74,13 @@ class VocabularyListFeature with ExecutionCore, WindowFeature {
             return Stack(
               alignment: AlignmentDirectional.center, //
               children: [
-                Text('VocabularyListFeature'), //
-                VocabularyListWidget(vocabularyListFeature: this),
+                // Text('VocabularyListFeature'), //
+                VocabularyListWidget(
+                  vocabularyListFeature: this,
+                  onComplete: () {
+                    return;
+                  },
+                ),
               ],
             );
           },

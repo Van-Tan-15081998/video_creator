@@ -1,14 +1,7 @@
-import 'dart:math';
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/animation_components/active_container/active_container_widget.dart';
-import 'package:frame_creator_v2/animation_components/active_container/active_line_widget.dart';
 import 'package:frame_creator_v2/components/subject/animated_topic_title.dart';
-import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
-import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget_light.dart';
-import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget_white.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SubjectWidget extends StatefulWidget {

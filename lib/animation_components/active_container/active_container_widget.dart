@@ -1,8 +1,13 @@
-import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:flutter/material.dart';
+
 class ActiveContainerWidget extends StatefulWidget {
-  const ActiveContainerWidget({super.key, this.isReverse, this.color, this.isStop});
+  const ActiveContainerWidget({super.key, this.isReverse, this.color, this.isStop, this.numBars, this.width, this.height});
+
+  final double? width;
+  final double? height;
+  final int? numBars;
 
   final bool? isReverse;
   final Color? color;
@@ -30,9 +35,9 @@ class _ActiveContainerWidgetState extends State<ActiveContainerWidget> with Sing
 
   @override
   Widget build(BuildContext context) {
-    const double containerWidth = 500;
-    const double containerHeight = 70;
-    const int numBars = 20;
+    double containerWidth = widget.width ?? 500;
+    double containerHeight = widget.height ?? 70;
+    int numBars = widget.numBars ?? 20;
     const double barWidth = 20;
 
     // Khoảng cách đều nhau

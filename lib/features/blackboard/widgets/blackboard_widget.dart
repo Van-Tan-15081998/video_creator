@@ -4,7 +4,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/core/simple_position_size.dart';
 import 'package:frame_creator_v2/features/blackboard/models/blackboard_feature.dart';
 import 'package:frame_creator_v2/features/blackboard/widgets/contents/blackboard_content_widget.dart';
-import 'package:frame_creator_v2/features/countdown_timer/widgets/contents/countdown_timer_content_widget.dart';
 
 class BlackboardWidget extends StatefulWidget {
   const BlackboardWidget({super.key, required this.blackboardFeature});
@@ -103,7 +102,7 @@ class _BlackboardWidgetState extends State<BlackboardWidget> with SimpleAnimatio
   @override
   Widget build(BuildContext context) {
     return AnimatedPositioned(
-      duration: const Duration(milliseconds: 100),
+      duration: const Duration(milliseconds: 500),
       top: topPosition,
       right: rightPosition,
       bottom: bottomPosition,

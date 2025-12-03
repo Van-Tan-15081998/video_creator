@@ -74,7 +74,7 @@ class GlobalAnnouncementFeature with ExecutionCore, WindowFeature {
             return Stack(
               alignment: AlignmentDirectional.center, //
               children: [
-                Text('GlobalAnnouncementFeature'), //
+                // Text('GlobalAnnouncementFeature'), //
                 GlobalAnnouncementWidget(globalAnnouncementFeature: this),
               ],
             );

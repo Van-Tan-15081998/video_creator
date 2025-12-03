@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 import 'package:frame_creator_v2/core/window_feature.dart';
 import 'package:frame_creator_v2/features/background_image/widgets/background_image_widget.dart';
-import 'package:frame_creator_v2/features/blackboard/widgets/blackboard_widget.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 
 class BackgroundImageFeature with ExecutionCore, WindowFeature {
@@ -75,7 +74,7 @@ class BackgroundImageFeature with ExecutionCore, WindowFeature {
             return Stack(
               alignment: AlignmentDirectional.center, //
               children: [
-                Text('ConservationFeature'), //
+                // Text('ConversationFeature'), //
                 BackgroundImageWidget(backgroundImageFeature: this),
               ],
             );

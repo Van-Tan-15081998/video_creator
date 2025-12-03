@@ -74,7 +74,7 @@ class VocabularySubjectFeature with ExecutionCore, WindowFeature {
             return Stack(
               alignment: AlignmentDirectional.center, //
               children: [
-                Text('VocabularySubjectFeature'), //
+                // Text('VocabularySubjectFeature'), //
                 VocabularySubjectWidget(vocabularySubjectFeature: this),
               ],
             );

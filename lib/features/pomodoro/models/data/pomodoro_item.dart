@@ -115,6 +115,37 @@ class PomodoroItem with ExecutionCore {
     return;
   }
 
+  ///
+  /// TODO:
+  ///
+  bool? _isPaused;
+  bool get getIsPaused => _isPaused ?? false;
+  void setIsPaused({required bool? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _isPaused = value;
+    } else {
+      _isPaused ??= value;
+    }
+
+    return;
+  }
+
+  void start() {
+    setIsPaused(value: false, isPriorityOverride: true);
+  }
+
+  void pause() {
+    setIsPaused(value: true, isPriorityOverride: true);
+  }
+
+  void stop() {
+    setIsPaused(value: true, isPriorityOverride: true);
+  }
+
+  void resume() {
+    setIsPaused(value: false, isPriorityOverride: true);
+  }
+
   VoidCallback? onComplete;
 
   /// -----
@@ -128,30 +159,34 @@ class PomodoroItem with ExecutionCore {
   /// TODO:
   /// -----
   void onUpdate() {
-    if (getStatus?.isActive() == true) {
-      if ((getTotalRemainingSeconds ?? 0) > 0) {
-        double updateUpdate = (getTotalRemainingSeconds ?? 0) - 1;
+    if (getIsPaused == true) {
+      ///
+    } else if (getIsPaused == false) {
+      if (getStatus?.isActive() == true) {
+        if ((getTotalRemainingSeconds ?? 0) > 0) {
+          double updateUpdate = (getTotalRemainingSeconds ?? 0) - 1;
 
-        setTotalRemainingSeconds(value: updateUpdate, isPriorityOverride: true);
+          setTotalRemainingSeconds(value: updateUpdate, isPriorityOverride: true);
 
-        ///
-        double percentComplete = ((getTotalSeconds ?? 1) - (getTotalRemainingSeconds ?? 1)) / (getTotalSeconds ?? 1) * 100;
-        setPercentComplete(value: percentComplete, isPriorityOverride: true);
-      } else if ((getTotalRemainingSeconds ?? 0) == 0) {
-        getStatus?.setStatusComplete();
+          ///
+          double percentComplete = ((getTotalSeconds ?? 1) - (getTotalRemainingSeconds ?? 1)) / (getTotalSeconds ?? 1) * 100;
+          setPercentComplete(value: percentComplete, isPriorityOverride: true);
+        } else if ((getTotalRemainingSeconds ?? 0) == 0) {
+          getStatus?.setStatusComplete();
 
-        ///
-        setPercentComplete(value: 100, isPriorityOverride: true);
+          ///
+          setPercentComplete(value: 100, isPriorityOverride: true);
 
-        ///
-        onComplete?.call();
-      }
+          ///
+          onComplete?.call();
+        }
 
-      int totalRemainingMinutes = (getTotalRemainingSeconds ?? 0) ~/ 60;
-      setTotalRemainingMinutes(value: totalRemainingMinutes.toDouble(), isPriorityOverride: true);
+        int totalRemainingMinutes = (getTotalRemainingSeconds ?? 0) ~/ 60;
+        setTotalRemainingMinutes(value: totalRemainingMinutes.toDouble(), isPriorityOverride: true);
 
-      if (kDebugMode) {
-        print((getTotalRemainingSeconds ?? 1));
+        if (kDebugMode) {
+          // print((getTotalRemainingSeconds ?? 1));
+        }
       }
     }
   }

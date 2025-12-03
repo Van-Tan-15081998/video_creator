@@ -1,8 +1,6 @@
 import 'dart:async';
 
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:frame_creator_v2/components/flame/flame_layout.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 
 class SystemTimelineWidget0 extends StatefulWidget {

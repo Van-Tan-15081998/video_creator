@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
 
 class ActiveLineWidget extends StatefulWidget {
   const ActiveLineWidget({super.key, this.isReverse, this.color});

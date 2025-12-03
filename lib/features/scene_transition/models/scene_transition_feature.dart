@@ -5,11 +5,13 @@ import 'package:frame_creator_v2/features/scene_transition/widgets/scene_transit
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 
 class SceneTransitionFeature with ExecutionCore, WindowFeature {
-  SceneTransitionFeature({required SystemStateManagement? systemStateManagement, required double? sizeDx, required double? sizeDy}) {
+  SceneTransitionFeature({required SystemStateManagement? systemStateManagement, required this.onComplete, required double? sizeDx, required double? sizeDy}) {
     setSystemStateManagement(value: systemStateManagement);
     setSizeDx(value: sizeDx, isPriorityOverride: true);
     setSizeDy(value: sizeDy, isPriorityOverride: true);
   }
+
+  final VoidCallback? onComplete;
 
   /// -----
   /// TODO: Attach Root
@@ -74,8 +76,13 @@ class SceneTransitionFeature with ExecutionCore, WindowFeature {
             return Stack(
               alignment: AlignmentDirectional.center, //
               children: [
-                Text('SceneTransitionFeature'), //
-                SceneTransitionWidget(sceneTransitionFeature: this),
+                // Text('SceneTransitionFeature'), //
+                SceneTransitionWidget(
+                  sceneTransitionFeature: this,
+                  onComplete: () {
+                    onComplete?.call();
+                  },
+                ),
               ],
             );
           },

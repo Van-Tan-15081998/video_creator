@@ -1,11 +1,6 @@
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
-import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget_light.dart';
-import 'package:frame_creator_v2/components/window/word_information_component/word_sub_information_widget.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class GlobalAnnouncementWidget0 extends StatefulWidget {
   const GlobalAnnouncementWidget0({super.key, required this.sizeDx, required this.sizeDy});

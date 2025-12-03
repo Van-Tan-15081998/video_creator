@@ -1,10 +1,9 @@
 import 'dart:async';
 
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/components/communication/animated_conservation_title.dart';
-import 'package:frame_creator_v2/components/flame/communication_flame_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 
 class CommunicationWidget extends StatefulWidget {
   const CommunicationWidget({super.key, required this.sizeDx, required this.sizeDy});
@@ -113,7 +112,7 @@ class _CommunicationWidgetState extends State<CommunicationWidget> {
             right: -50.0,
             width: 800.0,
             height: 125.0,
-            child: AnimatedConservationTitle(sizeDx: 800.0, sizeDy: 125.0), //
+            child: AnimatedConversationTitle(sizeDx: 800.0, sizeDy: 125.0), //
           ),
 
           Positioned(

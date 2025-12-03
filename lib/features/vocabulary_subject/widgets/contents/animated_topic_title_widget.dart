@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -32,9 +33,10 @@ class _AnimatedTopicTitleWidgetState extends State<AnimatedTopicTitleWidget> wit
     _animation = Tween<double>(begin: 0.3, end: 0.0).animate(CurvedAnimation(parent: _inOutController, curve: Curves.elasticOut));
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return;
-      screenWidth = widget.sizeDx;
-      _startLoop();
+      if (mounted) {
+        screenWidth = widget.sizeDx;
+        _startLoop();
+      }
     });
   }
 
@@ -50,15 +52,17 @@ class _AnimatedTopicTitleWidgetState extends State<AnimatedTopicTitleWidget> wit
   }
 
   Future<void> _playSequence() async {
-    if (!mounted) return;
+    if (mounted) {
+      _inOutController.reset();
 
-    _inOutController.reset();
+      await _inOutController.forward();
 
-    await _inOutController.forward();
+      await Future.delayed(Duration(seconds: 10));
 
-    await Future.delayed(Duration(seconds: 10));
-
-    await _inOutController.reverse();
+      if (mounted) {
+        await _inOutController.reverse();
+      }
+    }
   }
 
   double _computeLeft() {

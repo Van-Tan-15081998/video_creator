@@ -7,14 +7,14 @@ import 'package:frame_creator_v2/state_managements/system_state_management.dart'
 import 'package:frame_creator_v2/system/sequential_execution_controller/models/sequential_execution_controller.dart';
 import 'package:window_size/window_size.dart';
 
-import 'component_for_test/ban_phim.dart';
-import 'component_for_test/layout_demo.dart';
-
 main() async {
   // ✅ Khởi tạo binding trước khi gọi bất kỳ hàm nào khác
   WidgetsFlutterBinding.ensureInitialized();
 
   // Kích thước bạn muốn cố định
+  // double windowWidth = 2560;
+  // double windowHeight = 1440;
+
   double windowWidth = 2560;
   double windowHeight = 1440;
 
@@ -42,7 +42,7 @@ main() async {
     setWindowMaxSize(Size(windowWidth, windowHeight));
   }
 
-  runApp(MyApp(sizeDx: windowWidth, sizeDy: windowHeight));
+  runApp(MyApp(sizeDx: 2560, sizeDy: 1440));
 }
 
 class MyApp extends StatefulWidget {
@@ -106,11 +106,15 @@ class _MyAppState extends State<MyApp> {
     getSequentialExecutionController?.onInitRoot();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+
+      await getSequentialExecutionController?.start();
+
       ///
       _timerSeconds = Timer.periodic(const Duration(seconds: 1), (timer) {
         getSequentialExecutionController?.updateSeconds();
       });
-      _timerMilliseconds = Timer.periodic(const Duration(milliseconds: 1), (timer) {
+
+      _timerMilliseconds = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
         getSequentialExecutionController?.updateMilliSeconds();
       });
     });
@@ -147,13 +151,14 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: Scaffold(
+        backgroundColor: Color(0xFF1C1C1C),
         // body: Transform.scale(
         //   scale: 0.7, // 👈 Scale toàn bộ giao diện 80%
         //   alignment: Alignment.topLeft, // Giữ tâm khi scale
         //   child: LayoutDemo(),
         // ),
         // body: LayoutDemo(systemStateManagement: getSystemStateManagement),
-        body: MainScreen(sequentialExecutionController: getSequentialExecutionController),
+        body: Center(child: MainScreen(sequentialExecutionController: getSequentialExecutionController)),
       ),
       // body: KeyboardDemo()),
       // const MyHomePage(title: 'Flutter Demo Home Page'),

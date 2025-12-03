@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/animation_components/active_container/active_container_widget.dart';
 import 'package:frame_creator_v2/animation_components/active_container/inactive_container_widget.dart';
-import 'package:frame_creator_v2/components/pomodoro/total_elapsed_time.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
+import 'package:frame_creator_v2/features/pomodoro/widgets/contents/total_elapsed_time_widget.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -610,7 +610,7 @@ class _PomodoroWidgetState extends State<PomodoroContentWidget> {
               boxShadow: [
                 // Bóng tối (dưới phải)
                 // BoxShadow(color: Colors.black.withValues(alpha: 0.8), offset: Offset(1, 1), blurRadius: 2),
-                BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 15.0, spreadRadius: 1.0, offset: Offset(0, 0)),
+                // BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 15.0, spreadRadius: 1.0, offset: Offset(0, 0)),
               ],
             ),
           ),
@@ -649,7 +649,7 @@ class _PomodoroWidgetState extends State<PomodoroContentWidget> {
             duration: const Duration(milliseconds: 100),
             width: widget.sizeDx - 20.0,
             height: widget.sizeDy * 0.20,
-            child: TotalElapsedTime(systemStateManagement: widget.systemStateManagement, sizeDx: widget.sizeDx - 20.0, sizeDy: widget.sizeDy * 0.15),
+            child: TotalElapsedTimeWidget(systemStateManagement: widget.systemStateManagement, sizeDx: widget.sizeDx - 20.0, sizeDy: widget.sizeDy * 0.15),
           ),
         ],
       ),
