@@ -59,11 +59,17 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
 
   double progressbarHeight = 0;
 
+  double progressbarOpacity = 0;
+
+  int totalSecondsConst = 38;
+
+  bool isActiveTimer = false;
+
   @override
   void initState() {
     super.initState();
 
-    totalSeconds = 39;
+    totalSeconds = totalSecondsConst;
 
     limitedTimeProgressbarLength = widget.sizeDx * 0.76 - 25.0;
     limitedTimeProgressbar = limitedTimeProgressbarLength;
@@ -74,55 +80,63 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if (totalSeconds > 0) {
-          totalSeconds -= 1;
-
-          limitedTimeProgressbar = (limitedTimeProgressbarLength / 39) * totalSeconds;
-
-          setState(() {});
-        }
-      });
-
-      _ticker = createTicker((Duration elapsed) {
-        if (_currentVocabularyExampleSentence?.getEngSentence != getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.getEngSentence) {
+        if (totalSeconds == totalSecondsConst) {
+          progressbarOpacity = 1;
+        } else if (totalSeconds == 0) {
           setState(() {
-            _currentVocabularyExampleSentence?.setTitle(value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.getTitle, isPriorityOverride: true);
-            _currentVocabularyExampleSentence?.setEngSentence(value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.getEngSentence, isPriorityOverride: true);
-            _currentVocabularyExampleSentence?.setVieSentence(value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.getVieSentence, isPriorityOverride: true);
-
-            if (_currentVocabularyExampleSentence?.getEngSentence?.isEmpty == true || _currentVocabularyExampleSentence?.getEngSentence == null) {
-              isShow = false;
-              progressbarHeight = 0;
-              limitedTimeProgressbar = limitedTimeProgressbarLength;
-            } else {
-              isShow = true;
-              totalSeconds = 39;
-
-              engWordWidgetSpan = [];
-              engWordList = (_currentVocabularyExampleSentence?.getEngSentence ?? '').split(' ');
-              for (int index = 0; index < engWordList.length; index++) {
-                if (engWordList[index].contains('_')) {
-                  String trueWord = engWordList[index].replaceAll('_', '');
-                  engWordWidgetSpan.add(wordItem(word: ' $trueWord', isNormal: false, isSpecial: true));
-                } else {
-                  if (engWordList[index] == '.' || index == 0) {
-                    engWordWidgetSpan.add(wordItem(word: engWordList[index], isNormal: true, isSpecial: false));
-                  } else if (index > 0) {
-                    engWordWidgetSpan.add(wordItem(word: ' ${engWordList[index]}', isNormal: true, isSpecial: false));
-                  }
-                }
-              }
-
-              Future.delayed(Duration(milliseconds: 1000), () {
-                setState(() {
-                  progressbarHeight = 6;
-                });
-              });
-            }
+            progressbarOpacity = 0;
           });
         }
-      })..start();
+
+        if (isActiveTimer == true) {
+          if (totalSeconds > 0) {
+            totalSeconds -= 1;
+
+            limitedTimeProgressbar = (limitedTimeProgressbarLength / totalSecondsConst) * totalSeconds;
+
+            setState(() {});
+          }
+        }
+      });
     });
+
+    _ticker = createTicker((Duration elapsed) {
+      if (_currentVocabularyExampleSentence?.getEngSentence != getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.getEngSentence) {
+        setState(() {
+          _currentVocabularyExampleSentence?.setTitle(value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.getTitle, isPriorityOverride: true);
+          _currentVocabularyExampleSentence?.setEngSentence(value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.getEngSentence, isPriorityOverride: true);
+          _currentVocabularyExampleSentence?.setVieSentence(value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.getVieSentence, isPriorityOverride: true);
+
+          if (_currentVocabularyExampleSentence?.getEngSentence?.isEmpty == true || _currentVocabularyExampleSentence?.getEngSentence == null) {
+            isShow = false;
+            isActiveTimer = false;
+            progressbarHeight = 0;
+            progressbarOpacity = 0;
+            totalSecondsConst = totalSecondsConst--;
+            limitedTimeProgressbar = limitedTimeProgressbarLength;
+          } else {
+            isShow = true;
+            isActiveTimer = true;
+            totalSeconds = totalSecondsConst;
+
+            engWordWidgetSpan = [];
+            engWordList = (_currentVocabularyExampleSentence?.getEngSentence ?? '').split(' ');
+            for (int index = 0; index < engWordList.length; index++) {
+              if (engWordList[index].contains('_')) {
+                String trueWord = engWordList[index].replaceAll('_', '');
+                engWordWidgetSpan.add(wordItem(word: ' $trueWord', isNormal: false, isSpecial: true));
+              } else {
+                if (engWordList[index] == '.' || index == 0) {
+                  engWordWidgetSpan.add(wordItem(word: engWordList[index], isNormal: true, isSpecial: false));
+                } else if (index > 0) {
+                  engWordWidgetSpan.add(wordItem(word: ' ${engWordList[index]}', isNormal: true, isSpecial: false));
+                }
+              }
+            }
+          }
+        });
+      }
+    })..start();
   }
 
   @override
@@ -147,7 +161,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                 height: widget.sizeDy,
                 color: Colors.transparent,
                 child: isShow
-                    ? BounceInUp(
+                    ? FadeInUp(
                         child: Stack(
                           alignment: AlignmentDirectional.center,
                           children: [
@@ -235,17 +249,20 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                               left: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true ? widget.sizeDx * 0.22 + 20.0 : null,
                               right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true ? widget.sizeDx * 0.22 - 10.0 : null,
                               width: widget.sizeDx * 0.78 - 25.0,
-                              height: progressbarHeight,
+                              height: 6.0,
                               duration: const Duration(milliseconds: 10),
                               child: Row(
                                 children: [
-                                  AnimatedContainer(
-                                    duration: const Duration(milliseconds: 1000),
-                                    width: limitedTimeProgressbar,
-                                    height: 6.0,
-                                    decoration: BoxDecoration(
-                                      color: Colors.blue,
-                                      border: Border.all(width: 1.0, color: Colors.transparent),
+                                  Opacity(
+                                    opacity: progressbarOpacity,
+                                    child: AnimatedContainer(
+                                      duration: const Duration(milliseconds: 1000),
+                                      width: limitedTimeProgressbar,
+                                      height: 6.0,
+                                      decoration: BoxDecoration(
+                                        color: Colors.blue,
+                                        border: Border.all(width: 1.0, color: Colors.transparent),
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -364,17 +381,20 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                               left: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true ? widget.sizeDx * 0.22 + 20.0 : null,
                               right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true ? widget.sizeDx * 0.22 - 10.0 : null,
                               width: widget.sizeDx * 0.78 - 25.0,
-                              height: progressbarHeight,
+                              height: 6,
                               duration: const Duration(milliseconds: 10),
                               child: Row(
                                 children: [
-                                  AnimatedContainer(
-                                    duration: const Duration(milliseconds: 1000),
-                                    width: limitedTimeProgressbar,
-                                    height: 6.0,
-                                    decoration: BoxDecoration(
-                                      color: Colors.blue,
-                                      border: Border.all(width: 1.0, color: Colors.transparent),
+                                  Opacity(
+                                    opacity: progressbarOpacity,
+                                    child: AnimatedContainer(
+                                      duration: const Duration(milliseconds: 1000),
+                                      width: limitedTimeProgressbar,
+                                      height: 6.0,
+                                      decoration: BoxDecoration(
+                                        color: Colors.blue,
+                                        border: Border.all(width: 1.0, color: Colors.transparent),
+                                      ),
                                     ),
                                   ),
                                 ],

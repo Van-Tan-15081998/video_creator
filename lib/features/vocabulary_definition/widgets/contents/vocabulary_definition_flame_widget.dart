@@ -146,22 +146,23 @@ class VocabularyDefinitionFlameWidget extends FlameGame {
     nameSpriteComponentSS01?.anchor = Anchor.center;
     nameSpriteComponentSS02?.anchor = Anchor.center;
 
-    add(spriteComponentSS01);
-    add(spriteComponentSS02);
+    if (false) {
+      add(spriteComponentSS01);
+      add(spriteComponentSS02);
 
-    if (borderNameSpriteComponentSS01 != null) {
-      add(borderNameSpriteComponentSS01!);
+      if (borderNameSpriteComponentSS01 != null) {
+        add(borderNameSpriteComponentSS01!);
+      }
+      if (borderNameSpriteComponentSS02 != null) {
+        add(borderNameSpriteComponentSS02!);
+      }
+      if (nameSpriteComponentSS01 != null) {
+        add(nameSpriteComponentSS01!);
+      }
+      if (nameSpriteComponentSS02 != null) {
+        add(nameSpriteComponentSS02!);
+      }
     }
-    if (borderNameSpriteComponentSS02 != null) {
-      add(borderNameSpriteComponentSS02!);
-    }
-    if (nameSpriteComponentSS01 != null) {
-      add(nameSpriteComponentSS01!);
-    }
-    if (nameSpriteComponentSS02 != null) {
-      add(nameSpriteComponentSS02!);
-    }
-
 
     systemStateManagement?.getVocabularyDefinitionFeature?.onActivateLeftCharacter = () {
       add(spriteComponentSS01);
@@ -220,6 +221,17 @@ class VocabularyDefinitionFlameWidget extends FlameGame {
       if (nameSpriteComponentSS01?.isMounted == true) {
         remove(nameSpriteComponentSS01!);
       }
+
+      /// Add ComponentSS02
+      if (spriteComponentSS02.isMounted == false) {
+        add(spriteComponentSS02);
+      }
+      if (borderNameSpriteComponentSS02?.isMounted == false) {
+        add(borderNameSpriteComponentSS02!);
+      }
+      if (nameSpriteComponentSS02?.isMounted == false) {
+        add(nameSpriteComponentSS02!);
+      }
     } else if (getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true) {
       if (spriteComponentSS02.isMounted == true) {
         remove(spriteComponentSS02);
@@ -229,6 +241,17 @@ class VocabularyDefinitionFlameWidget extends FlameGame {
       }
       if (nameSpriteComponentSS02?.isMounted == true) {
         remove(nameSpriteComponentSS02!);
+      }
+
+      /// Add ComponentSS01
+      if (spriteComponentSS01.isMounted == false) {
+        add(spriteComponentSS01);
+      }
+      if (borderNameSpriteComponentSS01?.isMounted == false) {
+        add(borderNameSpriteComponentSS01!);
+      }
+      if (nameSpriteComponentSS01?.isMounted == false) {
+        add(nameSpriteComponentSS01!);
       }
     }
   }

@@ -1,11 +1,18 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
+import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class VocabularyEnglishMainInformationWidget extends StatefulWidget {
-  const VocabularyEnglishMainInformationWidget({super.key, required this.sizeDx, required this.sizeDy});
+  const VocabularyEnglishMainInformationWidget({super.key, required this.systemStateManagement, required this.sizeDx, required this.sizeDy});
+
+  /// -----
+  /// TODO:
+  /// -----
+  final SystemStateManagement? systemStateManagement;
 
   final double sizeDx;
   final double sizeDy;
@@ -14,8 +21,9 @@ class VocabularyEnglishMainInformationWidget extends StatefulWidget {
   State<VocabularyEnglishMainInformationWidget> createState() => _VocabularyEnglishMainInformationWidgetState();
 }
 
-class _VocabularyEnglishMainInformationWidgetState extends State<VocabularyEnglishMainInformationWidget> {
+class _VocabularyEnglishMainInformationWidgetState extends State<VocabularyEnglishMainInformationWidget> with SingleTickerProviderStateMixin {
   Timer? _timer;
+  late final Ticker _ticker;
 
   int totalMinutes = 2;
   int totalSeconds = 0;
@@ -39,11 +47,13 @@ class _VocabularyEnglishMainInformationWidgetState extends State<VocabularyEngli
     return;
   }
 
-  final int totalSecondsConst = 214;
+  final int totalSecondsConst = 212;
 
   @override
   void initState() {
     super.initState();
+
+    setCurrentVocabularyItem(value: widget.systemStateManagement?.getVocabularyDefinitionFeature?.getVocabularyTime?.getCurrentVocabularyItem, isPriorityOverride: true);
 
     totalSeconds = totalSecondsConst;
 
@@ -62,27 +72,44 @@ class _VocabularyEnglishMainInformationWidgetState extends State<VocabularyEngli
           totalSeconds = totalSecondsConst;
         }
       });
-    });
 
-    englishDefinitionStringList = englishDefinitionString.split(' ');
-    for (String word in englishDefinitionStringList) {
-      if (word.contains('_')) {
-        String trueWord = word.replaceAll('_', '');
-        englishDefinitionWidgetSpan.add(englishDefinitionWordItem(word: trueWord));
-      } else {
-        englishDefinitionWidgetSpan.add(englishDefinitionWordItem(word: word));
-      }
-    }
+      _ticker = createTicker((Duration elapsed) {
+        if (englishDefinitionString != getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificMeaningInEng &&
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificMeaningInEng?.isNotEmpty == true) {
+          setState(() {
+            englishDefinitionString = getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificMeaningInEng ?? '';
+            pronunciationUK = getCurrentVocabularyItem?.getVocabularyDataModel?.getPronunciationUK ?? '';
+            pronunciationUS = getCurrentVocabularyItem?.getVocabularyDataModel?.getPronunciationUS ?? '';
+
+            ///
+            englishDefinitionStringList = [];
+            englishDefinitionWidgetSpan = [];
+            englishDefinitionStringList = englishDefinitionString.split(' ');
+            for (String word in englishDefinitionStringList) {
+              if (word.contains('_')) {
+                String trueWord = word.replaceAll('_', '');
+                englishDefinitionWidgetSpan.add(englishDefinitionWordItem(word: trueWord));
+              } else {
+                englishDefinitionWidgetSpan.add(englishDefinitionWordItem(word: word));
+              }
+            }
+          });
+        }
+      })..start();
+    });
   }
 
   List<String> englishDefinitionStringList = [];
   List<WidgetSpan> englishDefinitionWidgetSpan = [];
-  String englishDefinitionString =
-      'A performant library that makes it simple to add almost any kind of animated effect in Flutter. A performant library that makes it simple to add almost any kind of animated effect in Flutter.';
+  String englishDefinitionString = '';
+
+  String pronunciationUK = '';
+  String pronunciationUS = '';
 
   @override
   void dispose() {
     _timer?.cancel();
+    _ticker.dispose();
     super.dispose();
   }
 
@@ -154,7 +181,7 @@ class _VocabularyEnglishMainInformationWidgetState extends State<VocabularyEngli
           child: Text.rich(
             TextSpan(
               style: TextStyle(fontSize: 20, height: 1.0),
-              children: [pronunciationString(word: '/ˌʌnbɪˈliːvəbl/', isUKPronunciation: true)],
+              children: [pronunciationString(word: pronunciationUK, isUKPronunciation: true)],
             ),
           ),
         ),
@@ -172,7 +199,7 @@ class _VocabularyEnglishMainInformationWidgetState extends State<VocabularyEngli
           child: Text.rich(
             TextSpan(
               style: TextStyle(fontSize: 20, height: 1.0),
-              children: [pronunciationString(word: '/ˌʌnbɪˈliːvəbl/', isUKPronunciation: false)],
+              children: [pronunciationString(word: pronunciationUS, isUKPronunciation: false)],
             ),
           ),
         ),

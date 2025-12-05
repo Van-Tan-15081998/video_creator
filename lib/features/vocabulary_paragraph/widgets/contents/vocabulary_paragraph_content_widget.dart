@@ -63,11 +63,17 @@ class _VocabularyParagraphContentWidgetState extends State<VocabularyParagraphCo
 
   double progressbarHeight = 0;
 
+  double progressbarOpacity = 0;
+
+  int totalSecondsConst = 28;
+
+  bool isActiveTimer = false;
+
   @override
   void initState() {
     super.initState();
 
-    totalSeconds = 28;
+    totalSeconds = totalSecondsConst;
 
     limitedTimeProgressbarLength = widget.sizeDx * 0.9;
     limitedTimeProgressbar = limitedTimeProgressbarLength;
@@ -78,87 +84,94 @@ class _VocabularyParagraphContentWidgetState extends State<VocabularyParagraphCo
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if (totalSeconds > 0) {
-          totalSeconds -= 1;
-
-          limitedTimeProgressbar = (limitedTimeProgressbarLength / 28) * totalSeconds;
-
-          setState(() {});
-        }
-      });
-
-      _ticker = createTicker((Duration elapsed) {
-        if ((_currentVocabularyExampleParagraph?.getEngSentenceSS01 != getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS01) ||
-            (_currentVocabularyExampleParagraph?.getEngSentenceSS02 != getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS02) ||
-            (_currentVocabularyExampleParagraph?.getEngSentenceSS03 != getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS03)) {
+        if (totalSeconds == totalSecondsConst) {
+          progressbarOpacity = 1;
+        } else if (totalSeconds == 0) {
           setState(() {
-            _currentVocabularyExampleParagraph?.setTitle(value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getTitle, isPriorityOverride: true);
-            _currentVocabularyExampleParagraph?.setEngSentenceSS01(
-              value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS01,
-              isPriorityOverride: true,
-            );
-            _currentVocabularyExampleParagraph?.setEngSentenceSS02(
-              value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS02,
-              isPriorityOverride: true,
-            );
-            _currentVocabularyExampleParagraph?.setEngSentenceSS03(
-              value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS03,
-              isPriorityOverride: true,
-            );
-
-            if ((_currentVocabularyExampleParagraph?.getEngSentenceSS01?.isEmpty == true || _currentVocabularyExampleParagraph?.getEngSentenceSS01 == null) &&
-                (_currentVocabularyExampleParagraph?.getEngSentenceSS02?.isEmpty == true || _currentVocabularyExampleParagraph?.getEngSentenceSS02 == null) &&
-                (_currentVocabularyExampleParagraph?.getEngSentenceSS03?.isEmpty == true || _currentVocabularyExampleParagraph?.getEngSentenceSS03 == null)) {
-              isShow = false;
-
-              progressbarHeight = 0;
-              limitedTimeProgressbar = limitedTimeProgressbarLength;
-            } else {
-              isShow = true;
-              totalSeconds = 28;
-
-              wordWidgetSpan = [];
-
-              wordListSS01 = (_currentVocabularyExampleParagraph?.getEngSentenceSS01 ?? '').split(' ');
-              for (String word in wordListSS01) {
-                if (word.contains('_')) {
-                  String trueWord = word.replaceAll('_', '');
-                  wordWidgetSpan.add(wordItem(word: trueWord, isNormal: true, isSpecial: true));
-                } else {
-                  wordWidgetSpan.add(wordItem(word: word, isNormal: true, isSpecial: false));
-                }
-              }
-
-              wordListSS02 = (_currentVocabularyExampleParagraph?.getEngSentenceSS02 ?? '').split(' ');
-              for (String word in wordListSS02) {
-                if (word.contains('_')) {
-                  String trueWord = word.replaceAll('_', '');
-                  wordWidgetSpan.add(wordItem(word: trueWord, isNormal: false, isSpecial: true));
-                } else {
-                  wordWidgetSpan.add(wordItem(word: word, isNormal: false, isSpecial: false));
-                }
-              }
-
-              wordListSS03 = (_currentVocabularyExampleParagraph?.getEngSentenceSS03 ?? '').split(' ');
-              for (String word in wordListSS03) {
-                if (word.contains('_')) {
-                  String trueWord = word.replaceAll('_', '');
-                  wordWidgetSpan.add(wordItem(word: trueWord, isNormal: true, isSpecial: true));
-                } else {
-                  wordWidgetSpan.add(wordItem(word: word, isNormal: true, isSpecial: false));
-                }
-              }
-
-              Future.delayed(Duration(milliseconds: 1000), () {
-                setState(() {
-                  progressbarHeight = 6;
-                });
-              });
-            }
+            progressbarOpacity = 0;
           });
         }
-      })..start();
+
+        if (isActiveTimer == true) {
+          if (totalSeconds > 0) {
+            totalSeconds -= 1;
+
+            limitedTimeProgressbar = (limitedTimeProgressbarLength / totalSecondsConst) * totalSeconds;
+
+            setState(() {});
+          }
+        }
+      });
     });
+
+    _ticker = createTicker((Duration elapsed) {
+      if ((_currentVocabularyExampleParagraph?.getEngSentenceSS01 != getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS01) ||
+          (_currentVocabularyExampleParagraph?.getEngSentenceSS02 != getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS02) ||
+          (_currentVocabularyExampleParagraph?.getEngSentenceSS03 != getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS03)) {
+        setState(() {
+          _currentVocabularyExampleParagraph?.setTitle(value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getTitle, isPriorityOverride: true);
+          _currentVocabularyExampleParagraph?.setEngSentenceSS01(
+            value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS01,
+            isPriorityOverride: true,
+          );
+          _currentVocabularyExampleParagraph?.setEngSentenceSS02(
+            value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS02,
+            isPriorityOverride: true,
+          );
+          _currentVocabularyExampleParagraph?.setEngSentenceSS03(
+            value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS03,
+            isPriorityOverride: true,
+          );
+
+          if ((_currentVocabularyExampleParagraph?.getEngSentenceSS01?.isEmpty == true || _currentVocabularyExampleParagraph?.getEngSentenceSS01 == null) &&
+              (_currentVocabularyExampleParagraph?.getEngSentenceSS02?.isEmpty == true || _currentVocabularyExampleParagraph?.getEngSentenceSS02 == null) &&
+              (_currentVocabularyExampleParagraph?.getEngSentenceSS03?.isEmpty == true || _currentVocabularyExampleParagraph?.getEngSentenceSS03 == null)) {
+            isShow = false;
+            isActiveTimer = false;
+            progressbarHeight = 0;
+            progressbarOpacity = 0;
+            totalSecondsConst = totalSecondsConst--;
+            limitedTimeProgressbar = limitedTimeProgressbarLength;
+          } else {
+            isShow = true;
+            isActiveTimer = true;
+            totalSeconds = totalSecondsConst;
+
+            wordWidgetSpan = [];
+
+            wordListSS01 = (_currentVocabularyExampleParagraph?.getEngSentenceSS01 ?? '').split(' ');
+            for (String word in wordListSS01) {
+              if (word.contains('_')) {
+                String trueWord = word.replaceAll('_', '');
+                wordWidgetSpan.add(wordItem(word: trueWord, isNormal: true, isSpecial: true));
+              } else {
+                wordWidgetSpan.add(wordItem(word: word, isNormal: true, isSpecial: false));
+              }
+            }
+
+            wordListSS02 = (_currentVocabularyExampleParagraph?.getEngSentenceSS02 ?? '').split(' ');
+            for (String word in wordListSS02) {
+              if (word.contains('_')) {
+                String trueWord = word.replaceAll('_', '');
+                wordWidgetSpan.add(wordItem(word: trueWord, isNormal: false, isSpecial: true));
+              } else {
+                wordWidgetSpan.add(wordItem(word: word, isNormal: false, isSpecial: false));
+              }
+            }
+
+            wordListSS03 = (_currentVocabularyExampleParagraph?.getEngSentenceSS03 ?? '').split(' ');
+            for (String word in wordListSS03) {
+              if (word.contains('_')) {
+                String trueWord = word.replaceAll('_', '');
+                wordWidgetSpan.add(wordItem(word: trueWord, isNormal: true, isSpecial: true));
+              } else {
+                wordWidgetSpan.add(wordItem(word: word, isNormal: true, isSpecial: false));
+              }
+            }
+          }
+        });
+      }
+    })..start();
   }
 
   List<String> wordListSS01 = [];
@@ -204,7 +217,7 @@ class _VocabularyParagraphContentWidgetState extends State<VocabularyParagraphCo
               height: widget.sizeDy,
               color: Colors.transparent,
               child: isShow
-                  ? BounceInUp(
+                  ? FadeInUp(
                       child: Stack(
                         alignment: AlignmentDirectional.center,
 
@@ -394,17 +407,20 @@ class _VocabularyParagraphContentWidgetState extends State<VocabularyParagraphCo
               bottom: 30.0,
               left: (widget.sizeDx * 0.1) / 2,
               width: widget.sizeDx * 0.9,
-              height: progressbarHeight,
+              height: 6,
               duration: const Duration(milliseconds: 10),
               child: Row(
                 children: [
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 1000),
-                    width: limitedTimeProgressbar,
-                    height: 6.0,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      border: Border.all(width: 1.0, color: Colors.transparent),
+                  Opacity(
+                    opacity: progressbarOpacity,
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 1000),
+                      width: limitedTimeProgressbar,
+                      height: 6.0,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        border: Border.all(width: 1.0, color: Colors.transparent),
+                      ),
                     ),
                   ),
                 ],

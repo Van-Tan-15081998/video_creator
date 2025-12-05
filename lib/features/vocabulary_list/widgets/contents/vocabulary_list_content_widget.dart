@@ -1,8 +1,12 @@
 import 'dart:async';
+import 'dart:math';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/animation_components/active_container/active_container_widget.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
+import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,8 +25,9 @@ class VocabularyListContentWidget extends StatefulWidget {
   State<VocabularyListContentWidget> createState() => _VocabularyListContentWidgetState();
 }
 
-class _VocabularyListContentWidgetState extends State<VocabularyListContentWidget> {
+class _VocabularyListContentWidgetState extends State<VocabularyListContentWidget> with SingleTickerProviderStateMixin {
   Timer? _timer;
+  late final Ticker _ticker;
 
   final ScrollController _scrollController = ScrollController();
 
@@ -94,192 +99,427 @@ class _VocabularyListContentWidgetState extends State<VocabularyListContentWidge
     isActivatingWordSS30 = false;
   }
 
+  /// -----
+  /// TODO:
+  /// -----
+  VocabularyItem? _currentVocabularyItem;
+  VocabularyItem? get getCurrentVocabularyItem => _currentVocabularyItem;
+  void setCurrentVocabularyItem({required VocabularyItem? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentVocabularyItem = value;
+    } else {
+      _currentVocabularyItem ??= value;
+    }
+
+    return;
+  }
+
+  List<VocabularyItem?>? _currentVocabularyItemList;
+  List<VocabularyItem?>? get getCurrentVocabularyItemList => _currentVocabularyItemList;
+  void setCurrentVocabularyItemList({required List<VocabularyItem?> value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentVocabularyItemList = value;
+    } else {
+      _currentVocabularyItemList ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  List<VocabularyItem?>? _topicVocabularyItemList;
+  List<VocabularyItem?>? get getTopicVocabularyItemList => _topicVocabularyItemList;
+  void setTopicVocabularyItemList({required List<VocabularyItem?> value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _topicVocabularyItemList = value;
+    } else {
+      _topicVocabularyItemList ??= value;
+    }
+
+    return;
+  }
+
+  List<WidgetSpan> wordWidgetSpan = [];
+
   @override
   void initState() {
     super.initState();
 
+    setCurrentVocabularyItemList(value: [], isPriorityOverride: true);
+
+    setCurrentVocabularyItem(value: widget.systemStateManagement?.getVocabularyDefinitionFeature?.getVocabularyTime?.getCurrentVocabularyItem, isPriorityOverride: true);
+
+    setTopicVocabularyItemList(value: getCurrentVocabularyItem?.getTopicVocabularyItemList ?? [], isPriorityOverride: true);
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if (mounted) {
-          counter++;
-
-          if (counter == 1) {
-            resetActive();
-
-            isActivatingWordSS01 = true;
-
-            setState(() {});
-          } else if (counter == 10 * 2) {
-            resetActive();
-            isActivatingWordSS02 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 3) {
-            resetActive();
-            isActivatingWordSS03 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 4) {
-            resetActive();
-            isActivatingWordSS04 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 5) {
-            resetActive();
-            isActivatingWordSS05 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 6) {
-            resetActive();
-            isActivatingWordSS06 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 7) {
-            resetActive();
-            isActivatingWordSS07 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 8) {
-            resetActive();
-            isActivatingWordSS08 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 9) {
-            resetActive();
-            isActivatingWordSS09 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 10) {
-            resetActive();
-            isActivatingWordSS10 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 11) {
-            resetActive();
-            isActivatingWordSS11 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 12) {
-            resetActive();
-            isActivatingWordSS12 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 13) {
-            resetActive();
-            isActivatingWordSS13 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 14) {
-            resetActive();
-            isActivatingWordSS14 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 15) {
-            resetActive();
-            isActivatingWordSS15 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 16) {
-            resetActive();
-            isActivatingWordSS16 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 17) {
-            resetActive();
-            isActivatingWordSS17 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 18) {
-            resetActive();
-            isActivatingWordSS18 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 19) {
-            resetActive();
-            isActivatingWordSS19 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 20) {
-            resetActive();
-            isActivatingWordSS20 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 21) {
-            resetActive();
-            isActivatingWordSS21 = true;
-            multiple++;
-
-            setState(() {});
-          } else if (counter == 10 * 22) {
-            resetActive();
-            isActivatingWordSS22 = true;
-
-            setState(() {});
-          } else if (counter == 10 * 23) {
-            resetActive();
-            isActivatingWordSS23 = true;
-
-            setState(() {});
-          } else if (counter == 10 * 24) {
-            resetActive();
-            isActivatingWordSS24 = true;
-
-            setState(() {});
-          } else if (counter == 10 * 25) {
-            resetActive();
-            isActivatingWordSS25 = true;
-
-            setState(() {});
-          } else if (counter == 10 * 26) {
-            resetActive();
-            isActivatingWordSS26 = true;
-
-            setState(() {});
-          } else if (counter == 10 * 27) {
-            resetActive();
-            isActivatingWordSS27 = true;
-
-            setState(() {});
-          } else if (counter == 10 * 28) {
-            resetActive();
-            isActivatingWordSS28 = true;
-
-            setState(() {});
-          } else if (counter == 10 * 29) {
-            resetActive();
-            isActivatingWordSS29 = true;
-
-            setState(() {});
-          } else if (counter == 10 * 30) {
-            resetActive();
-            isActivatingWordSS30 = true;
-
-            setState(() {});
-          }
-        }
-      });
-
-      _scrollController.animateTo(_scrollController.position.maxScrollExtent - 130.0, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+      _timer = Timer.periodic(const Duration(seconds: 1), (timer) {});
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _ticker = createTicker((Duration elapsed) {
+        if (getCurrentVocabularyItemList?.length != getCurrentVocabularyItem?.getCurrentVocabularyItemList?.length) {
+          setState(() {
+            setCurrentVocabularyItemList(value: getCurrentVocabularyItem?.getCurrentVocabularyItemList ?? [], isPriorityOverride: true);
+            wordWidgetSpan = [];
+
+            for (int index = 0; index < (getCurrentVocabularyItemList?.length ?? 0); index++) {
+              if (index < ((getCurrentVocabularyItemList?.length ?? 0) - 1)) {
+                wordWidgetSpan.add(wordItem(word: getCurrentVocabularyItemList?[index]?.getVocabularyDataModel?.getWord ?? '', isActive: false, isHide: false));
+              } else if (index == ((getCurrentVocabularyItemList?.length ?? 0) - 1)) {
+                /// Activating word
+
+                wordWidgetSpan.add(wordItem(word: getCurrentVocabularyItemList?[index]?.getVocabularyDataModel?.getWord ?? '', isActive: true, isHide: false));
+              }
+            }
+
+            wordWidgetSpan.add(wordItem(word: '123456789123456789123456789123456789', isActive: false, isHide: true));
+            wordWidgetSpan.add(wordItem(word: '123456789123456789123456789123456789', isActive: false, isHide: true));
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              _scrollController.animateTo(_scrollController.position.maxScrollExtent - 130.0, duration: Duration(milliseconds: 2000), curve: Curves.easeOut);
+            });
+
+            ///
+            ///
+            ///
+            int activeIndex = 0;
+
+            for (int index = 0; index < (getTopicVocabularyItemList?.length ?? 0); index++) {
+              if (getTopicVocabularyItemList?[index]?.getIsActive == true) {
+                wordVocabularyItemList.add(wordVocabularyItem(word: getTopicVocabularyItemList?[index]?.getVocabularyDataModel?.getWord ?? '', isActive: true, index: index + 1));
+
+                activeIndex = index;
+              } else {
+                wordVocabularyItemList.add(wordVocabularyItem(word: getTopicVocabularyItemList?[index]?.getVocabularyDataModel?.getWord ?? '', isActive: false, index: index + 1));
+              }
+            }
+
+            Future.delayed(Duration(seconds: 1), () {
+              if (mounted) {
+                setState(() {
+                  if (getTopicVocabularyItemList?.length == 20) {
+                    if (activeIndex < 11) {
+                      multiple = activeIndex;
+                    } else {
+                      multiple = 10;
+                    }
+                  }
+                  if (getTopicVocabularyItemList?.length == 21) {
+                    if (activeIndex < 12) {
+                      multiple = activeIndex;
+                    } else {
+                      multiple = 11;
+                    }
+                  }
+                  if (getTopicVocabularyItemList?.length == 22) {
+                    if (activeIndex < 13) {
+                      multiple = activeIndex;
+                    } else {
+                      multiple = 12;
+                    }
+                  }
+                  if (getTopicVocabularyItemList?.length == 23) {
+                    if (activeIndex < 14) {
+                      multiple = activeIndex;
+                    } else {
+                      multiple = 13;
+                    }
+                  }
+                  if (getTopicVocabularyItemList?.length == 24) {
+                    if (activeIndex < 15) {
+                      multiple = activeIndex;
+                    } else {
+                      multiple = 14;
+                    }
+                  }
+                  if (getTopicVocabularyItemList?.length == 25) {
+                    if (activeIndex < 16) {
+                      multiple = activeIndex;
+                    } else {
+                      multiple = 15;
+                    }
+                  }
+                  if (getTopicVocabularyItemList?.length == 26) {
+                    if (activeIndex < 17) {
+                      multiple = activeIndex;
+                    } else {
+                      multiple = 16;
+                    }
+                  }
+                  if (getTopicVocabularyItemList?.length == 27) {
+                    if (activeIndex < 18) {
+                      multiple = activeIndex;
+                    } else {
+                      multiple = 17;
+                    }
+                  }
+                  if (getTopicVocabularyItemList?.length == 28) {
+                    if (activeIndex < 19) {
+                      multiple = activeIndex;
+                    } else {
+                      multiple = 18;
+                    }
+                  }
+                  if (getTopicVocabularyItemList?.length == 29) {
+                    if (activeIndex < 20) {
+                      multiple = activeIndex;
+                    } else {
+                      multiple = 19;
+                    }
+                  }
+                  if (getTopicVocabularyItemList?.length == 30) {
+                    if (activeIndex < 21) {
+                      multiple = activeIndex;
+                    } else {
+                      multiple = 20;
+                    }
+                  }
+                });
+              }
+            });
+          });
+        }
+      })..start();
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _ticker.dispose();
+    super.dispose();
+  }
+
+  List<Widget> wordVocabularyItemList = [];
+
+  Widget wordVocabularyItem({required String word, required int index, required isActive}) {
+    final random = Random();
+    //
+    // // Tạo số double ngẫu nhiên từ -10 đến 10
+    // double value = random.nextDouble() * 20 - 10;
+
+    List<int> angles = [0, 90, 180, 270, 360];
+
+    List<String> srcs = [
+      'assets/images/colorful/colorful_style_a1.jpg',
+      'assets/images/colorful/colorful_style_a2.jpg',
+      'assets/images/colorful/colorful_style_a3.jpg',
+      'assets/images/colorful/colorful_style_a4.jpg',
+    ];
+
+    String src = srcs[random.nextInt(srcs.length)];
+
+    double randomLeft = (random.nextDouble() * 2) * -2;
+    double randomTop = (random.nextDouble() * 2) * -2;
+    double randomZoom = random.nextDouble() * 1 + 2;
+    double randomRotate = angles[random.nextInt(angles.length)].toDouble();
+
+    return Container(
+      color: Colors.transparent,
+      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
+      height: widget.sizeDy * 0.15,
+      child: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0), bottomRight: Radius.circular(10.0), bottomLeft: Radius.circular(10.0)),
+          child: Stack(
+            children: [
+              Positioned(
+                width: 200.0,
+                height: 200.0,
+                top: -50.0,
+                left: -40.0,
+                child: Container(
+                  width: 200.0,
+                  height: 200.0,
+                  decoration: BoxDecoration(
+                    color: Colors.orangeAccent,
+                    border: Border.all(width: 2.0, color: Colors.black),
+                    boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.8), offset: Offset(1, 1), blurRadius: 2)],
+                  ),
+                ),
+              ),
+
+              Positioned(
+                left: -10,
+                top: -10,
+                width: 200.0,
+                height: 200.0,
+                child: Opacity(
+                  opacity: 0.5,
+                  child: Transform.rotate(
+                    angle: randomRotate,
+                    child: Container(
+                      width: 300.0,
+                      height: 300.0,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        image: DecorationImage(image: AssetImage(src), fit: BoxFit.contain),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              Container(
+                margin: EdgeInsets.only(left: 5.0),
+                color: Colors.transparent,
+                width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
+                height: widget.sizeDy * 0.15,
+                child: Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 100),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      // color: isActive ? Color(0xFF76EE00).withValues(alpha: 0.6) : Colors.white,
+                      // color: isActive ? Color(0xFF00BFFF).withValues(alpha: 0.9) : Colors.white,
+                      border: Border.all(width: 2.0, color: Colors.black),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                    child: ShaderMask(
+                      blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
+                      shaderCallback: (Rect bounds) {
+                        return LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          // colors: [
+                          //   Colors.white,
+                          //   Colors.white.withValues(alpha: 0.6),
+                          //   Colors.white.withValues(alpha: 0.5),
+                          //   Colors.white.withValues(alpha: 0.4),
+                          //   Colors.white.withValues(alpha: 0.3),
+                          //   Colors.white.withValues(alpha: 0.2),
+                          //   Colors.white.withValues(alpha: 0.1),
+                          //   Colors.transparent,
+                          //   Colors.transparent,
+                          //   Colors.transparent, // Hoàn toàn biến mất bên phải
+                          // ],
+                          // colors: [
+                          //   Colors.orangeAccent,
+                          //   // Colors.white.withValues(alpha: 0.9),
+                          //   Colors.orangeAccent.withValues(alpha: 0.8),
+                          //   Colors.orangeAccent.withValues(alpha: 0.7),
+                          //   Colors.orangeAccent.withValues(alpha: 0.6),
+                          //   Colors.orangeAccent.withValues(alpha: 0.5),
+                          //   Colors.orangeAccent.withValues(alpha: 0.4),
+                          //   Colors.orangeAccent.withValues(alpha: 0.3),
+                          //   Colors.orangeAccent.withValues(alpha: 0.2),
+                          //   Colors.orangeAccent.withValues(alpha: 0.1),
+                          //   Colors.transparent,
+                          //   Colors.transparent,
+                          //   // Colors.transparent, // Hoàn toàn biến mất bên phải
+                          // ],
+                          colors: [Colors.white.withValues(alpha: 1), Colors.white.withValues(alpha: 0.5)],
+                          stops: [0.25, 1.0],
+                        ).createShader(bounds);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: Center(
+                          child: Text(
+                            word,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.titanOne(
+                              // textStyle: TextStyle(color: isActive ? Color(0xFF00BFFF) : Colors.black.withValues(alpha: 0.9)),
+                              textStyle: TextStyle(color: isActive ? Color(0xFF1C86EE) : Colors.black.withValues(alpha: 0.9)),
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.bold,
+                              shadows: [BoxShadow(color: Colors.black.withValues(alpha: 0.9), offset: Offset(1, 1), blurRadius: 1)],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              Positioned(
+                width: 200.0,
+                height: 200.0,
+                top: -50.0,
+                right: -135.0,
+                child: Transform.rotate(
+                  angle: 0.3,
+                  child: Container(
+                    width: 200.0,
+                    height: 200.0,
+
+                    decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.9),
+                        border: Border.all(width: 2.0, color: Colors.black)),
+                    child: ClipRRect(
+                      child: SizedBox(
+                        width: 200.0,
+                        height: 200.0,
+                        child: Stack(
+                          alignment: AlignmentDirectional.center,
+                          children: [
+                            Positioned(
+                              width: 200.0 * randomZoom,
+                              height: 200.0 * randomZoom,
+                              child: Container(
+                                width: 200.0 * randomZoom,
+                                height: 200.0 * randomZoom,
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  border: Border.all(width: 2.0, color: Colors.black),
+                                  boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.8), offset: Offset(1, 1), blurRadius: 2)],
+                                ),
+                              ),
+                            ),
+
+                            Positioned(
+                              left: -10,
+                              top: -10,
+                              width: 200.0,
+                              height: 200.0,
+                              child: Transform.rotate(
+                                angle: randomRotate,
+                                child: Container(
+                                  width: 200.0,
+                                  height: 200.0,
+                                  decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    border: Border.all(width: 2.0, color: Colors.black),
+                                    image: DecorationImage(image: AssetImage(src), fit: BoxFit.contain),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              Positioned(
+                width: 60.0,
+                height: 50.0,
+                bottom: 0,
+                right: 0,
+                child: Center(
+                  child: Text(
+                    index.toString(),
+                    overflow: TextOverflow.fade,
+                    style: GoogleFonts.titanOne(
+                      textStyle: TextStyle(color: isActive ? Color(0xFF1C86EE) : Colors.white),
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.bold,
+                      shadows: [BoxShadow(color: Colors.black.withValues(alpha: 0.8), offset: Offset(1, 1), blurRadius: 2)],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -306,1603 +546,17 @@ class _VocabularyListContentWidgetState extends State<VocabularyListContentWidge
             left: ((widget.sizeDx - 20.0) * 3.0 / 30.0) * multiple * (-1),
             width: (widget.sizeDx - 20.0) * 3.0,
             height: widget.sizeDy * 0.15,
-            duration: const Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 1000),
             child: Container(
               width: (widget.sizeDx - 20.0) * 3.0,
               height: widget.sizeDy * 0.15,
               color: Colors.transparent,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS01 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  'vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS02 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '2.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS03 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '3.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS04 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '4.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS05 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '5.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS06 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '6.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS07 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '7.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS08 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '8.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS09 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '9.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS10 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '10.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS11 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '11.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS12 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '12.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS13 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '13.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS14 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '14.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS15 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '15.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS16 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '16.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS17 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '17.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS18 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '18.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS19 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '19.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS20 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '20.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS21 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '21.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS22 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '22.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS23 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '23.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS24 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '24.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS25 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '25.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS26 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '26.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS26 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '27.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS26 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '28.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS26 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '29.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      width: ((widget.sizeDx - 20.0) * 3.0) / 30.0 * 1.0,
-                      height: widget.sizeDy * 0.15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 100),
-                          decoration: BoxDecoration(
-                            color: isActivatingWordSS26 ? Color(0xFF00FF7F) : Colors.white,
-                            border: Border.all(width: 2.0, color: Colors.black),
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          ),
-                          child: ShaderMask(
-                            blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white.withValues(alpha: 0.6),
-                                  Colors.white.withValues(alpha: 0.5),
-                                  Colors.white.withValues(alpha: 0.4),
-                                  Colors.white.withValues(alpha: 0.3),
-                                  Colors.white.withValues(alpha: 0.2),
-                                  Colors.white.withValues(alpha: 0.1),
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.transparent, // Hoàn toàn biến mất bên phải
-                                ],
-                                stops: [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.80, 1.0],
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Center(
-                                child: Text(
-                                  '30.vocabulary',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.titanOne(
-                                    textStyle: const TextStyle(color: Colors.black),
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                child: Row(mainAxisSize: MainAxisSize.max, children: wordVocabularyItemList),
               ),
-
-              ///
             ),
           ),
-
-          // AnimatedPositioned(
-          //   bottom: 0,
-          //   left: 0,
-          //   width: widget.sizeDx * 0.3,
-          //   height: widget.sizeDy - (widget.sizeDy * 0.15 + 30.0),
-          //   duration: const Duration(milliseconds: 100),
-          //   child: Padding(
-          //     padding: const EdgeInsets.all(2.0),
-          //     child: Container(
-          //       width: widget.sizeDx - 10.0, //
-          //       height: widget.sizeDy * 0.15, //
-          //       decoration: BoxDecoration(
-          //         color: Colors.white,
-          //         border: Border.all(width: 2.0, color: Colors.black),
-          //         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          //       ),
-          //     ),
-          //   ),
-          // ),
           AnimatedPositioned(
             bottom: 0,
             left: 5,
@@ -1944,107 +598,19 @@ class _VocabularyListContentWidgetState extends State<VocabularyListContentWidge
                       left: 0,
                       width: widget.sizeDx - 30.0,
                       height: widget.sizeDy - (widget.sizeDy * 0.15),
-                      child: Container(
-                        width: widget.sizeDx - 30.0,
-                        height: widget.sizeDy - (widget.sizeDy * 0.15),
-                        decoration: BoxDecoration(color: Colors.transparent),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 15.0),
-                          child: SingleChildScrollView(
-                            controller: _scrollController,
-                            child: Column(
-                              children: [
-                                Text.rich(
-                                  TextSpan(
-                                    style: TextStyle(fontSize: 20, height: 1.0),
-                                    children: [
-                                      wordItem(word: 'enjoy', isActive: false, isHide: false),
-
-                                      wordItem(word: 'laugh', isActive: false, isHide: false),
-                                      //
-                                      wordItem(word: 'happiness', isActive: false, isHide: false),
-                                      //
-                                      wordItem(word: 'fun', isActive: false, isHide: false),
-                                      //
-                                      wordItem(word: 'fulfil', isActive: false, isHide: false),
-                                      //
-                                      wordItem(word: 'happy', isActive: false, isHide: false),
-                                      //
-                                      wordItem(word: 'blissful', isActive: false, isHide: false),
-
-                                      //
-                                      wordItem(word: 'satisfied', isActive: false, isHide: false),
-                                      wordItem(word: 'glad', isActive: false, isHide: false),
-                                      wordItem(word: 'delighted', isActive: false, isHide: false),
-                                      wordItem(word: 'cheerful', isActive: false, isHide: false),
-                                      wordItem(word: 'joyful', isActive: false, isHide: false),
-                                      wordItem(word: 'thankful', isActive: false, isHide: false),
-                                      wordItem(word: 'honor', isActive: false, isHide: false),
-                                      wordItem(word: 'pleasure', isActive: false, isHide: false),
-                                      wordItem(word: 'self-satisfied', isActive: false, isHide: false),
-                                      wordItem(word: 'self-satisfied', isActive: false, isHide: false),
-
-                                      wordItem(word: 'satisfied', isActive: false, isHide: false),
-                                      wordItem(word: 'glad', isActive: false, isHide: false),
-                                      wordItem(word: 'delighted', isActive: false, isHide: false),
-                                      wordItem(word: 'cheerful', isActive: false, isHide: false),
-                                      wordItem(word: 'joyful', isActive: false, isHide: false),
-                                      wordItem(word: 'thankful', isActive: false, isHide: false),
-                                      wordItem(word: 'honor', isActive: false, isHide: false),
-                                      wordItem(word: 'pleasure', isActive: false, isHide: false),
-                                      wordItem(word: 'self-satisfied', isActive: false, isHide: false),
-                                      wordItem(word: 'self-satisfied', isActive: false, isHide: false),
-
-                                      wordItem(word: 'unbelievable', isActive: true, isHide: false),
-                                      wordItem(word: '123456789123456789123456789123456789', isActive: false, isHide: true),
-                                      wordItem(word: '123456789123456789123456789123456789', isActive: false, isHide: true),
-                                    ],
-                                  ),
-                                ),
-                              ],
+                      child: FadeInUp(
+                        child: Container(
+                          width: widget.sizeDx - 30.0,
+                          height: widget.sizeDy - (widget.sizeDy * 0.15),
+                          decoration: BoxDecoration(color: Colors.transparent),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 15.0),
+                            child: SingleChildScrollView(
+                              controller: _scrollController,
+                              child: Column(
+                                children: [Text.rich(TextSpan(style: TextStyle(fontSize: 20, height: 1.0), children: wordWidgetSpan))],
+                              ),
                             ),
-
-                            //  Column(
-                            //   mainAxisAlignment: MainAxisAlignment.start,
-                            //   crossAxisAlignment: CrossAxisAlignment.start,
-                            //
-                            //   children: [
-                            //     Text.rich(
-                            //       TextSpan(
-                            //         style: TextStyle(fontSize: 20, height: 1.0),
-                            //         children: [
-                            //           wordItem(word: 'enjoy', isActive: false),
-                            //
-                            //           wordItem(word: 'laugh', isActive: false),
-                            //           //
-                            //           wordItem(word: 'happiness', isActive: false),
-                            //           //
-                            //           wordItem(word: 'fun', isActive: false),
-                            //           //
-                            //           wordItem(word: 'fulfil', isActive: false),
-                            //           //
-                            //           wordItem(word: 'happy', isActive: false),
-                            //           //
-                            //           wordItem(word: 'blissful', isActive: false),
-                            //
-                            //           //
-                            //           wordItem(word: 'satisfied', isActive: false),
-                            //           wordItem(word: 'glad', isActive: false),
-                            //           wordItem(word: 'delighted', isActive: false),
-                            //           wordItem(word: 'cheerful', isActive: false),
-                            //           wordItem(word: 'joyful', isActive: false),
-                            //           wordItem(word: 'thankful', isActive: false),
-                            //           wordItem(word: 'honor', isActive: false),
-                            //           wordItem(word: 'pleasure', isActive: false),
-                            //           wordItem(word: 'self-satisfied', isActive: false),
-                            //           wordItem(word: 'self-satisfied', isActive: false),
-                            //           wordItem(word: 'self-satisfied', isActive: false),
-                            //           wordItem(word: 'unbelievable', isActive: true),
-                            //         ],
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),
                           ),
                         ),
                       ),

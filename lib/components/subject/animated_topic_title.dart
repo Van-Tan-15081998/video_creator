@@ -68,8 +68,10 @@ class _AnimatedTopicTitleState extends State<AnimatedTopicTitle> with TickerProv
     // giữ 10s
     await Future.delayed(Duration(seconds: 10));
 
-    // thụt vào (ra ngoài màn hình phải)
-    await _inOutController.reverse();
+    if (mounted == true) {
+      // thụt vào (ra ngoài màn hình phải)
+      await _inOutController.reverse();
+    }
   }
 
   double _computeLeft() {

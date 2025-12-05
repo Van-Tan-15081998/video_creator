@@ -668,7 +668,7 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
   }
 
   Future<void> start() async {
-    getVocabularyScript?.onStartVocabularyDefinitionSS01();
+    // getVocabularyScript?.onStartVocabularyDefinitionSS01();
 
     return;
 
@@ -741,18 +741,18 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
 
   void updateSeconds() {
     getPomodoroFeature?.getPomodoroTime?.onUpdate();
-    // getVocabularyDefinitionFeature?.getVocabularyTime?.onUpdate();
+    getVocabularyDefinitionFeature?.getVocabularyTime?.onUpdate();
 
     getSequentialExecutionDetail?.onUpdate();
 
     /// TODO: 00:00:05
     if (getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.getTotalMinutes == 0 && getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.getSeconds == 1) {
-      getCountdownTimerFeature?.onActivateWindow();
-      getPomodoroFeature?.onActivateWindow();
+      // getCountdownTimerFeature?.onActivateWindow();
+      // getPomodoroFeature?.onActivateWindow();
 
-      getBlackboardFeature?.onActivateWindow();
-      getVocabularySubjectFeature?.onActivateWindow();
-      getVocabularyListFeature?.onActivateWindow();
+      // getBlackboardFeature?.onActivateWindow();
+      // getVocabularySubjectFeature?.onActivateWindow();
+      // getVocabularyListFeature?.onActivateWindow();
     }
 
     return;
@@ -997,7 +997,7 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
   }
 
   void updateMilliSeconds() {
-    getVocabularyDefinitionFeature?.getVocabularyTime?.onUpdate();
+    // getVocabularyDefinitionFeature?.getVocabularyTime?.onUpdate();
 
     ///
     return;

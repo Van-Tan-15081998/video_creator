@@ -123,8 +123,7 @@ class _VocabularyParagraphWidgetState extends State<VocabularyParagraphWidget> w
       height: sizeDy,
 
       child: isAnimatedShow
-          ? BounceInDown(
-              duration: const Duration(seconds: 1),
+          ? FadeInDown(
               animate: true,
               child: Container(
                 width: sizeDx,

@@ -212,8 +212,7 @@ class SequentialExecutionDetail with ExecutionCore {
     //   ///
     // }
 
-
-    return;
+    // return;
 
     /// TODO: 00:00:00
     if (totalHours == 0 && totalMinutes == 0 && seconds == 0) {
@@ -278,7 +277,7 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:06');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getBlackboardFeature?.onActivateWindow();
+        // getSequentialExecutionController?.getBlackboardFeature?.onActivateWindow();
       }
 
       ///
@@ -288,8 +287,10 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:07');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getVocabularySubjectFeature?.onActivateWindow();
+        getSequentialExecutionController?.getIntroductoryConversationFeature?.onActivateWindow();
       }
+
+      getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
       ///
     }
@@ -298,7 +299,7 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:08');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getCountdownTimerFeature?.onActivateWindow();
+        getSequentialExecutionController?.getIntroductoryConversationFeature?.onDeactivateWindow();
       }
 
       ///
@@ -308,7 +309,7 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:09');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getPomodoroFeature?.onActivateWindow();
+        getSequentialExecutionController?.getBlackboardFeature?.onActivateWindow();
       }
 
       ///
@@ -318,7 +319,7 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:10');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getVocabularyListFeature?.onActivateWindow();
+        getSequentialExecutionController?.getVocabularySubjectFeature?.onActivateWindow();
       }
 
       ///
@@ -328,7 +329,28 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:11');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getVocabularyDefinitionFeature?.onActivateWindow();
+        getSequentialExecutionController?.getCountdownTimerFeature?.onActivateWindow();
+      }
+
+      ///
+    }
+    /// TODO: 00:00:12
+    else if (totalHours == 0 && totalMinutes == 0 && seconds == 12) {
+      printTerminal(str: '00:00:12');
+
+      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+        getSequentialExecutionController?.getPomodoroFeature?.onActivateWindow();
+      }
+
+      ///
+    }
+    /// TODO: 00:00:13
+    else if (totalHours == 0 && totalMinutes == 0 && seconds == 13) {
+      printTerminal(str: '00:00:13');
+
+      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+        /// Bắt đầu chạy Danh sách Từ vựng
+        getSequentialExecutionController?.getVocabularyScript?.onStartVocabularyDefinitionSS01();
       }
 
       ///
@@ -337,12 +359,19 @@ class SequentialExecutionDetail with ExecutionCore {
     else if (totalHours == 0 && totalMinutes == 0 && seconds == 30) {
       printTerminal(str: '00:00:30');
 
-      getSequentialExecutionController?.getBlackboardFeature?.onDeactivateWindow();
-      getSequentialExecutionController?.getVocabularySubjectFeature?.onDeactivateWindow();
-      getSequentialExecutionController?.getCountdownTimerFeature?.onDeactivateWindow();
-      getSequentialExecutionController?.getPomodoroFeature?.onDeactivateWindow();
-      getSequentialExecutionController?.getVocabularyListFeature?.onDeactivateWindow();
-      getSequentialExecutionController?.getVocabularyDefinitionFeature?.onDeactivateWindow();
+      // getCountdownTimerFeature?.onActivateWindow();
+      // getPomodoroFeature?.onActivateWindow();
+
+      // getBlackboardFeature?.onActivateWindow();
+      // getVocabularySubjectFeature?.onActivateWindow();
+      // getVocabularyListFeature?.onActivateWindow();
+
+      // getSequentialExecutionController?.getBlackboardFeature?.onDeactivateWindow();
+      // getSequentialExecutionController?.getVocabularySubjectFeature?.onDeactivateWindow();
+      // getSequentialExecutionController?.getCountdownTimerFeature?.onDeactivateWindow();
+      // getSequentialExecutionController?.getPomodoroFeature?.onDeactivateWindow();
+      // getSequentialExecutionController?.getVocabularyListFeature?.onDeactivateWindow();
+      // getSequentialExecutionController?.getVocabularyDefinitionFeature?.onDeactivateWindow();
 
       ///
     }
@@ -350,8 +379,8 @@ class SequentialExecutionDetail with ExecutionCore {
     else if (totalHours == 0 && totalMinutes == 0 && seconds == 31) {
       printTerminal(str: '00:00:31');
 
-      getSequentialExecutionController?.getBreakTimeSpaceFeature?.onActivateWindow();
-      getSequentialExecutionController?.getCountdownTimerFeature?.onActivateWindowOnCorner(isBottomRight: true, marginBottom: 15.0);
+      // getSequentialExecutionController?.getBreakTimeSpaceFeature?.onActivateWindow();
+      // getSequentialExecutionController?.getCountdownTimerFeature?.onActivateWindowOnCorner(isBottomRight: true, marginBottom: 15.0);
 
       ///
     }
@@ -359,19 +388,17 @@ class SequentialExecutionDetail with ExecutionCore {
     else if (totalHours == 0 && totalMinutes == 0 && seconds == 40) {
       printTerminal(str: '00:00:31');
 
-      getSequentialExecutionController?.getBreakTimeSpaceFeature?.onDeactivateWindow();
-      getSequentialExecutionController?.getCountdownTimerFeature?.onDeactivateWindow();
+      // getSequentialExecutionController?.getBreakTimeSpaceFeature?.onDeactivateWindow();
+      // getSequentialExecutionController?.getCountdownTimerFeature?.onDeactivateWindow();
 
       ///
     }
-
-
     /// TODO: 00:00:41
     else if (totalHours == 0 && totalMinutes == 0 && seconds == 41) {
       printTerminal(str: '00:00:41');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getBlackboardFeature?.onActivateWindow();
+        // getSequentialExecutionController?.getBlackboardFeature?.onActivateWindow();
       }
 
       ///
@@ -381,7 +408,7 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:42');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getVocabularySubjectFeature?.onActivateWindow();
+        // getSequentialExecutionController?.getVocabularySubjectFeature?.onActivateWindow();
       }
 
       ///
@@ -391,7 +418,7 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:43');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getCountdownTimerFeature?.onActivateWindow();
+        // getSequentialExecutionController?.getCountdownTimerFeature?.onActivateWindow();
       }
 
       ///
@@ -401,7 +428,7 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:44');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getPomodoroFeature?.onActivateWindow();
+        // getSequentialExecutionController?.getPomodoroFeature?.onActivateWindow();
       }
 
       ///
@@ -411,7 +438,7 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:45');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getVocabularyListFeature?.onActivateWindow();
+        // getSequentialExecutionController?.getVocabularyListFeature?.onActivateWindow();
       }
 
       ///
@@ -421,12 +448,11 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:46');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getVocabularyDefinitionFeature?.onActivateWindow();
+        // getSequentialExecutionController?.getVocabularyDefinitionFeature?.onActivateWindow();
       }
 
       ///
     }
-
     /// TODO: 00:01:00
     else if (totalHours == 0 && totalMinutes == 1 && seconds == 0) {
       printTerminal(str: '00:01:00');

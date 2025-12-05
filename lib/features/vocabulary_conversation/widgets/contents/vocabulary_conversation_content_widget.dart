@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_conversation/widgets/contents/animated_vocabulary_conversation_title_widget.dart';
+import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_data_model.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -57,6 +58,21 @@ class _VocabularyConversationContentWidgetState extends State<VocabularyConversa
     return;
   }
 
+  /// -----
+  /// TODO:
+  /// -----
+  List<VocabularyExampleConversationItem>? _conversationItemList;
+  List<VocabularyExampleConversationItem>? get getConversationItemList => _conversationItemList;
+  void setConversationItemList({required List<VocabularyExampleConversationItem>? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _conversationItemList = value;
+    } else {
+      _conversationItemList ??= value;
+    }
+
+    return;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -65,6 +81,13 @@ class _VocabularyConversationContentWidgetState extends State<VocabularyConversa
 
     limitedTimeProgressbarLength = widget.sizeDx * 0.78 - 100.0;
     limitedTimeProgressbar = limitedTimeProgressbarLength;
+
+    setCurrentVocabularyItem(value: widget.systemStateManagement?.getVocabularyDefinitionFeature?.getVocabularyTime?.getCurrentVocabularyItem, isPriorityOverride: true);
+
+    setConversationItemList(value: [], isPriorityOverride: true);
+    getCurrentVocabularyItem?.getVocabularyDataModel?.getVocabularyExampleConversation?.getConversationItemList?.forEach((element) {
+      getConversationItemList?.add(element);
+    });
 
     messageList = [
       Container(margin: EdgeInsets.all(5.0), width: widget.sizeDx, height: 300.0, color: Colors.transparent),
@@ -89,16 +112,44 @@ class _VocabularyConversationContentWidgetState extends State<VocabularyConversa
         counterCreateMessage++;
 
         if (counterCreateMessage > 0 && counterCreateMessage % 5 == 0) {
-          if (counterMessage % 2 == 0) {
-            setState(() {
-              // messageList.add(messageWidget(isLeftSide: true, isRightSide: false));
-              messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false));
-            });
-          } else {
-            setState(() {
-              // messageList.add(messageWidget(isLeftSide: false, isRightSide: true));
-              messageList.add(messageByWordWidget(isLeftSide: false, isRightSide: true));
-            });
+          // if (counterMessage % 2 == 0) {
+          //   setState(() {
+          //     // messageList.add(messageWidget(isLeftSide: true, isRightSide: false));
+          //     messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false));
+          //   });
+          // } else {
+          //   setState(() {
+          //     // messageList.add(messageWidget(isLeftSide: false, isRightSide: true));
+          //     messageList.add(messageByWordWidget(isLeftSide: false, isRightSide: true));
+          //   });
+          // }
+
+          if (getConversationItemList?.isNotEmpty == true) {
+            if (getConversationItemList?.firstOrNull?.getIsLeftCharacterSS01 == true) {
+              setState(() {
+                messageList.add(
+                  messageByWordWidget(
+                    isLeftSide: true,
+                    isRightSide: false,
+                    engSentence: getConversationItemList?.firstOrNull?.getEngSentence ?? '',
+                    vieSentence: getConversationItemList?.firstOrNull?.getVieSentence ?? '',
+                  ),
+                );
+              });
+            } else if (getConversationItemList?.firstOrNull?.getIsRightCharacterSS02 == true) {
+              setState(() {
+                messageList.add(
+                  messageByWordWidget(
+                    isLeftSide: false,
+                    isRightSide: true,
+                    engSentence: getConversationItemList?.firstOrNull?.getEngSentence ?? '',
+                    vieSentence: getConversationItemList?.firstOrNull?.getVieSentence ?? '',
+                  ),
+                );
+              });
+            }
+
+            getConversationItemList?.removeAt(0);
           }
 
           counterMessage++;
@@ -180,10 +231,10 @@ class _VocabularyConversationContentWidgetState extends State<VocabularyConversa
                   //   controller: _scrollController,
                   //   child: Column(children: messageList),
                   // ),
-                  child: ListView.builder(
+                  child: SingleChildScrollView(
                     controller: _scrollController,
-                    itemCount: messageList.length,
-                    itemBuilder: (_, index) => Container(child: messageList[index]),
+
+                    child: Column(children: messageList),
                   ),
                 ),
               ),
@@ -197,7 +248,6 @@ class _VocabularyConversationContentWidgetState extends State<VocabularyConversa
           //   height: widget.sizeDy,
           //   child: VocabularyConversationCharacterWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
           // ),
-
           Positioned(
             top: 0,
             left: 0,
@@ -376,11 +426,11 @@ class _VocabularyConversationContentWidgetState extends State<VocabularyConversa
     );
   }
 
-  Widget messageByWordWidget({required bool isLeftSide, required bool isRightSide}) {
+  Widget messageByWordWidget({required bool isLeftSide, required bool isRightSide, required String engSentence, required String vieSentence}) {
     double distanceToBorder = 15.0;
 
-    String engSentence = "Learning daily builds _confidence and long term success.";
-    String vieSentence = "Học mỗi ngày sẽ xây dựng _sự _tự _tin và tạo nên thành công lâu dài.";
+    // String engSentence = "Learning daily builds _confidence and long term success.";
+    // String vieSentence = "Học mỗi ngày sẽ xây dựng _sự _tự _tin và tạo nên thành công lâu dài.";
 
     // String engSentence = "0123456789";
     // String vieSentence = "0123456789";

@@ -113,8 +113,7 @@ class _VocabularyDefinitionWidgetState extends State<VocabularyDefinitionWidget>
       height: sizeDy,
 
       child: isAnimatedShow
-          ? BounceInDown(
-              duration: const Duration(seconds: 1),
+          ? FadeInDown(
               animate: true,
               child: Container(
                 width: sizeDx,

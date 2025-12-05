@@ -1,5 +1,3 @@
-
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -115,16 +113,15 @@ class _VocabularyListWidgetState extends State<VocabularyListWidget> with Simple
       height: sizeDy,
 
       child: isAnimatedShow
-          ? BounceInLeft(
-        duration: const Duration(seconds: 1),
-        animate: true,
-        child: Container(
-          width: sizeDx,
-          height: sizeDy,
-          decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0)),
-          child: Stack(children: [_vocabularyListContentWidget ?? Container()]),
-        ),
-      )
+          ? FadeInLeft(
+              animate: true,
+              child: Container(
+                width: sizeDx,
+                height: sizeDy,
+                decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0)),
+                child: Stack(children: [_vocabularyListContentWidget ?? Container()]),
+              ),
+            )
           : Container(),
     );
   }

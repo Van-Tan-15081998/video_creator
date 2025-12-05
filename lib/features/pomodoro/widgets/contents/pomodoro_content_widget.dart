@@ -400,7 +400,7 @@ class _PomodoroWidgetState extends State<PomodoroContentWidget> {
                   ),
                   child: Center(
                     child: Text(
-                      '25 min',
+                      '30 min',
                       style: GoogleFonts.concertOne(
                         textStyle: const TextStyle(color: Colors.black),
                         fontSize: 30.0,

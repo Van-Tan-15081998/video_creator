@@ -249,7 +249,7 @@ class PomodoroTime with ExecutionCore {
       setStayFocusedSS01(
         value: PomodoroItem(
           id: '[POMODORO_STAY_FOCUSED_SS01]',
-          totalMinutes: 25,
+          totalMinutes: 30,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_STAY_FOCUSED_SS01');
@@ -263,7 +263,7 @@ class PomodoroTime with ExecutionCore {
       setStayFocusedSS02(
         value: PomodoroItem(
           id: '[POMODORO_STAY_FOCUSED_SS02]',
-          totalMinutes: 25,
+          totalMinutes: 30,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_STAY_FOCUSED_SS02');
@@ -277,7 +277,7 @@ class PomodoroTime with ExecutionCore {
       setStayFocusedSS03(
         value: PomodoroItem(
           id: '[POMODORO_STAY_FOCUSED_SS03]',
-          totalMinutes: 25,
+          totalMinutes: 30,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_STAY_FOCUSED_SS03');
@@ -291,7 +291,7 @@ class PomodoroTime with ExecutionCore {
       setStayFocusedSS04(
         value: PomodoroItem(
           id: '[POMODORO_STAY_FOCUSED_SS04]',
-          totalMinutes: 25,
+          totalMinutes: 30,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_STAY_FOCUSED_SS04');

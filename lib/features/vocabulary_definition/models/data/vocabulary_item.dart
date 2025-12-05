@@ -218,6 +218,51 @@ class VocabularyItem with ExecutionCore {
     return;
   }
 
+  /// -----
+  /// TODO:
+  /// -----
+  List<VocabularyItem?>? _currentVocabularyItemList;
+  List<VocabularyItem?>? get getCurrentVocabularyItemList => _currentVocabularyItemList;
+  void setCurrentVocabularyItemList({required List<VocabularyItem?> value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentVocabularyItemList = value;
+    } else {
+      _currentVocabularyItemList ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  List<VocabularyItem?>? _topicVocabularyItemList;
+  List<VocabularyItem?>? get getTopicVocabularyItemList => _topicVocabularyItemList;
+  void setTopicVocabularyItemList({required List<VocabularyItem?> value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _topicVocabularyItemList = value;
+    } else {
+      _topicVocabularyItemList ??= value;
+    }
+
+    return;
+  }
+
+  ///
+  /// TODO:
+  ///
+  bool? _isActive;
+  bool get getIsActive => _isActive ?? false;
+  void setIsActive({required bool? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _isActive = value;
+    } else {
+      _isActive ??= value;
+    }
+
+    return;
+  }
+
   void start() {
     setIsPaused(value: false, isPriorityOverride: true);
   }
@@ -274,10 +319,19 @@ class VocabularyItem with ExecutionCore {
               print('[onStart_PhaseSS01_AsShow]');
             }
 
+            getCurrentVocabularyItem?.getCurrentVocabularyItemList?.add(this);
+            setIsActive(value: true, isPriorityOverride: true);
+
             ///
             getCurrentVocabularyItem?.getVocabularyDataModel?.setIsExampleOnLeft(value: getVocabularyDataModel?.getIsExampleOnLeft, isPriorityOverride: true);
             getCurrentVocabularyItem?.getVocabularyDataModel?.setIsExampleOnRight(value: getVocabularyDataModel?.getIsExampleOnRight, isPriorityOverride: true);
             getCurrentVocabularyItem?.getVocabularyDataModel?.setIsShowExampleOnSide(value: false, isPriorityOverride: true);
+
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setPronunciationUK(value: getVocabularyDataModel?.getPronunciationUK, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setPronunciationUS(value: getVocabularyDataModel?.getPronunciationUS, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setTopicSpecificMeaningInEng(value: getVocabularyDataModel?.getTopicSpecificMeaningInEng, isPriorityOverride: true);
+
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setVocabularyExampleConversation(value: getVocabularyDataModel?.getVocabularyExampleConversation, isPriorityOverride: true);
 
             ///
             getSequentialExecutionController?.getVocabularyListFeature?.onActivateWindow();
@@ -363,6 +417,10 @@ class VocabularyItem with ExecutionCore {
             if (kDebugMode) {
               print('[onStart_PhaseSS01A]');
             }
+
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setPronunciationUK(value: '', isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setPronunciationUS(value: '', isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setTopicSpecificMeaningInEng(value: '', isPriorityOverride: true);
 
             ///
             getSequentialExecutionController?.getBlackboardFeature?.onActivateWindow();
@@ -637,10 +695,12 @@ class VocabularyItem with ExecutionCore {
 
             onStartPhaseSS04AsExampleConversation?.call();
           }
-          if (totalSeconds == 399) {
+          if (totalSeconds == 299) {
             if (kDebugMode) {
               print('[onCompleted_PhaseSS04_AsExampleConversation]');
             }
+
+            setIsActive(value: false, isPriorityOverride: true);
 
             onCompletedPhaseSS04AsExampleConversation?.call();
           }
@@ -734,6 +794,9 @@ class VocabularyItem with ExecutionCore {
       setVocabularyDataModel(value: VocabularyDataModel(), isPriorityOverride: true);
 
       setStatus(value: VocabularyStatus.inActive(), isPriorityOverride: true);
+
+      setCurrentVocabularyItemList(value: [], isPriorityOverride: true);
+      setTopicVocabularyItemList(value: [], isPriorityOverride: true);
 
       /// -----
       /// TODO: Setup Root For SubCom

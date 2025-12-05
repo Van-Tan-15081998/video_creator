@@ -44,7 +44,7 @@ class _VocabularyEnglishDefinitionContentWidgetState extends State<VocabularyEng
             child: TransparentEffectWallWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
           ),
 
-          VocabularyEnglishMainInformationWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
+          VocabularyEnglishMainInformationWidget(systemStateManagement: widget.systemStateManagement, sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
 
           Positioned(
             top: 0,

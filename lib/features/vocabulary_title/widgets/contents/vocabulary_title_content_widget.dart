@@ -393,15 +393,69 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
       title = 'interj';
     }
 
-    return Container(
+    return SizedBox(
       width: 280.0,
       height: 100.0,
-      decoration: boxDecoration,
 
       child: Stack(
         alignment: AlignmentDirectional.center,
 
         children: [
+          Positioned(
+            width: 280.0,
+            height: 160.0,
+            child: SizedBox(
+              width: 280.0,
+              height: 160.0,
+              child: ShaderMask(
+                blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
+                shaderCallback: (Rect bounds) {
+                  return LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Colors.white,
+                      Colors.white.withValues(alpha: 0.9),
+                      Colors.white.withValues(alpha: 0.8),
+                      Colors.white.withValues(alpha: 0.7),
+                      Colors.white.withValues(alpha: 0.6),
+                      Colors.white.withValues(alpha: 0.5),
+                      Colors.white.withValues(alpha: 0.4),
+                      Colors.white.withValues(alpha: 0.3),
+                      Colors.white.withValues(alpha: 0.2),
+                      Colors.white.withValues(alpha: 0.1),
+                      Colors.white.withValues(alpha: 0.05),
+                      Colors.transparent,
+                      Colors.transparent, // Hoàn toàn biến mất bên phải
+                    ],
+                    stops: [0.64, 0.67, 0.70, 0.73, 0.76, 0.79, 0.82, 0.85, 0.88, 0.81, 0.94, 0.97, 1.0],
+                  ).createShader(bounds);
+                },
+                child: Opacity(
+                  opacity: 0.85,
+                  child: SizedBox(
+                    width: 280.0,
+                    height: 100.0,
+                    child: Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0), bottomRight: Radius.circular(5.0), bottomLeft: Radius.circular(5.0)),
+                        child: Container(
+                          width: 280.0,
+                          height: 100.0,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(image: AssetImage('assets/images/colorful/parts_of_speech_02.jpg'), fit: BoxFit.fitWidth),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          Positioned(width: 280.0, height: 100.0, child: Container(width: 280.0, height: 160.0, decoration: boxDecoration)),
+
           Positioned(
             top: -2.0,
             child: Padding(

@@ -68,8 +68,10 @@ class _AnimatedConversationTitleState extends State<AnimatedConversationTitle> w
     // giữ 30s
     await Future.delayed(Duration(seconds: 5));
 
-    // thụt vào (ra ngoài màn hình phải)
-    await _inOutController.reverse();
+    if (mounted == true) {
+      // thụt vào (ra ngoài màn hình phải)
+      await _inOutController.reverse();
+    }
   }
 
   double _computeLeft() {

@@ -36,6 +36,7 @@ class _BackgroundImageContentWidgetState extends State<BackgroundImageContentWid
 
           decoration: BoxDecoration(
             image: DecorationImage(image: AssetImage('assets/images/landscape2.jpg'), fit: BoxFit.fill),
+            // image: DecorationImage(image: AssetImage('assets/images/background/background_01.jpg'), fit: BoxFit.fill),
           ),
         ),
 

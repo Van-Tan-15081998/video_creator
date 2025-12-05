@@ -34,6 +34,51 @@ class VocabularyDataModel with ExecutionCore {
   /// -----
   /// TODO:
   /// -----
+  String? _pronunciationUS;
+  String? get getPronunciationUS => _pronunciationUS;
+  void setPronunciationUS({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _pronunciationUS = value;
+    } else {
+      _pronunciationUS ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  String? _pronunciationUK;
+  String? get getPronunciationUK => _pronunciationUK;
+  void setPronunciationUK({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _pronunciationUK = value;
+    } else {
+      _pronunciationUK ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  String? _topicSpecificMeaningInEng;
+  String? get getTopicSpecificMeaningInEng => _topicSpecificMeaningInEng;
+  void setTopicSpecificMeaningInEng({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _topicSpecificMeaningInEng = value;
+    } else {
+      _topicSpecificMeaningInEng ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
   bool? _isExampleOnLeft;
   bool? get getIsExampleOnLeft => _isExampleOnLeft;
   void setIsExampleOnLeft({required bool? value, bool? isPriorityOverride}) {
@@ -332,6 +377,21 @@ class VocabularyDataModel with ExecutionCore {
   }
 
   /// -----
+  /// TODO:
+  /// -----
+  VocabularyExampleConversation? _vocabularyExampleConversation;
+  VocabularyExampleConversation? get getVocabularyExampleConversation => _vocabularyExampleConversation;
+  void setVocabularyExampleConversation({required VocabularyExampleConversation? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _vocabularyExampleConversation = value;
+    } else {
+      _vocabularyExampleConversation ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
   /// TODO: Attach Root
   /// -----
   @override
@@ -399,6 +459,8 @@ class VocabularyDataModel with ExecutionCore {
       setVocabularyExampleParagraphSS01(value: VocabularyExampleParagraph(), isPriorityOverride: true);
       setVocabularyExampleParagraphSS02(value: VocabularyExampleParagraph(), isPriorityOverride: true);
       setVocabularyExampleParagraphSS03(value: VocabularyExampleParagraph(), isPriorityOverride: true);
+
+      setVocabularyExampleConversation(value: VocabularyExampleConversation(), isPriorityOverride: true);
 
       /// -----
       /// TODO: Setup Root For SubCom
@@ -475,6 +537,8 @@ class VocabularyDataModel with ExecutionCore {
       getVocabularyExampleParagraphSS01?.onSetupRoot();
       getVocabularyExampleParagraphSS02?.onSetupRoot();
       getVocabularyExampleParagraphSS03?.onSetupRoot();
+
+      getVocabularyExampleConversation?.onSetupRoot();
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onSetupRootForSubCom]');
     }
@@ -503,6 +567,8 @@ class VocabularyDataModel with ExecutionCore {
       getVocabularyExampleParagraphSS01?.onInitRoot();
       getVocabularyExampleParagraphSS02?.onInitRoot();
       getVocabularyExampleParagraphSS03?.onInitRoot();
+
+      getVocabularyExampleConversation?.onInitRoot();
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onInitRootForSubCom]');
     }
@@ -632,6 +698,111 @@ class VocabularyExampleParagraph with ExecutionCore {
       _engSentenceSS03 = value;
     } else {
       _engSentenceSS03 ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  String? _vieSentence;
+  String? get getVieSentence => _vieSentence;
+  void setVieSentence({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _vieSentence = value;
+    } else {
+      _vieSentence ??= value;
+    }
+
+    return;
+  }
+}
+
+class VocabularyExampleConversation with ExecutionCore {
+  VocabularyExampleConversation() {
+    setConversationItemList(value: [], isPriorityOverride: true);
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  String? _title;
+  String? get getTitle => _title;
+  void setTitle({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _title = value;
+    } else {
+      _title ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  List<VocabularyExampleConversationItem>? _conversationItemList;
+  List<VocabularyExampleConversationItem>? get getConversationItemList => _conversationItemList;
+  void setConversationItemList({required List<VocabularyExampleConversationItem>? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _conversationItemList = value;
+    } else {
+      _conversationItemList ??= value;
+    }
+
+    return;
+  }
+}
+
+class VocabularyExampleConversationItem {
+  VocabularyExampleConversationItem({required bool? isLeftCharacterSS01, required bool? isRightCharacterSS02, required String? engSentence, required String? vieSentence}) {
+    setIsLeftCharacterSS01(value: isLeftCharacterSS01, isPriorityOverride: true);
+    setIsRightCharacterSS02(value: isRightCharacterSS02, isPriorityOverride: true);
+    setEngSentence(value: engSentence, isPriorityOverride: true);
+    setVieSentence(value: vieSentence, isPriorityOverride: true);
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  bool? _isLeftCharacterSS01;
+  bool? get getIsLeftCharacterSS01 => _isLeftCharacterSS01;
+  void setIsLeftCharacterSS01({required bool? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _isLeftCharacterSS01 = value;
+    } else {
+      _isLeftCharacterSS01 ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  bool? _isRightCharacterSS02;
+  bool? get getIsRightCharacterSS02 => _isRightCharacterSS02;
+  void setIsRightCharacterSS02({required bool? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _isRightCharacterSS02 = value;
+    } else {
+      _isRightCharacterSS02 ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  String? _engSentence;
+  String? get getEngSentence => _engSentence;
+  void setEngSentence({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _engSentence = value;
+    } else {
+      _engSentence ??= value;
     }
 
     return;
