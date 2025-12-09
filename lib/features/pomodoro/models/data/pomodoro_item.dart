@@ -3,9 +3,11 @@ import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 import 'package:frame_creator_v2/features/pomodoro/models/data/pomodoro_status.dart';
 
 class PomodoroItem with ExecutionCore {
-  PomodoroItem({required String? id, required double? totalMinutes, required this.onComplete}) {
+  PomodoroItem({required String? id, required List<VoidCallback?>? completedCallbackFunctionStack, required double? totalMinutes, required double? totalPrepareSeconds, required this.onComplete}) {
     setId(value: id, isPriorityOverride: true);
     setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+    setTotalPrepareSeconds(value: totalPrepareSeconds, isPriorityOverride: true);
+    setCompletedCallbackFunctionStack(value: completedCallbackFunctionStack, isPriorityOverride: true);
   }
 
   /// -----
@@ -18,6 +20,21 @@ class PomodoroItem with ExecutionCore {
       _id = value;
     } else {
       _id ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  List<VoidCallback?>? _completedCallbackFunctionStack;
+  List<VoidCallback?>? get getCompletedCallbackFunctionStack => _completedCallbackFunctionStack;
+  void setCompletedCallbackFunctionStack({required List<VoidCallback?>? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _completedCallbackFunctionStack = value;
+    } else {
+      _completedCallbackFunctionStack ??= value;
     }
 
     return;
@@ -103,6 +120,23 @@ class PomodoroItem with ExecutionCore {
   /// -----
   /// TODO:
   /// -----
+  double? _totalPrepareSeconds;
+  double? get getTotalPrepareSeconds => _totalPrepareSeconds;
+  void setTotalPrepareSeconds({required double? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _totalPrepareSeconds = value;
+    } else {
+      _totalPrepareSeconds ??= value;
+    }
+
+    setTotalRemainingSeconds(value: getTotalSeconds, isPriorityOverride: true);
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
   PomodoroStatus? _status;
   PomodoroStatus? get getStatus => _status;
   void setStatus({required PomodoroStatus? value, bool? isPriorityOverride}) {
@@ -113,6 +147,41 @@ class PomodoroItem with ExecutionCore {
     }
 
     return;
+  }
+
+  ///
+  /// TODO:
+  ///
+  bool? _isPreparing;
+  bool? get getIsPreparing => _isPreparing;
+  void setIsPreparing({required bool? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _isPreparing = value;
+    } else {
+      _isPreparing ??= value;
+    }
+
+    return;
+  }
+
+  void prepare() {
+    setIsPreparing(value: true, isPriorityOverride: true);
+  }
+
+  bool isPreparing() {
+    if (getIsPreparing == true) {
+      return true;
+    }
+
+    return false;
+  }
+
+  bool isCompletedPreparing() {
+    if (getTotalPrepareSeconds == 0) {
+      return true;
+    }
+
+    return false;
   }
 
   ///
@@ -162,30 +231,44 @@ class PomodoroItem with ExecutionCore {
     if (getIsPaused == true) {
       ///
     } else if (getIsPaused == false) {
-      if (getStatus?.isActive() == true) {
-        if ((getTotalRemainingSeconds ?? 0) > 0) {
-          double updateUpdate = (getTotalRemainingSeconds ?? 0) - 1;
+      /// Điều Kiện Tiên Quyết => Tổng Số Giây Của Giai Đoạn Chuẩn Bị Phải = 0
+      if ((getTotalPrepareSeconds ?? 0) > 0) {
+        if (isPreparing() == true) {
+          double currentTotalPrepareSeconds = (getTotalPrepareSeconds ?? 0) - 1;
 
-          setTotalRemainingSeconds(value: updateUpdate, isPriorityOverride: true);
-
-          ///
-          double percentComplete = ((getTotalSeconds ?? 1) - (getTotalRemainingSeconds ?? 1)) / (getTotalSeconds ?? 1) * 100;
-          setPercentComplete(value: percentComplete, isPriorityOverride: true);
-        } else if ((getTotalRemainingSeconds ?? 0) == 0) {
-          getStatus?.setStatusComplete();
-
-          ///
-          setPercentComplete(value: 100, isPriorityOverride: true);
-
-          ///
-          onComplete?.call();
+          setTotalPrepareSeconds(value: currentTotalPrepareSeconds, isPriorityOverride: true);
         }
+      } else if (getStatus?.isActive() == true) {
+        if (isCompletedPreparing() == true) {
+          if ((getTotalRemainingSeconds ?? 0) > 0) {
+            double updateUpdate = (getTotalRemainingSeconds ?? 0) - 1;
 
-        int totalRemainingMinutes = (getTotalRemainingSeconds ?? 0) ~/ 60;
-        setTotalRemainingMinutes(value: totalRemainingMinutes.toDouble(), isPriorityOverride: true);
+            setTotalRemainingSeconds(value: updateUpdate, isPriorityOverride: true);
 
-        if (kDebugMode) {
-          // print((getTotalRemainingSeconds ?? 1));
+            ///
+            double percentComplete = ((getTotalSeconds ?? 1) - (getTotalRemainingSeconds ?? 1)) / (getTotalSeconds ?? 1) * 100;
+            setPercentComplete(value: percentComplete, isPriorityOverride: true);
+          } else if ((getTotalRemainingSeconds ?? 0) == 0) {
+            getStatus?.setStatusComplete();
+
+            ///
+            setPercentComplete(value: 100, isPriorityOverride: true);
+
+            ///
+            onComplete?.call();
+
+            ///
+            if (getCompletedCallbackFunctionStack?.isNotEmpty == true) {
+              getCompletedCallbackFunctionStack?.first?.call();
+            }
+          }
+
+          int totalRemainingMinutes = (getTotalRemainingSeconds ?? 0) ~/ 60;
+          setTotalRemainingMinutes(value: totalRemainingMinutes.toDouble(), isPriorityOverride: true);
+
+          if (kDebugMode) {
+            // print((getTotalRemainingSeconds ?? 1));
+          }
         }
       }
     }

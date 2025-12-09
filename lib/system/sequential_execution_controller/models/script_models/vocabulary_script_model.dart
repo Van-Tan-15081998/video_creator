@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 import 'package:frame_creator_v2/system/sequential_execution_controller/models/sequential_execution_controller.dart';
 
 class VocabularyScriptModel with ExecutionCore {
   VocabularyScriptModel({required SequentialExecutionController? sequentialExecutionController}) {
     setSequentialExecutionController(value: sequentialExecutionController, isPriorityOverride: true);
+    setCallbackFunctionAfterCompletedBreakTimeStack(value: [], isPriorityOverride: true);
   }
 
   /// -----
@@ -23,8 +25,42 @@ class VocabularyScriptModel with ExecutionCore {
   }
 
   /// -----
+  /// TODO:
+  /// -----
+  List<VoidCallback?>? _callbackFunctionAfterCompletedBreakTimeStack;
+  List<VoidCallback?>? get getCallbackFunctionAfterCompletedBreakTimeStack => _callbackFunctionAfterCompletedBreakTimeStack;
+  void setCallbackFunctionAfterCompletedBreakTimeStack({required List<VoidCallback?>? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _callbackFunctionAfterCompletedBreakTimeStack = value;
+    } else {
+      _callbackFunctionAfterCompletedBreakTimeStack ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
   /// TODO: Start
   /// -----
+
+  void onStartVocabularyDefinition() {
+    /// -----
+    /// TODO: Chuyển Cảnh 1/2
+    /// -----
+
+    /// -----
+    /// TODO:
+    /// -----
+    Future.delayed(Duration(seconds: 1), () {
+      getSequentialExecutionController?.getVocabularySceneTransitionFeature?.onActivateWindow(
+        onDeactivatedWindowAsParameter: () {
+          Future.delayed(Duration(seconds: 1), () {
+            onStartVocabularyDefinitionSS01();
+          });
+        },
+      );
+    });
+  }
 
   void onStartVocabularyDefinitionSS01() {
     ///
@@ -34,7 +70,10 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS01?.onStart();
+
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS01?.onStart();
+    }
 
     ///
   }
@@ -45,7 +84,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS02?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS02?.onStart();
+    }
 
     ///
   }
@@ -56,7 +97,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS03?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS03?.onStart();
+    }
 
     ///
   }
@@ -67,7 +110,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS04?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS04?.onStart();
+    }
 
     ///
   }
@@ -78,7 +123,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS05?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS05?.onStart();
+    }
 
     ///
   }
@@ -89,7 +136,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS06?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS06?.onStart();
+    }
 
     ///
   }
@@ -100,7 +149,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS07?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS07?.onStart();
+    }
 
     ///
   }
@@ -111,7 +162,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS08?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS08?.onStart();
+    }
 
     ///
   }
@@ -122,7 +175,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS09?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS09?.onStart();
+    }
 
     ///
   }
@@ -133,7 +188,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS10?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS10?.onStart();
+    }
 
     ///
   }
@@ -144,7 +201,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS11?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS11?.onStart();
+    }
 
     ///
   }
@@ -155,7 +214,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS12?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS12?.onStart();
+    }
 
     ///
   }
@@ -166,7 +227,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS13?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS13?.onStart();
+    }
 
     ///
   }
@@ -177,7 +240,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS14?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS14?.onStart();
+    }
 
     ///
   }
@@ -188,7 +253,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS15?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS15?.onStart();
+    }
 
     ///
   }
@@ -199,7 +266,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS16?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS16?.onStart();
+    }
 
     ///
   }
@@ -210,7 +279,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS17?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS17?.onStart();
+    }
 
     ///
   }
@@ -221,7 +292,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS18?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS18?.onStart();
+    }
 
     ///
   }
@@ -232,7 +305,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS19?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS19?.onStart();
+    }
 
     ///
   }
@@ -243,7 +318,9 @@ class VocabularyScriptModel with ExecutionCore {
     getSequentialExecutionController?.getVocabularyTitleFeature?.onActivateWindow();
 
     ///
-    getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS20?.onStart();
+    if (getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.isCanStartNewVocabulary() == true) {
+      getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularySS20?.onStart();
+    }
 
     ///
   }
@@ -369,15 +446,15 @@ class VocabularyScriptModel with ExecutionCore {
     /// -----
     /// TODO:
     /// -----
-    Future.delayed(Duration(seconds: 1), () {
-      getSequentialExecutionController?.getVocabularySceneTransitionFeature?.onActivateWindow(
-        onDeactivatedWindowAsParameter: () {
-          Future.delayed(Duration(seconds: 1), () {
-            onStartVocabularyDefinitionSS06();
-          });
-        },
-      );
-    });
+    // Future.delayed(Duration(seconds: 1), () {
+    //   getSequentialExecutionController?.getVocabularySceneTransitionFeature?.onActivateWindow(
+    //     onDeactivatedWindowAsParameter: () {
+    //       Future.delayed(Duration(seconds: 1), () {
+    //         onStartVocabularyDefinitionSS06();
+    //       });
+    //     },
+    //   );
+    // });
 
     ///
   }

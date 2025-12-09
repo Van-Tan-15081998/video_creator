@@ -45,6 +45,38 @@ class VocabularyTime with ExecutionCore {
   /// -----
   /// TODO:
   /// -----
+  List<VocabularyItem>? _currentVocabularyItemStack;
+  List<VocabularyItem>? get getCurrentVocabularyItemStack => _currentVocabularyItemStack;
+  void setCurrentVocabularyItemStack({required List<VocabularyItem>? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentVocabularyItemStack = value;
+    } else {
+      _currentVocabularyItemStack ??= value;
+    }
+
+    return;
+  }
+
+  void clearStack() {
+    if ((getCurrentVocabularyItemStack?.length ?? 0) >= 5) {
+      getCurrentVocabularyItemStack?.clear();
+    }
+  }
+
+  bool isCanStartNewVocabulary() {
+    if ((getCurrentVocabularyItemStack?.length ?? 0) < 5) {
+      return true;
+    }
+    return false;
+  }
+
+  void continueStartNewVocabulary() {
+    clearStack();
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
   VocabularyItem? _vocabularyItemSS01;
   VocabularyItem? get getVocabularySS01 => _vocabularyItemSS01;
   void setVocabularySS01({required VocabularyItem? value, bool? isPriorityOverride}) {
@@ -358,27 +390,29 @@ class VocabularyTime with ExecutionCore {
   }
 
   void onUpdate() {
-    getVocabularySS01?.onUpdate();
-    getVocabularySS02?.onUpdate();
-    getVocabularySS03?.onUpdate();
-    getVocabularySS04?.onUpdate();
-    getVocabularySS05?.onUpdate();
-    getVocabularySS06?.onUpdate();
-    getVocabularySS07?.onUpdate();
-    getVocabularySS08?.onUpdate();
-    getVocabularySS09?.onUpdate();
-    getVocabularySS10?.onUpdate();
+    if ((getCurrentVocabularyItemStack?.length ?? 0) <= 5) {
+      getVocabularySS01?.onUpdate();
+      getVocabularySS02?.onUpdate();
+      getVocabularySS03?.onUpdate();
+      getVocabularySS04?.onUpdate();
+      getVocabularySS05?.onUpdate();
+      getVocabularySS06?.onUpdate();
+      getVocabularySS07?.onUpdate();
+      getVocabularySS08?.onUpdate();
+      getVocabularySS09?.onUpdate();
+      getVocabularySS10?.onUpdate();
 
-    getVocabularySS11?.onUpdate();
-    getVocabularySS12?.onUpdate();
-    getVocabularySS13?.onUpdate();
-    getVocabularySS14?.onUpdate();
-    getVocabularySS15?.onUpdate();
-    getVocabularySS16?.onUpdate();
-    getVocabularySS17?.onUpdate();
-    getVocabularySS18?.onUpdate();
-    getVocabularySS19?.onUpdate();
-    getVocabularySS20?.onUpdate();
+      getVocabularySS11?.onUpdate();
+      getVocabularySS12?.onUpdate();
+      getVocabularySS13?.onUpdate();
+      getVocabularySS14?.onUpdate();
+      getVocabularySS15?.onUpdate();
+      getVocabularySS16?.onUpdate();
+      getVocabularySS17?.onUpdate();
+      getVocabularySS18?.onUpdate();
+      getVocabularySS19?.onUpdate();
+      getVocabularySS20?.onUpdate();
+    }
   }
 
   void pause() {
@@ -465,15 +499,18 @@ class VocabularyTime with ExecutionCore {
             }
           },
           currentVocabularyItem: null,
+          currentVocabularyItemStack: null,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
       );
 
+      setCurrentVocabularyItemStack(value: [], isPriorityOverride: true);
+
       setVocabularySS01(
         value: VocabularyItem(
           id: '[VOCABULARY_SS01]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS01');
@@ -482,6 +519,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS01();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -491,7 +529,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS02(
         value: VocabularyItem(
           id: '[VOCABULARY_SS02]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS02');
@@ -500,6 +538,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS02();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -509,7 +548,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS03(
         value: VocabularyItem(
           id: '[VOCABULARY_SS03]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS03');
@@ -518,6 +557,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS03();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -527,7 +567,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS04(
         value: VocabularyItem(
           id: '[VOCABULARY_SS04]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS04');
@@ -536,6 +576,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS04();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -545,7 +586,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS05(
         value: VocabularyItem(
           id: '[VOCABULARY_SS05]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS05');
@@ -554,6 +595,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS05();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -563,7 +605,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS06(
         value: VocabularyItem(
           id: '[VOCABULARY_SS06]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS06');
@@ -572,6 +614,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS06();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -581,7 +624,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS07(
         value: VocabularyItem(
           id: '[VOCABULARY_SS07]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS07');
@@ -590,6 +633,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS07();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -599,7 +643,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS08(
         value: VocabularyItem(
           id: '[VOCABULARY_SS08]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS08');
@@ -608,6 +652,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS08();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -617,7 +662,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS09(
         value: VocabularyItem(
           id: '[VOCABULARY_SS09]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS09');
@@ -626,6 +671,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS09();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -635,7 +681,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS10(
         value: VocabularyItem(
           id: '[VOCABULARY_SS10]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS10');
@@ -644,6 +690,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS10();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -653,7 +700,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS11(
         value: VocabularyItem(
           id: '[VOCABULARY_SS11]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS11');
@@ -662,6 +709,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS11();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -671,7 +719,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS12(
         value: VocabularyItem(
           id: '[VOCABULARY_SS12]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS12');
@@ -680,6 +728,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS12();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -689,7 +738,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS13(
         value: VocabularyItem(
           id: '[VOCABULARY_SS13]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS13');
@@ -698,6 +747,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS13();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -707,7 +757,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS14(
         value: VocabularyItem(
           id: '[VOCABULARY_SS14]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS14');
@@ -716,6 +766,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS14();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -725,7 +776,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS15(
         value: VocabularyItem(
           id: '[VOCABULARY_SS15]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS15');
@@ -734,6 +785,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS15();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -743,7 +795,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS16(
         value: VocabularyItem(
           id: '[VOCABULARY_SS16]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS16');
@@ -752,6 +804,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS16();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -761,7 +814,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS17(
         value: VocabularyItem(
           id: '[VOCABULARY_SS17]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS17');
@@ -770,6 +823,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS17();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -779,7 +833,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS18(
         value: VocabularyItem(
           id: '[VOCABULARY_SS18]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS18');
@@ -788,6 +842,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS18();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -797,7 +852,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS19(
         value: VocabularyItem(
           id: '[VOCABULARY_SS19]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS19');
@@ -806,6 +861,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS19();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,
@@ -815,7 +871,7 @@ class VocabularyTime with ExecutionCore {
       setVocabularySS20(
         value: VocabularyItem(
           id: '[VOCABULARY_SS20]',
-          totalMinutes: 5,
+          totalMinutes: 5.5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete VOCABULARY_SS20');
@@ -824,6 +880,7 @@ class VocabularyTime with ExecutionCore {
             getSystemStateManagement?.getVocabularyScript?.onCompleteVocabularyDefinitionSS20();
           },
           currentVocabularyItem: getCurrentVocabularyItem,
+          currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
         ),
         isPriorityOverride: true,

@@ -5,14 +5,18 @@ import 'package:frame_creator_v2/features/conversation/models/conversation_featu
 import 'package:frame_creator_v2/features/countdown_timer/models/countdown_timer_feature.dart';
 import 'package:frame_creator_v2/features/flame_world/models/flame_world_feature.dart';
 import 'package:frame_creator_v2/features/global_announcement/models/global_announcement_feature.dart';
+import 'package:frame_creator_v2/features/interesting_knowledge/models/interesting_knowledge_conversation_feature.dart';
 import 'package:frame_creator_v2/features/introduction/models/introduction_feature.dart';
 import 'package:frame_creator_v2/features/introductory_conversation/models/introductory_conversation_feature.dart';
 import 'package:frame_creator_v2/features/pomodoro/models/pomodoro_feature.dart';
+import 'package:frame_creator_v2/features/pomodoro_ending_conversation/models/pomodoro_ending_conversation_feature.dart';
+import 'package:frame_creator_v2/features/pomodoro_starting_conversation/models/pomodoro_starting_conversation_feature.dart';
 import 'package:frame_creator_v2/features/scene_transition/models/scene_transition_feature.dart';
 import 'package:frame_creator_v2/features/system_timeline/models/system_timeline_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_conversation/models/vocabulary_conversation_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/vocabulary_definition_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_english_definition/models/vocabulary_english_definition_feature.dart';
+import 'package:frame_creator_v2/features/vocabulary_list_overall/models/vocabulary_list_overall_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_paragraph/models/vocabulary_paragraph_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_list/models/vocabulary_list_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_scene_transition/models/vocabulary_scene_transition_feature.dart';
@@ -122,6 +126,38 @@ mixin FeatureMixin {
   /// -----
   /// TODO:
   /// -----
+  PomodoroEndingConversationFeature? _pomodoroEndingConversationFeature;
+  PomodoroEndingConversationFeature? get getPomodoroEndingConversationFeature => _pomodoroEndingConversationFeature;
+  void setPomodoroEndingConversationFeature({required PomodoroEndingConversationFeature? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _pomodoroEndingConversationFeature = value;
+    } else {
+      _pomodoroEndingConversationFeature ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  PomodoroStartingConversationFeature? _pomodoroStartingConversationFeature;
+  PomodoroStartingConversationFeature? get getPomodoroStartingConversationFeature => _pomodoroStartingConversationFeature;
+  void setPomodoroStartingConversationFeature({required PomodoroStartingConversationFeature? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _pomodoroStartingConversationFeature = value;
+    } else {
+      _pomodoroStartingConversationFeature ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
   VocabularySubjectFeature? _vocabularySubjectFeature;
   VocabularySubjectFeature? get getVocabularySubjectFeature => _vocabularySubjectFeature;
   void setVocabularySubjectFeature({required VocabularySubjectFeature? value, bool? isPriorityOverride}) {
@@ -161,6 +197,22 @@ mixin FeatureMixin {
       _vocabularyListFeature = value;
     } else {
       _vocabularyListFeature ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  VocabularyListOverallFeature? _vocabularyListOverallFeature;
+  VocabularyListOverallFeature? get getVocabularyListOverallFeature => _vocabularyListOverallFeature;
+  void setVocabularyListOverallFeature({required VocabularyListOverallFeature? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _vocabularyListOverallFeature = value;
+    } else {
+      _vocabularyListOverallFeature ??= value;
     }
 
     ///
@@ -256,6 +308,22 @@ mixin FeatureMixin {
       _vocabularyTitleFeature = value;
     } else {
       _vocabularyTitleFeature ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  InterestingKnowledgeConversationFeature? _interestingKnowledgeConversationFeature;
+  InterestingKnowledgeConversationFeature? get getInterestingKnowledgeConversationFeature => _interestingKnowledgeConversationFeature;
+  void setInterestingKnowledgeConversationFeature({required InterestingKnowledgeConversationFeature? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _interestingKnowledgeConversationFeature = value;
+    } else {
+      _interestingKnowledgeConversationFeature ??= value;
     }
 
     ///

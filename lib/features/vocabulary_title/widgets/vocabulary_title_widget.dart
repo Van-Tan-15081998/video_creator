@@ -120,7 +120,7 @@ class _VocabularyTitleWidgetState extends State<VocabularyTitleWidget> with Simp
               child: Container(
                 width: sizeDx,
                 height: sizeDy,
-                decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0)),
+                decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0)),
                 child: Stack(children: [_vocabularyTitleContentWidget ?? Container()]),
               ),
             )

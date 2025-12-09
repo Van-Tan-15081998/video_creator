@@ -111,7 +111,7 @@ class _PomodoroWidgetState extends State<PomodoroWidget> with SimpleAnimationPos
       height: sizeDy,
 
       child: isAnimatedShow
-          ? BounceInUp(
+          ? FadeInUp(
               duration: const Duration(seconds: 1),
               animate: true,
               child: Container(

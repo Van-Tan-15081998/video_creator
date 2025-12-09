@@ -65,8 +65,8 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Sentence
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setTitle(value: 'Example: 1/3');
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setEngSentence(value: '_ExampleSentenceSS01: Keep going, you\'re doing great.');
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setVieSentence(value: '[VocabularySS01] Tiếp tục nhé, bạn đang làm rất tốt.');
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setEngSentence(value: 'Sunny weather offers excellent conditions for outdoor activities, but it can also increase the risk of dehydration if proper care is not taken.');
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setVieSentence(value: 'Thời tiết nắng mang lại điều kiện tuyệt vời cho các hoạt động ngoài trời, nhưng cũng có thể làm tăng nguy cơ mất nước nếu không chú ý chăm sóc cơ thể.');
 
       ///
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS02?.setTitle(value: 'Example: 2/3');
@@ -122,7 +122,7 @@ class DemoScript with ExecutionCore {
       /// TODO: MeaningInEng
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.setTopicSpecificMeaningInEng(
         value:
-            '[VocabSS01] Every small step you take today is building the future you dream about. Even when progress feels slow, you’re moving forward, gaining strength, and becoming someone more capable than yesterday. Challenges will come, but they are proof that you’re growing, not signs that you should stop. Believe in the value of consistency — showing up, learning, and trying again. You don’t need to be perfect; you just need to keep going. Trust your effort, stay patient with yourself, and remember that great achievements come from ordinary days filled with determination. You are much stronger than you think.',
+            '[VocabSS01] Overcast describes weather in which the sky is completely covered with clouds, blocking direct sunlight and creating a uniformly gray appearance.',
         isPriorityOverride: true,
       );
 

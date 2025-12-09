@@ -25,9 +25,11 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
 
   int minute = 0;
   int second = 0;
+  int prepareSecond = 0;
 
   String minuteString = '';
   String secondString = '';
+  String prepareSecondString = '';
 
   @override
   void initState() {
@@ -50,6 +52,8 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
         minute = widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS01?.getTotalRemainingMinutes?.toInt() ?? 0;
         second = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS01?.getTotalRemainingSeconds?.toInt() ?? 0) % 60;
 
+        prepareSecond = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS01?.getTotalPrepareSeconds?.toInt() ?? 0);
+
         if (mounted) {
           setState(() {});
         }
@@ -61,6 +65,8 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
       if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS02?.getStatus?.isActive() == true) {
         minute = widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS02?.getTotalRemainingMinutes?.toInt() ?? 0;
         second = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS02?.getTotalRemainingSeconds?.toInt() ?? 0) % 60;
+
+        prepareSecond = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS02?.getTotalPrepareSeconds?.toInt() ?? 0);
 
         if (mounted) {
           setState(() {});
@@ -74,6 +80,8 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
         minute = widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS03?.getTotalRemainingMinutes?.toInt() ?? 0;
         second = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS03?.getTotalRemainingSeconds?.toInt() ?? 0) % 60;
 
+        prepareSecond = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS03?.getTotalPrepareSeconds?.toInt() ?? 0);
+
         if (mounted) {
           setState(() {});
         }
@@ -85,6 +93,8 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
       if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS04?.getStatus?.isActive() == true) {
         minute = widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS04?.getTotalRemainingMinutes?.toInt() ?? 0;
         second = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS04?.getTotalRemainingSeconds?.toInt() ?? 0) % 60;
+
+        prepareSecond = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS04?.getTotalPrepareSeconds?.toInt() ?? 0);
 
         if (mounted) {
           setState(() {});
@@ -102,6 +112,8 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
         minute = widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS01?.getTotalRemainingMinutes?.toInt() ?? 0;
         second = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS01?.getTotalRemainingSeconds?.toInt() ?? 0) % 60;
 
+        prepareSecond = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS01?.getTotalPrepareSeconds?.toInt() ?? 0);
+
         if (mounted) {
           setState(() {});
         }
@@ -113,6 +125,8 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
       if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS02?.getStatus?.isActive() == true) {
         minute = widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS02?.getTotalRemainingMinutes?.toInt() ?? 0;
         second = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS02?.getTotalRemainingSeconds?.toInt() ?? 0) % 60;
+
+        prepareSecond = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS02?.getTotalPrepareSeconds?.toInt() ?? 0);
 
         if (mounted) {
           setState(() {});
@@ -126,6 +140,8 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
         minute = widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS03?.getTotalRemainingMinutes?.toInt() ?? 0;
         second = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS03?.getTotalRemainingSeconds?.toInt() ?? 0) % 60;
 
+        prepareSecond = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS03?.getTotalPrepareSeconds?.toInt() ?? 0);
+
         if (mounted) {
           setState(() {});
         }
@@ -137,6 +153,8 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
       if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS04?.getStatus?.isActive() == true) {
         minute = widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS04?.getTotalRemainingMinutes?.toInt() ?? 0;
         second = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS04?.getTotalRemainingSeconds?.toInt() ?? 0) % 60;
+
+        prepareSecond = (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS04?.getTotalPrepareSeconds?.toInt() ?? 0);
 
         if (mounted) {
           setState(() {});
@@ -155,6 +173,7 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
     _timer = Timer.periodic(const Duration(milliseconds: 10), (timer) {
       String minuteStringTick = '';
       String secondStringTick = '';
+      String prepareSecondStringTick = '';
 
       switch (minute) {
         case 0:
@@ -772,14 +791,51 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
           break;
       }
 
+      switch (prepareSecond) {
+        case 0:
+          {
+            prepareSecondStringTick = '00';
+          }
+          break;
+        case 1:
+          {
+            prepareSecondStringTick = '01';
+          }
+          break;
+        case 2:
+          {
+            prepareSecondStringTick = '02';
+          }
+          break;
+        case 3:
+          {
+            prepareSecondStringTick = '03';
+          }
+          break;
+        case 4:
+          {
+            prepareSecondStringTick = '04';
+          }
+          break;
+        case 5:
+          {
+            prepareSecondStringTick = '05';
+          }
+          break;
+      }
+
       setState(() {
         minuteString = minuteStringTick;
         secondString = secondStringTick;
+        prepareSecondString = prepareSecondStringTick;
       });
     });
   }
 
   bool isStayFocused = true;
+
+  bool isPrepare = false;
+  bool isStart = false;
 
   @override
   void dispose() {
@@ -850,7 +906,6 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
           //     ),
           //   ),
           // ),
-
           ClipRRect(
             borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
             child: BackdropFilter(
@@ -1155,6 +1210,37 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
                         ),
                       ),
                     ),
+
+                    widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getCurrentPomodoroItem?.getTotalPrepareSeconds != 0
+                        ? AnimatedPositioned(
+                            duration: const Duration(milliseconds: 100),
+
+                            left: widget.sizeDx * 0.50 + widget.sizeDx * 0.22,
+                            child: Container(
+                              width: widget.sizeDx * 0.22,
+                              height: widget.sizeDy * 0.7,
+                              decoration: BoxDecoration(
+                                color: Colors.white.withValues(alpha: 1.0),
+                                border: Border.all(width: 8.0, color: Colors.black),
+                                borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                              ),
+                              child: Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 5.0),
+                                  child: Text(
+                                    prepareSecondString,
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.coiny(
+                                      textStyle: const TextStyle(color: Color(0xFF363636)),
+                                      fontSize: 88.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        : Container(),
                   ],
                 ),
               ),

@@ -73,7 +73,8 @@ class _PomodoroWidgetState extends State<PomodoroContentWidget> {
         ///
 
         /// TODO: StayFocused SS01
-        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS01?.getStatus?.isActive() == true) {
+        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS01?.getStatus?.isActive() == true &&
+            widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS01?.isCompletedPreparing() == true) {
           stayFocusedProgressbarPomodoroSS01 = stayFocusedProgressbar * ((widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS01?.getPercentComplete ?? 0) / 100);
 
           processingId = '[PomodoroSS01]';
@@ -86,7 +87,8 @@ class _PomodoroWidgetState extends State<PomodoroContentWidget> {
         }
 
         /// TODO: StayFocused SS02
-        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS02?.getStatus?.isActive() == true) {
+        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS02?.getStatus?.isActive() == true &&
+            widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS02?.isCompletedPreparing() == true) {
           stayFocusedProgressbarPomodoroSS02 = stayFocusedProgressbar * ((widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS02?.getPercentComplete ?? 0) / 100);
 
           processingId = '[PomodoroSS02]';
@@ -99,7 +101,8 @@ class _PomodoroWidgetState extends State<PomodoroContentWidget> {
         }
 
         /// TODO: StayFocused SS03
-        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS03?.getStatus?.isActive() == true) {
+        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS03?.getStatus?.isActive() == true &&
+            widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS03?.isCompletedPreparing() == true) {
           stayFocusedProgressbarPomodoroSS03 = stayFocusedProgressbar * ((widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS03?.getPercentComplete ?? 0) / 100);
 
           processingId = '[PomodoroSS03]';
@@ -112,7 +115,8 @@ class _PomodoroWidgetState extends State<PomodoroContentWidget> {
         }
 
         /// TODO: StayFocused SS04
-        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS04?.getStatus?.isActive() == true) {
+        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS04?.getStatus?.isActive() == true &&
+            widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS04?.isCompletedPreparing() == true) {
           stayFocusedProgressbarPomodoroSS04 = stayFocusedProgressbar * ((widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getStayFocusedSS04?.getPercentComplete ?? 0) / 100);
 
           processingId = '[PomodoroSS04]';
@@ -129,7 +133,8 @@ class _PomodoroWidgetState extends State<PomodoroContentWidget> {
         ///
 
         /// TODO: BreakTime SS01
-        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS01?.getStatus?.isActive() == true) {
+        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS01?.getStatus?.isActive() == true &&
+            widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS01?.isCompletedPreparing() == true) {
           breakTimeProgressbarPomodoroSS01 = breakTimeProgressbar * ((widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS01?.getPercentComplete ?? 0) / 100);
 
           processingId = '[PomodoroSS01]';
@@ -142,7 +147,8 @@ class _PomodoroWidgetState extends State<PomodoroContentWidget> {
         }
 
         /// TODO: BreakTime SS02
-        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS02?.getStatus?.isActive() == true) {
+        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS02?.getStatus?.isActive() == true &&
+            widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS02?.isCompletedPreparing() == true) {
           breakTimeProgressbarPomodoroSS02 = breakTimeProgressbar * ((widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS02?.getPercentComplete ?? 0) / 100);
 
           processingId = '[PomodoroSS02]';
@@ -155,7 +161,8 @@ class _PomodoroWidgetState extends State<PomodoroContentWidget> {
         }
 
         /// TODO: BreakTime SS03
-        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS03?.getStatus?.isActive() == true) {
+        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS03?.getStatus?.isActive() == true &&
+            widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS03?.isCompletedPreparing() == true) {
           breakTimeProgressbarPomodoroSS03 = breakTimeProgressbar * ((widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS03?.getPercentComplete ?? 0) / 100);
 
           processingId = '[PomodoroSS03]';
@@ -168,7 +175,8 @@ class _PomodoroWidgetState extends State<PomodoroContentWidget> {
         }
 
         /// TODO: BreakTime SS04
-        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS04?.getStatus?.isActive() == true) {
+        if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS04?.getStatus?.isActive() == true &&
+            widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS04?.isCompletedPreparing() == true) {
           breakTimeProgressbarPomodoroSS04 = breakTimeProgressbar * ((widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getBreakTimeSS04?.getPercentComplete ?? 0) / 100);
 
           processingId = '[PomodoroSS04]';

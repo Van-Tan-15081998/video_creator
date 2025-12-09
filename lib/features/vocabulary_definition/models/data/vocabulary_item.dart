@@ -10,6 +10,7 @@ class VocabularyItem with ExecutionCore {
     required String? id,
     required double? totalMinutes,
     required VocabularyItem? currentVocabularyItem,
+    required List<VocabularyItem>? currentVocabularyItemStack,
     required this.onComplete,
   }) {
     setId(value: id, isPriorityOverride: true);
@@ -44,6 +45,21 @@ class VocabularyItem with ExecutionCore {
       _currentVocabularyItem = value;
     } else {
       _currentVocabularyItem ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  List<VocabularyItem>? _currentVocabularyItemStack;
+  List<VocabularyItem>? get getCurrentVocabularyItemStack => _currentVocabularyItemStack;
+  void setCurrentVocabularyItemStack({required List<VocabularyItem>? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentVocabularyItemStack = value;
+    } else {
+      _currentVocabularyItemStack ??= value;
     }
 
     return;
@@ -286,6 +302,7 @@ class VocabularyItem with ExecutionCore {
   /// -----
   void onStart() {
     getStatus?.setStatusActive();
+    getCurrentVocabularyItemStack?.add(this);
   }
 
   /// -----
@@ -700,15 +717,34 @@ class VocabularyItem with ExecutionCore {
               print('[onCompleted_PhaseSS04_AsExampleConversation]');
             }
 
-            setIsActive(value: false, isPriorityOverride: true);
+            getSequentialExecutionController?.getVocabularyConversationFeature?.onDeactivateWindow();
 
             onCompletedPhaseSS04AsExampleConversation?.call();
           }
 
+          /// -----
+          /// TODO: PhaseSS05
+          /// -----
+
           if (totalSeconds == 300) {
+            getSequentialExecutionController?.getVocabularyTitleFeature?.onDeactivateWindow();
+            getSequentialExecutionController?.getVocabularyListOverallFeature?.onActivateWindow();
+          }
+
+          if (totalSeconds == 301) {
+            ///
+          }
+
+          if (totalSeconds == 329) {
             /// TODO: Open Next Window
 
-            getSequentialExecutionController?.getVocabularyConversationFeature?.onDeactivatedWindow?.call();
+            getSequentialExecutionController?.getVocabularyListOverallFeature?.onDeactivateWindow();
+          }
+
+          if (totalSeconds == 330) {
+            /// TODO: Open Next Window
+
+            setIsActive(value: false, isPriorityOverride: true);
           }
         } else if ((getTotalRemainingSeconds ?? 0) == 0) {
           getStatus?.setStatusComplete();

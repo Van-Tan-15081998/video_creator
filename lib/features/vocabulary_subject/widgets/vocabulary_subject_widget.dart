@@ -111,7 +111,7 @@ class _VocabularySubjectWidgetState extends State<VocabularySubjectWidget> with 
       height: sizeDy,
 
       child: isAnimatedShow
-          ? BounceInDown(
+          ? FadeInDown(
               duration: const Duration(seconds: 1),
               animate: true,
               child: Container(

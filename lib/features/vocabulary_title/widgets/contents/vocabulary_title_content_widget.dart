@@ -172,7 +172,7 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
 
         AnimatedPositioned(
           top: 45.0,
-          right: 45.0,
+          right: 40.0,
           duration: const Duration(milliseconds: 100),
           child: isShowType
               ? FadeIn(

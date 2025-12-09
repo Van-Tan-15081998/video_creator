@@ -1,27 +1,46 @@
-import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
-import 'package:frame_creator_v2/core/window_feature.dart';
-import 'package:frame_creator_v2/features/pomodoro/models/data/pomodoro_time.dart';
-import 'package:frame_creator_v2/features/pomodoro/widgets/pomodoro_widget.dart';
-import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 
-class PomodoroFeature with ExecutionCore, WindowFeature {
-  PomodoroFeature({required SystemStateManagement? systemStateManagement, required double? sizeDx, required double? sizeDy}) {
-    setSystemStateManagement(value: systemStateManagement);
-    setSizeDx(value: sizeDx, isPriorityOverride: true);
-    setSizeDy(value: sizeDy, isPriorityOverride: true);
+class FlameAudioService with ExecutionCore {
+  ///
+  /// TODO:
+  ///
+  int? _seconds;
+  int get getSeconds => _seconds ?? 0;
+  void setSeconds({required int? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _seconds = value;
+    } else {
+      _seconds ??= value;
+    }
+
+    return;
   }
 
   /// -----
-  /// TODO:
+  /// TODO: Attach Root
   /// -----
-  PomodoroTime? _pomodoroTime;
-  PomodoroTime? get getPomodoroTime => _pomodoroTime;
-  void setPomodoroTime({required PomodoroTime? value, bool? isPriorityOverride}) {
+  String? _backgroundMusicSource;
+  String get getBackgroundMusicSource => _backgroundMusicSource ?? '';
+  void setBackgroundMusicSource({required String? value, bool? isPriorityOverride}) {
     if (isPriorityOverride == true) {
-      _pomodoroTime = value;
+      _backgroundMusicSource = value;
     } else {
-      _pomodoroTime ??= value;
+      _backgroundMusicSource ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO: Attach Root
+  /// -----
+  String? _currentBackgroundMusicSource;
+  String get getCurrentBackgroundMusicSource => _currentBackgroundMusicSource ?? '';
+  void setCurrentBackgroundMusicSource({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentBackgroundMusicSource = value;
+    } else {
+      _currentBackgroundMusicSource ??= value;
     }
 
     return;
@@ -61,8 +80,6 @@ class PomodoroFeature with ExecutionCore, WindowFeature {
       /// TODO:
       /// -----
 
-      getPomodoroTime?.getStayFocusedSS01?.onStart();
-      getPomodoroTime?.setCurrentPomodoroItem(value: getPomodoroTime?.getStayFocusedSS01, isPriorityOverride: true);
 
       /// -----
       /// TODO: Init Root For SubCom
@@ -87,25 +104,6 @@ class PomodoroFeature with ExecutionCore, WindowFeature {
       /// -----
       /// TODO:
       /// -----
-      setPomodoroTime(value: PomodoroTime(systemStateManagement: getSystemStateManagement));
-
-      /// -----
-      /// TODO:
-      /// -----
-      setWindowWidget(
-        value: LayoutBuilder(
-          builder: (context, constraints) {
-            return Stack(
-              alignment: AlignmentDirectional.center, //
-              children: [
-                // Text('PomodoroFeature'), //
-                PomodoroWidget(pomodoroFeature: this),
-              ],
-            );
-          },
-        ),
-        isPriorityOverride: true,
-      );
 
       /// -----
       /// TODO: Setup Root For SubCom
@@ -171,8 +169,6 @@ class PomodoroFeature with ExecutionCore, WindowFeature {
       /// -----
       /// TODO:
       /// -----
-
-      await getPomodoroTime?.onSetupRoot();
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onSetupRootForSubCom]');
     }
@@ -190,8 +186,6 @@ class PomodoroFeature with ExecutionCore, WindowFeature {
       /// -----
       /// TODO:
       /// -----
-
-      await getPomodoroTime?.onInitRoot();
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onInitRootForSubCom]');
     }

@@ -9,14 +9,18 @@ import 'package:frame_creator_v2/features/conversation/models/conversation_featu
 import 'package:frame_creator_v2/features/countdown_timer/models/countdown_timer_feature.dart';
 import 'package:frame_creator_v2/features/flame_world/models/flame_world_feature.dart';
 import 'package:frame_creator_v2/features/global_announcement/models/global_announcement_feature.dart';
+import 'package:frame_creator_v2/features/interesting_knowledge/models/interesting_knowledge_conversation_feature.dart';
 import 'package:frame_creator_v2/features/introduction/models/introduction_feature.dart';
 import 'package:frame_creator_v2/features/introductory_conversation/models/introductory_conversation_feature.dart';
 import 'package:frame_creator_v2/features/pomodoro/models/pomodoro_feature.dart';
+import 'package:frame_creator_v2/features/pomodoro_ending_conversation/models/pomodoro_ending_conversation_feature.dart';
+import 'package:frame_creator_v2/features/pomodoro_starting_conversation/models/pomodoro_starting_conversation_feature.dart';
 import 'package:frame_creator_v2/features/scene_transition/models/scene_transition_feature.dart';
 import 'package:frame_creator_v2/features/system_timeline/models/system_timeline_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_conversation/models/vocabulary_conversation_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/vocabulary_definition_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_english_definition/models/vocabulary_english_definition_feature.dart';
+import 'package:frame_creator_v2/features/vocabulary_list_overall/models/vocabulary_list_overall_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_paragraph/models/vocabulary_paragraph_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_list/models/vocabulary_list_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_scene_transition/models/vocabulary_scene_transition_feature.dart';
@@ -212,6 +216,18 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       getPomodoroFeature?.setBottomPosition(value: 15.0, isPriorityOverride: true, isSetActiveBottomPosition: true);
       getPomodoroFeature?.setRightPosition(value: 15.0, isPriorityOverride: true, isSetActiveRightPosition: true);
 
+      setPomodoroEndingConversationFeature(value: PomodoroEndingConversationFeature(systemStateManagement: getSystemStateManagement, sizeDx: null, sizeDy: null), isPriorityOverride: true);
+      getPomodoroEndingConversationFeature?.setSizeDx(value: getSizeDx * 0.6, isPriorityOverride: true, isSetActiveSizeDx: true);
+      getPomodoroEndingConversationFeature?.setSizeDy(value: getSizeDy * 1.0 - 30.0, isPriorityOverride: true, isSetActiveSizeDy: true);
+      getPomodoroEndingConversationFeature?.setTopPosition(value: 15.0, isPriorityOverride: true, isSetActiveTopPosition: true);
+      getPomodoroEndingConversationFeature?.setLeftPosition(value: 15.0, isPriorityOverride: true, isSetActiveLeftPosition: true);
+
+      setPomodoroStartingConversationFeature(value: PomodoroStartingConversationFeature(systemStateManagement: getSystemStateManagement, sizeDx: null, sizeDy: null), isPriorityOverride: true);
+      getPomodoroStartingConversationFeature?.setSizeDx(value: getSizeDx * 0.6, isPriorityOverride: true, isSetActiveSizeDx: true);
+      getPomodoroStartingConversationFeature?.setSizeDy(value: getSizeDy * 1.0 - 30.0, isPriorityOverride: true, isSetActiveSizeDy: true);
+      getPomodoroStartingConversationFeature?.setTopPosition(value: 15.0, isPriorityOverride: true, isSetActiveTopPosition: true);
+      getPomodoroStartingConversationFeature?.setLeftPosition(value: 15.0, isPriorityOverride: true, isSetActiveLeftPosition: true);
+
       setVocabularySubjectFeature(value: VocabularySubjectFeature(systemStateManagement: getSystemStateManagement, sizeDx: null, sizeDy: null), isPriorityOverride: true);
       getVocabularySubjectFeature?.setSizeDx(value: getSizeDx - (getSizeDx * 0.6 + 45), isPriorityOverride: true, isSetActiveSizeDx: true);
       getVocabularySubjectFeature?.setSizeDy(value: getSizeDy * 0.4, isPriorityOverride: true, isSetActiveSizeDy: true);
@@ -229,6 +245,12 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       getVocabularyListFeature?.setSizeDy(value: getSizeDy * 1.0 - (getSizeDy * 0.6 + 45.0), isPriorityOverride: true, isSetActiveSizeDy: true);
       getVocabularyListFeature?.setBottomPosition(value: 15.0, isPriorityOverride: true, isSetActiveBottomPosition: true);
       getVocabularyListFeature?.setLeftPosition(value: 15.0, isPriorityOverride: true, isSetActiveLeftPosition: true);
+
+      setVocabularyListOverallFeature(value: VocabularyListOverallFeature(systemStateManagement: getSystemStateManagement, sizeDx: null, sizeDy: null), isPriorityOverride: true);
+      getVocabularyListOverallFeature?.setSizeDx(value: getSizeDx * 0.6, isPriorityOverride: true, isSetActiveSizeDx: true);
+      getVocabularyListOverallFeature?.setSizeDy(value: getSizeDy * 1.0 - 30.0, isPriorityOverride: true, isSetActiveSizeDy: true);
+      getVocabularyListOverallFeature?.setBottomPosition(value: 15.0, isPriorityOverride: true, isSetActiveBottomPosition: true);
+      getVocabularyListOverallFeature?.setLeftPosition(value: 15.0, isPriorityOverride: true, isSetActiveLeftPosition: true);
 
       setVocabularyDefinitionFeature(
         value: VocabularyDefinitionFeature(systemStateManagement: getSystemStateManagement, sequentialExecutionController: this, sizeDx: null, sizeDy: null),
@@ -264,10 +286,16 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       getVocabularySceneTransitionFeature?.setLeftPosition(value: 15.0, isPriorityOverride: true, isSetActiveLeftPosition: true);
 
       setVocabularyTitleFeature(value: VocabularyTitleFeature(systemStateManagement: getSystemStateManagement, sizeDx: null, sizeDy: null), isPriorityOverride: true);
-      getVocabularyTitleFeature?.setSizeDx(value: getSizeDx * 0.6 - 30.0, isPriorityOverride: true, isSetActiveSizeDx: true);
-      getVocabularyTitleFeature?.setSizeDy(value: getSizeDy * 0.6 - 30.0, isPriorityOverride: true, isSetActiveSizeDy: true);
+      getVocabularyTitleFeature?.setSizeDx(value: getSizeDx * 0.6, isPriorityOverride: true, isSetActiveSizeDx: true);
+      getVocabularyTitleFeature?.setSizeDy(value: getSizeDy * 0.6, isPriorityOverride: true, isSetActiveSizeDy: true);
       getVocabularyTitleFeature?.setTopPosition(value: 15.0, isPriorityOverride: true, isSetActiveTopPosition: true);
       getVocabularyTitleFeature?.setLeftPosition(value: 15.0, isPriorityOverride: true, isSetActiveLeftPosition: true);
+
+      setInterestingKnowledgeConversationFeature(value: InterestingKnowledgeConversationFeature(systemStateManagement: getSystemStateManagement, sizeDx: null, sizeDy: null), isPriorityOverride: true);
+      getInterestingKnowledgeConversationFeature?.setSizeDx(value: getSizeDx * 0.6, isPriorityOverride: true, isSetActiveSizeDx: true);
+      getInterestingKnowledgeConversationFeature?.setSizeDy(value: getSizeDy * 1.0 - 30.0, isPriorityOverride: true, isSetActiveSizeDy: true);
+      getInterestingKnowledgeConversationFeature?.setTopPosition(value: 15.0, isPriorityOverride: true, isSetActiveTopPosition: true);
+      getInterestingKnowledgeConversationFeature?.setLeftPosition(value: 15.0, isPriorityOverride: true, isSetActiveLeftPosition: true);
 
       setGlobalAnnouncementFeature(value: GlobalAnnouncementFeature(systemStateManagement: getSystemStateManagement, sizeDx: null, sizeDy: null), isPriorityOverride: true);
       getGlobalAnnouncementFeature?.setSizeDx(value: getSizeDx * 1.0, isPriorityOverride: true, isSetActiveSizeDx: true);
@@ -317,11 +345,11 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
             return Stack(
               children: [
                 /// TODO: BlackboardFeature
-                AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getBackgroundImageFeature?.getWindowWidget ?? Container()),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getBackgroundImageFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: GlobalAnnouncementFeature
                 AnimatedPositioned(
-                  duration: const Duration(milliseconds: 100),
+                  duration: const Duration(milliseconds: 500),
                   top: 0,
                   left: 0,
                   width: getSizeDx,
@@ -333,14 +361,34 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getBlackboardFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: CountdownTimerFeature
-                AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getCountdownTimerFeature?.getWindowWidget ?? Container()),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getCountdownTimerFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: PomodoroFeature
-                AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getPomodoroFeature?.getWindowWidget ?? Container()),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getPomodoroFeature?.getWindowWidget ?? Container()),
+
+                /// TODO: PomodoroEndingConversationFeature
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 500),
+                  top: 0,
+                  left: 0,
+                  width: getSizeDx,
+                  height: getSizeDy,
+                  child: getPomodoroEndingConversationFeature?.getWindowWidget ?? Container(),
+                ),
+
+                /// TODO: PomodoroStartingConversationFeature
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 500),
+                  top: 0,
+                  left: 0,
+                  width: getSizeDx,
+                  height: getSizeDy,
+                  child: getPomodoroStartingConversationFeature?.getWindowWidget ?? Container(),
+                ),
 
                 /// TODO: VocabularySubjectFeature
                 AnimatedPositioned(
-                  duration: const Duration(milliseconds: 100),
+                  duration: const Duration(milliseconds: 500),
                   top: 0,
                   left: 0,
                   width: getSizeDx,
@@ -354,9 +402,12 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                 /// TODO: VocabularyListFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularyListFeature?.getWindowWidget ?? Container()),
 
+                /// TODO: VocabularyListOverallFeature
+                AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularyListOverallFeature?.getWindowWidget ?? Container()),
+
                 /// TODO: VocabularyDefinitionFeature
                 AnimatedPositioned(
-                  duration: const Duration(milliseconds: 100),
+                  duration: const Duration(milliseconds: 500),
                   top: 0,
                   left: 0,
                   width: getSizeDx,
@@ -366,7 +417,7 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
 
                 /// TODO: VocabularyEnglishDefinitionFeature
                 AnimatedPositioned(
-                  duration: const Duration(milliseconds: 100),
+                  duration: const Duration(milliseconds: 500),
                   top: 0,
                   left: 0,
                   width: getSizeDx,
@@ -376,7 +427,7 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
 
                 /// TODO: VocabularyConversationFeature
                 AnimatedPositioned(
-                  duration: const Duration(milliseconds: 100),
+                  duration: const Duration(milliseconds: 500),
                   top: 0,
                   left: 0,
                   width: getSizeDx,
@@ -386,7 +437,7 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
 
                 /// TODO: VocabularyParagraphFeature
                 AnimatedPositioned(
-                  duration: const Duration(milliseconds: 100),
+                  duration: const Duration(milliseconds: 500),
                   top: 0,
                   left: 0,
                   width: getSizeDx,
@@ -395,18 +446,13 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                 ),
 
                 /// TODO: VocabularyTitleFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 100),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getVocabularyTitleFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularyTitleFeature?.getWindowWidget ?? Container()),
 
+                /// TODO: InterestingKnowledgeConversationFeature
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getInterestingKnowledgeConversationFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: FlameWorldFeature
-                AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getFlameWorldFeature?.getWindowWidget ?? Container()),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getFlameWorldFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: SceneTransitionFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getSceneTransitionFeature?.getWindowWidget ?? Container()),
@@ -422,7 +468,7 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                 ),
 
                 /// TODO: SystemTimelineFeature
-                AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getSystemTimelineFeature?.getWindowWidget ?? Container()),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getSystemTimelineFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: BreakTimeSpaceFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getBreakTimeSpaceFeature?.getWindowWidget ?? Container()),
@@ -522,15 +568,19 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       await getBackgroundImageFeature?.onSetupRoot();
       await getCountdownTimerFeature?.onSetupRoot();
       await getPomodoroFeature?.onSetupRoot();
+      await getPomodoroEndingConversationFeature?.onSetupRoot();
+      await getPomodoroStartingConversationFeature?.onSetupRoot();
       await getVocabularySubjectFeature?.onSetupRoot();
       await getConversationFeature?.onSetupRoot();
       await getVocabularyListFeature?.onSetupRoot();
+      await getVocabularyListOverallFeature?.onSetupRoot();
       await getVocabularyDefinitionFeature?.onSetupRoot();
       await getVocabularyTitleFeature?.onSetupRoot();
       await getVocabularyEnglishDefinitionFeature?.onSetupRoot();
       await getVocabularyConversationFeature?.onSetupRoot();
       await getVocabularyParagraphFeature?.onSetupRoot();
       await getVocabularySceneTransitionFeature?.onSetupRoot();
+      await getInterestingKnowledgeConversationFeature?.onSetupRoot();
       await getGlobalAnnouncementFeature?.onSetupRoot();
       await getFlameWorldFeature?.onSetupRoot();
       await getSceneTransitionFeature?.onSetupRoot();
@@ -555,6 +605,12 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       getPomodoroFeature
         ?..setConditionActiveByBottomDirection()
         ..onDeactivateWindow();
+      getPomodoroEndingConversationFeature
+        ?..setConditionActiveByLeftDirection()
+        ..onDeactivateWindow();
+      getPomodoroStartingConversationFeature
+        ?..setConditionActiveByLeftDirection()
+        ..onDeactivateWindow();
       getVocabularySubjectFeature
         ?..setConditionActiveByTopDirection()
         ..onDeactivateWindow();
@@ -562,6 +618,9 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
         ?..setConditionActiveByLeftDirection()
         ..onDeactivateWindow();
       getVocabularyListFeature
+        ?..setConditionActiveByLeftDirection()
+        ..onDeactivateWindow();
+      getVocabularyListOverallFeature
         ?..setConditionActiveByLeftDirection()
         ..onDeactivateWindow();
       getVocabularyDefinitionFeature
@@ -581,6 +640,9 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
         ?..setConditionActiveByTopDirection()
         ..onDeactivateWindow();
       getVocabularySceneTransitionFeature
+        ?..setConditionActiveByLeftDirection()
+        ..onDeactivateWindow();
+      getInterestingKnowledgeConversationFeature
         ?..setConditionActiveByLeftDirection()
         ..onDeactivateWindow();
 
@@ -628,15 +690,19 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       await getBackgroundImageFeature?.onInitRoot();
       await getCountdownTimerFeature?.onInitRoot();
       await getPomodoroFeature?.onInitRoot();
+      await getPomodoroEndingConversationFeature?.onInitRoot();
+      await getPomodoroStartingConversationFeature?.onInitRoot();
       await getVocabularySubjectFeature?.onInitRoot();
       await getConversationFeature?.onInitRoot();
       await getVocabularyListFeature?.onInitRoot();
+      await getVocabularyListOverallFeature?.onInitRoot();
       await getVocabularyDefinitionFeature?.onInitRoot();
       await getVocabularyTitleFeature?.onInitRoot();
       await getVocabularyEnglishDefinitionFeature?.onInitRoot();
       await getVocabularyConversationFeature?.onInitRoot();
       await getVocabularyParagraphFeature?.onInitRoot();
       await getVocabularySceneTransitionFeature?.onInitRoot();
+      await getInterestingKnowledgeConversationFeature?.onInitRoot();
       await getGlobalAnnouncementFeature?.onInitRoot();
       await getFlameWorldFeature?.onInitRoot();
       await getSceneTransitionFeature?.onInitRoot();

@@ -11,6 +11,36 @@ class PomodoroTime with ExecutionCore {
   /// -----
   /// TODO:
   /// -----
+  List<VoidCallback?>? _completedCallbackFunctionStack;
+  List<VoidCallback?>? get getCompletedCallbackFunctionStack => _completedCallbackFunctionStack;
+  void setCompletedCallbackFunctionStack({required List<VoidCallback?>? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _completedCallbackFunctionStack = value;
+    } else {
+      _completedCallbackFunctionStack ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  PomodoroItem? _currentPomodoroItem;
+  PomodoroItem? get getCurrentPomodoroItem => _currentPomodoroItem;
+  void setCurrentPomodoroItem({required PomodoroItem? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentPomodoroItem = value;
+    } else {
+      _currentPomodoroItem ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
   PomodoroItem? _stayFocusedSS01;
   PomodoroItem? get getStayFocusedSS01 => _stayFocusedSS01;
   void setStayFocusedSS01({required PomodoroItem? value, bool? isPriorityOverride}) {
@@ -128,64 +158,97 @@ class PomodoroTime with ExecutionCore {
     return;
   }
 
-  void onUpdate() {
-    getStayFocusedSS01?.onUpdate();
-    getStayFocusedSS02?.onUpdate();
-    getStayFocusedSS03?.onUpdate();
-    getStayFocusedSS04?.onUpdate();
+  ///
+  /// TODO:
+  ///
+  bool? _isPaused;
+  bool? get getIsPaused => _isPaused ?? false;
+  void setIsPaused({required bool? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _isPaused = value;
+    } else {
+      _isPaused ??= value;
+    }
 
-    getBreakTimeSS01?.onUpdate();
-    getBreakTimeSS02?.onUpdate();
-    getBreakTimeSS03?.onUpdate();
-    getBreakTimeSS04?.onUpdate();
+    return;
+  }
+
+  void onUpdate() {
+    if (getIsPaused == false) {
+      getStayFocusedSS01?.onUpdate();
+      getStayFocusedSS02?.onUpdate();
+      getStayFocusedSS03?.onUpdate();
+      getStayFocusedSS04?.onUpdate();
+
+      getBreakTimeSS01?.onUpdate();
+      getBreakTimeSS02?.onUpdate();
+      getBreakTimeSS03?.onUpdate();
+      getBreakTimeSS04?.onUpdate();
+    }
   }
 
   void pause() {
-    getStayFocusedSS01?.pause();
-    getStayFocusedSS02?.pause();
-    getStayFocusedSS03?.pause();
-    getStayFocusedSS04?.pause();
+    setIsPaused(value: true, isPriorityOverride: true);
 
-    getBreakTimeSS01?.pause();
-    getBreakTimeSS02?.pause();
-    getBreakTimeSS03?.pause();
-    getBreakTimeSS04?.pause();
+    if (getIsPaused == true) {
+      getStayFocusedSS01?.pause();
+      getStayFocusedSS02?.pause();
+      getStayFocusedSS03?.pause();
+      getStayFocusedSS04?.pause();
+
+      getBreakTimeSS01?.pause();
+      getBreakTimeSS02?.pause();
+      getBreakTimeSS03?.pause();
+      getBreakTimeSS04?.pause();
+    }
   }
 
   void resume() {
-    getStayFocusedSS01?.resume();
-    getStayFocusedSS02?.resume();
-    getStayFocusedSS03?.resume();
-    getStayFocusedSS04?.resume();
+    setIsPaused(value: false, isPriorityOverride: true);
 
-    getBreakTimeSS01?.resume();
-    getBreakTimeSS02?.resume();
-    getBreakTimeSS03?.resume();
-    getBreakTimeSS04?.resume();
+    if (getIsPaused == false) {
+      getStayFocusedSS01?.resume();
+      getStayFocusedSS02?.resume();
+      getStayFocusedSS03?.resume();
+      getStayFocusedSS04?.resume();
+
+      getBreakTimeSS01?.resume();
+      getBreakTimeSS02?.resume();
+      getBreakTimeSS03?.resume();
+      getBreakTimeSS04?.resume();
+    }
   }
 
   void stop() {
-    getStayFocusedSS01?.stop();
-    getStayFocusedSS02?.stop();
-    getStayFocusedSS03?.stop();
-    getStayFocusedSS04?.stop();
+    setIsPaused(value: true, isPriorityOverride: true);
 
-    getBreakTimeSS01?.stop();
-    getBreakTimeSS02?.stop();
-    getBreakTimeSS03?.stop();
-    getBreakTimeSS04?.stop();
+    if (getIsPaused == true) {
+      getStayFocusedSS01?.stop();
+      getStayFocusedSS02?.stop();
+      getStayFocusedSS03?.stop();
+      getStayFocusedSS04?.stop();
+
+      getBreakTimeSS01?.stop();
+      getBreakTimeSS02?.stop();
+      getBreakTimeSS03?.stop();
+      getBreakTimeSS04?.stop();
+    }
   }
 
   void start() {
-    getStayFocusedSS01?.start();
-    getStayFocusedSS02?.start();
-    getStayFocusedSS03?.start();
-    getStayFocusedSS04?.start();
+    setIsPaused(value: false, isPriorityOverride: true);
 
-    getBreakTimeSS01?.start();
-    getBreakTimeSS02?.start();
-    getBreakTimeSS03?.start();
-    getBreakTimeSS04?.start();
+    if (getIsPaused == false) {
+      getStayFocusedSS01?.start();
+      getStayFocusedSS02?.start();
+      getStayFocusedSS03?.start();
+      getStayFocusedSS04?.start();
+
+      getBreakTimeSS01?.start();
+      getBreakTimeSS02?.start();
+      getBreakTimeSS03?.start();
+      getBreakTimeSS04?.start();
+    }
   }
 
   /// -----
@@ -246,17 +309,22 @@ class PomodoroTime with ExecutionCore {
       /// TODO:
       /// -----
 
+      setCompletedCallbackFunctionStack(value: [], isPriorityOverride: true);
+
       setStayFocusedSS01(
         value: PomodoroItem(
           id: '[POMODORO_STAY_FOCUSED_SS01]',
           totalMinutes: 30,
+          totalPrepareSeconds: 5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_STAY_FOCUSED_SS01');
             }
 
             getBreakTimeSS01?.onStart();
+            setCurrentPomodoroItem(value: getBreakTimeSS01, isPriorityOverride: true);
           },
+          completedCallbackFunctionStack: [],
         ),
         isPriorityOverride: true,
       );
@@ -264,13 +332,16 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_STAY_FOCUSED_SS02]',
           totalMinutes: 30,
+          totalPrepareSeconds: 5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_STAY_FOCUSED_SS02');
             }
 
             getBreakTimeSS02?.onStart();
+            setCurrentPomodoroItem(value: getBreakTimeSS02, isPriorityOverride: true);
           },
+          completedCallbackFunctionStack: [],
         ),
         isPriorityOverride: true,
       );
@@ -278,13 +349,16 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_STAY_FOCUSED_SS03]',
           totalMinutes: 30,
+          totalPrepareSeconds: 5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_STAY_FOCUSED_SS03');
             }
 
             getBreakTimeSS03?.onStart();
+            setCurrentPomodoroItem(value: getBreakTimeSS03, isPriorityOverride: true);
           },
+          completedCallbackFunctionStack: [],
         ),
         isPriorityOverride: true,
       );
@@ -292,13 +366,16 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_STAY_FOCUSED_SS04]',
           totalMinutes: 30,
+          totalPrepareSeconds: 5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_STAY_FOCUSED_SS04');
             }
 
             getBreakTimeSS04?.onStart();
+            setCurrentPomodoroItem(value: getBreakTimeSS04, isPriorityOverride: true);
           },
+          completedCallbackFunctionStack: [],
         ),
         isPriorityOverride: true,
       );
@@ -308,13 +385,16 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_BREAK_TIME_SS01]',
           totalMinutes: 5,
+          totalPrepareSeconds: 5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_BREAK_TIME_SS01');
             }
 
             getStayFocusedSS02?.onStart();
+            setCurrentPomodoroItem(value: getStayFocusedSS02, isPriorityOverride: true);
           },
+          completedCallbackFunctionStack: [],
         ),
         isPriorityOverride: true,
       );
@@ -322,13 +402,16 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_BREAK_TIME_SS02]',
           totalMinutes: 5,
+          totalPrepareSeconds: 5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_BREAK_TIME_SS02');
             }
 
             getStayFocusedSS03?.onStart();
+            setCurrentPomodoroItem(value: getStayFocusedSS03, isPriorityOverride: true);
           },
+          completedCallbackFunctionStack: [],
         ),
         isPriorityOverride: true,
       );
@@ -336,13 +419,16 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_BREAK_TIME_SS03]',
           totalMinutes: 5,
+          totalPrepareSeconds: 5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_BREAK_TIME_SS03');
             }
 
             getStayFocusedSS04?.onStart();
+            setCurrentPomodoroItem(value: getStayFocusedSS04, isPriorityOverride: true);
           },
+          completedCallbackFunctionStack: [],
         ),
         isPriorityOverride: true,
       );
@@ -350,14 +436,150 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_BREAK_TIME_SS04]',
           totalMinutes: 5,
+          totalPrepareSeconds: 5,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_BREAK_TIME_SS04');
             }
           },
+          completedCallbackFunctionStack: [],
         ),
         isPriorityOverride: true,
       );
+
+      ///
+      ///
+      ///
+      ///
+      ///
+
+      /// TODO:StayFocusedSS01
+      getStayFocusedSS01?.getCompletedCallbackFunctionStack?.add(() {
+        /// Dừng Chuyển Tiếp
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// TODO: End At: 01:00:00
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 1, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 0, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 0, isPriorityOverride: true);
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+        });
+      });
+
+      /// TODO: BreakTimeSS01
+      getBreakTimeSS01?.getCompletedCallbackFunctionStack?.add(() {
+        /// Dừng Chuyển Tiếp
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// TODO: End At: 02:00:00
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 2, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 0, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 0, isPriorityOverride: true);
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+        });
+      });
+
+      /// TODO:StayFocusedSS02
+      getStayFocusedSS02?.getCompletedCallbackFunctionStack?.add(() {
+        /// Dừng Chuyển Tiếp
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// TODO: End At: 03:00:00
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 3, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 0, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 0, isPriorityOverride: true);
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+        });
+      });
+
+      /// TODO: BreakTimeSS02
+      getBreakTimeSS02?.getCompletedCallbackFunctionStack?.add(() {
+        /// Dừng Chuyển Tiếp
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// TODO: End At: 04:00:00
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 4, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 0, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 0, isPriorityOverride: true);
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+        });
+      });
+
+      /// TODO:StayFocusedSS03
+      getStayFocusedSS03?.getCompletedCallbackFunctionStack?.add(() {
+        /// Dừng Chuyển Tiếp
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// TODO: End At: 05:00:00
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 5, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 0, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 0, isPriorityOverride: true);
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+        });
+      });
+
+      /// TODO: BreakTimeSS03
+      getBreakTimeSS03?.getCompletedCallbackFunctionStack?.add(() {
+        /// Dừng Chuyển Tiếp
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// TODO: End At: 06:00:00
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 6, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 0, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 0, isPriorityOverride: true);
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+        });
+      });
+
+      /// TODO:StayFocusedSS04
+      getStayFocusedSS04?.getCompletedCallbackFunctionStack?.add(() {
+        /// Dừng Chuyển Tiếp
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// TODO: End At: 07:00:00
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 7, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 0, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 0, isPriorityOverride: true);
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+        });
+      });
+
+      /// TODO: BreakTimeSS04
+      getBreakTimeSS04?.getCompletedCallbackFunctionStack?.add(() {
+        /// Dừng Chuyển Tiếp
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// TODO: End At: 08:00:00
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 8, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 0, isPriorityOverride: true);
+        getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 0, isPriorityOverride: true);
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+        });
+      });
 
       /// -----
       /// TODO: Setup Root For SubCom

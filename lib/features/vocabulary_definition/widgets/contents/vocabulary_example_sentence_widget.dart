@@ -174,7 +174,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                               height: widget.sizeDy * 0.15,
                               child: Container(
                                 // width: widget.sizeDx * 0.65,
-                                height: widget.sizeDy * 0.15,
+                                height: widget.sizeDy * 0.16,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   border: Border.all(width: 8.0, color: Colors.black),
@@ -197,7 +197,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                                             TextSpan(
                                               text: _currentVocabularyExampleSentence?.getVieSentence ?? '',
 
-                                              style: GoogleFonts.sansitaSwashed(color: Color(0xFF1C1C1C), fontWeight: FontWeight.bold, fontSize: 42.0), // ok
+                                              style: GoogleFonts.sansitaSwashed(color: Color(0xFF1C1C1C), fontWeight: FontWeight.bold, fontSize: 40.0), // ok
                                             ),
                                           ],
                                         ),
@@ -306,7 +306,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                               height: widget.sizeDy * 0.15,
                               child: Container(
                                 // width: widget.sizeDx * 0.65,
-                                height: widget.sizeDy * 0.15,
+                                height: widget.sizeDy * 0.16,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   border: Border.all(width: 8.0, color: Colors.black),
@@ -329,7 +329,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                                             TextSpan(
                                               text: _currentVocabularyExampleSentence?.getVieSentence ?? '',
 
-                                              style: GoogleFonts.sansitaSwashed(color: Color(0xFF1C1C1C), fontWeight: FontWeight.bold, fontSize: 42.0), // ok
+                                              style: GoogleFonts.sansitaSwashed(color: Color(0xFF1C1C1C), fontWeight: FontWeight.bold, fontSize: 40.0), // ok
                                             ),
                                           ],
                                         ),

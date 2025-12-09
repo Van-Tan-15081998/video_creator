@@ -75,6 +75,8 @@ flutter:
   - assets/images/sprite_sheet/11B/
   - assets/images/sprite_sheet/24A/
   - assets/images/sprite_sheet/20A/
+  - assets/audio/bgm/
+  - assets/audio/sfx/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

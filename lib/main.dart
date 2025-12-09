@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/screens/main_screen/main_screen.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
@@ -10,6 +11,7 @@ import 'package:window_size/window_size.dart';
 main() async {
   // ✅ Khởi tạo binding trước khi gọi bất kỳ hàm nào khác
   WidgetsFlutterBinding.ensureInitialized();
+  await FlameAudio.bgm.initialize();
 
   // Kích thước bạn muốn cố định
   // double windowWidth = 2560;
@@ -110,14 +112,44 @@ class _MyAppState extends State<MyApp> {
       await getSequentialExecutionController?.start();
 
       ///
-      _timerSeconds = Timer.periodic(const Duration(seconds: 1), (timer) {
+      // _timerSeconds = Timer.periodic(const Duration(seconds: 1), (timer) {
+      _timerSeconds = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
         getSequentialExecutionController?.updateSeconds();
       });
 
       _timerMilliseconds = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
         getSequentialExecutionController?.updateMilliSeconds();
       });
+
+
+      /// TEST ÂM THANH
+      await FlameAudio.audioCache.load('bgm/jazz-background-music.mp3');
+      // FlameAudio.play('bgm/jazz-background-music.mp3');
+
+      final player = FlameAudio.bgm.audioPlayer;
+      FlameAudio.bgm.play('bgm/jazz-background-music.mp3');
+
+      fadeOutBGM(duration: 5);
     });
+  }
+
+  /// Giảm Âm Lượng Âm Thanh Trước Khi Tắt Hẳn
+  Future<void> fadeOutBGM({double duration = 1.5}) async {
+    final player = FlameAudio.bgm.audioPlayer;
+
+    double current = 1; // Volume hiện tại
+    const int stepCount = 30;                  // số bước giảm
+    final double step = current / stepCount;
+    final int delay = (duration * 1000 ~/ stepCount);
+
+    for (int i = 0; i < stepCount; i++) {
+      current -= step;
+      if (current < 0) current = 0;
+      await player.setVolume(current);
+      await Future.delayed(Duration(milliseconds: delay));
+    }
+
+    await FlameAudio.bgm.stop(); // dừng hẳn
   }
 
   @override

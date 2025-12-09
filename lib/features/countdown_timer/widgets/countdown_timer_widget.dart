@@ -123,7 +123,7 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget> with Simple
       height: sizeDy,
 
       child: isAnimatedShow
-          ? BounceInRight(
+          ? FadeInRight(
               duration: const Duration(seconds: 1),
               animate: true,
               child: Container(

@@ -163,6 +163,33 @@ class BasicTimeline with ExecutionCore {
     return false;
   }
 
+  ///
+  /// TODO:
+  ///
+  bool? _isMoveToNextExecution;
+  bool? get getIsMoveToNextExecution => _isMoveToNextExecution;
+  void setIsMoveToNextExecution({required bool? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _isMoveToNextExecution = value;
+    } else {
+      _isMoveToNextExecution ??= value;
+    }
+
+    return;
+  }
+
+  void moveToNextExecution() {
+    setIsMoveToNextExecution(value: true, isPriorityOverride: true);
+  }
+
+  bool isMoveToNextExecution() {
+    if (getIsMoveToNextExecution == true) {
+      return true;
+    }
+
+    return false;
+  }
+
   void start() {
     if (getIsPaused == true) {
       setIsPaused(value: false, isPriorityOverride: true);
