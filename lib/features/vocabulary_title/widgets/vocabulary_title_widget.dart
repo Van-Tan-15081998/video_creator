@@ -2,8 +2,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/core/simple_position_size.dart';
-import 'package:frame_creator_v2/features/scene_transition/models/scene_transition_feature.dart';
-import 'package:frame_creator_v2/features/scene_transition/widgets/contents/scene_transition_content_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_title/models/vocabulary_title_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_title/widgets/contents/vocabulary_title_content_widget.dart';
 
@@ -11,7 +9,6 @@ class VocabularyTitleWidget extends StatefulWidget {
   const VocabularyTitleWidget({super.key, required this.vocabularyTitleFeature});
 
   final VocabularyTitleFeature? vocabularyTitleFeature;
-
 
   @override
   State<VocabularyTitleWidget> createState() => _VocabularyTitleWidgetState();
@@ -72,10 +69,31 @@ class _VocabularyTitleWidgetState extends State<VocabularyTitleWidget> with Simp
         isUpdate = true;
       }
 
-      if (isUpdate == true) {
-        setState(() {
-          isUpdate = false;
-        });
+      /// -----
+      /// TODO: Check Update Activate Window
+      /// -----
+      if (widget.vocabularyTitleFeature?.checkConditionActiveByDirection() == true) {
+        ///
+        if (isActivatedWindow == false) {
+          setState(() {
+            isActivatedWindow = true;
+          });
+        }
+      } else if (widget.vocabularyTitleFeature?.checkConditionActiveByDirection() == false) {
+        ///
+        if (isActivatedWindow == true && isAnimatedShow == true && isMarkedUnactivatedWindow == false) {
+          setState(() {
+            isMarkedUnactivatedWindow = true;
+          });
+
+          Future.delayed(Duration(seconds: 2), () {
+            setState(() {
+              isActivatedWindow = false;
+              isAnimatedShow = false;
+              isMarkedUnactivatedWindow = false;
+            });
+          });
+        }
       }
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -83,12 +101,6 @@ class _VocabularyTitleWidgetState extends State<VocabularyTitleWidget> with Simp
           setState(() {
             isAnimatedShow = true;
           });
-        }
-
-        if (isAnimatedShow == true) {
-          if (widget.vocabularyTitleFeature?.checkConditionActiveByDirection() == false) {
-            isAnimatedShow = false;
-          }
         }
       });
     });
@@ -121,7 +133,7 @@ class _VocabularyTitleWidgetState extends State<VocabularyTitleWidget> with Simp
                 width: sizeDx,
                 height: sizeDy,
                 decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0)),
-                child: Stack(children: [_vocabularyTitleContentWidget ?? Container()]),
+                child: Stack(children: [isActivatedWindow ? _vocabularyTitleContentWidget ?? Container() : Container()]),
               ),
             )
           : Container(),

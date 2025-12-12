@@ -69,10 +69,31 @@ class _VocabularySceneTransitionWidgetState extends State<VocabularySceneTransit
         isUpdate = true;
       }
 
-      if (isUpdate == true) {
-        setState(() {
-          isUpdate = false;
-        });
+      /// -----
+      /// TODO: Check Update Activate Window
+      /// -----
+      if (widget.vocabularySceneTransitionFeature?.checkConditionActiveByDirection() == true) {
+        ///
+        if (isActivatedWindow == false) {
+          setState(() {
+            isActivatedWindow = true;
+          });
+        }
+      } else if (widget.vocabularySceneTransitionFeature?.checkConditionActiveByDirection() == false) {
+        ///
+        if (isActivatedWindow == true && isAnimatedShow == true && isMarkedUnactivatedWindow == false) {
+          setState(() {
+            isMarkedUnactivatedWindow = true;
+          });
+
+          Future.delayed(Duration(seconds: 2), () {
+            setState(() {
+              isActivatedWindow = false;
+              isAnimatedShow = false;
+              isMarkedUnactivatedWindow = false;
+            });
+          });
+        }
       }
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -80,12 +101,6 @@ class _VocabularySceneTransitionWidgetState extends State<VocabularySceneTransit
           setState(() {
             isAnimatedShow = true;
           });
-        }
-
-        if (isAnimatedShow == true) {
-          if (widget.vocabularySceneTransitionFeature?.checkConditionActiveByDirection() == false) {
-            isAnimatedShow = false;
-          }
         }
       });
     });
@@ -111,14 +126,13 @@ class _VocabularySceneTransitionWidgetState extends State<VocabularySceneTransit
       height: sizeDy,
 
       child: isAnimatedShow
-          ? FadeInDown(
-              duration: const Duration(seconds: 1),
+          ? FadeInLeft(
               animate: true,
               child: Container(
                 width: sizeDx,
                 height: sizeDy,
                 decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0)),
-                child: Stack(children: [_vocabularySceneTransitionContentWidget ?? Container()]),
+                child: Stack(children: [isActivatedWindow ? _vocabularySceneTransitionContentWidget ?? Container() : Container()]),
               ),
             )
           : Container(),

@@ -91,17 +91,7 @@ class _BlockData {
   Color color;
   double age;
 
-  _BlockData({
-    required this.birthTime,
-    required this.lifeSpan,
-    required this.x,
-    required this.y,
-    required this.dx,
-    required this.dy,
-    required this.size,
-    required this.color,
-    required this.age,
-  });
+  _BlockData({required this.birthTime, required this.lifeSpan, required this.x, required this.y, required this.dx, required this.dy, required this.size, required this.color, required this.age});
 }
 
 class _BlocksPainter extends CustomPainter {

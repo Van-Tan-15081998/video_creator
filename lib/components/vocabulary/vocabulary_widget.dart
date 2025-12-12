@@ -990,7 +990,6 @@ class _VocabularyWidgetState extends State<VocabularyWidget> {
               child: Stack(
                 alignment: AlignmentDirectional.center,
                 children: [
-
                   AnimatedPositioned(
                     duration: const Duration(milliseconds: 100),
                     top: 0,
@@ -1010,7 +1009,7 @@ class _VocabularyWidgetState extends State<VocabularyWidget> {
                           children: [
                             Text.rich(
                               TextSpan(
-                                style: TextStyle(fontSize: 20, height: 1.8,),
+                                style: TextStyle(fontSize: 20, height: 1.8),
                                 children: [
                                   // TextSpan(
                                   //   text: 'enjoy ',

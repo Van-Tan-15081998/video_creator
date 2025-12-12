@@ -5,6 +5,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/animation_components/active_container/active_container_widget.dart';
+import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:frame_creator_v2/features/introduction/widgets/contents/pomodoro/pomodoro_introduction_content_widget.dart';
 import 'package:frame_creator_v2/features/introduction/widgets/contents/vocabulary/vocabulary_introduction_content_widget.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
@@ -55,29 +56,31 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Timer.periodic(Duration(seconds: 1), (timer) {
-        if (isCompleted == false) {
-          isCompleted = true;
+        if (widget.systemStateManagement?.getIntroductionFeature?.checkConditionActiveByDirection() == true) {
+          if (isCompleted == false) {
+            isCompleted = true;
 
-          setState(() {
-            leftPositionLayerA01 = -2100.0 - 200.0;
-            leftPositionLayerA02 = -1800.0 - 400.0;
-            leftPositionLayerA03 = -950.0 - 1000.0;
+            setState(() {
+              leftPositionLayerA01 = -2100.0 - 200.0;
+              leftPositionLayerA02 = -1800.0 - 400.0;
+              leftPositionLayerA03 = -950.0 - 1000.0;
 
-            rightPositionLayerB01 = -2100.0 - 400.0;
-            rightPositionLayerB02 = -1800.0 - 600.0;
-            rightPositionLayerB03 = -950.0 - 1300.0;
+              rightPositionLayerB01 = -2100.0 - 400.0;
+              rightPositionLayerB02 = -1800.0 - 600.0;
+              rightPositionLayerB03 = -950.0 - 1300.0;
 
-            Future.delayed(Duration(seconds: 1), () {
-              if (mounted) {
-                setState(() {
-                  isShowVocabularyIntroductionContent = true;
-                  isShowPomodoroIntroductionContent = false;
-                });
-              }
+              Future.delayed(Duration(seconds: 1), () {
+                if (mounted) {
+                  setState(() {
+                    isShowVocabularyIntroductionContent = true;
+                    isShowPomodoroIntroductionContent = false;
+                  });
+                }
+              });
+
+              // return;
             });
-
-            // return;
-          });
+          }
         }
       });
     });
@@ -156,7 +159,7 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                                       // widget.onComplete?.call();
 
                                       if (widget.systemStateManagement?.getIntroductionFeature?.checkConditionActiveByDirection() == true) {
-                                        widget.systemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+                                        widget.systemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: 'IntroductionContentWidget');
                                       }
                                     }
                                   });
@@ -238,8 +241,8 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
 
           AnimatedPositioned(
             duration: const Duration(milliseconds: 300),
-            top: isShowVocabularyIntroductionContent ? 115.0 : 100.0,
-            left: isShowVocabularyIntroductionContent ? 315.0 : 300.0,
+            top: isShowVocabularyIntroductionContent ? 110.0 : 100.0,
+            left: isShowVocabularyIntroductionContent ? 310.0 : 300.0,
             width: 1000.0,
             height: 180.0,
             child: AnimatedContainer(
@@ -247,12 +250,8 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
               width: 1000.0,
               height: 180.0,
               decoration: BoxDecoration(
-                color: isShowVocabularyIntroductionContent ? Color(0xFFF0FFFF).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0), bottomRight: Radius.circular(5.0), bottomLeft: Radius.circular(5.0)),
-              ),
-              child: Stack(
-                alignment: AlignmentDirectional.centerEnd,
-                children: [mainTitleWidget(title: 'Topic', width: 1000.0, height: 180.0)],
+                color: isShowVocabularyIntroductionContent ? Color(0xFF00BFFF).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(2.0), topRight: Radius.circular(2.0), bottomRight: Radius.circular(2.0), bottomLeft: Radius.circular(2.0)),
               ),
             ),
           ),
@@ -269,7 +268,7 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
               decoration: BoxDecoration(
                 color: isShowVocabularyIntroductionContent ? Color(0xFFFF4040).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0), bottomRight: Radius.circular(5.0), bottomLeft: Radius.circular(5.0)),
-                border: Border.all(width: 15.0, color: Color(0xFF2C2C2C)),
+                border: Border.all(width: 20.0, color: Color(0xFF2C2C2C)),
                 boxShadow: [
                   // BoxShadow(
                   //   color: isShowVocabularyIntroductionContent ? Color(0xFFFFFFFF).withValues(alpha: 1.0) : Color(0xFF2C2C2C).withValues(alpha: 1),
@@ -278,18 +277,23 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                   //   offset: Offset(3, 3),
                   // ),
                 ],
+                image: DecorationImage(image: AssetImage('assets/images/background/background_06.jpg'), fit: BoxFit.fitWidth),
               ),
               child: Stack(
                 alignment: AlignmentDirectional.centerEnd,
-                children: [mainTitleWidget(title: 'Topic', width: 1000.0, height: 180.0)],
+                children: [
+                  isShowVocabularyIntroductionContent
+                      ? mainTitleWidget(title: 'Topic', titleColor: Color(0xFFFFFFFF), width: 1000.0, height: 180.0)
+                      : mainTitleWidget(title: 'Topic', titleColor: Color(0xFF3C3C3C), width: 1000.0, height: 180.0),
+                ],
               ),
             ),
           ),
 
           AnimatedPositioned(
             duration: const Duration(milliseconds: 300),
-            top: isShowPomodoroIntroductionContent ? 345.0 : 330.0,
-            left: isShowPomodoroIntroductionContent ? 165.0 : 150.0,
+            top: isShowPomodoroIntroductionContent ? 340.0 : 330.0,
+            left: isShowPomodoroIntroductionContent ? 160.0 : 150.0,
             width: 1000.0,
             height: 180.0,
             child: AnimatedContainer(
@@ -297,8 +301,8 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
               width: 1000.0,
               height: 180.0,
               decoration: BoxDecoration(
-                color: isShowPomodoroIntroductionContent ? Color(0xFFF0FFFF).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0), bottomRight: Radius.circular(5.0), bottomLeft: Radius.circular(5.0)),
+                color: isShowPomodoroIntroductionContent ? Color(0xFF00BFFF).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(2.0), topRight: Radius.circular(2.0), bottomRight: Radius.circular(2.0), bottomLeft: Radius.circular(2.0)),
               ),
             ),
           ),
@@ -315,7 +319,7 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
               decoration: BoxDecoration(
                 color: isShowPomodoroIntroductionContent ? Color(0xFFFF4040).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0), bottomRight: Radius.circular(5.0), bottomLeft: Radius.circular(5.0)),
-                border: Border.all(width: 15.0, color: Color(0xFF2C2C2C)),
+                border: Border.all(width: 20.0, color: Color(0xFF2C2C2C)),
                 boxShadow: [
                   // BoxShadow(
                   //   color: isShowPomodoroIntroductionContent ? Color(0xFFFFFFFF).withValues(alpha: 1.0) : Color(0xFF2C2C2C).withValues(alpha: 1),
@@ -324,10 +328,15 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                   //   offset: Offset(3, 3),
                   // ),
                 ],
+                image: DecorationImage(image: AssetImage('assets/images/background/background_06.jpg'), fit: BoxFit.fitWidth),
               ),
               child: Stack(
                 alignment: AlignmentDirectional.centerEnd,
-                children: [mainTitleWidget(title: 'Pomodoro', width: 1000.0, height: 180.0)],
+                children: [
+                  isShowPomodoroIntroductionContent
+                      ? mainTitleWidget(title: 'Pomodoro', titleColor: Color(0xFFFFFFFF), width: 1000.0, height: 180.0)
+                      : mainTitleWidget(title: 'Pomodoro', titleColor: Color(0xFF3C3C3C), width: 1000.0, height: 180.0),
+                ],
               ),
             ),
           ),
@@ -517,10 +526,29 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                             width: 1500.0,
                             height: 5000.0,
                             decoration: BoxDecoration(
-                              color: Color(0xFFFF7F24).withValues(alpha: 1.0),
+                              color: Color(0xFFFFFFFF).withValues(alpha: 1.0),
                               borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
                               border: Border.all(width: 15.0, color: Colors.black),
                               boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.8), blurRadius: 15.0, spreadRadius: 1.0, offset: Offset(0, 0))],
+                            ),
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  top: 0,
+                                  right: 0,
+                                  width: 3000.0,
+                                  height: 1500.0,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(30.0),
+                                      topRight: Radius.circular(15.0),
+                                      bottomRight: Radius.circular(15.0),
+                                      bottomLeft: Radius.circular(30.0),
+                                    ),
+                                    child: TransparentEffectWallWidget(sizeDx: 3000.0, sizeDy: 1500.0),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -599,10 +627,29 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                             width: 1500.0,
                             height: 5000.0,
                             decoration: BoxDecoration(
-                              color: Color(0xFFFF7F24).withValues(alpha: 1.0),
+                              color: Color(0xFFFFFFFF).withValues(alpha: 1.0),
                               borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
                               border: Border.all(width: 15.0, color: Colors.black),
                               boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 15.0, spreadRadius: 1.0, offset: Offset(0, 0))],
+                            ),
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  bottom: 0,
+                                  left: 0,
+                                  width: 3000.0,
+                                  height: 1500.0,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(30.0),
+                                      topRight: Radius.circular(15.0),
+                                      bottomRight: Radius.circular(15.0),
+                                      bottomLeft: Radius.circular(30.0),
+                                    ),
+                                    child: TransparentEffectWallWidget(sizeDx: 3000.0, sizeDy: 1500.0),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -628,31 +675,35 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
               ),
             ),
           ),
-          Positioned(
-            left: 0,
-            bottom: 10.0,
-            width: 650.0,
-            height: 120.0,
-            child: Container(
-              width: 650.0,
-              height: 120.0,
-              decoration: BoxDecoration(color: Color(0xFF000000).withValues(alpha: 0.8), borderRadius: BorderRadius.circular(0)),
-            ),
-          ),
 
+          // Positioned(
+          //   left: 0,
+          //   bottom: 10.0,
+          //   width: 650.0,
+          //   height: 120.0,
+          //   child: Container(
+          //     width: 650.0,
+          //     height: 120.0,
+          //     decoration: BoxDecoration(color: Color(0xFF000000).withValues(alpha: 0.8), borderRadius: BorderRadius.circular(0)),
+          //   ),
+          // ),
           AnimatedPositioned(
             duration: const Duration(milliseconds: 100),
-            left: 35.0,
+            left: 15.0,
             bottom: 15.0,
-            height: 120.0,
+            height: 100.0,
             child: Container(
-              width: widget.sizeDx,
-              height: 120.0,
-              decoration: BoxDecoration(),
+              width: 500.0,
+              height: 100.0,
+              decoration: BoxDecoration(
+                color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+                border: Border.all(width: 8.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(0), topRight: Radius.circular(30), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(15)),
+              ),
 
               child: Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Flexible(
                     child: Container(
@@ -668,14 +719,14 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                                     'Introduction',
                                     style: GoogleFonts.poetsenOne(
                                       textStyle: TextStyle(
-                                        fontSize: 40.0,
-                                        fontWeight: FontWeight.bold,
+                                        fontSize: 35.0,
+                                        fontWeight: FontWeight.w600,
                                         fontStyle: FontStyle.normal,
                                         foreground: Paint()
                                           ..style = PaintingStyle.stroke
-                                          ..strokeWidth = 10.0
+                                          ..strokeWidth = 2.0
                                           ..color = Color(0xFF000000), // Màu viền
-                                        letterSpacing: 10.0,
+                                        letterSpacing: 5.0,
                                       ),
                                     ),
                                     textAlign: TextAlign.center,
@@ -694,7 +745,7 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                                   child: Text(
                                     'Introduction',
                                     style: GoogleFonts.poetsenOne(
-                                      textStyle: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal, color: Color(0xFFFFFFFF), letterSpacing: 10.0),
+                                      textStyle: TextStyle(fontSize: 35.0, fontWeight: FontWeight.w600, fontStyle: FontStyle.normal, color: Color(0xFFFFFFFF), letterSpacing: 5.0),
                                     ),
                                     textAlign: TextAlign.center,
                                     overflow: TextOverflow.ellipsis,
@@ -792,7 +843,7 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
     );
   }
 
-  Widget mainTitleWidget({required String title, required double width, required double height}) {
+  Widget mainTitleWidget({required String title, required Color titleColor, required double width, required double height}) {
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 100),
       left: 0,
@@ -847,7 +898,7 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                             child: Text(
                               title,
                               style: GoogleFonts.titanOne(
-                                textStyle: TextStyle(fontSize: 60.0, fontWeight: FontWeight.w500, fontStyle: FontStyle.normal, color: Color(0xFFFFFFFF), letterSpacing: 7.0),
+                                textStyle: TextStyle(fontSize: 60.0, fontWeight: FontWeight.w500, fontStyle: FontStyle.normal, color: titleColor, letterSpacing: 7.0),
                               ),
                               textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,

@@ -14,7 +14,6 @@ class ExampleSentenceWidget extends StatefulWidget {
 }
 
 class _ExampleSentenceWidgetState extends State<ExampleSentenceWidget> {
-
   Timer? _timer;
 
   int totalMinutes = 1;
@@ -27,7 +26,6 @@ class _ExampleSentenceWidgetState extends State<ExampleSentenceWidget> {
   int up = 100;
   double down = 0.01;
 
-
   @override
   void initState() {
     super.initState();
@@ -39,22 +37,16 @@ class _ExampleSentenceWidgetState extends State<ExampleSentenceWidget> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-
         if (totalSeconds > 0) {
           totalSeconds -= 1;
 
           limitedTimeProgressbar = (limitedTimeProgressbarLength / (60 * totalMinutes)) * totalSeconds;
 
-          setState(() {
-
-          });
+          setState(() {});
         } else {
           totalSeconds = 60 * totalMinutes;
         }
-
       });
-
-
     });
   }
 

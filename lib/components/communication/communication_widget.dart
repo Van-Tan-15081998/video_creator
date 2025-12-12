@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/components/communication/animated_conservation_title.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class CommunicationWidget extends StatefulWidget {
   const CommunicationWidget({super.key, required this.sizeDx, required this.sizeDy});
 
@@ -82,12 +81,15 @@ class _CommunicationWidgetState extends State<CommunicationWidget> {
           counterMessage++;
 
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+            if (_scrollController.hasClients) {
+              _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+            }
           });
         }
       });
-
-      _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+      if (_scrollController.hasClients) {
+        _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+      }
     });
   }
 
@@ -613,6 +615,7 @@ class _CommunicationWidgetState extends State<CommunicationWidget> {
                 borderRadius: isRightSide
                     ? BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(45.0))
                     : BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0), bottomRight: Radius.circular(45.0), bottomLeft: Radius.circular(0)),
+                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 8.0, spreadRadius: 1.0, offset: Offset(0, 0))],
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

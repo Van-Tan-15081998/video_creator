@@ -680,11 +680,7 @@ class _PomodoroWidgetState extends State<PomodoroWidget0> {
             duration: const Duration(milliseconds: 100),
             width: widget.sizeDx - 20.0,
             height: widget.sizeDy * 0.20,
-            child: TotalElapsedTime0(
-              systemStateManagement: widget.systemStateManagement,
-              sizeDx: widget.sizeDx - 20.0,
-              sizeDy: widget.sizeDy * 0.15,
-            ),
+            child: TotalElapsedTime0(systemStateManagement: widget.systemStateManagement, sizeDx: widget.sizeDx - 20.0, sizeDy: widget.sizeDy * 0.15),
           ),
 
           // AnimatedPositioned(

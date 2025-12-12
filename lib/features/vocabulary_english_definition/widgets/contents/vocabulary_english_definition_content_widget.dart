@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_english_definition/widgets/contents/vocabulary_english_main_information_widget.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 
@@ -39,10 +38,10 @@ class _VocabularyEnglishDefinitionContentWidgetState extends State<VocabularyEng
       child: Stack(
         alignment: AlignmentDirectional.center,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-            child: TransparentEffectWallWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
-          ),
+          // ClipRRect(
+          //   borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+          //   child: TransparentEffectWallWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
+          // ),
 
           VocabularyEnglishMainInformationWidget(systemStateManagement: widget.systemStateManagement, sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
 

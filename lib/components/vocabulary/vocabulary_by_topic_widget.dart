@@ -1960,6 +1960,7 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                                     wordItem(word: 'happy', isActive: false),
                                     //
                                     wordItem(word: 'blissful', isActive: false),
+
                                     //
                                     // wordItem(word: 'satisfied'),
                                     // wordItem(word: 'glad'),
@@ -1972,7 +1973,6 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
                                     // wordItem(word: 'self-satisfied', isActive: false),
                                     // wordItem(word: 'self-satisfied'),
                                     // wordItem(word: 'self-satisfied'),
-
                                     wordItem(word: 'unbelievable', isActive: true),
                                   ],
                                 ),
@@ -2019,7 +2019,6 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
         child: Stack(
           alignment: AlignmentDirectional.center,
           children: [
-
             Container(
               margin: EdgeInsets.symmetric(horizontal: 5, vertical: 3.0),
               decoration: BoxDecoration(
@@ -2030,28 +2029,34 @@ class _VocabularyByTopicWidgetState extends State<VocabularyByTopicWidget> {
 
               child: Stack(
                 children: [
-
                   Positioned(
                     top: -1.0,
                     left: -1.0,
-                    height: 100.0, width: 500.0,
+                    height: 100.0,
+                    width: 500.0,
                     child: Container(height: 25.0, width: 500.0, decoration: BoxDecoration(color: Color(0xFFFFFF00))),
                   ),
 
                   Positioned(
                     bottom: -1.0,
                     left: -1.0,
-                    height: 25.0, width: 500.0,
+                    height: 25.0,
+                    width: 500.0,
                     child: Container(height: 25.0, width: 500.0, decoration: BoxDecoration(color: Color(0xFF1C1C1C))),
                   ),
 
-                  isActive ? Positioned(
-                    top: -1.0,
-                    left: -1.0,
-                    child: Container(height: 35.0, width: 500.0, decoration: BoxDecoration(color: Colors.transparent),
-                      child: ActiveContainerWidget(),
-                    ),
-                  ) : Text(''),
+                  isActive
+                      ? Positioned(
+                          top: -1.0,
+                          left: -1.0,
+                          child: Container(
+                            height: 35.0,
+                            width: 500.0,
+                            decoration: BoxDecoration(color: Colors.transparent),
+                            child: ActiveContainerWidget(),
+                          ),
+                        )
+                      : Text(''),
 
                   Positioned(
                     child: Padding(

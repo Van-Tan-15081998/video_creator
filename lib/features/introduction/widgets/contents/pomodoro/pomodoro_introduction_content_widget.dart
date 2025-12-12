@@ -26,7 +26,6 @@ class PomodoroIntroductionContentWidget extends StatefulWidget {
 class _PomodoroIntroductionContentWidgetState extends State<PomodoroIntroductionContentWidget> with SingleTickerProviderStateMixin {
   late final Ticker _ticker;
 
-
   Timer? _timer;
 
   bool isCompleted = false;
@@ -61,7 +60,7 @@ class _PomodoroIntroductionContentWidgetState extends State<PomodoroIntroduction
     );
     pomodoroItemSS02 = PomodoroItemModel(
       word: 'Stay focused',
-      minute: '25',
+      minute: '30',
       width: 850.0,
       height: 150.0,
       left: 1500 - 41 * 2,
@@ -87,7 +86,7 @@ class _PomodoroIntroductionContentWidgetState extends State<PomodoroIntroduction
     );
     pomodoroItemSS04 = PomodoroItemModel(
       word: 'Stay focused',
-      minute: '25',
+      minute: '30',
       width: 850.0,
       height: 150.0,
       left: 1300 - 43 * 4,
@@ -113,7 +112,7 @@ class _PomodoroIntroductionContentWidgetState extends State<PomodoroIntroduction
     );
     pomodoroItemSS06 = PomodoroItemModel(
       word: 'Stay focused',
-      minute: '25',
+      minute: '30',
       width: 850.0,
       height: 150.0,
       left: 1100 - 45 * 6,
@@ -139,7 +138,7 @@ class _PomodoroIntroductionContentWidgetState extends State<PomodoroIntroduction
     );
     pomodoroItemSS08 = PomodoroItemModel(
       word: 'Stay focused',
-      minute: '25',
+      minute: '30',
       width: 850.0,
       height: 150.0,
       left: 900 - 47 * 8,
@@ -280,6 +279,26 @@ class _PomodoroIntroductionContentWidgetState extends State<PomodoroIntroduction
 
         AnimatedPositioned(
           duration: const Duration(milliseconds: 500),
+          top: -150.0,
+          right: -1200.0,
+          width: 2500.0,
+          height: 2000.0,
+          child: Transform.rotate(
+            angle: pi * -0.3,
+            child: Container(
+              width: 2500.0,
+              height: 3000.0,
+              decoration: BoxDecoration(
+                color: Color(0xFFFFFFFF).withValues(alpha: 0),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                image: DecorationImage(image: AssetImage('assets/images/background/background_04.jpg'), fit: BoxFit.fitHeight),
+              ),
+            ),
+          ),
+        ),
+
+        AnimatedPositioned(
+          duration: const Duration(milliseconds: 500),
           top: 0,
           right: -500.0,
           width: 2500.0,
@@ -354,7 +373,7 @@ class _PomodoroIntroductionContentWidgetState extends State<PomodoroIntroduction
                     height: 160.0,
                     child: Container(
                       color: Colors.transparent,
-                      child: Stack(children: [topicTitleWidget(title: 'Pomodoro 25/5', width: 1800.0, height: 160.0)]),
+                      child: Stack(children: [topicTitleWidget(title: 'Pomodoro 30/5', width: 1800.0, height: 160.0)]),
                     ),
                   ),
                 ],

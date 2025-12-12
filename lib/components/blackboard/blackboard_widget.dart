@@ -77,7 +77,6 @@ class _BlackboardWidgetState extends State<BlackboardWidget0> {
               //     ),
               //   ),
               // ),
-
               false ? WordSubInformationWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy) : Container(),
 
               SubjectWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),

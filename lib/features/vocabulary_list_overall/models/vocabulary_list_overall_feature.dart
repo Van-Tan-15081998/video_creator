@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 import 'package:frame_creator_v2/core/window_feature.dart';
-import 'package:frame_creator_v2/features/vocabulary_list/widgets/vocabulary_list_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_list_overall/widgets/vocabulary_list_overall_widget.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 

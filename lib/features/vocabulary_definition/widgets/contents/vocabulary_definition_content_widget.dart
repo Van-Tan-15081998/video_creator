@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/widgets/contents/vocabulary_definition_character_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/widgets/contents/vocabulary_example_sentence_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/widgets/contents/vocabulary_main_information_widget.dart';
@@ -41,17 +40,17 @@ class _VocabularyDefinitionContentWidgetState extends State<VocabularyDefinition
       child: Stack(
         alignment: AlignmentDirectional.center,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-            child: TransparentEffectWallWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
-          ),
+          // ClipRRect(
+          //   borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+          //   child: TransparentEffectWallWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
+          // ),
 
           // isCommunicationPhrase ? CommunicationWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy) : Container(),
           // isCommunicationPhrase ? CommunicationCharacterWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy) : Container(),
-          VocabularyExampleSentenceWidget(systemStateManagement: widget.systemStateManagement,sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
+          VocabularyExampleSentenceWidget(systemStateManagement: widget.systemStateManagement, sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
 
           // EssayWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
-          VocabularyMainInformationWidget(systemStateManagement: widget.systemStateManagement,sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
+          VocabularyMainInformationWidget(systemStateManagement: widget.systemStateManagement, sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
 
           VocabularyDefinitionCharacterWidget(systemStateManagement: widget.systemStateManagement, sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
 

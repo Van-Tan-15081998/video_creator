@@ -108,19 +108,17 @@ class _MyAppState extends State<MyApp> {
     getSequentialExecutionController?.onInitRoot();
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-
       await getSequentialExecutionController?.start();
 
       ///
       // _timerSeconds = Timer.periodic(const Duration(seconds: 1), (timer) {
-      _timerSeconds = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
+      _timerSeconds = Timer.periodic(const Duration(milliseconds: 10), (timer) {
         getSequentialExecutionController?.updateSeconds();
       });
 
       _timerMilliseconds = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
         getSequentialExecutionController?.updateMilliSeconds();
       });
-
 
       /// TEST ÂM THANH
       await FlameAudio.audioCache.load('bgm/jazz-background-music.mp3');
@@ -138,7 +136,7 @@ class _MyAppState extends State<MyApp> {
     final player = FlameAudio.bgm.audioPlayer;
 
     double current = 1; // Volume hiện tại
-    const int stepCount = 30;                  // số bước giảm
+    const int stepCount = 30; // số bước giảm
     final double step = current / stepCount;
     final int delay = (duration * 1000 ~/ stepCount);
 

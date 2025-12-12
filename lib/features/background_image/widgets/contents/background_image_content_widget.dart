@@ -45,9 +45,7 @@ class _BackgroundImageContentWidgetState extends State<BackgroundImageContentWid
           width: widget.sizeDx,
           height: widget.sizeDy,
 
-          decoration: BoxDecoration(
-            color: Color(0xFF000000).withValues(alpha: 0.25)
-          ),
+          decoration: BoxDecoration(color: Color(0xFF000000).withValues(alpha: 0.25)),
         ),
 
         AnimatedBlocksBackground(),

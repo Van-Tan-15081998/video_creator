@@ -16,7 +16,6 @@ class WindowWidget extends StatefulWidget {
 }
 
 class _WindowWidgetState extends State<WindowWidget> {
-
   bool isExampleSentencePhrase = false;
   bool isCommunicationPhrase = false;
 
@@ -33,11 +32,7 @@ class _WindowWidgetState extends State<WindowWidget> {
     return Container(
       width: widget.sizeDx,
       height: widget.sizeDy,
-      decoration: BoxDecoration(
-          color: Colors.transparent,
-          borderRadius: BorderRadius.all(Radius.circular(20.0)),
-          boxShadow: []
-      ),
+      decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.all(Radius.circular(20.0)), boxShadow: []),
       child: Stack(
         alignment: AlignmentDirectional.center,
         children: [

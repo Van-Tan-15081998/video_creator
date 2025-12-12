@@ -7,12 +7,10 @@ class AnimatedBlocksBackground2 extends StatefulWidget {
   const AnimatedBlocksBackground2({super.key});
 
   @override
-  State<AnimatedBlocksBackground2> createState() =>
-      _AnimatedBlocksBackgroundState();
+  State<AnimatedBlocksBackground2> createState() => _AnimatedBlocksBackgroundState();
 }
 
-class _AnimatedBlocksBackgroundState extends State<AnimatedBlocksBackground2>
-    with SingleTickerProviderStateMixin {
+class _AnimatedBlocksBackgroundState extends State<AnimatedBlocksBackground2> with SingleTickerProviderStateMixin {
   late final Ticker _ticker;
   final Random _random = Random();
   final List<_BlockData> _blocks = [];
@@ -104,23 +102,13 @@ class _AnimatedBlocksBackgroundState extends State<AnimatedBlocksBackground2>
               height: 160,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha:0.9),
+                color: Colors.white.withValues(alpha: 0.9),
                 borderRadius: BorderRadius.circular(24),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 16,
-                    offset: Offset(0, 6),
-                  ),
-                ],
+                boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 16, offset: Offset(0, 6))],
               ),
               child: const Text(
                 "🌿 Relax & Learn 🌿",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                ),
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black87),
               ),
             ),
           ),
@@ -166,8 +154,7 @@ class _BlocksPainter extends CustomPainter {
 
       // hiệu ứng fade + scale
       double fadeIn = Curves.easeOutBack.transform(min(t / 0.25, 1.0));
-      double fadeOut =
-      Curves.easeInBack.transform(t > 0.8 ? (t - 0.8) / 0.2 : 0.0);
+      double fadeOut = Curves.easeInBack.transform(t > 0.8 ? (t - 0.8) / 0.2 : 0.0);
       final opacity = (1 - fadeOut) * fadeIn * (0.3 + b.layerDepth * 0.7);
       final scale = (1 - fadeOut * 0.5) * (0.5 + fadeIn * 0.5);
 
@@ -177,8 +164,8 @@ class _BlocksPainter extends CustomPainter {
       // Màu có ánh sáng
       final gradient = RadialGradient(
         colors: [
-          b.color.withValues(alpha:opacity * 0.9),
-          b.color.withValues(alpha:opacity * 0.3),
+          b.color.withValues(alpha: opacity * 0.9),
+          b.color.withValues(alpha: opacity * 0.3),
           Colors.transparent,
         ],
         stops: const [0.0, 0.6, 1.0],
@@ -192,13 +179,7 @@ class _BlocksPainter extends CustomPainter {
       canvas.save();
       canvas.translate(dx, dy);
       canvas.scale(scale);
-      canvas.drawRRect(
-        RRect.fromRectAndRadius(
-          Rect.fromLTWH(0, 0, b.size, b.size),
-          const Radius.circular(10),
-        ),
-        paint,
-      );
+      canvas.drawRRect(RRect.fromRectAndRadius(Rect.fromLTWH(0, 0, b.size, b.size), const Radius.circular(10)), paint);
       canvas.restore();
     }
   }

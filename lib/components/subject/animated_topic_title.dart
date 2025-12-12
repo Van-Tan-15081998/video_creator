@@ -28,14 +28,9 @@ class _AnimatedTopicTitleState extends State<AnimatedTopicTitle> with TickerProv
   void initState() {
     super.initState();
 
-    _inOutController = AnimationController(
-      vsync: this,
-      duration: animationDuration,
-    );
+    _inOutController = AnimationController(vsync: this, duration: animationDuration);
 
-    _animation = Tween<double>(begin: 0.3, end: 0.0).animate(
-      CurvedAnimation(parent: _inOutController, curve: Curves.elasticOut),
-    );
+    _animation = Tween<double>(begin: 0.3, end: 0.0).animate(CurvedAnimation(parent: _inOutController, curve: Curves.elasticOut));
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;

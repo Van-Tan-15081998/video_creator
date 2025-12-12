@@ -194,7 +194,13 @@ class _FlipCardState extends State<FlipCard> with SingleTickerProviderStateMixin
           color: flipColor,
           borderRadius: borderRadiusGeometry,
 
-          boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.25 * (widget.opacityRange ?? 1.0)), blurRadius: borderRadius, offset: const Offset(4, 4))],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.25 * (widget.opacityRange ?? 1.0)),
+              blurRadius: borderRadius,
+              offset: const Offset(4, 4),
+            ),
+          ],
         ),
         alignment: Alignment.center,
         child: Text(

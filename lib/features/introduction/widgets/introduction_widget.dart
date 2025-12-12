@@ -74,10 +74,31 @@ class _IntroductionWidgetState extends State<IntroductionWidget> with SimpleAnim
         isUpdate = true;
       }
 
-      if (isUpdate == true) {
-        setState(() {
-          isUpdate = false;
-        });
+      /// -----
+      /// TODO: Check Update Activate Window
+      /// -----
+      if (widget.introductionFeature?.checkConditionActiveByDirection() == true) {
+        ///
+        if (isActivatedWindow == false) {
+          setState(() {
+            isActivatedWindow = true;
+          });
+        }
+      } else if (widget.introductionFeature?.checkConditionActiveByDirection() == false) {
+        ///
+        if (isActivatedWindow == true && isAnimatedShow == true && isMarkedUnactivatedWindow == false) {
+          setState(() {
+            isMarkedUnactivatedWindow = true;
+          });
+
+          Future.delayed(Duration(seconds: 2), () {
+            setState(() {
+              isActivatedWindow = false;
+              isAnimatedShow = false;
+              isMarkedUnactivatedWindow = false;
+            });
+          });
+        }
       }
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -85,12 +106,6 @@ class _IntroductionWidgetState extends State<IntroductionWidget> with SimpleAnim
           setState(() {
             isAnimatedShow = true;
           });
-        }
-
-        if (isAnimatedShow == true) {
-          if (widget.introductionFeature?.checkConditionActiveByDirection() == false) {
-            isAnimatedShow = false;
-          }
         }
       });
     });
@@ -106,8 +121,6 @@ class _IntroductionWidgetState extends State<IntroductionWidget> with SimpleAnim
 
   @override
   Widget build(BuildContext context) {
-
-
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 500),
       top: topPosition,
@@ -125,7 +138,7 @@ class _IntroductionWidgetState extends State<IntroductionWidget> with SimpleAnim
                 width: sizeDx,
                 height: sizeDy,
                 decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0)),
-                child: Stack(children: [_introductionContentWidget ?? Container()]),
+                child: Stack(children: [isActivatedWindow ? _introductionContentWidget ?? Container() : Container()]),
               ),
             )
           : Container(),

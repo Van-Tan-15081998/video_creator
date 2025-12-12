@@ -45,6 +45,21 @@ class VocabularyTime with ExecutionCore {
   /// -----
   /// TODO:
   /// -----
+  VocabularyItem? _currentVocabularyItemForStart;
+  VocabularyItem? get getCurrentVocabularyItemForStart => _currentVocabularyItemForStart;
+  void setCurrentVocabularyItemForStart({required VocabularyItem? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentVocabularyItemForStart = value;
+    } else {
+      _currentVocabularyItemForStart ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
   List<VocabularyItem>? _currentVocabularyItemStack;
   List<VocabularyItem>? get getCurrentVocabularyItemStack => _currentVocabularyItemStack;
   void setCurrentVocabularyItemStack({required List<VocabularyItem>? value, bool? isPriorityOverride}) {

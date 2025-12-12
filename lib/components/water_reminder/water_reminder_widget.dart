@@ -54,12 +54,7 @@ class _WaterReminderWidgetState extends State<WaterReminderWidget> {
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           // BoxShadow(color: Colors.black.withValues(alpha: 0.8), offset: Offset(1, 1), blurRadius: 2)
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.8),
-            blurRadius: 2,
-            spreadRadius: 1,
-            offset: Offset(0, 0),
-          ),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.8), blurRadius: 2, spreadRadius: 1, offset: Offset(0, 0)),
         ],
       ),
       child: Stack(
@@ -90,12 +85,7 @@ class _WaterReminderWidgetState extends State<WaterReminderWidget> {
               height: widget.sizeDy - 30.0,
               decoration: BoxDecoration(
                 color: Color(0xFF00F5FF),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(5.0),
-                  bottomLeft: Radius.circular(5.0),
-                  topRight: Radius.circular(5.0),
-                  bottomRight: Radius.circular(5.0),
-                ),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), bottomLeft: Radius.circular(5.0), topRight: Radius.circular(5.0), bottomRight: Radius.circular(5.0)),
               ),
             ),
           ),

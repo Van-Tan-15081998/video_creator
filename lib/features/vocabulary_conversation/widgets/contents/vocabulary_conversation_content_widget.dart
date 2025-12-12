@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
-import 'package:frame_creator_v2/features/vocabulary_conversation/widgets/contents/animated_vocabulary_conversation_title_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_data_model.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
@@ -99,68 +97,73 @@ class _VocabularyConversationContentWidgetState extends State<VocabularyConversa
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if (totalSeconds > 0) {
-          totalSeconds -= 1;
+        if (widget.systemStateManagement?.getVocabularyConversationFeature?.checkConditionActiveByDirection() == true) {
+          if (totalSeconds > 0) {
+            totalSeconds -= 1;
 
-          limitedTimeProgressbar = (limitedTimeProgressbarLength / (60 * totalMinutes)) * totalSeconds;
+            limitedTimeProgressbar = (limitedTimeProgressbarLength / (60 * totalMinutes)) * totalSeconds;
 
-          // setState(() {});
-        } else {
-          totalSeconds = 60 * totalMinutes;
-        }
-
-        counterCreateMessage++;
-
-        if (counterCreateMessage > 0 && counterCreateMessage % 5 == 0) {
-          // if (counterMessage % 2 == 0) {
-          //   setState(() {
-          //     // messageList.add(messageWidget(isLeftSide: true, isRightSide: false));
-          //     messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false));
-          //   });
-          // } else {
-          //   setState(() {
-          //     // messageList.add(messageWidget(isLeftSide: false, isRightSide: true));
-          //     messageList.add(messageByWordWidget(isLeftSide: false, isRightSide: true));
-          //   });
-          // }
-
-          if (getConversationItemList?.isNotEmpty == true) {
-            if (getConversationItemList?.firstOrNull?.getIsLeftCharacterSS01 == true) {
-              setState(() {
-                messageList.add(
-                  messageByWordWidget(
-                    isLeftSide: true,
-                    isRightSide: false,
-                    engSentence: getConversationItemList?.firstOrNull?.getEngSentence ?? '',
-                    vieSentence: getConversationItemList?.firstOrNull?.getVieSentence ?? '',
-                  ),
-                );
-              });
-            } else if (getConversationItemList?.firstOrNull?.getIsRightCharacterSS02 == true) {
-              setState(() {
-                messageList.add(
-                  messageByWordWidget(
-                    isLeftSide: false,
-                    isRightSide: true,
-                    engSentence: getConversationItemList?.firstOrNull?.getEngSentence ?? '',
-                    vieSentence: getConversationItemList?.firstOrNull?.getVieSentence ?? '',
-                  ),
-                );
-              });
-            }
-
-            getConversationItemList?.removeAt(0);
+            // setState(() {});
+          } else {
+            totalSeconds = 60 * totalMinutes;
           }
 
-          counterMessage++;
+          counterCreateMessage++;
 
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
-          });
+          if (counterCreateMessage > 0 && counterCreateMessage % 5 == 0) {
+            // if (counterMessage % 2 == 0) {
+            //   setState(() {
+            //     // messageList.add(messageWidget(isLeftSide: true, isRightSide: false));
+            //     messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false));
+            //   });
+            // } else {
+            //   setState(() {
+            //     // messageList.add(messageWidget(isLeftSide: false, isRightSide: true));
+            //     messageList.add(messageByWordWidget(isLeftSide: false, isRightSide: true));
+            //   });
+            // }
+
+            if (getConversationItemList?.isNotEmpty == true) {
+              if (getConversationItemList?.firstOrNull?.getIsLeftCharacterSS01 == true) {
+                setState(() {
+                  messageList.add(
+                    messageByWordWidget(
+                      isLeftSide: true,
+                      isRightSide: false,
+                      engSentence: getConversationItemList?.firstOrNull?.getEngSentence ?? '',
+                      vieSentence: getConversationItemList?.firstOrNull?.getVieSentence ?? '',
+                    ),
+                  );
+                });
+              } else if (getConversationItemList?.firstOrNull?.getIsRightCharacterSS02 == true) {
+                setState(() {
+                  messageList.add(
+                    messageByWordWidget(
+                      isLeftSide: false,
+                      isRightSide: true,
+                      engSentence: getConversationItemList?.firstOrNull?.getEngSentence ?? '',
+                      vieSentence: getConversationItemList?.firstOrNull?.getVieSentence ?? '',
+                    ),
+                  );
+                });
+              }
+
+              getConversationItemList?.removeAt(0);
+            }
+
+            counterMessage++;
+
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (_scrollController.hasClients) {
+                _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+              }
+            });
+          }
         }
       });
-
-      _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+      if (_scrollController.hasClients) {
+        _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+      }
     });
   }
 
@@ -179,20 +182,96 @@ class _VocabularyConversationContentWidgetState extends State<VocabularyConversa
       child: Stack(
         alignment: AlignmentDirectional.bottomCenter,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(30.0)),
-            child: TransparentEffectWallWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
-          ),
+          // ClipRRect(
+          //   borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(30.0)),
+          //   child: TransparentEffectWallWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
+          // ),
 
           AnimatedPositioned(
-            duration: const Duration(milliseconds: 100), //
-            top: 150.0,
-            right: -50.0,
-            width: 800.0,
-            height: 125.0,
-            child: AnimatedVocabularyConversationTitleWidget(sizeDx: 800.0, sizeDy: 125.0), //
+            duration: const Duration(milliseconds: 100),
+            right: 15.0,
+            top: 15.0,
+            height: 100.0,
+            child: Container(
+              width: 500.0,
+              height: 100.0,
+              decoration: BoxDecoration(
+                color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+                border: Border.all(width: 8.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(30.0)),
+              ),
+
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                    child: Container(
+                      color: Colors.transparent,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    'Conversation',
+                                    style: GoogleFonts.poetsenOne(
+                                      textStyle: TextStyle(
+                                        fontSize: 35.0,
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FontStyle.normal,
+                                        foreground: Paint()
+                                          ..style = PaintingStyle.stroke
+                                          ..strokeWidth = 2.0
+                                          ..color = Color(0xFF000000), // Màu viền
+                                        letterSpacing: 5.0,
+                                      ),
+                                    ),
+                                    textAlign: TextAlign.center,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Positioned(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    'Conversation',
+                                    style: GoogleFonts.poetsenOne(
+                                      textStyle: TextStyle(fontSize: 35.0, fontWeight: FontWeight.w600, fontStyle: FontStyle.normal, color: Color(0xFFFFFFFF), letterSpacing: 5.0),
+                                    ),
+                                    textAlign: TextAlign.center,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
 
+          // AnimatedPositioned(
+          //   duration: const Duration(milliseconds: 100), //
+          //   top: 150.0,
+          //   right: -50.0,
+          //   width: 800.0,
+          //   height: 125.0,
+          //   child: AnimatedVocabularyConversationTitleWidget(sizeDx: 800.0, sizeDy: 125.0), //
+          // ),
           Positioned(
             top: 150.0,
             left: 0,
@@ -698,6 +777,7 @@ class _VocabularyConversationContentWidgetState extends State<VocabularyConversa
                 borderRadius: isRightSide
                     ? BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(45.0))
                     : BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0), bottomRight: Radius.circular(45.0), bottomLeft: Radius.circular(0)),
+                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 8.0, spreadRadius: 1.0, offset: Offset(0, 0))],
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -3,10 +3,8 @@ import 'dart:async';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_data_model.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
-import 'package:frame_creator_v2/features/vocabulary_paragraph/widgets/contents/animated_vocabulary_paragraph_title_widget.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -84,92 +82,96 @@ class _VocabularyParagraphContentWidgetState extends State<VocabularyParagraphCo
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if (totalSeconds == totalSecondsConst) {
-          progressbarOpacity = 1;
-        } else if (totalSeconds == 0) {
-          setState(() {
-            progressbarOpacity = 0;
-          });
-        }
+        if (widget.systemStateManagement?.getVocabularyParagraphFeature?.checkConditionActiveByDirection() == true) {
+          if (totalSeconds == totalSecondsConst) {
+            progressbarOpacity = 1;
+          } else if (totalSeconds == 0) {
+            setState(() {
+              progressbarOpacity = 0;
+            });
+          }
 
-        if (isActiveTimer == true) {
-          if (totalSeconds > 0) {
-            totalSeconds -= 1;
+          if (isActiveTimer == true) {
+            if (totalSeconds > 0) {
+              totalSeconds -= 1;
 
-            limitedTimeProgressbar = (limitedTimeProgressbarLength / totalSecondsConst) * totalSeconds;
+              limitedTimeProgressbar = (limitedTimeProgressbarLength / totalSecondsConst) * totalSeconds;
 
-            setState(() {});
+              setState(() {});
+            }
           }
         }
       });
     });
 
     _ticker = createTicker((Duration elapsed) {
-      if ((_currentVocabularyExampleParagraph?.getEngSentenceSS01 != getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS01) ||
-          (_currentVocabularyExampleParagraph?.getEngSentenceSS02 != getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS02) ||
-          (_currentVocabularyExampleParagraph?.getEngSentenceSS03 != getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS03)) {
-        setState(() {
-          _currentVocabularyExampleParagraph?.setTitle(value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getTitle, isPriorityOverride: true);
-          _currentVocabularyExampleParagraph?.setEngSentenceSS01(
-            value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS01,
-            isPriorityOverride: true,
-          );
-          _currentVocabularyExampleParagraph?.setEngSentenceSS02(
-            value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS02,
-            isPriorityOverride: true,
-          );
-          _currentVocabularyExampleParagraph?.setEngSentenceSS03(
-            value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS03,
-            isPriorityOverride: true,
-          );
+      if (widget.systemStateManagement?.getVocabularyParagraphFeature?.checkConditionActiveByDirection() == true) {
+        if ((_currentVocabularyExampleParagraph?.getEngSentenceSS01 != getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS01) ||
+            (_currentVocabularyExampleParagraph?.getEngSentenceSS02 != getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS02) ||
+            (_currentVocabularyExampleParagraph?.getEngSentenceSS03 != getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS03)) {
+          setState(() {
+            _currentVocabularyExampleParagraph?.setTitle(value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getTitle, isPriorityOverride: true);
+            _currentVocabularyExampleParagraph?.setEngSentenceSS01(
+              value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS01,
+              isPriorityOverride: true,
+            );
+            _currentVocabularyExampleParagraph?.setEngSentenceSS02(
+              value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS02,
+              isPriorityOverride: true,
+            );
+            _currentVocabularyExampleParagraph?.setEngSentenceSS03(
+              value: getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.getEngSentenceSS03,
+              isPriorityOverride: true,
+            );
 
-          if ((_currentVocabularyExampleParagraph?.getEngSentenceSS01?.isEmpty == true || _currentVocabularyExampleParagraph?.getEngSentenceSS01 == null) &&
-              (_currentVocabularyExampleParagraph?.getEngSentenceSS02?.isEmpty == true || _currentVocabularyExampleParagraph?.getEngSentenceSS02 == null) &&
-              (_currentVocabularyExampleParagraph?.getEngSentenceSS03?.isEmpty == true || _currentVocabularyExampleParagraph?.getEngSentenceSS03 == null)) {
-            isShow = false;
-            isActiveTimer = false;
-            progressbarHeight = 0;
-            progressbarOpacity = 0;
-            totalSecondsConst = totalSecondsConst--;
-            limitedTimeProgressbar = limitedTimeProgressbarLength;
-          } else {
-            isShow = true;
-            isActiveTimer = true;
-            totalSeconds = totalSecondsConst;
+            if ((_currentVocabularyExampleParagraph?.getEngSentenceSS01?.isEmpty == true || _currentVocabularyExampleParagraph?.getEngSentenceSS01 == null) &&
+                (_currentVocabularyExampleParagraph?.getEngSentenceSS02?.isEmpty == true || _currentVocabularyExampleParagraph?.getEngSentenceSS02 == null) &&
+                (_currentVocabularyExampleParagraph?.getEngSentenceSS03?.isEmpty == true || _currentVocabularyExampleParagraph?.getEngSentenceSS03 == null)) {
+              isShow = false;
+              isActiveTimer = false;
+              progressbarHeight = 0;
+              progressbarOpacity = 0;
+              totalSecondsConst = totalSecondsConst--;
+              limitedTimeProgressbar = limitedTimeProgressbarLength;
+            } else {
+              isShow = true;
+              isActiveTimer = true;
+              totalSeconds = totalSecondsConst;
 
-            wordWidgetSpan = [];
+              wordWidgetSpan = [];
 
-            wordListSS01 = (_currentVocabularyExampleParagraph?.getEngSentenceSS01 ?? '').split(' ');
-            for (String word in wordListSS01) {
-              if (word.contains('_')) {
-                String trueWord = word.replaceAll('_', '');
-                wordWidgetSpan.add(wordItem(word: trueWord, isNormal: true, isSpecial: true));
-              } else {
-                wordWidgetSpan.add(wordItem(word: word, isNormal: true, isSpecial: false));
+              wordListSS01 = (_currentVocabularyExampleParagraph?.getEngSentenceSS01 ?? '').split(' ');
+              for (String word in wordListSS01) {
+                if (word.contains('_')) {
+                  String trueWord = word.replaceAll('_', '');
+                  wordWidgetSpan.add(wordItem(word: trueWord, isNormal: true, isSpecial: true));
+                } else {
+                  wordWidgetSpan.add(wordItem(word: word, isNormal: true, isSpecial: false));
+                }
+              }
+
+              wordListSS02 = (_currentVocabularyExampleParagraph?.getEngSentenceSS02 ?? '').split(' ');
+              for (String word in wordListSS02) {
+                if (word.contains('_')) {
+                  String trueWord = word.replaceAll('_', '');
+                  wordWidgetSpan.add(wordItem(word: trueWord, isNormal: false, isSpecial: true));
+                } else {
+                  wordWidgetSpan.add(wordItem(word: word, isNormal: false, isSpecial: false));
+                }
+              }
+
+              wordListSS03 = (_currentVocabularyExampleParagraph?.getEngSentenceSS03 ?? '').split(' ');
+              for (String word in wordListSS03) {
+                if (word.contains('_')) {
+                  String trueWord = word.replaceAll('_', '');
+                  wordWidgetSpan.add(wordItem(word: trueWord, isNormal: true, isSpecial: true));
+                } else {
+                  wordWidgetSpan.add(wordItem(word: word, isNormal: true, isSpecial: false));
+                }
               }
             }
-
-            wordListSS02 = (_currentVocabularyExampleParagraph?.getEngSentenceSS02 ?? '').split(' ');
-            for (String word in wordListSS02) {
-              if (word.contains('_')) {
-                String trueWord = word.replaceAll('_', '');
-                wordWidgetSpan.add(wordItem(word: trueWord, isNormal: false, isSpecial: true));
-              } else {
-                wordWidgetSpan.add(wordItem(word: word, isNormal: false, isSpecial: false));
-              }
-            }
-
-            wordListSS03 = (_currentVocabularyExampleParagraph?.getEngSentenceSS03 ?? '').split(' ');
-            for (String word in wordListSS03) {
-              if (word.contains('_')) {
-                String trueWord = word.replaceAll('_', '');
-                wordWidgetSpan.add(wordItem(word: trueWord, isNormal: true, isSpecial: true));
-              } else {
-                wordWidgetSpan.add(wordItem(word: word, isNormal: true, isSpecial: false));
-              }
-            }
-          }
-        });
+          });
+        }
       }
     })..start();
   }
@@ -198,20 +200,96 @@ class _VocabularyParagraphContentWidgetState extends State<VocabularyParagraphCo
           alignment: AlignmentDirectional.center,
 
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(30.0)),
-              child: TransparentEffectWallWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
-            ),
+            // ClipRRect(
+            //   borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(30.0)),
+            //   child: TransparentEffectWallWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
+            // ),
 
             AnimatedPositioned(
-              duration: const Duration(milliseconds: 100), //
-              top: 150.0,
-              right: -50.0,
-              width: 800.0,
-              height: 125.0,
-              child: AnimatedVocabularyParagraphTitleWidget(sizeDx: 800.0, sizeDy: 125.0), //
+              duration: const Duration(milliseconds: 100),
+              right: 15.0,
+              top: 15.0,
+              height: 100.0,
+              child: Container(
+                width: 500.0,
+                height: 100.0,
+                decoration: BoxDecoration(
+                  color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+                  border: Border.all(width: 8.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(0), topRight: Radius.circular(15), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(30.0)),
+                ),
+
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      child: Container(
+                        color: Colors.transparent,
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Flexible(
+                                    child: Text(
+                                      'Paragraph',
+                                      style: GoogleFonts.poetsenOne(
+                                        textStyle: TextStyle(
+                                          fontSize: 35.0,
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle: FontStyle.normal,
+                                          foreground: Paint()
+                                            ..style = PaintingStyle.stroke
+                                            ..strokeWidth = 2.0
+                                            ..color = Color(0xFF000000), // Màu viền
+                                          letterSpacing: 5.0,
+                                        ),
+                                      ),
+                                      textAlign: TextAlign.center,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Positioned(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Flexible(
+                                    child: Text(
+                                      'Paragraph',
+                                      style: GoogleFonts.poetsenOne(
+                                        textStyle: TextStyle(fontSize: 35.0, fontWeight: FontWeight.w600, fontStyle: FontStyle.normal, color: Color(0xFFFFFFFF), letterSpacing: 5.0),
+                                      ),
+                                      textAlign: TextAlign.center,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
 
+            // AnimatedPositioned(
+            //   duration: const Duration(milliseconds: 100), //
+            //   top: 150.0,
+            //   right: -50.0,
+            //   width: 800.0,
+            //   height: 125.0,
+            //   child: AnimatedVocabularyParagraphTitleWidget(sizeDx: 800.0, sizeDy: 125.0), //
+            // ),
             Container(
               width: widget.sizeDx,
               height: widget.sizeDy,

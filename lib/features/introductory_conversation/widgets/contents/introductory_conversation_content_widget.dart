@@ -40,6 +40,8 @@ class _IntroductoryConversationContentWidgetState extends State<IntroductoryConv
 
   List<Widget> messageList = [];
 
+  bool isTotallyCompleted = false;
+
   @override
   void initState() {
     super.initState();
@@ -59,47 +61,54 @@ class _IntroductoryConversationContentWidgetState extends State<IntroductoryConv
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-
-        if (messageList.length == 10) {
-          if (widget.systemStateManagement?.getIntroductoryConversationFeature?.checkConditionActiveByDirection() == true) {
-            widget.systemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        if (widget.systemStateManagement?.getIntroductoryConversationFeature?.checkConditionActiveByDirection() == true) {
+          if (messageList.length == 10) {
+            if (widget.systemStateManagement?.getIntroductoryConversationFeature?.checkConditionActiveByDirection() == true) {
+              if (isTotallyCompleted == false) {
+                widget.systemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: 'IntroductoryConversationContentWidget');
+                isTotallyCompleted = true;
+              }
+            }
           }
-        }
 
-        if (totalSeconds > 0) {
-          totalSeconds -= 1;
+          if (totalSeconds > 0) {
+            totalSeconds -= 1;
 
-          limitedTimeProgressbar = (limitedTimeProgressbarLength / (60 * totalMinutes)) * totalSeconds;
+            limitedTimeProgressbar = (limitedTimeProgressbarLength / (60 * totalMinutes)) * totalSeconds;
 
-          // setState(() {});
-        } else {
-          totalSeconds = 60 * totalMinutes;
-        }
-
-        counterCreateMessage++;
-
-        if (counterCreateMessage > 0 && counterCreateMessage % 5 == 0) {
-          if (counterMessage % 2 == 0) {
-            setState(() {
-              // messageList.add(messageWidget(isLeftSide: true, isRightSide: false));
-              messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false));
-            });
+            // setState(() {});
           } else {
-            setState(() {
-              // messageList.add(messageWidget(isLeftSide: false, isRightSide: true));
-              messageList.add(messageByWordWidget(isLeftSide: false, isRightSide: true));
-            });
+            totalSeconds = 60 * totalMinutes;
           }
 
-          counterMessage++;
+          counterCreateMessage++;
 
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
-          });
+          if (counterCreateMessage > 0 && counterCreateMessage % 5 == 0) {
+            if (counterMessage % 2 == 0) {
+              setState(() {
+                // messageList.add(messageWidget(isLeftSide: true, isRightSide: false));
+                messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false));
+              });
+            } else {
+              setState(() {
+                // messageList.add(messageWidget(isLeftSide: false, isRightSide: true));
+                messageList.add(messageByWordWidget(isLeftSide: false, isRightSide: true));
+              });
+            }
+
+            counterMessage++;
+
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (_scrollController.hasClients) {
+                _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+              }
+            });
+          }
         }
       });
-
-      _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+      if (_scrollController.hasClients) {
+        _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+      }
     });
   }
 
@@ -178,7 +187,6 @@ class _IntroductoryConversationContentWidgetState extends State<IntroductoryConv
           //   height: widget.sizeDy,
           //   child: ConversationCharacterWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
           // ),
-
           Positioned(
             top: 0,
             left: 0,
@@ -629,6 +637,7 @@ class _IntroductoryConversationContentWidgetState extends State<IntroductoryConv
                 borderRadius: isRightSide
                     ? BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(45.0))
                     : BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0), bottomRight: Radius.circular(45.0), bottomLeft: Radius.circular(0)),
+                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 8.0, spreadRadius: 1.0, offset: Offset(0, 0))],
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -19,6 +21,7 @@ class VocabularyMainInformationWidget extends StatefulWidget {
 
 class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformationWidget> with SingleTickerProviderStateMixin {
   late final Ticker _ticker;
+  Timer? _timer;
 
   @override
   void initState() {
@@ -34,10 +37,22 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
         });
       }
     })..start();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(Duration(seconds: 25), () {
+        if (mounted) {
+          setState(() {
+            bottomDefinitionTitle = -200.0;
+          });
+        }
+      });
+    });
   }
 
   String definitionString = '';
   bool isShow = false;
+
+  double bottomDefinitionTitle = 15.0;
 
   /// -----
   /// TODO:
@@ -143,6 +158,86 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
           left: 50.0,
           duration: const Duration(milliseconds: 100),
           child: title(word: 'COMMON COLLOCATIONS:'),
+        ),
+
+        AnimatedPositioned(
+          duration: const Duration(milliseconds: 500),
+          left: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true ? 15.0 : null,
+          right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true ? 15.0 : null,
+          bottom: bottomDefinitionTitle,
+          height: 100.0,
+          child: Container(
+            width: 500.0,
+            height: 100.0,
+            decoration: BoxDecoration(
+              color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+              border: Border.all(width: 8.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
+              borderRadius: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true
+                  ? BorderRadius.only(topLeft: Radius.circular(0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(15.0))
+                  : BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(0)),
+            ),
+
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Container(
+                    color: Colors.transparent,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  'Definition',
+                                  style: GoogleFonts.poetsenOne(
+                                    textStyle: TextStyle(
+                                      fontSize: 35.0,
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FontStyle.normal,
+                                      foreground: Paint()
+                                        ..style = PaintingStyle.stroke
+                                        ..strokeWidth = 2.0
+                                        ..color = Color(0xFF000000), // Màu viền
+                                      letterSpacing: 5.0,
+                                    ),
+                                  ),
+                                  textAlign: TextAlign.center,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Positioned(
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  'Definition',
+                                  style: GoogleFonts.poetsenOne(
+                                    textStyle: TextStyle(fontSize: 35.0, fontWeight: FontWeight.w600, fontStyle: FontStyle.normal, color: Color(0xFFFFFFFF), letterSpacing: 5.0),
+                                  ),
+                                  textAlign: TextAlign.center,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );

@@ -315,7 +315,7 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_STAY_FOCUSED_SS01]',
           totalMinutes: 30,
-          totalPrepareSeconds: 5,
+          totalPrepareSeconds: 506,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_STAY_FOCUSED_SS01');
@@ -332,7 +332,7 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_STAY_FOCUSED_SS02]',
           totalMinutes: 30,
-          totalPrepareSeconds: 5,
+          totalPrepareSeconds: 506,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_STAY_FOCUSED_SS02');
@@ -349,7 +349,7 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_STAY_FOCUSED_SS03]',
           totalMinutes: 30,
-          totalPrepareSeconds: 5,
+          totalPrepareSeconds: 506,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_STAY_FOCUSED_SS03');
@@ -366,7 +366,7 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_STAY_FOCUSED_SS04]',
           totalMinutes: 30,
-          totalPrepareSeconds: 5,
+          totalPrepareSeconds: 506,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_STAY_FOCUSED_SS04');
@@ -385,7 +385,7 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_BREAK_TIME_SS01]',
           totalMinutes: 5,
-          totalPrepareSeconds: 5,
+          totalPrepareSeconds: 506,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_BREAK_TIME_SS01');
@@ -402,7 +402,7 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_BREAK_TIME_SS02]',
           totalMinutes: 5,
-          totalPrepareSeconds: 5,
+          totalPrepareSeconds: 506,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_BREAK_TIME_SS02');
@@ -419,7 +419,7 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_BREAK_TIME_SS03]',
           totalMinutes: 5,
-          totalPrepareSeconds: 5,
+          totalPrepareSeconds: 506,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_BREAK_TIME_SS03');
@@ -436,7 +436,7 @@ class PomodoroTime with ExecutionCore {
         value: PomodoroItem(
           id: '[POMODORO_BREAK_TIME_SS04]',
           totalMinutes: 5,
-          totalPrepareSeconds: 5,
+          totalPrepareSeconds: 506,
           onComplete: () {
             if (kDebugMode) {
               print('Complete POMODORO_BREAK_TIME_SS04');
@@ -453,7 +453,7 @@ class PomodoroTime with ExecutionCore {
       ///
       ///
 
-      /// TODO:StayFocusedSS01
+      /// TODO: StayFocusedSS01
       getStayFocusedSS01?.getCompletedCallbackFunctionStack?.add(() {
         /// Dừng Chuyển Tiếp
         getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
@@ -465,7 +465,7 @@ class PomodoroTime with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: 'StayFocusedSS01 End At: 01:00:00');
         });
       });
 
@@ -481,11 +481,11 @@ class PomodoroTime with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: 'BreakTimeSS01 End At: 02:00:00');
         });
       });
 
-      /// TODO:StayFocusedSS02
+      /// TODO: StayFocusedSS02
       getStayFocusedSS02?.getCompletedCallbackFunctionStack?.add(() {
         /// Dừng Chuyển Tiếp
         getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
@@ -497,7 +497,7 @@ class PomodoroTime with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: 'StayFocusedSS02 End At: 03:00:00');
         });
       });
 
@@ -513,11 +513,11 @@ class PomodoroTime with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: 'BreakTimeSS02 End At: 04:00:00');
         });
       });
 
-      /// TODO:StayFocusedSS03
+      /// TODO: StayFocusedSS03
       getStayFocusedSS03?.getCompletedCallbackFunctionStack?.add(() {
         /// Dừng Chuyển Tiếp
         getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
@@ -529,7 +529,7 @@ class PomodoroTime with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: 'StayFocusedSS03 End At: 05:00:00');
         });
       });
 
@@ -545,11 +545,11 @@ class PomodoroTime with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: 'BreakTimeSS03 End At: 06:00:00');
         });
       });
 
-      /// TODO:StayFocusedSS04
+      /// TODO: StayFocusedSS04
       getStayFocusedSS04?.getCompletedCallbackFunctionStack?.add(() {
         /// Dừng Chuyển Tiếp
         getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
@@ -561,7 +561,7 @@ class PomodoroTime with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: 'StayFocusedSS04 End At: 07:00:00');
         });
       });
 
@@ -577,7 +577,7 @@ class PomodoroTime with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: 'BreakTimeSS04 End At: 08:00:00');
         });
       });
 

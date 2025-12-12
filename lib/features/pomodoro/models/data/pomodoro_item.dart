@@ -177,7 +177,7 @@ class PomodoroItem with ExecutionCore {
   }
 
   bool isCompletedPreparing() {
-    if (getTotalPrepareSeconds == 0) {
+    if ((getTotalPrepareSeconds ?? 0) < 500) {
       return true;
     }
 
@@ -232,7 +232,7 @@ class PomodoroItem with ExecutionCore {
       ///
     } else if (getIsPaused == false) {
       /// Điều Kiện Tiên Quyết => Tổng Số Giây Của Giai Đoạn Chuẩn Bị Phải = 0
-      if ((getTotalPrepareSeconds ?? 0) > 0) {
+      if ((getTotalPrepareSeconds ?? 0) >= 500) {
         if (isPreparing() == true) {
           double currentTotalPrepareSeconds = (getTotalPrepareSeconds ?? 0) - 1;
 

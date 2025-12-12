@@ -7,8 +7,11 @@ import 'package:frame_creator_v2/features/blackboard/models/blackboard_feature.d
 import 'package:frame_creator_v2/features/break_time_space/models/break_time_space_feature.dart';
 import 'package:frame_creator_v2/features/conversation/models/conversation_feature.dart';
 import 'package:frame_creator_v2/features/countdown_timer/models/countdown_timer_feature.dart';
+import 'package:frame_creator_v2/features/ending_conversation/models/ending_conversation_feature.dart';
 import 'package:frame_creator_v2/features/flame_world/models/flame_world_feature.dart';
 import 'package:frame_creator_v2/features/global_announcement/models/global_announcement_feature.dart';
+import 'package:frame_creator_v2/features/helpful_advice/models/helpful_advice_feature.dart';
+import 'package:frame_creator_v2/features/helpful_study_advice/models/helpful_study_advice_feature.dart';
 import 'package:frame_creator_v2/features/interesting_knowledge/models/interesting_knowledge_conversation_feature.dart';
 import 'package:frame_creator_v2/features/introduction/models/introduction_feature.dart';
 import 'package:frame_creator_v2/features/introductory_conversation/models/introductory_conversation_feature.dart';
@@ -20,9 +23,9 @@ import 'package:frame_creator_v2/features/system_timeline/models/system_timeline
 import 'package:frame_creator_v2/features/vocabulary_conversation/models/vocabulary_conversation_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/vocabulary_definition_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_english_definition/models/vocabulary_english_definition_feature.dart';
+import 'package:frame_creator_v2/features/vocabulary_list/models/vocabulary_list_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_list_overall/models/vocabulary_list_overall_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_paragraph/models/vocabulary_paragraph_feature.dart';
-import 'package:frame_creator_v2/features/vocabulary_list/models/vocabulary_list_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_scene_transition/models/vocabulary_scene_transition_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_subject/models/vocabulary_subject_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_title/models/vocabulary_title_feature.dart';
@@ -90,10 +93,19 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       getSystemStateManagement?.setIntroductionFeature(value: getIntroductionFeature);
 
       getSystemStateManagement?.setIntroductoryConversationFeature(value: getIntroductoryConversationFeature);
+      getSystemStateManagement?.setEndingConversationFeature(value: getEndingConversationFeature);
+
+      getSystemStateManagement?.setBackgroundImageFeature(value: getBackgroundImageFeature);
+
+      getSystemStateManagement?.setBreakTimeSpaceFeature(value: getBreakTimeSpaceFeature);
 
       getSystemStateManagement?.setCountdownTimerFeature(value: getCountdownTimerFeature);
 
       getSystemStateManagement?.setPomodoroFeature(value: getPomodoroFeature);
+
+      getSystemStateManagement?.setPomodoroEndingConversationFeature(value: getPomodoroEndingConversationFeature);
+
+      getSystemStateManagement?.setPomodoroStartingConversationFeature(value: getPomodoroStartingConversationFeature);
 
       getSystemStateManagement?.setVocabularySubjectFeature(value: getVocabularySubjectFeature);
 
@@ -101,7 +113,22 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
 
       getSystemStateManagement?.setVocabularyListFeature(value: getVocabularyListFeature);
 
+      getSystemStateManagement?.setVocabularyListOverallFeature(value: getVocabularyListOverallFeature);
+
       getSystemStateManagement?.setVocabularyDefinitionFeature(value: getVocabularyDefinitionFeature);
+
+      getSystemStateManagement?.setVocabularyEnglishDefinitionFeature(value: getVocabularyEnglishDefinitionFeature);
+
+      getSystemStateManagement?.setHelpfulAdviceFeature(value: getHelpfulAdviceFeature);
+      getSystemStateManagement?.setHelpfulStudyAdviceFeature(value: getHelpfulStudyAdviceFeature);
+
+      getSystemStateManagement?.setVocabularyConversationFeature(value: getVocabularyConversationFeature);
+
+      getSystemStateManagement?.setVocabularyParagraphFeature(value: getVocabularyParagraphFeature);
+
+      getSystemStateManagement?.setVocabularyTitleFeature(value: getVocabularyTitleFeature);
+
+      getSystemStateManagement?.setInterestingKnowledgeConversationFeature(value: getInterestingKnowledgeConversationFeature);
 
       getSystemStateManagement?.setVocabularyScript(value: getVocabularyScript);
 
@@ -182,6 +209,25 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       /// -----
       /// TODO:
       /// -----
+      setEndingConversationFeature(
+        value: EndingConversationFeature(
+          systemStateManagement: getSystemStateManagement,
+          sizeDx: null,
+          sizeDy: null,
+          onComplete: () {
+            ///
+          },
+        ),
+        isPriorityOverride: true,
+      );
+      getEndingConversationFeature?.setSizeDx(value: getSizeDx - 30.0, isPriorityOverride: true, isSetActiveSizeDx: true);
+      getEndingConversationFeature?.setSizeDy(value: getSizeDy - 30.0, isPriorityOverride: true, isSetActiveSizeDy: true);
+      getEndingConversationFeature?.setBottomPosition(value: 15.0, isPriorityOverride: true, isSetActiveBottomPosition: true);
+      getEndingConversationFeature?.setLeftPosition(value: 15.0, isPriorityOverride: true, isSetActiveLeftPosition: true);
+
+      /// -----
+      /// TODO:
+      /// -----
       setBreakTimeSpaceFeature(
         value: BreakTimeSpaceFeature(
           systemStateManagement: getSystemStateManagement,
@@ -246,6 +292,12 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       getVocabularyListFeature?.setBottomPosition(value: 15.0, isPriorityOverride: true, isSetActiveBottomPosition: true);
       getVocabularyListFeature?.setLeftPosition(value: 15.0, isPriorityOverride: true, isSetActiveLeftPosition: true);
 
+      setHelpfulStudyAdviceFeature(value: HelpfulStudyAdviceFeature(systemStateManagement: getSystemStateManagement, sizeDx: null, sizeDy: null), isPriorityOverride: true);
+      getHelpfulStudyAdviceFeature?.setSizeDx(value: getSizeDx * 0.6, isPriorityOverride: true, isSetActiveSizeDx: true);
+      getHelpfulStudyAdviceFeature?.setSizeDy(value: getSizeDy * 1.0 - (getSizeDy * 0.6 + 45.0), isPriorityOverride: true, isSetActiveSizeDy: true);
+      getHelpfulStudyAdviceFeature?.setBottomPosition(value: 15.0, isPriorityOverride: true, isSetActiveBottomPosition: true);
+      getHelpfulStudyAdviceFeature?.setLeftPosition(value: 15.0, isPriorityOverride: true, isSetActiveLeftPosition: true);
+
       setVocabularyListOverallFeature(value: VocabularyListOverallFeature(systemStateManagement: getSystemStateManagement, sizeDx: null, sizeDy: null), isPriorityOverride: true);
       getVocabularyListOverallFeature?.setSizeDx(value: getSizeDx * 0.6, isPriorityOverride: true, isSetActiveSizeDx: true);
       getVocabularyListOverallFeature?.setSizeDy(value: getSizeDy * 1.0 - 30.0, isPriorityOverride: true, isSetActiveSizeDy: true);
@@ -266,6 +318,12 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       getVocabularyEnglishDefinitionFeature?.setSizeDy(value: getSizeDy * 0.4, isPriorityOverride: true, isSetActiveSizeDy: true);
       getVocabularyEnglishDefinitionFeature?.setTopPosition(value: 15.0, isPriorityOverride: true, isSetActiveTopPosition: true);
       getVocabularyEnglishDefinitionFeature?.setRightPosition(value: 15.0, isPriorityOverride: true, isSetActiveRightPosition: true);
+
+      setHelpfulAdviceFeature(value: HelpfulAdviceFeature(systemStateManagement: getSystemStateManagement, sizeDx: null, sizeDy: null), isPriorityOverride: true);
+      getHelpfulAdviceFeature?.setSizeDx(value: getSizeDx - (getSizeDx * 0.6 + 45), isPriorityOverride: true, isSetActiveSizeDx: true);
+      getHelpfulAdviceFeature?.setSizeDy(value: getSizeDy * 0.4, isPriorityOverride: true, isSetActiveSizeDy: true);
+      getHelpfulAdviceFeature?.setTopPosition(value: 15.0, isPriorityOverride: true, isSetActiveTopPosition: true);
+      getHelpfulAdviceFeature?.setRightPosition(value: 15.0, isPriorityOverride: true, isSetActiveRightPosition: true);
 
       setVocabularyConversationFeature(value: VocabularyConversationFeature(systemStateManagement: getSystemStateManagement, sizeDx: null, sizeDy: null), isPriorityOverride: true);
       getVocabularyConversationFeature?.setSizeDx(value: getSizeDx * 0.6, isPriorityOverride: true, isSetActiveSizeDx: true);
@@ -402,8 +460,18 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                 /// TODO: VocabularyListFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularyListFeature?.getWindowWidget ?? Container()),
 
+                /// TODO: HelpfulStudyAdviceFeature
+                AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getHelpfulStudyAdviceFeature?.getWindowWidget ?? Container()),
+
                 /// TODO: VocabularyListOverallFeature
-                AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularyListOverallFeature?.getWindowWidget ?? Container()),
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 100),
+                  top: 0,
+                  left: 0,
+                  width: getSizeDx,
+                  height: getSizeDy,
+                  child: getVocabularyListOverallFeature?.getWindowWidget ?? Container(),
+                ),
 
                 /// TODO: VocabularyDefinitionFeature
                 AnimatedPositioned(
@@ -424,6 +492,9 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                   height: getSizeDy,
                   child: getVocabularyEnglishDefinitionFeature?.getWindowWidget ?? Container(),
                 ),
+
+                /// TODO: HelpfulAdviceFeature
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getHelpfulAdviceFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: VocabularyConversationFeature
                 AnimatedPositioned(
@@ -449,7 +520,14 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularyTitleFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: InterestingKnowledgeConversationFeature
-                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getInterestingKnowledgeConversationFeature?.getWindowWidget ?? Container()),
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 500),
+                  top: 0,
+                  left: 0,
+                  width: getSizeDx,
+                  height: getSizeDy,
+                  child: getInterestingKnowledgeConversationFeature?.getWindowWidget ?? Container(),
+                ),
 
                 /// TODO: FlameWorldFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getFlameWorldFeature?.getWindowWidget ?? Container()),
@@ -481,6 +559,16 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                   width: getSizeDx,
                   height: getSizeDy,
                   child: getIntroductoryConversationFeature?.getWindowWidget ?? Container(),
+                ),
+
+                /// TODO: EndingConversationFeature
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 500),
+                  top: 0,
+                  left: 0,
+                  width: getSizeDx,
+                  height: getSizeDy,
+                  child: getEndingConversationFeature?.getWindowWidget ?? Container(),
                 ),
 
                 /// TODO: IntroductionFeature
@@ -565,6 +653,7 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       await getIntroductionFeature?.onSetupRoot();
       await getBreakTimeSpaceFeature?.onSetupRoot();
       await getIntroductoryConversationFeature?.onSetupRoot();
+      await getEndingConversationFeature?.onSetupRoot();
       await getBackgroundImageFeature?.onSetupRoot();
       await getCountdownTimerFeature?.onSetupRoot();
       await getPomodoroFeature?.onSetupRoot();
@@ -573,10 +662,12 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       await getVocabularySubjectFeature?.onSetupRoot();
       await getConversationFeature?.onSetupRoot();
       await getVocabularyListFeature?.onSetupRoot();
+      await getHelpfulStudyAdviceFeature?.onSetupRoot();
       await getVocabularyListOverallFeature?.onSetupRoot();
       await getVocabularyDefinitionFeature?.onSetupRoot();
       await getVocabularyTitleFeature?.onSetupRoot();
       await getVocabularyEnglishDefinitionFeature?.onSetupRoot();
+      await getHelpfulAdviceFeature?.onSetupRoot();
       await getVocabularyConversationFeature?.onSetupRoot();
       await getVocabularyParagraphFeature?.onSetupRoot();
       await getVocabularySceneTransitionFeature?.onSetupRoot();
@@ -594,6 +685,9 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
         ?..setConditionActiveByTopDirection()
         ..onDeactivateWindow();
       getIntroductoryConversationFeature
+        ?..setConditionActiveByBottomDirection()
+        ..onDeactivateWindow();
+      getEndingConversationFeature
         ?..setConditionActiveByBottomDirection()
         ..onDeactivateWindow();
       getBackgroundImageFeature
@@ -620,6 +714,9 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       getVocabularyListFeature
         ?..setConditionActiveByLeftDirection()
         ..onDeactivateWindow();
+      getHelpfulStudyAdviceFeature
+        ?..setConditionActiveByLeftDirection()
+        ..onDeactivateWindow();
       getVocabularyListOverallFeature
         ?..setConditionActiveByLeftDirection()
         ..onDeactivateWindow();
@@ -632,6 +729,9 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
 
       getVocabularyEnglishDefinitionFeature
         ?..setConditionActiveByTopDirection()
+        ..onDeactivateWindow();
+      getHelpfulAdviceFeature
+        ?..setConditionActiveByRightDirection()
         ..onDeactivateWindow();
       getVocabularyConversationFeature
         ?..setConditionActiveByTopDirection()
@@ -687,6 +787,7 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       await getIntroductionFeature?.onInitRoot();
       await getBreakTimeSpaceFeature?.onInitRoot();
       await getIntroductoryConversationFeature?.onInitRoot();
+      await getEndingConversationFeature?.onInitRoot();
       await getBackgroundImageFeature?.onInitRoot();
       await getCountdownTimerFeature?.onInitRoot();
       await getPomodoroFeature?.onInitRoot();
@@ -695,10 +796,12 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       await getVocabularySubjectFeature?.onInitRoot();
       await getConversationFeature?.onInitRoot();
       await getVocabularyListFeature?.onInitRoot();
+      await getHelpfulStudyAdviceFeature?.onInitRoot();
       await getVocabularyListOverallFeature?.onInitRoot();
       await getVocabularyDefinitionFeature?.onInitRoot();
       await getVocabularyTitleFeature?.onInitRoot();
       await getVocabularyEnglishDefinitionFeature?.onInitRoot();
+      await getHelpfulAdviceFeature?.onInitRoot();
       await getVocabularyConversationFeature?.onInitRoot();
       await getVocabularyParagraphFeature?.onInitRoot();
       await getVocabularySceneTransitionFeature?.onInitRoot();

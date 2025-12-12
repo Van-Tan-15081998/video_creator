@@ -3,8 +3,11 @@ import 'package:frame_creator_v2/features/blackboard/models/blackboard_feature.d
 import 'package:frame_creator_v2/features/break_time_space/models/break_time_space_feature.dart';
 import 'package:frame_creator_v2/features/conversation/models/conversation_feature.dart';
 import 'package:frame_creator_v2/features/countdown_timer/models/countdown_timer_feature.dart';
+import 'package:frame_creator_v2/features/ending_conversation/models/ending_conversation_feature.dart';
 import 'package:frame_creator_v2/features/flame_world/models/flame_world_feature.dart';
 import 'package:frame_creator_v2/features/global_announcement/models/global_announcement_feature.dart';
+import 'package:frame_creator_v2/features/helpful_advice/models/helpful_advice_feature.dart';
+import 'package:frame_creator_v2/features/helpful_study_advice/models/helpful_study_advice_feature.dart';
 import 'package:frame_creator_v2/features/interesting_knowledge/models/interesting_knowledge_conversation_feature.dart';
 import 'package:frame_creator_v2/features/introduction/models/introduction_feature.dart';
 import 'package:frame_creator_v2/features/introductory_conversation/models/introductory_conversation_feature.dart';
@@ -16,9 +19,9 @@ import 'package:frame_creator_v2/features/system_timeline/models/system_timeline
 import 'package:frame_creator_v2/features/vocabulary_conversation/models/vocabulary_conversation_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/vocabulary_definition_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_english_definition/models/vocabulary_english_definition_feature.dart';
+import 'package:frame_creator_v2/features/vocabulary_list/models/vocabulary_list_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_list_overall/models/vocabulary_list_overall_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_paragraph/models/vocabulary_paragraph_feature.dart';
-import 'package:frame_creator_v2/features/vocabulary_list/models/vocabulary_list_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_scene_transition/models/vocabulary_scene_transition_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_subject/models/vocabulary_subject_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_title/models/vocabulary_title_feature.dart';
@@ -57,7 +60,21 @@ mixin FeatureMixin {
     return;
   }
 
+  /// -----
+  /// TODO:
+  /// -----
+  EndingConversationFeature? _endingConversationFeature;
+  EndingConversationFeature? get getEndingConversationFeature => _endingConversationFeature;
+  void setEndingConversationFeature({required EndingConversationFeature? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _endingConversationFeature = value;
+    } else {
+      _endingConversationFeature ??= value;
+    }
 
+    ///
+    return;
+  }
 
   /// -----
   /// TODO:
@@ -254,6 +271,38 @@ mixin FeatureMixin {
   /// -----
   /// TODO:
   /// -----
+  HelpfulAdviceFeature? _helpfulAdviceFeature;
+  HelpfulAdviceFeature? get getHelpfulAdviceFeature => _helpfulAdviceFeature;
+  void setHelpfulAdviceFeature({required HelpfulAdviceFeature? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _helpfulAdviceFeature = value;
+    } else {
+      _helpfulAdviceFeature ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  HelpfulStudyAdviceFeature? _helpfulStudyAdviceFeature;
+  HelpfulStudyAdviceFeature? get getHelpfulStudyAdviceFeature => _helpfulStudyAdviceFeature;
+  void setHelpfulStudyAdviceFeature({required HelpfulStudyAdviceFeature? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _helpfulStudyAdviceFeature = value;
+    } else {
+      _helpfulStudyAdviceFeature ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
   VocabularyConversationFeature? _vocabularyConversationFeature;
   VocabularyConversationFeature? get getVocabularyConversationFeature => _vocabularyConversationFeature;
   void setVocabularyConversationFeature({required VocabularyConversationFeature? value, bool? isPriorityOverride}) {
@@ -282,6 +331,7 @@ mixin FeatureMixin {
     ///
     return;
   }
+
   /// -----
   /// TODO:
   /// -----
@@ -409,7 +459,6 @@ mixin FeatureMixin {
     ///
     return;
   }
-
 
   /// -----
   /// TODO:

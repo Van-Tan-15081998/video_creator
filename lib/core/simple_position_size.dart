@@ -11,4 +11,8 @@ mixin SimpleAnimationPositionSize {
 
   bool isAnimatedShow = false;
   bool isAnimatedHide = false;
+
+  bool isActivatedWindow = false;
+
+  bool isMarkedUnactivatedWindow = false;
 }

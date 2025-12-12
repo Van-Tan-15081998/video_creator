@@ -105,8 +105,7 @@ class _AnimatedTopicTitleWidgetState extends State<AnimatedTopicTitleWidget> wit
                   child: Container(
                     width: containerWidth,
                     padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                    decoration: BoxDecoration(
-                    ),
+                    decoration: BoxDecoration(),
                     child: Center(
                       child: RichText(
                         textAlign: TextAlign.center,

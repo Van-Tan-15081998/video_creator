@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:frame_creator_v2/core/simple_position_size.dart';
 import 'package:frame_creator_v2/features/vocabulary_conversation/models/vocabulary_conversation_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_conversation/widgets/contents/vocabulary_conversation_character_widget.dart';
@@ -70,10 +71,31 @@ class _ConversationWidgetState extends State<VocabularyConversationWidget> with 
         isUpdate = true;
       }
 
-      if (isUpdate == true) {
-        setState(() {
-          isUpdate = false;
-        });
+      /// -----
+      /// TODO: Check Update Activate Window
+      /// -----
+      if (widget.vocabularyConversationFeature?.checkConditionActiveByDirection() == true) {
+        ///
+        if (isActivatedWindow == false) {
+          setState(() {
+            isActivatedWindow = true;
+          });
+        }
+      } else if (widget.vocabularyConversationFeature?.checkConditionActiveByDirection() == false) {
+        ///
+        if (isActivatedWindow == true && isAnimatedShow == true && isMarkedUnactivatedWindow == false) {
+          setState(() {
+            isMarkedUnactivatedWindow = true;
+          });
+
+          Future.delayed(Duration(seconds: 2), () {
+            setState(() {
+              isActivatedWindow = false;
+              isAnimatedShow = false;
+              isMarkedUnactivatedWindow = false;
+            });
+          });
+        }
       }
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -81,12 +103,6 @@ class _ConversationWidgetState extends State<VocabularyConversationWidget> with 
           setState(() {
             isAnimatedShow = true;
           });
-        }
-
-        if (isAnimatedShow == true) {
-          if (widget.vocabularyConversationFeature?.checkConditionActiveByDirection() == false) {
-            isAnimatedShow = false;
-          }
         }
       });
     });
@@ -120,15 +136,24 @@ class _ConversationWidgetState extends State<VocabularyConversationWidget> with 
                 decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0)),
                 child: Stack(
                   children: [
-                    _vocabularyConversationContentWidget ?? Container(),
+                    isActivatedWindow
+                        ? ClipRRect(
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(30.0)),
+                            child: TransparentEffectWallWidget(sizeDx: sizeDx, sizeDy: sizeDy),
+                          )
+                        : Container(),
 
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      width: sizeDx,
-                      height: sizeDy,
-                      child: VocabularyConversationCharacterWidget(sizeDx: sizeDx, sizeDy: sizeDy),
-                    ),
+                    isActivatedWindow ? _vocabularyConversationContentWidget ?? Container() : Container(),
+
+                    isActivatedWindow
+                        ? Positioned(
+                            top: 0,
+                            left: 0,
+                            width: sizeDx,
+                            height: sizeDy,
+                            child: VocabularyConversationCharacterWidget(sizeDx: sizeDx, sizeDy: sizeDy),
+                          )
+                        : Container(),
                   ],
                 ),
               ),

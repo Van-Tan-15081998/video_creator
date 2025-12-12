@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:frame_creator_v2/core/simple_position_size.dart';
 import 'package:frame_creator_v2/features/vocabulary_english_definition/models/vocabulary_english_definition_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_english_definition/widgets/contents/vocabulary_english_definition_content_widget.dart';
@@ -71,10 +72,31 @@ class _VocabularyEnglishDefinitionWidgetState extends State<VocabularyEnglishDef
         isUpdate = true;
       }
 
-      if (isUpdate == true) {
-        setState(() {
-          isUpdate = false;
-        });
+      /// -----
+      /// TODO: Check Update Activate Window
+      /// -----
+      if (widget.vocabularyEnglishDefinitionFeature?.checkConditionActiveByDirection() == true) {
+        ///
+        if (isActivatedWindow == false) {
+          setState(() {
+            isActivatedWindow = true;
+          });
+        }
+      } else if (widget.vocabularyEnglishDefinitionFeature?.checkConditionActiveByDirection() == false) {
+        ///
+        if (isActivatedWindow == true && isAnimatedShow == true && isMarkedUnactivatedWindow == false) {
+          setState(() {
+            isMarkedUnactivatedWindow = true;
+          });
+
+          Future.delayed(Duration(seconds: 2), () {
+            setState(() {
+              isActivatedWindow = false;
+              isAnimatedShow = false;
+              isMarkedUnactivatedWindow = false;
+            });
+          });
+        }
       }
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -82,12 +104,6 @@ class _VocabularyEnglishDefinitionWidgetState extends State<VocabularyEnglishDef
           setState(() {
             isAnimatedShow = true;
           });
-        }
-
-        if (isAnimatedShow == true) {
-          if (widget.vocabularyEnglishDefinitionFeature?.checkConditionActiveByDirection() == false) {
-            isAnimatedShow = false;
-          }
         }
       });
     });
@@ -120,7 +136,17 @@ class _VocabularyEnglishDefinitionWidgetState extends State<VocabularyEnglishDef
                 width: sizeDx,
                 height: sizeDy,
                 decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0)),
-                child: Stack(children: [_vocabularyEnglishDefinitionContentWidget ?? Container()]),
+                child: Stack(
+                  children: [
+                    isActivatedWindow
+                        ? ClipRRect(
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                            child: TransparentEffectWallWidget(sizeDx: sizeDx, sizeDy: sizeDy),
+                          )
+                        : Container(),
+                    isActivatedWindow ? _vocabularyEnglishDefinitionContentWidget ?? Container() : Container(),
+                  ],
+                ),
               ),
             )
           : Container(),

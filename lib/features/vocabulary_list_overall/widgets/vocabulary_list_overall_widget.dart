@@ -2,8 +2,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/core/simple_position_size.dart';
-import 'package:frame_creator_v2/features/vocabulary_list/models/vocabulary_list_feature.dart';
-import 'package:frame_creator_v2/features/vocabulary_list/widgets/contents/vocabulary_list_content_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_list_overall/models/vocabulary_list_overall_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_list_overall/widgets/contents/vocabulary_list_overall_content_widget.dart';
 

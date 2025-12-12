@@ -13,7 +13,6 @@ class GlobalAnnouncementWidget0 extends StatefulWidget {
 }
 
 class _GlobalAnnouncementWidgetState extends State<GlobalAnnouncementWidget0> {
-
   Timer? _timer;
 
   Color? announcementColor;
@@ -32,7 +31,6 @@ class _GlobalAnnouncementWidgetState extends State<GlobalAnnouncementWidget0> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _timer = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
-
         counter++;
 
         if (counter % 2 == 0) {
@@ -40,7 +38,6 @@ class _GlobalAnnouncementWidgetState extends State<GlobalAnnouncementWidget0> {
 
           sizeDx = widget.sizeDx + 20.0;
           sizeDy = widget.sizeDy + 20.0;
-
         } else {
           announcementColor = Color(0xFF00FF7F).withValues(alpha: 0.1);
 
@@ -48,10 +45,7 @@ class _GlobalAnnouncementWidgetState extends State<GlobalAnnouncementWidget0> {
           sizeDy = widget.sizeDy + 40.0;
         }
 
-        setState(() {
-
-        });
-
+        setState(() {});
       });
     });
   }

@@ -59,14 +59,19 @@ class DemoScript with ExecutionCore {
       /// -----
       /// TODO: VocabularySS01
       /// -----
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.setWord(value: 'Vocabulary_SS01');
+      // getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.setWord(value: 'Vocabulary_SS01');
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.setWord(value: 'Vocabulary');
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.setTopicSpecificMeaning(value: 'Nghĩa vocabulary_SS01');
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.setIsNoun(value: true);
 
       /// TODO: Sentence
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setTitle(value: 'Example: 1/3');
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setEngSentence(value: 'Sunny weather offers excellent conditions for outdoor activities, but it can also increase the risk of dehydration if proper care is not taken.');
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setVieSentence(value: 'Thời tiết nắng mang lại điều kiện tuyệt vời cho các hoạt động ngoài trời, nhưng cũng có thể làm tăng nguy cơ mất nước nếu không chú ý chăm sóc cơ thể.');
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setEngSentence(
+        value: 'Sunny weather offers excellent conditions for outdoor activities, but it can also increase the risk of dehydration if proper care is not taken.',
+      );
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setVieSentence(
+        value: 'Thời tiết nắng mang lại điều kiện tuyệt vời cho các hoạt động ngoài trời, nhưng cũng có thể làm tăng nguy cơ mất nước nếu không chú ý chăm sóc cơ thể.',
+      );
 
       ///
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS02?.setTitle(value: 'Example: 2/3');
@@ -121,8 +126,7 @@ class DemoScript with ExecutionCore {
 
       /// TODO: MeaningInEng
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.setTopicSpecificMeaningInEng(
-        value:
-            '[VocabSS01] Overcast describes weather in which the sky is completely covered with clouds, blocking direct sunlight and creating a uniformly gray appearance.',
+        value: '[VocabSS01] Overcast describes weather in which the sky is completely covered with clouds, blocking direct sunlight and creating a uniformly gray appearance.',
         isPriorityOverride: true,
       );
 
@@ -224,6 +228,21 @@ class DemoScript with ExecutionCore {
           isRightCharacterSS02: true, //
           engSentence: '[isRightCharacterSS02] Learning daily builds _confidence and long term success.', //
           vieSentence: '[isRightCharacterSS02] Học mỗi ngày sẽ xây dựng _sự _tự _tin và tạo nên thành công lâu dài.', //
+        ),
+      );
+
+      /// TODO: Interesting Knowledge Conversation
+
+      /// Item 1
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyInterestingKnowledgeConversation?.getInterestingKnowledgeItemList?.add(
+        VocabularyInterestingKnowledgeConversationItem(
+          isLeftCharacterSS01: true, //
+          isRightCharacterSS02: false, //
+          engSentence:
+              '[isLeftCharacterSS01] Learning daily builds _confidence and long term success. Learning daily builds _confidence and long term success. Learning daily builds _confidence and long term success. Learning daily builds _confidence and long term success.', //
+          vieSentence:
+              '[isLeftCharacterSS01] Học mỗi ngày sẽ xây dựng _sự _tự _tin và tạo nên thành công lâu dài. Học mỗi ngày sẽ xây dựng _sự _tự _tin và tạo nên thành công lâu dài. Học mỗi ngày sẽ xây dựng _sự _tự _tin và tạo nên thành công lâu dài.', //
+          imageSource: 'assets/images/interesting_knowledge/knowledge_01.jpg',
         ),
       );
 

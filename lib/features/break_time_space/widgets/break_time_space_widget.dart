@@ -70,10 +70,31 @@ class _BreakTimeSpaceWidgetState extends State<BreakTimeSpaceWidget> with Simple
         isUpdate = true;
       }
 
-      if (isUpdate == true) {
-        setState(() {
-          isUpdate = false;
-        });
+      /// -----
+      /// TODO: Check Update Activate Window
+      /// -----
+      if (widget.breakTimeSpaceFeature?.checkConditionActiveByDirection() == true) {
+        ///
+        if (isActivatedWindow == false) {
+          setState(() {
+            isActivatedWindow = true;
+          });
+        }
+      } else if (widget.breakTimeSpaceFeature?.checkConditionActiveByDirection() == false) {
+        ///
+        if (isActivatedWindow == true && isAnimatedShow == true && isMarkedUnactivatedWindow == false) {
+          setState(() {
+            isMarkedUnactivatedWindow = true;
+          });
+
+          Future.delayed(Duration(seconds: 2), () {
+            setState(() {
+              isActivatedWindow = false;
+              isAnimatedShow = false;
+              isMarkedUnactivatedWindow = false;
+            });
+          });
+        }
       }
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -81,12 +102,6 @@ class _BreakTimeSpaceWidgetState extends State<BreakTimeSpaceWidget> with Simple
           setState(() {
             isAnimatedShow = true;
           });
-        }
-
-        if (isAnimatedShow == true) {
-          if (widget.breakTimeSpaceFeature?.checkConditionActiveByDirection() == false) {
-            isAnimatedShow = false;
-          }
         }
       });
     });
@@ -123,14 +138,16 @@ class _BreakTimeSpaceWidgetState extends State<BreakTimeSpaceWidget> with Simple
                   alignment: AlignmentDirectional.bottomEnd,
 
                   children: [
-                    _breakTimeSpaceContentWidget ?? Container(),
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      width: sizeDx,
-                      height: sizeDy,
-                      child: BreakTimeSpaceCharacterWidget(sizeDx: sizeDx, sizeDy: sizeDy),
-                    ),
+                    isActivatedWindow ? _breakTimeSpaceContentWidget ?? Container() : Container(),
+                    isActivatedWindow
+                        ? Positioned(
+                            top: 0,
+                            left: 0,
+                            width: sizeDx,
+                            height: sizeDy,
+                            child: BreakTimeSpaceCharacterWidget(sizeDx: sizeDx, sizeDy: sizeDy),
+                          )
+                        : Container(),
                   ],
                 ),
               ),

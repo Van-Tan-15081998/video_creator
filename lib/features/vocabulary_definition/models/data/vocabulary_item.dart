@@ -348,7 +348,13 @@ class VocabularyItem with ExecutionCore {
             getCurrentVocabularyItem?.getVocabularyDataModel?.setPronunciationUS(value: getVocabularyDataModel?.getPronunciationUS, isPriorityOverride: true);
             getCurrentVocabularyItem?.getVocabularyDataModel?.setTopicSpecificMeaningInEng(value: getVocabularyDataModel?.getTopicSpecificMeaningInEng, isPriorityOverride: true);
 
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setIsSimplifyType(value: getVocabularyDataModel?.getIsSimplifyType, isPriorityOverride: true);
+
             getCurrentVocabularyItem?.getVocabularyDataModel?.setVocabularyExampleConversation(value: getVocabularyDataModel?.getVocabularyExampleConversation, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setVocabularyInterestingKnowledgeConversation(
+              value: getVocabularyDataModel?.getVocabularyInterestingKnowledgeConversation,
+              isPriorityOverride: true,
+            );
 
             ///
             getSequentialExecutionController?.getVocabularyListFeature?.onActivateWindow();
@@ -573,6 +579,9 @@ class VocabularyItem with ExecutionCore {
             getSequentialExecutionController?.getVocabularyParagraphFeature?.onActivateWindow();
 
             ///
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setIsSimplifyType(value: true, isPriorityOverride: true);
+
+            ///
             getCurrentVocabularyItem?.getVocabularyDataModel?.setIsShowExampleOnSide(value: false, isPriorityOverride: true);
             getCurrentVocabularyItem?.getVocabularyDataModel?.setIsExampleOnLeft(value: false, isPriorityOverride: true);
             getCurrentVocabularyItem?.getVocabularyDataModel?.setIsExampleOnRight(value: false, isPriorityOverride: true);
@@ -728,23 +737,30 @@ class VocabularyItem with ExecutionCore {
 
           if (totalSeconds == 300) {
             getSequentialExecutionController?.getVocabularyTitleFeature?.onDeactivateWindow();
-            getSequentialExecutionController?.getVocabularyListOverallFeature?.onActivateWindow();
+            // getSequentialExecutionController?.getVocabularyListOverallFeature?.onActivateWindow();
+            getSequentialExecutionController?.getInterestingKnowledgeConversationFeature?.onActivateWindow();
           }
 
-          if (totalSeconds == 301) {
+          if (totalSeconds == 302) {
             ///
+            if (kDebugMode) {
+              print('a');
+            }
           }
 
           if (totalSeconds == 329) {
             /// TODO: Open Next Window
 
-            getSequentialExecutionController?.getVocabularyListOverallFeature?.onDeactivateWindow();
+            // getSequentialExecutionController?.getVocabularyListOverallFeature?.onDeactivateWindow();
+            getSequentialExecutionController?.getInterestingKnowledgeConversationFeature?.onDeactivateWindow();
           }
 
           if (totalSeconds == 330) {
             /// TODO: Open Next Window
 
             setIsActive(value: false, isPriorityOverride: true);
+
+            /// TODO: Tuyệt đối quan trọng => Mở comment
           }
         } else if ((getTotalRemainingSeconds ?? 0) == 0) {
           getStatus?.setStatusComplete();

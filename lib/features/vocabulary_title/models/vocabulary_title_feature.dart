@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 import 'package:frame_creator_v2/core/window_feature.dart';
-import 'package:frame_creator_v2/features/scene_transition/widgets/scene_transition_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_title/widgets/vocabulary_title_widget.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 
@@ -76,9 +75,7 @@ class VocabularyTitleFeature with ExecutionCore, WindowFeature {
               alignment: AlignmentDirectional.center, //
               children: [
                 // Text('SceneTransitionFeature'), //
-                VocabularyTitleWidget(
-                  vocabularyTitleFeature: this,
-                ),
+                VocabularyTitleWidget(vocabularyTitleFeature: this),
               ],
             );
           },

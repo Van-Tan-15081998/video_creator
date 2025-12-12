@@ -124,6 +124,21 @@ class VocabularyDataModel with ExecutionCore {
   /// -----
   /// TODO:
   /// -----
+  bool? _isSimplifyType;
+  bool? get getIsSimplifyType => _isSimplifyType;
+  void setIsSimplifyType({required bool? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _isSimplifyType = value;
+    } else {
+      _isSimplifyType ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
   bool? _isNoun;
   bool? get getIsNoun => _isNoun;
   void setIsNoun({required bool? value, bool? isPriorityOverride}) {
@@ -392,6 +407,21 @@ class VocabularyDataModel with ExecutionCore {
   }
 
   /// -----
+  /// TODO:
+  /// -----
+  VocabularyInterestingKnowledgeConversation? _vocabularyInterestingKnowledgeConversation;
+  VocabularyInterestingKnowledgeConversation? get getVocabularyInterestingKnowledgeConversation => _vocabularyInterestingKnowledgeConversation;
+  void setVocabularyInterestingKnowledgeConversation({required VocabularyInterestingKnowledgeConversation? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _vocabularyInterestingKnowledgeConversation = value;
+    } else {
+      _vocabularyInterestingKnowledgeConversation ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
   /// TODO: Attach Root
   /// -----
   @override
@@ -445,6 +475,8 @@ class VocabularyDataModel with ExecutionCore {
   @override
   Future<void> onSetupRoot({bool? isIgnoreSetupRootForSubCom}) async {
     try {
+      setIsSimplifyType(value: false, isPriorityOverride: true);
+
       /// -----
       /// TODO:
       /// -----
@@ -461,6 +493,8 @@ class VocabularyDataModel with ExecutionCore {
       setVocabularyExampleParagraphSS03(value: VocabularyExampleParagraph(), isPriorityOverride: true);
 
       setVocabularyExampleConversation(value: VocabularyExampleConversation(), isPriorityOverride: true);
+
+      setVocabularyInterestingKnowledgeConversation(value: VocabularyInterestingKnowledgeConversation(), isPriorityOverride: true);
 
       /// -----
       /// TODO: Setup Root For SubCom
@@ -539,6 +573,7 @@ class VocabularyDataModel with ExecutionCore {
       getVocabularyExampleParagraphSS03?.onSetupRoot();
 
       getVocabularyExampleConversation?.onSetupRoot();
+      getVocabularyInterestingKnowledgeConversation?.onSetupRoot();
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onSetupRootForSubCom]');
     }
@@ -569,6 +604,7 @@ class VocabularyDataModel with ExecutionCore {
       getVocabularyExampleParagraphSS03?.onInitRoot();
 
       getVocabularyExampleConversation?.onInitRoot();
+      getVocabularyInterestingKnowledgeConversation?.onInitRoot();
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onInitRootForSubCom]');
     }
@@ -818,6 +854,133 @@ class VocabularyExampleConversationItem {
       _vieSentence = value;
     } else {
       _vieSentence ??= value;
+    }
+
+    return;
+  }
+}
+
+class VocabularyInterestingKnowledgeConversation with ExecutionCore {
+  VocabularyInterestingKnowledgeConversation() {
+    setInterestingKnowledgeItemList(value: [], isPriorityOverride: true);
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  String? _title;
+  String? get getTitle => _title;
+  void setTitle({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _title = value;
+    } else {
+      _title ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  List<VocabularyInterestingKnowledgeConversationItem>? _interestingKnowledgeItemList;
+  List<VocabularyInterestingKnowledgeConversationItem>? get getInterestingKnowledgeItemList => _interestingKnowledgeItemList;
+  void setInterestingKnowledgeItemList({required List<VocabularyInterestingKnowledgeConversationItem>? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _interestingKnowledgeItemList = value;
+    } else {
+      _interestingKnowledgeItemList ??= value;
+    }
+
+    return;
+  }
+}
+
+class VocabularyInterestingKnowledgeConversationItem {
+  VocabularyInterestingKnowledgeConversationItem({
+    required bool? isLeftCharacterSS01,
+    required bool? isRightCharacterSS02,
+    required String? engSentence,
+    required String? vieSentence,
+    required String? imageSource,
+  }) {
+    setIsLeftCharacterSS01(value: isLeftCharacterSS01, isPriorityOverride: true);
+    setIsRightCharacterSS02(value: isRightCharacterSS02, isPriorityOverride: true);
+    setEngSentence(value: engSentence, isPriorityOverride: true);
+    setVieSentence(value: vieSentence, isPriorityOverride: true);
+    setImageSource(value: imageSource, isPriorityOverride: true);
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  bool? _isLeftCharacterSS01;
+  bool? get getIsLeftCharacterSS01 => _isLeftCharacterSS01;
+  void setIsLeftCharacterSS01({required bool? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _isLeftCharacterSS01 = value;
+    } else {
+      _isLeftCharacterSS01 ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  bool? _isRightCharacterSS02;
+  bool? get getIsRightCharacterSS02 => _isRightCharacterSS02;
+  void setIsRightCharacterSS02({required bool? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _isRightCharacterSS02 = value;
+    } else {
+      _isRightCharacterSS02 ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO: Tối đa 220 ký tự
+  /// -----
+  String? _engSentence;
+  String? get getEngSentence => _engSentence;
+  void setEngSentence({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _engSentence = value;
+    } else {
+      _engSentence ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO: Tối đa 180 ký tự
+  /// -----
+  String? _vieSentence;
+  String? get getVieSentence => _vieSentence;
+  void setVieSentence({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _vieSentence = value;
+    } else {
+      _vieSentence ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  String? _imageSource;
+  String? get getImageSource => _imageSource;
+  void setImageSource({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _imageSource = value;
+    } else {
+      _imageSource ??= value;
     }
 
     return;

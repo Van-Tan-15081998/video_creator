@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:frame_creator_v2/core/simple_position_size.dart';
 import 'package:frame_creator_v2/features/vocabulary_paragraph/models/vocabulary_paragraph_feature.dart';
 import 'package:frame_creator_v2/features/vocabulary_paragraph/widgets/contents/vocabulary_paragraph_content_widget.dart';
@@ -81,10 +82,31 @@ class _VocabularyParagraphWidgetState extends State<VocabularyParagraphWidget> w
         isUpdate = true;
       }
 
-      if (isUpdate == true) {
-        setState(() {
-          isUpdate = false;
-        });
+      /// -----
+      /// TODO: Check Update Activate Window
+      /// -----
+      if (widget.vocabularyParagraphFeature?.checkConditionActiveByDirection() == true) {
+        ///
+        if (isActivatedWindow == false) {
+          setState(() {
+            isActivatedWindow = true;
+          });
+        }
+      } else if (widget.vocabularyParagraphFeature?.checkConditionActiveByDirection() == false) {
+        ///
+        if (isActivatedWindow == true && isAnimatedShow == true && isMarkedUnactivatedWindow == false) {
+          setState(() {
+            isMarkedUnactivatedWindow = true;
+          });
+
+          Future.delayed(Duration(seconds: 2), () {
+            setState(() {
+              isActivatedWindow = false;
+              isAnimatedShow = false;
+              isMarkedUnactivatedWindow = false;
+            });
+          });
+        }
       }
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -92,12 +114,6 @@ class _VocabularyParagraphWidgetState extends State<VocabularyParagraphWidget> w
           setState(() {
             isAnimatedShow = true;
           });
-        }
-
-        if (isAnimatedShow == true) {
-          if (widget.vocabularyParagraphFeature?.checkConditionActiveByDirection() == false) {
-            isAnimatedShow = false;
-          }
         }
       });
     });
@@ -129,7 +145,19 @@ class _VocabularyParagraphWidgetState extends State<VocabularyParagraphWidget> w
                 width: sizeDx,
                 height: sizeDy,
                 decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0)),
-                child: Stack(children: [_vocabularyParagraphContentWidget ?? Container()]),
+                child: Stack(
+                  children: [
+                    isActivatedWindow
+                        ? FadeIn(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(30.0)),
+                              child: TransparentEffectWallWidget(sizeDx: sizeDx, sizeDy: sizeDy),
+                            ),
+                          )
+                        : Container(),
+                    isActivatedWindow ? _vocabularyParagraphContentWidget ?? Container() : Container(),
+                  ],
+                ),
               ),
             )
           : Container(),

@@ -5,9 +5,6 @@ import 'package:frame_creator_v2/core/simple_position_size.dart';
 import 'package:frame_creator_v2/features/pomodoro_ending_conversation/models/pomodoro_ending_conversation_feature.dart';
 import 'package:frame_creator_v2/features/pomodoro_ending_conversation/widgets/contents/pomodoro_ending_conversation_character_widget.dart';
 import 'package:frame_creator_v2/features/pomodoro_ending_conversation/widgets/contents/pomodoro_ending_conversation_content_widget.dart';
-import 'package:frame_creator_v2/features/pomodoro_starting_conversation/models/pomodoro_starting_conversation_feature.dart';
-import 'package:frame_creator_v2/features/pomodoro_starting_conversation/widgets/contents/pomodoro_starting_conversation_character_widget.dart';
-import 'package:frame_creator_v2/features/vocabulary_conversation/widgets/contents/vocabulary_conversation_content_widget.dart';
 
 class PomodoroEndingConversationWidget extends StatefulWidget {
   const PomodoroEndingConversationWidget({super.key, required this.pomodoroEndingConversationFeature});
@@ -73,10 +70,31 @@ class _PomodoroEndingConversationWidgetState extends State<PomodoroEndingConvers
         isUpdate = true;
       }
 
-      if (isUpdate == true) {
-        setState(() {
-          isUpdate = false;
-        });
+      /// -----
+      /// TODO: Check Update Activate Window
+      /// -----
+      if (widget.pomodoroEndingConversationFeature?.checkConditionActiveByDirection() == true) {
+        ///
+        if (isActivatedWindow == false) {
+          setState(() {
+            isActivatedWindow = true;
+          });
+        }
+      } else if (widget.pomodoroEndingConversationFeature?.checkConditionActiveByDirection() == false) {
+        ///
+        if (isActivatedWindow == true && isAnimatedShow == true && isMarkedUnactivatedWindow == false) {
+          setState(() {
+            isMarkedUnactivatedWindow = true;
+          });
+
+          Future.delayed(Duration(seconds: 2), () {
+            setState(() {
+              isActivatedWindow = false;
+              isAnimatedShow = false;
+              isMarkedUnactivatedWindow = false;
+            });
+          });
+        }
       }
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -84,12 +102,6 @@ class _PomodoroEndingConversationWidgetState extends State<PomodoroEndingConvers
           setState(() {
             isAnimatedShow = true;
           });
-        }
-
-        if (isAnimatedShow == true) {
-          if (widget.pomodoroEndingConversationFeature?.checkConditionActiveByDirection() == false) {
-            isAnimatedShow = false;
-          }
         }
       });
     });
@@ -123,15 +135,17 @@ class _PomodoroEndingConversationWidgetState extends State<PomodoroEndingConvers
                 decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0)),
                 child: Stack(
                   children: [
-                    _pomodoroEndingConversationContentWidget ?? Container(),
+                    isActivatedWindow ? _pomodoroEndingConversationContentWidget ?? Container() : Container(),
 
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      width: sizeDx,
-                      height: sizeDy,
-                      child: PomodoroEndingConversationCharacterWidget(sizeDx: sizeDx, sizeDy: sizeDy),
-                    ),
+                    isActivatedWindow
+                        ? Positioned(
+                            top: 0,
+                            left: 0,
+                            width: sizeDx,
+                            height: sizeDy,
+                            child: PomodoroEndingConversationCharacterWidget(sizeDx: sizeDx, sizeDy: sizeDy),
+                          )
+                        : Container(),
                   ],
                 ),
               ),

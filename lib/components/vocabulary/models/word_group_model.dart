@@ -1,3 +1,1 @@
-class WordGroupModel {
-
-}
+class WordGroupModel {}

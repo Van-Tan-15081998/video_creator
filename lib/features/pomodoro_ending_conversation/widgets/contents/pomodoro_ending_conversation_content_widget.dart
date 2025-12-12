@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
-import 'package:frame_creator_v2/features/vocabulary_conversation/widgets/contents/animated_vocabulary_conversation_title_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_data_model.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
@@ -99,66 +98,68 @@ class _PomodoroEndingConversationContentWidgetState extends State<PomodoroEnding
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if (totalSeconds > 0) {
-          totalSeconds -= 1;
+        if (widget.systemStateManagement?.getPomodoroEndingConversationFeature?.checkConditionActiveByDirection() == true) {
+          if (totalSeconds > 0) {
+            totalSeconds -= 1;
 
-          limitedTimeProgressbar = (limitedTimeProgressbarLength / (60 * totalMinutes)) * totalSeconds;
+            limitedTimeProgressbar = (limitedTimeProgressbarLength / (60 * totalMinutes)) * totalSeconds;
 
-          // setState(() {});
-        } else {
-          totalSeconds = 60 * totalMinutes;
-        }
-
-        counterCreateMessage++;
-
-        if (counterCreateMessage > 0 && counterCreateMessage % 5 == 0) {
-          // if (counterMessage % 2 == 0) {
-          //   setState(() {
-          //     // messageList.add(messageWidget(isLeftSide: true, isRightSide: false));
-          //     messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false));
-          //   });
-          // } else {
-          //   setState(() {
-          //     // messageList.add(messageWidget(isLeftSide: false, isRightSide: true));
-          //     messageList.add(messageByWordWidget(isLeftSide: false, isRightSide: true));
-          //   });
-          // }
-
-          if (getConversationItemList?.isNotEmpty == true) {
-            if (getConversationItemList?.firstOrNull?.getIsLeftCharacterSS01 == true) {
-              setState(() {
-                messageList.add(
-                  messageByWordWidget(
-                    isLeftSide: true,
-                    isRightSide: false,
-                    engSentence: getConversationItemList?.firstOrNull?.getEngSentence ?? '',
-                    vieSentence: getConversationItemList?.firstOrNull?.getVieSentence ?? '',
-                  ),
-                );
-              });
-            } else if (getConversationItemList?.firstOrNull?.getIsRightCharacterSS02 == true) {
-              setState(() {
-                messageList.add(
-                  messageByWordWidget(
-                    isLeftSide: false,
-                    isRightSide: true,
-                    engSentence: getConversationItemList?.firstOrNull?.getEngSentence ?? '',
-                    vieSentence: getConversationItemList?.firstOrNull?.getVieSentence ?? '',
-                  ),
-                );
-              });
-            }
-
-            getConversationItemList?.removeAt(0);
+            // setState(() {});
+          } else {
+            totalSeconds = 60 * totalMinutes;
           }
 
-          counterMessage++;
+          counterCreateMessage++;
 
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (_scrollController.hasClients) {
-              _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+          if (counterCreateMessage > 0 && counterCreateMessage % 5 == 0) {
+            // if (counterMessage % 2 == 0) {
+            //   setState(() {
+            //     // messageList.add(messageWidget(isLeftSide: true, isRightSide: false));
+            //     messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false));
+            //   });
+            // } else {
+            //   setState(() {
+            //     // messageList.add(messageWidget(isLeftSide: false, isRightSide: true));
+            //     messageList.add(messageByWordWidget(isLeftSide: false, isRightSide: true));
+            //   });
+            // }
+
+            if (getConversationItemList?.isNotEmpty == true) {
+              if (getConversationItemList?.firstOrNull?.getIsLeftCharacterSS01 == true) {
+                setState(() {
+                  messageList.add(
+                    messageByWordWidget(
+                      isLeftSide: true,
+                      isRightSide: false,
+                      engSentence: getConversationItemList?.firstOrNull?.getEngSentence ?? '',
+                      vieSentence: getConversationItemList?.firstOrNull?.getVieSentence ?? '',
+                    ),
+                  );
+                });
+              } else if (getConversationItemList?.firstOrNull?.getIsRightCharacterSS02 == true) {
+                setState(() {
+                  messageList.add(
+                    messageByWordWidget(
+                      isLeftSide: false,
+                      isRightSide: true,
+                      engSentence: getConversationItemList?.firstOrNull?.getEngSentence ?? '',
+                      vieSentence: getConversationItemList?.firstOrNull?.getVieSentence ?? '',
+                    ),
+                  );
+                });
+              }
+
+              getConversationItemList?.removeAt(0);
             }
-          });
+
+            counterMessage++;
+
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (_scrollController.hasClients) {
+                _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+              }
+            });
+          }
         }
       });
 
@@ -693,6 +694,7 @@ class _PomodoroEndingConversationContentWidgetState extends State<PomodoroEnding
                 borderRadius: isRightSide
                     ? BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(45.0))
                     : BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0), bottomRight: Radius.circular(45.0), bottomLeft: Radius.circular(0)),
+                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 8.0, spreadRadius: 1.0, offset: Offset(0, 0))],
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

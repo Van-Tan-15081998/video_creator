@@ -70,10 +70,31 @@ class _IntroductoryConversationWidgetState extends State<IntroductoryConversatio
         isUpdate = true;
       }
 
-      if (isUpdate == true) {
-        setState(() {
-          isUpdate = false;
-        });
+      /// -----
+      /// TODO: Check Update Activate Window
+      /// -----
+      if (widget.introductoryConversationFeature?.checkConditionActiveByDirection() == true) {
+        ///
+        if (isActivatedWindow == false) {
+          setState(() {
+            isActivatedWindow = true;
+          });
+        }
+      } else if (widget.introductoryConversationFeature?.checkConditionActiveByDirection() == false) {
+        ///
+        if (isActivatedWindow == true && isAnimatedShow == true && isMarkedUnactivatedWindow == false) {
+          setState(() {
+            isMarkedUnactivatedWindow = true;
+          });
+
+          Future.delayed(Duration(seconds: 2), () {
+            setState(() {
+              isActivatedWindow = false;
+              isAnimatedShow = false;
+              isMarkedUnactivatedWindow = false;
+            });
+          });
+        }
       }
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -81,12 +102,6 @@ class _IntroductoryConversationWidgetState extends State<IntroductoryConversatio
           setState(() {
             isAnimatedShow = true;
           });
-        }
-
-        if (isAnimatedShow == true) {
-          if (widget.introductoryConversationFeature?.checkConditionActiveByDirection() == false) {
-            isAnimatedShow = false;
-          }
         }
       });
     });
@@ -121,14 +136,16 @@ class _IntroductoryConversationWidgetState extends State<IntroductoryConversatio
                 decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0)),
                 child: Stack(
                   children: [
-                    _introductoryConversationContentWidget ?? Container(),
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      width: sizeDx,
-                      height: sizeDy,
-                      child: IntroductoryConversationCharacterWidget(sizeDx: sizeDx, sizeDy: sizeDy),
-                    ),
+                    isActivatedWindow ? _introductoryConversationContentWidget ?? Container() : Container(),
+                    isActivatedWindow
+                        ? Positioned(
+                            top: 0,
+                            left: 0,
+                            width: sizeDx,
+                            height: sizeDy,
+                            child: IntroductoryConversationCharacterWidget(sizeDx: sizeDx, sizeDy: sizeDy),
+                          )
+                        : Container(),
                   ],
                 ),
               ),

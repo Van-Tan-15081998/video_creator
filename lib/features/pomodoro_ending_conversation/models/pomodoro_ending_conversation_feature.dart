@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 import 'package:frame_creator_v2/core/window_feature.dart';
 import 'package:frame_creator_v2/features/pomodoro_ending_conversation/widgets/pomodoro_ending_conversation_widget.dart';
-import 'package:frame_creator_v2/features/pomodoro_starting_conversation/widgets/pomodoro_starting_conversation_widget.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 
 class PomodoroEndingConversationFeature with ExecutionCore, WindowFeature {

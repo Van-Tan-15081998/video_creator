@@ -455,7 +455,6 @@ mixin WindowFeature {
   }
 
   void onDeactivateWindow({VoidCallback? onActivatedWindowAsParameter, VoidCallback? onDeactivatedWindowAsParameter}) {
-
     if (onActivatedWindowAsParameter != null) {
       onActivatedWindow = onActivatedWindowAsParameter;
     }
@@ -498,7 +497,6 @@ mixin WindowFeature {
   }
 
   void onActivateWindow({VoidCallback? onActivatedWindowAsParameter, VoidCallback? onDeactivatedWindowAsParameter}) {
-
     if (onActivatedWindowAsParameter != null) {
       onActivatedWindow = onActivatedWindowAsParameter;
     }

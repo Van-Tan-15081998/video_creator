@@ -1,6 +1,4 @@
 class WordModel {
-
   ///
   String? id;
-
 }

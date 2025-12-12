@@ -38,10 +38,7 @@ class _KeyboardDemoState extends State<KeyboardDemo> {
         height: 200,
         color: Colors.blue.shade100,
         alignment: Alignment.center,
-        child: Text(
-          _lastKey.isEmpty ? 'Nhấn phím bất kỳ...' : 'Bạn vừa nhấn: $_lastKey',
-          style: const TextStyle(fontSize: 20),
-        ),
+        child: Text(_lastKey.isEmpty ? 'Nhấn phím bất kỳ...' : 'Bạn vừa nhấn: $_lastKey', style: const TextStyle(fontSize: 20)),
       ),
     );
   }

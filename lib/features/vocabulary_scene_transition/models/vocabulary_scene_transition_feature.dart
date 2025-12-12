@@ -75,9 +75,7 @@ class VocabularySceneTransitionFeature with ExecutionCore, WindowFeature {
               alignment: AlignmentDirectional.center, //
               children: [
                 // Text('SceneTransitionFeature'), //
-                VocabularySceneTransitionWidget(
-                  vocabularySceneTransitionFeature: this,
-                ),
+                VocabularySceneTransitionWidget(vocabularySceneTransitionFeature: this),
               ],
             );
           },

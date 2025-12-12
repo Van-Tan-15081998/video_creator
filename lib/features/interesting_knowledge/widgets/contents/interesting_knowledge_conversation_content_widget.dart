@@ -1,8 +1,8 @@
 import 'dart:async';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
-import 'package:frame_creator_v2/features/vocabulary_conversation/widgets/contents/animated_vocabulary_conversation_title_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_data_model.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
@@ -61,13 +61,13 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
   /// -----
   /// TODO:
   /// -----
-  List<VocabularyExampleConversationItem>? _conversationItemList;
-  List<VocabularyExampleConversationItem>? get getConversationItemList => _conversationItemList;
-  void setConversationItemList({required List<VocabularyExampleConversationItem>? value, bool? isPriorityOverride}) {
+  List<VocabularyInterestingKnowledgeConversationItem>? _interestingKnowledgeConversationItemList;
+  List<VocabularyInterestingKnowledgeConversationItem>? get getInterestingKnowledgeConversationItemList => _interestingKnowledgeConversationItemList;
+  void setInterestingKnowledgeConversationItemList({required List<VocabularyInterestingKnowledgeConversationItem>? value, bool? isPriorityOverride}) {
     if (isPriorityOverride == true) {
-      _conversationItemList = value;
+      _interestingKnowledgeConversationItemList = value;
     } else {
-      _conversationItemList ??= value;
+      _interestingKnowledgeConversationItemList ??= value;
     }
 
     return;
@@ -92,9 +92,9 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
 
     setCurrentVocabularyItem(value: widget.systemStateManagement?.getVocabularyDefinitionFeature?.getVocabularyTime?.getCurrentVocabularyItem, isPriorityOverride: true);
 
-    setConversationItemList(value: [], isPriorityOverride: true);
-    getCurrentVocabularyItem?.getVocabularyDataModel?.getVocabularyExampleConversation?.getConversationItemList?.forEach((element) {
-      getConversationItemList?.add(element);
+    setInterestingKnowledgeConversationItemList(value: [], isPriorityOverride: true);
+    getCurrentVocabularyItem?.getVocabularyDataModel?.getVocabularyInterestingKnowledgeConversation?.getInterestingKnowledgeItemList?.forEach((element) {
+      getInterestingKnowledgeConversationItemList?.add(element);
     });
 
     messageList = [
@@ -107,89 +107,125 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if (totalSeconds > 0) {
-          totalSeconds -= 1;
+        if (widget.systemStateManagement?.getInterestingKnowledgeConversationFeature?.checkConditionActiveByDirection() == true) {
+          if (totalSeconds > 0) {
+            totalSeconds -= 1;
 
-          limitedTimeProgressbar = (limitedTimeProgressbarLength / (60 * totalMinutes)) * totalSeconds;
+            limitedTimeProgressbar = (limitedTimeProgressbarLength / (60 * totalMinutes)) * totalSeconds;
 
-          // setState(() {});
-        } else {
-          totalSeconds = 60 * totalMinutes;
-        }
-
-        counterCreateMessage++;
-
-        if (counterCreateMessage > 0 && counterCreateMessage % 2 == 0) {
-          // if (counterMessage % 2 == 0) {
-          //   setState(() {
-          //     // messageList.add(messageWidget(isLeftSide: true, isRightSide: false));
-          //     messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false));
-          //   });
-          // } else {
-          //   setState(() {
-          //     // messageList.add(messageWidget(isLeftSide: false, isRightSide: true));
-          //     messageList.add(messageByWordWidget(isLeftSide: false, isRightSide: true));
-          //   });
-          // }
-          if (messageStringList.isNotEmpty == true) {
-            if (messageStringList[0] == readyMessage && widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getCurrentPomodoroItem?.isPreparing() == false) {
-              setState(() {
-                messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false, engSentence: messageStringList.first, vieSentence: messageStringList.first));
-
-                messageStringList.removeAt(0);
-              });
-            }
-            if (messageStringList[0] == startMessage && widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getCurrentPomodoroItem?.isCompletedPreparing() == true) {
-              setState(() {
-                messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false, engSentence: messageStringList.first, vieSentence: messageStringList.first));
-
-                messageStringList.removeAt(0);
-              });
-
-              /// Chỉ Định Chuyển Tiếp
-              Future.delayed(Duration(seconds: 1), () {
-                widget.systemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
-              });
-            }
+            // setState(() {});
+          } else {
+            totalSeconds = 60 * totalMinutes;
           }
 
-          // if (getConversationItemList?.isNotEmpty == true) {
-          //   if (getConversationItemList?.firstOrNull?.getIsLeftCharacterSS01 == true) {
-          //     setState(() {
-          //       messageList.add(
-          //         messageByWordWidget(
-          //           isLeftSide: true,
-          //           isRightSide: false,
-          //           engSentence: getConversationItemList?.firstOrNull?.getEngSentence ?? '',
-          //           vieSentence: getConversationItemList?.firstOrNull?.getVieSentence ?? '',
-          //         ),
-          //       );
-          //     });
-          //   } else if (getConversationItemList?.firstOrNull?.getIsRightCharacterSS02 == true) {
-          //     setState(() {
-          //       messageList.add(
-          //         messageByWordWidget(
-          //           isLeftSide: false,
-          //           isRightSide: true,
-          //           engSentence: getConversationItemList?.firstOrNull?.getEngSentence ?? '',
-          //           vieSentence: getConversationItemList?.firstOrNull?.getVieSentence ?? '',
-          //         ),
-          //       );
-          //     });
-          //   }
-          //
-          //   getConversationItemList?.removeAt(0);
-          // }
+          counterCreateMessage++;
 
-          counterMessage++;
+          if (counterCreateMessage > 0 && counterCreateMessage % 2 == 0) {
+            // if (counterMessage % 2 == 0) {
+            //   setState(() {
+            //     // messageList.add(messageWidget(isLeftSide: true, isRightSide: false));
+            //     messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false));
+            //   });
+            // } else {
+            //   setState(() {
+            //     // messageList.add(messageWidget(isLeftSide: false, isRightSide: true));
+            //     messageList.add(messageByWordWidget(isLeftSide: false, isRightSide: true));
+            //   });
+            // }
 
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
-          });
+            if (getInterestingKnowledgeConversationItemList?.isNotEmpty == true) {
+              if (getInterestingKnowledgeConversationItemList?.firstOrNull?.getIsLeftCharacterSS01 == true) {
+                setState(() {
+                  if (getInterestingKnowledgeConversationItemList?.firstOrNull?.getImageSource?.isNotEmpty == true) {
+                    messageList.add(
+                      pictureMessageByWordWidget(
+                        isLeftSide: true,
+                        isRightSide: false,
+                        engSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getEngSentence ?? '',
+                        vieSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getVieSentence ?? '',
+                        imageSource: getInterestingKnowledgeConversationItemList?.firstOrNull?.getImageSource ?? '',
+                      ),
+                    );
+                  } else {
+                    messageList.add(
+                      messageByWordWidget(
+                        isLeftSide: true,
+                        isRightSide: false,
+                        engSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getEngSentence ?? '',
+                        vieSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getVieSentence ?? '',
+                      ),
+                    );
+                  }
+                });
+              } else if (getInterestingKnowledgeConversationItemList?.firstOrNull?.getIsRightCharacterSS02 == true) {
+                setState(() {
+                  if (getInterestingKnowledgeConversationItemList?.firstOrNull?.getImageSource?.isNotEmpty == true) {
+                    messageList.add(
+                      pictureMessageByWordWidget(
+                        isLeftSide: false,
+                        isRightSide: true,
+                        engSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getEngSentence ?? '',
+                        vieSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getVieSentence ?? '',
+                        imageSource: getInterestingKnowledgeConversationItemList?.firstOrNull?.getImageSource ?? '',
+                      ),
+                    );
+                  } else {
+                    messageList.add(
+                      messageByWordWidget(
+                        isLeftSide: false,
+                        isRightSide: true,
+                        engSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getEngSentence ?? '',
+                        vieSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getVieSentence ?? '',
+                      ),
+                    );
+                  }
+                });
+              }
+
+              getInterestingKnowledgeConversationItemList?.removeAt(0);
+            }
+
+            // if (getConversationItemList?.isNotEmpty == true) {
+            //   if (getConversationItemList?.firstOrNull?.getIsLeftCharacterSS01 == true) {
+            //     setState(() {
+            //       messageList.add(
+            //         messageByWordWidget(
+            //           isLeftSide: true,
+            //           isRightSide: false,
+            //           engSentence: getConversationItemList?.firstOrNull?.getEngSentence ?? '',
+            //           vieSentence: getConversationItemList?.firstOrNull?.getVieSentence ?? '',
+            //         ),
+            //       );
+            //     });
+            //   } else if (getConversationItemList?.firstOrNull?.getIsRightCharacterSS02 == true) {
+            //     setState(() {
+            //       messageList.add(
+            //         messageByWordWidget(
+            //           isLeftSide: false,
+            //           isRightSide: true,
+            //           engSentence: getConversationItemList?.firstOrNull?.getEngSentence ?? '',
+            //           vieSentence: getConversationItemList?.firstOrNull?.getVieSentence ?? '',
+            //         ),
+            //       );
+            //     });
+            //   }
+            //
+            //   getConversationItemList?.removeAt(0);
+            // }
+
+            counterMessage++;
+
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (_scrollController.hasClients) {
+                _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+              }
+            });
+          }
         }
       });
-
-      _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+      if (_scrollController.hasClients) {
+        _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
+      }
     });
   }
 
@@ -214,13 +250,13 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
           ),
 
           Positioned(
-            top: 150.0,
+            top: 20.0,
             left: 0,
             width: widget.sizeDx,
-            height: widget.sizeDy - 250.0,
+            height: widget.sizeDy - 120.0,
             child: SizedBox(
               width: widget.sizeDx,
-              height: widget.sizeDy - 250.0,
+              height: widget.sizeDy - 120.0,
               child: ShaderMask(
                 blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
                 shaderCallback: (Rect bounds) {
@@ -228,21 +264,22 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                     colors: [
-                      Colors.white,
-                      Colors.white.withValues(alpha: 0.9),
-                      Colors.white.withValues(alpha: 0.8),
-                      Colors.white.withValues(alpha: 0.7),
-                      Colors.white.withValues(alpha: 0.6),
-                      Colors.white.withValues(alpha: 0.5),
-                      Colors.white.withValues(alpha: 0.4),
-                      Colors.white.withValues(alpha: 0.3),
-                      Colors.white.withValues(alpha: 0.2),
-                      Colors.white.withValues(alpha: 0.1),
-                      Colors.white.withValues(alpha: 0.05),
-                      Colors.transparent,
-                      Colors.transparent, // Hoàn toàn biến mất bên phải
+                      Colors.white.withValues(alpha: 1.0),
+                      Colors.white.withValues(alpha: 0.99),
+                      Colors.white.withValues(alpha: 0.98),
+                      Colors.white.withValues(alpha: 0.97),
+                      Colors.white.withValues(alpha: 0.96),
+                      Colors.white.withValues(alpha: 0.95),
+                      Colors.white.withValues(alpha: 0.94),
+                      Colors.white.withValues(alpha: 0.93),
+                      Colors.white.withValues(alpha: 0.92),
+                      Colors.white.withValues(alpha: 0.91),
+                      Colors.white.withValues(alpha: 0.90),
+                      Colors.white.withValues(alpha: 0.89),
+                      Colors.white.withValues(alpha: 0.88),
                     ],
-                    stops: [0.64, 0.67, 0.70, 0.73, 0.76, 0.79, 0.82, 0.85, 0.88, 0.81, 0.94, 0.97, 1.0],
+                    // stops: [0.64, 0.67, 0.70, 0.73, 0.76, 0.79, 0.82, 0.85, 0.88, 0.81, 0.94, 0.97, 1.0],
+                    stops: [0.88, 0.89, 0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1.0],
                   ).createShader(bounds);
                 },
                 child: Padding(
@@ -263,8 +300,8 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
 
           AnimatedPositioned(
             duration: const Duration(milliseconds: 100),
-            right: 5.0,
-            bottom: 5.0,
+            right: 15.0,
+            bottom: 15.0,
             child: Container(
               width: widget.sizeDx * 0.6,
               height: 100.0,
@@ -359,164 +396,6 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
                 color: Colors.transparent,
                 border: Border.all(width: 5.0, color: Colors.black),
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(30.0)),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget messageWidget({required bool isLeftSide, required bool isRightSide}) {
-    double distanceToBorder = 15.0;
-
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 100),
-      width: widget.sizeDx,
-      height: 400.0,
-      decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.all(Radius.circular(10.0))),
-      child: Stack(
-        alignment: AlignmentDirectional.center,
-        children: [
-          AnimatedPositioned(
-            duration: const Duration(milliseconds: 100),
-            bottom: 20.0,
-            right: isRightSide ? distanceToBorder : null,
-            left: isLeftSide ? distanceToBorder : null,
-            width: widget.sizeDx * 0.75 - 3.0,
-            height: 180.0,
-            child: Container(
-              // width: widget.sizeDx * 0.65,
-              height: widget.sizeDy * 0.15,
-              decoration: BoxDecoration(
-                color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
-                border: Border.all(width: 8.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
-                borderRadius: isRightSide
-                    ? BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(30.0))
-                    : BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(30.0), bottomLeft: Radius.circular(0)),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-
-                      text: TextSpan(
-                        style: GoogleFonts.robotoSlab(textStyle: TextStyle(color: Color(0xFFECECEC).withValues(alpha: 0.5)), fontSize: 40.0),
-                        children: [
-                          TextSpan(
-                            text: '"Cô ấy rất tỉ mỉ trong công việc, kiểm tra từng chi tiết hai lần. Cô ấy rất tỉ mỉ trong công việc, kiểm tra từng chi tiết hai lần."',
-                            style: GoogleFonts.sriracha(color: Color(0xFF838B83), fontWeight: FontWeight.bold, fontSize: 40.0, height: 1.5),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          AnimatedPositioned(
-            duration: const Duration(milliseconds: 100),
-            top: 50.0,
-            right: isRightSide ? distanceToBorder : null,
-            left: isLeftSide ? distanceToBorder : null,
-            width: widget.sizeDx * 0.78 - 3.0,
-            height: 180.0,
-            child: Container(
-              width: widget.sizeDx * 0.7,
-              height: 180.0,
-              decoration: BoxDecoration(
-                color: Color(0xFFFFFFFF).withValues(alpha: 0.95),
-                border: Border.all(width: 8.0, color: Color(0xFFFFFFFF).withValues(alpha: 0.95)),
-                borderRadius: isRightSide
-                    ? BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(45.0))
-                    : BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0), bottomRight: Radius.circular(45.0), bottomLeft: Radius.circular(0)),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RichText(
-                    // textAlign: TextAlign.start,
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-
-                    maxLines: 2,
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'She is ',
-                          style: GoogleFonts.robotoSlab(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 42),
-                        ),
-                        TextSpan(
-                          text: 'meticulous ',
-                          style: GoogleFonts.robotoSlab(color: Color(0xFF1E90FF), fontWeight: FontWeight.bold, fontSize: 45),
-                        ),
-                        TextSpan(
-                          text: 'in her work, checking every detail twice.',
-                          style: GoogleFonts.robotoSlab(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 42),
-                        ),
-                        TextSpan(
-                          text: 'She is ',
-                          style: GoogleFonts.robotoSlab(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 42),
-                        ),
-                        TextSpan(
-                          text: 'meticulous ',
-                          style: GoogleFonts.robotoSlab(color: Color(0xFF1E90FF), fontWeight: FontWeight.bold, fontSize: 42),
-                        ),
-                        TextSpan(
-                          text: 'in her work, checking every detail twice.',
-                          style: GoogleFonts.robotoSlab(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 42),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          AnimatedPositioned(
-            top: 215.0,
-            left: widget.sizeDx * 0.22 + 45.0,
-            width: widget.sizeDx * 0.78 - 100.0,
-            height: 8.0,
-            duration: const Duration(milliseconds: 100),
-            child: Row(
-              children: [
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 1000),
-                  width: limitedTimeProgressbar,
-                  height: 12.0,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF54FF9F),
-                    border: Border.all(width: 3.0, color: Colors.transparent),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          AnimatedPositioned(
-            bottom: widget.sizeDy * 0.15 + 20.0,
-            right: 10.0,
-            width: 185.0,
-            height: 35.0,
-            duration: const Duration(milliseconds: 100),
-            child: Container(
-              color: Colors.transparent,
-              width: 185.0,
-              height: 35.0,
-              child: Text(
-                '.',
-                style: GoogleFonts.concertOne(color: Color(0xFF54FF9F), fontWeight: FontWeight.w600, fontSize: 20.0, letterSpacing: 1.1),
               ),
             ),
           ),
@@ -797,6 +676,7 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
                 borderRadius: isRightSide
                     ? BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(45.0))
                     : BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0), bottomRight: Radius.circular(45.0), bottomLeft: Radius.circular(0)),
+                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 8.0, spreadRadius: 1.0, offset: Offset(0, 0))],
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -809,6 +689,412 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
 
                     maxLines: vieSentenceHeight == 180.0 ? 2 : 1,
                     text: TextSpan(children: engWordWidgetSpan),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget pictureMessageByWordWidget({required bool isLeftSide, required bool isRightSide, required String engSentence, required String vieSentence, required String imageSource}) {
+    double distanceToBorder = 15.0;
+
+    // String engSentence = "Learning daily builds _confidence and long term success.";
+    // String vieSentence = "Học mỗi ngày sẽ xây dựng _sự _tự _tin và tạo nên thành công lâu dài.";
+
+    // String engSentence = "0123456789";
+    // String vieSentence = "0123456789";
+
+    // String engSentence = "0123456789 0123456789";
+    // String vieSentence = "0123456789 0123456789";
+
+    // String engSentence = "0123456789 0123456789 0123456789";
+    // String vieSentence = "0123456789 0123456789 0123456789";
+
+    // String engSentence = "0123456789 0123456789 0123456789 0123456789";
+    // String vieSentence = "0123456789 0123456789 0123456789 0123456789";
+
+    // String engSentence = "0123456789 0123456789 0123456789 0123456789 0123456789";
+    // String vieSentence = "0123456789 0123456789 0123456789 0123456789 0123456789";
+
+    // String engSentence = "0123456789 0123456789 _0123456789 0123456789 0123456789 0123456789";
+    // String vieSentence = "0123456789 0123456789 _0123456789 0123456789 0123456789 0123456789";
+
+    List<String> engWordList = [];
+    List<String> vieWordList = [];
+
+    List<TextSpan> engWordWidgetSpan = [];
+    List<TextSpan> vieWordWidgetSpan = [];
+
+    engWordList = engSentence.split(' ');
+    for (String word in engWordList) {
+      if (word.contains('_')) {
+        String trueWord = word.replaceAll('_', '');
+
+        engWordWidgetSpan.add(
+          TextSpan(
+            text: '$trueWord ',
+            style: GoogleFonts.robotoSlab(color: Color(0xFF1E90FF), fontWeight: FontWeight.bold, fontSize: 45),
+          ),
+        );
+      } else {
+        engWordWidgetSpan.add(
+          TextSpan(
+            text: '$word ',
+            style: GoogleFonts.robotoSlab(color: Color(0xFF000000), fontWeight: FontWeight.bold, fontSize: 42),
+          ),
+        );
+      }
+    }
+
+    vieWordList = vieSentence.split(' ');
+    for (int index = 0; index < vieWordList.length; index++) {
+      if (vieWordList[index].contains('_')) {
+        String trueWord = vieWordList[index].replaceAll('_', '');
+
+        if (index == 0) {
+          vieWordWidgetSpan.add(
+            TextSpan(
+              text: '"$trueWord ',
+              style: GoogleFonts.sriracha(color: Color(0xFF1E90FF), fontWeight: FontWeight.bold, fontSize: 40.0, height: 1.5),
+            ),
+          );
+        } else if (index == vieWordList.length - 1) {
+          vieWordWidgetSpan.add(
+            TextSpan(
+              text: '$trueWord."',
+              style: GoogleFonts.sriracha(color: Color(0xFF1E90FF), fontWeight: FontWeight.bold, fontSize: 40.0, height: 1.5),
+            ),
+          );
+        } else {
+          vieWordWidgetSpan.add(
+            TextSpan(
+              text: '$trueWord ',
+              style: GoogleFonts.sriracha(color: Color(0xFF1E90FF), fontWeight: FontWeight.bold, fontSize: 40.0, height: 1.5),
+            ),
+          );
+        }
+      } else {
+        if (index == 0) {
+          vieWordWidgetSpan.add(
+            TextSpan(
+              text: '"${vieWordList[index]} ',
+              style: GoogleFonts.sriracha(color: Color(0xFF838B83), fontWeight: FontWeight.bold, fontSize: 40.0, height: 1.5),
+            ),
+          );
+        } else if (index == vieWordList.length - 1) {
+          vieWordWidgetSpan.add(
+            TextSpan(
+              text: '${vieWordList[index]}."',
+              style: GoogleFonts.sriracha(color: Color(0xFF838B83), fontWeight: FontWeight.bold, fontSize: 40.0, height: 1.5),
+            ),
+          );
+        } else {
+          vieWordWidgetSpan.add(
+            TextSpan(
+              text: '${vieWordList[index]} ',
+              style: GoogleFonts.sriracha(color: Color(0xFF838B83), fontWeight: FontWeight.bold, fontSize: 40.0, height: 1.5),
+            ),
+          );
+        }
+      }
+    }
+
+    /// max width
+    double maxWidth = widget.sizeDx * 0.75;
+
+    /// totalHeight
+    double totalHeight = 0;
+
+    double engSentenceHeight = 0;
+    double engSentenceWidth = 0;
+
+    double vieSentenceHeight = 0;
+    double vieSentenceWidth = 0;
+
+    double imageHeight = 500.0;
+    double imageWidth = maxWidth * 1.0 + 50;
+
+    int engMaxLines = 1;
+    int vieMaxLines = 1;
+
+    switch (engSentence.length) {
+      case >= 60:
+        {
+          /// 2 Lines
+          engSentenceHeight = 260.0;
+          engSentenceWidth = maxWidth * 1.0 + 50;
+          engMaxLines = 4;
+        }
+        break;
+      case >= 50 && < 60:
+        {
+          /// 2 Lines
+          engSentenceHeight = 180.0;
+          engSentenceWidth = maxWidth * 1.0;
+          engMaxLines = 2;
+        }
+        break;
+      case >= 40 && < 50:
+        {
+          /// 2 Lines
+          engSentenceHeight = 120.0;
+          engSentenceWidth = maxWidth * 0.9;
+          engMaxLines = 2;
+        }
+        break;
+      case >= 30 && < 40:
+        {
+          /// 1 Lines &
+          engSentenceHeight = 120.0;
+          engSentenceWidth = maxWidth * 0.8;
+          engMaxLines = 1;
+        }
+        break;
+      case >= 20 && < 30:
+        {
+          /// 1 Lines
+          engSentenceHeight = 120.0;
+          engSentenceWidth = maxWidth * 0.7;
+          engMaxLines = 1;
+        }
+        break;
+      case >= 0 && < 20:
+        {
+          /// 1 Lines
+          engSentenceHeight = 120.0;
+          engSentenceWidth = maxWidth * 0.6;
+          engMaxLines = 1;
+        }
+        break;
+    }
+
+    switch (vieSentence.length) {
+      case >= 60:
+        {
+          /// 2 Lines
+          vieSentenceHeight = 260.0;
+          vieSentenceWidth = maxWidth * 0.95 + 50.0;
+          vieMaxLines = 3;
+        }
+        break;
+      case >= 50 && < 60:
+        {
+          /// 2 Lines
+          vieSentenceHeight = 180.0;
+          vieSentenceWidth = maxWidth * 0.95;
+          vieMaxLines = 2;
+        }
+        break;
+      case >= 40 && < 50:
+        {
+          /// 2 Lines
+          vieSentenceHeight = 120.0;
+          vieSentenceWidth = maxWidth * 0.85;
+          vieMaxLines = 2;
+        }
+        break;
+      case >= 30 && < 40:
+        {
+          /// 1 Lines &
+          vieSentenceHeight = 120.0;
+          vieSentenceWidth = maxWidth * 0.75;
+          vieMaxLines = 1;
+        }
+        break;
+      case >= 20 && < 30:
+        {
+          /// 1 Lines
+          vieSentenceHeight = 120.0;
+          vieSentenceWidth = maxWidth * 0.65;
+          vieMaxLines = 1;
+        }
+        break;
+      case >= 0 && < 20:
+        {
+          /// 1 Lines
+          vieSentenceHeight = 120.0;
+          vieSentenceWidth = maxWidth * 0.55;
+          vieMaxLines = 1;
+        }
+        break;
+    }
+
+    totalHeight = engSentenceHeight + vieSentenceHeight + 10.0;
+
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 100),
+      width: widget.sizeDx,
+      height: totalHeight + imageHeight,
+
+      child: Stack(
+        alignment: AlignmentDirectional.center,
+        children: [
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 100),
+            top: 0,
+            right: isRightSide ? distanceToBorder : null,
+            left: isLeftSide ? distanceToBorder : null,
+            width: imageWidth,
+            height: imageHeight,
+            child: Stack(
+              alignment: AlignmentDirectional.center,
+              children: [
+                isLeftSide
+                    ? BounceInLeft(
+                        duration: const Duration(milliseconds: 1500),
+                        child: Stack(
+                          children: [
+                            Container(
+                              width: imageWidth,
+                              height: imageHeight,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+                                border: Border.all(width: 8.0, color: Color(0xFF1C1C1C)),
+                                borderRadius: isRightSide
+                                    ? BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(30.0))
+                                    : BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(30.0), bottomLeft: Radius.circular(0)),
+                                image: DecorationImage(image: AssetImage(imageSource), fit: BoxFit.fitWidth),
+                                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 1), blurRadius: 5.0, spreadRadius: 1.0, offset: Offset(0, 0))],
+                              ),
+                            ),
+                            Container(
+                              width: imageWidth,
+                              height: imageHeight,
+                              decoration: BoxDecoration(
+                                border: Border.all(width: 16.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
+                                borderRadius: isRightSide
+                                    ? BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(30.0))
+                                    : BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(30.0), bottomLeft: Radius.circular(0)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    : Container(),
+                isRightSide
+                    ? BounceInRight(
+                        duration: const Duration(milliseconds: 1500),
+                        child: Stack(
+                          children: [
+                            Container(
+                              width: imageWidth,
+                              height: imageHeight,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+                                border: Border.all(width: 8.0, color: Color(0xFF1C1C1C)),
+                                borderRadius: isRightSide
+                                    ? BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(30.0))
+                                    : BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(30.0), bottomLeft: Radius.circular(0)),
+                                image: DecorationImage(image: AssetImage(imageSource), fit: BoxFit.fitWidth),
+                                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 1), blurRadius: 5.0, spreadRadius: 1.0, offset: Offset(0, 0))],
+                              ),
+                            ),
+                            Container(
+                              width: imageWidth,
+                              height: imageHeight,
+                              decoration: BoxDecoration(
+                                border: Border.all(width: 16.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
+                                borderRadius: isRightSide
+                                    ? BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(30.0))
+                                    : BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(30.0), bottomLeft: Radius.circular(0)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    : Container(),
+              ],
+            ),
+          ),
+
+          Positioned(
+            bottom: 0,
+            width: widget.sizeDx,
+            height: totalHeight,
+            child: AnimatedContainer(
+              margin: const EdgeInsets.only(top: 20.0),
+              duration: const Duration(milliseconds: 100),
+              width: widget.sizeDx,
+              height: totalHeight,
+              decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.all(Radius.circular(10.0))),
+              child: Stack(
+                alignment: AlignmentDirectional.center,
+                children: [
+                  AnimatedPositioned(
+                    duration: const Duration(milliseconds: 100),
+                    bottom: 20.0,
+                    right: isRightSide ? distanceToBorder : null,
+                    left: isLeftSide ? distanceToBorder : null,
+                    width: vieSentenceWidth,
+                    height: vieSentenceHeight,
+                    child: Container(
+                      width: vieSentenceWidth,
+                      height: vieSentenceHeight,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+                        border: Border.all(width: 8.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
+                        borderRadius: isRightSide
+                            ? BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(30.0))
+                            : BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(30.0), bottomLeft: Radius.circular(0)),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+                            child: RichText(
+                              textAlign: TextAlign.justify,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: vieMaxLines,
+
+                              text: TextSpan(
+                                style: GoogleFonts.robotoSlab(textStyle: TextStyle(color: Color(0xFFECECEC).withValues(alpha: 0.5)), fontSize: 40.0),
+                                children: vieWordWidgetSpan,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  AnimatedPositioned(
+                    duration: const Duration(milliseconds: 100),
+                    top: 20.0,
+                    right: isRightSide ? distanceToBorder : null,
+                    left: isLeftSide ? distanceToBorder : null,
+                    width: engSentenceWidth,
+                    height: engSentenceHeight,
+                    child: Container(
+                      width: engSentenceWidth,
+                      height: engSentenceHeight,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.95),
+                        border: Border.all(width: 8.0, color: Color(0xFFFFFFFF).withValues(alpha: 0.95)),
+                        borderRadius: isRightSide
+                            ? BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(45.0))
+                            : BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0), bottomRight: Radius.circular(45.0), bottomLeft: Radius.circular(0)),
+                        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 8.0, spreadRadius: 1.0, offset: Offset(0, 0))],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          RichText(
+                            textAlign: TextAlign.justify,
+                            overflow: TextOverflow.ellipsis,
+
+                            maxLines: engMaxLines,
+                            text: TextSpan(children: engWordWidgetSpan),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),

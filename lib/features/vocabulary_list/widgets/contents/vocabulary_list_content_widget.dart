@@ -159,126 +159,130 @@ class _VocabularyListContentWidgetState extends State<VocabularyListContentWidge
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _ticker = createTicker((Duration elapsed) {
-        if (getCurrentVocabularyItemList?.length != getCurrentVocabularyItem?.getCurrentVocabularyItemList?.length) {
-          setState(() {
-            setCurrentVocabularyItemList(value: getCurrentVocabularyItem?.getCurrentVocabularyItemList ?? [], isPriorityOverride: true);
-            wordWidgetSpan = [];
+        if (widget.systemStateManagement?.getVocabularyListFeature?.checkConditionActiveByDirection() == true) {
+          if (getCurrentVocabularyItemList?.length != getCurrentVocabularyItem?.getCurrentVocabularyItemList?.length) {
+            setState(() {
+              setCurrentVocabularyItemList(value: getCurrentVocabularyItem?.getCurrentVocabularyItemList ?? [], isPriorityOverride: true);
+              wordWidgetSpan = [];
 
-            for (int index = 0; index < (getCurrentVocabularyItemList?.length ?? 0); index++) {
-              if (index < ((getCurrentVocabularyItemList?.length ?? 0) - 1)) {
-                wordWidgetSpan.add(wordItem(word: getCurrentVocabularyItemList?[index]?.getVocabularyDataModel?.getWord ?? '', isActive: false, isHide: false));
-              } else if (index == ((getCurrentVocabularyItemList?.length ?? 0) - 1)) {
-                /// Activating word
+              for (int index = 0; index < (getCurrentVocabularyItemList?.length ?? 0); index++) {
+                if (index < ((getCurrentVocabularyItemList?.length ?? 0) - 1)) {
+                  wordWidgetSpan.add(wordItem(word: getCurrentVocabularyItemList?[index]?.getVocabularyDataModel?.getWord ?? '', isActive: false, isHide: false));
+                } else if (index == ((getCurrentVocabularyItemList?.length ?? 0) - 1)) {
+                  /// Activating word
 
-                wordWidgetSpan.add(wordItem(word: getCurrentVocabularyItemList?[index]?.getVocabularyDataModel?.getWord ?? '', isActive: true, isHide: false));
+                  wordWidgetSpan.add(wordItem(word: getCurrentVocabularyItemList?[index]?.getVocabularyDataModel?.getWord ?? '', isActive: true, isHide: false));
+                }
               }
-            }
 
-            wordWidgetSpan.add(wordItem(word: '123456789123456789123456789123456789', isActive: false, isHide: true));
-            wordWidgetSpan.add(wordItem(word: '123456789123456789123456789123456789', isActive: false, isHide: true));
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              _scrollController.animateTo(_scrollController.position.maxScrollExtent - 130.0, duration: Duration(milliseconds: 2000), curve: Curves.easeOut);
+              wordWidgetSpan.add(wordItem(word: '123456789123456789123456789123456789', isActive: false, isHide: true));
+              wordWidgetSpan.add(wordItem(word: '123456789123456789123456789123456789', isActive: false, isHide: true));
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (_scrollController.hasClients) {
+                  _scrollController.animateTo(_scrollController.position.maxScrollExtent - 130.0, duration: Duration(milliseconds: 2000), curve: Curves.easeOut);
+                }
+              });
+
+              ///
+              ///
+              ///
+              int activeIndex = 0;
+
+              for (int index = 0; index < (getTopicVocabularyItemList?.length ?? 0); index++) {
+                if (getTopicVocabularyItemList?[index]?.getIsActive == true) {
+                  wordVocabularyItemList.add(wordVocabularyItem(word: getTopicVocabularyItemList?[index]?.getVocabularyDataModel?.getWord ?? '', isActive: true, index: index + 1));
+
+                  activeIndex = index;
+                } else {
+                  wordVocabularyItemList.add(wordVocabularyItem(word: getTopicVocabularyItemList?[index]?.getVocabularyDataModel?.getWord ?? '', isActive: false, index: index + 1));
+                }
+              }
+
+              Future.delayed(Duration(seconds: 1), () {
+                if (mounted) {
+                  setState(() {
+                    if (getTopicVocabularyItemList?.length == 20) {
+                      if (activeIndex < 11) {
+                        multiple = activeIndex;
+                      } else {
+                        multiple = 10;
+                      }
+                    }
+                    if (getTopicVocabularyItemList?.length == 21) {
+                      if (activeIndex < 12) {
+                        multiple = activeIndex;
+                      } else {
+                        multiple = 11;
+                      }
+                    }
+                    if (getTopicVocabularyItemList?.length == 22) {
+                      if (activeIndex < 13) {
+                        multiple = activeIndex;
+                      } else {
+                        multiple = 12;
+                      }
+                    }
+                    if (getTopicVocabularyItemList?.length == 23) {
+                      if (activeIndex < 14) {
+                        multiple = activeIndex;
+                      } else {
+                        multiple = 13;
+                      }
+                    }
+                    if (getTopicVocabularyItemList?.length == 24) {
+                      if (activeIndex < 15) {
+                        multiple = activeIndex;
+                      } else {
+                        multiple = 14;
+                      }
+                    }
+                    if (getTopicVocabularyItemList?.length == 25) {
+                      if (activeIndex < 16) {
+                        multiple = activeIndex;
+                      } else {
+                        multiple = 15;
+                      }
+                    }
+                    if (getTopicVocabularyItemList?.length == 26) {
+                      if (activeIndex < 17) {
+                        multiple = activeIndex;
+                      } else {
+                        multiple = 16;
+                      }
+                    }
+                    if (getTopicVocabularyItemList?.length == 27) {
+                      if (activeIndex < 18) {
+                        multiple = activeIndex;
+                      } else {
+                        multiple = 17;
+                      }
+                    }
+                    if (getTopicVocabularyItemList?.length == 28) {
+                      if (activeIndex < 19) {
+                        multiple = activeIndex;
+                      } else {
+                        multiple = 18;
+                      }
+                    }
+                    if (getTopicVocabularyItemList?.length == 29) {
+                      if (activeIndex < 20) {
+                        multiple = activeIndex;
+                      } else {
+                        multiple = 19;
+                      }
+                    }
+                    if (getTopicVocabularyItemList?.length == 30) {
+                      if (activeIndex < 21) {
+                        multiple = activeIndex;
+                      } else {
+                        multiple = 20;
+                      }
+                    }
+                  });
+                }
+              });
             });
-
-            ///
-            ///
-            ///
-            int activeIndex = 0;
-
-            for (int index = 0; index < (getTopicVocabularyItemList?.length ?? 0); index++) {
-              if (getTopicVocabularyItemList?[index]?.getIsActive == true) {
-                wordVocabularyItemList.add(wordVocabularyItem(word: getTopicVocabularyItemList?[index]?.getVocabularyDataModel?.getWord ?? '', isActive: true, index: index + 1));
-
-                activeIndex = index;
-              } else {
-                wordVocabularyItemList.add(wordVocabularyItem(word: getTopicVocabularyItemList?[index]?.getVocabularyDataModel?.getWord ?? '', isActive: false, index: index + 1));
-              }
-            }
-
-            Future.delayed(Duration(seconds: 1), () {
-              if (mounted) {
-                setState(() {
-                  if (getTopicVocabularyItemList?.length == 20) {
-                    if (activeIndex < 11) {
-                      multiple = activeIndex;
-                    } else {
-                      multiple = 10;
-                    }
-                  }
-                  if (getTopicVocabularyItemList?.length == 21) {
-                    if (activeIndex < 12) {
-                      multiple = activeIndex;
-                    } else {
-                      multiple = 11;
-                    }
-                  }
-                  if (getTopicVocabularyItemList?.length == 22) {
-                    if (activeIndex < 13) {
-                      multiple = activeIndex;
-                    } else {
-                      multiple = 12;
-                    }
-                  }
-                  if (getTopicVocabularyItemList?.length == 23) {
-                    if (activeIndex < 14) {
-                      multiple = activeIndex;
-                    } else {
-                      multiple = 13;
-                    }
-                  }
-                  if (getTopicVocabularyItemList?.length == 24) {
-                    if (activeIndex < 15) {
-                      multiple = activeIndex;
-                    } else {
-                      multiple = 14;
-                    }
-                  }
-                  if (getTopicVocabularyItemList?.length == 25) {
-                    if (activeIndex < 16) {
-                      multiple = activeIndex;
-                    } else {
-                      multiple = 15;
-                    }
-                  }
-                  if (getTopicVocabularyItemList?.length == 26) {
-                    if (activeIndex < 17) {
-                      multiple = activeIndex;
-                    } else {
-                      multiple = 16;
-                    }
-                  }
-                  if (getTopicVocabularyItemList?.length == 27) {
-                    if (activeIndex < 18) {
-                      multiple = activeIndex;
-                    } else {
-                      multiple = 17;
-                    }
-                  }
-                  if (getTopicVocabularyItemList?.length == 28) {
-                    if (activeIndex < 19) {
-                      multiple = activeIndex;
-                    } else {
-                      multiple = 18;
-                    }
-                  }
-                  if (getTopicVocabularyItemList?.length == 29) {
-                    if (activeIndex < 20) {
-                      multiple = activeIndex;
-                    } else {
-                      multiple = 19;
-                    }
-                  }
-                  if (getTopicVocabularyItemList?.length == 30) {
-                    if (activeIndex < 21) {
-                      multiple = activeIndex;
-                    } else {
-                      multiple = 20;
-                    }
-                  }
-                });
-              }
-            });
-          });
+          }
         }
       })..start();
     });
@@ -448,8 +452,9 @@ class _VocabularyListContentWidgetState extends State<VocabularyListContentWidge
                     height: 200.0,
 
                     decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.9),
-                        border: Border.all(width: 2.0, color: Colors.black)),
+                      color: Colors.black.withValues(alpha: 0.9),
+                      border: Border.all(width: 2.0, color: Colors.black),
+                    ),
                     child: ClipRRect(
                       child: SizedBox(
                         width: 200.0,

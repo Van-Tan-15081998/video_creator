@@ -1,7 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/features/interesting_knowledge/widgets/contents/interesting_knowledge_conversation_flame_widget.dart';
-import 'package:frame_creator_v2/features/pomodoro_starting_conversation/widgets/contents/pomodoro_starting_conversation_flame_widget.dart';
 
 class InterestingKnowledgeConversationCharacterWidget extends StatefulWidget {
   const InterestingKnowledgeConversationCharacterWidget({super.key, required this.sizeDx, required this.sizeDy});

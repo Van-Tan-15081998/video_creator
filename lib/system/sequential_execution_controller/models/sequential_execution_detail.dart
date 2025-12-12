@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
-import 'package:frame_creator_v2/state_managements/main_timeline/basic_timeline.dart';
 import 'package:frame_creator_v2/system/sequential_execution_controller/models/sequential_execution_controller.dart';
 
 class SequentialExecutionDetail with ExecutionCore {
@@ -23,6 +22,11 @@ class SequentialExecutionDetail with ExecutionCore {
     ///
     return;
   }
+
+  VoidCallback? onStartAfterCompletedBreakTimeSS01;
+  VoidCallback? onStartAfterCompletedBreakTimeSS02;
+  VoidCallback? onStartAfterCompletedBreakTimeSS03;
+  VoidCallback? onStartAfterCompletedBreakTimeSS04;
 
   /// -----
   /// TODO: Attach Root
@@ -218,10 +222,20 @@ class SequentialExecutionDetail with ExecutionCore {
     /// TODO: 00:00:01 => Bước Nhảy Debug
     /// TODO: 00:00:20
     if (totalHours == 0 && totalMinutes == 0 && seconds == 1) {
+      getSequentialExecutionController?.getHelpfulAdviceFeature?.onActivateWindow();
+      getSequentialExecutionController?.getHelpfulStudyAdviceFeature?.onActivateWindow();
+
+      // return;
+
+      // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 0, isPriorityOverride: true);
+      // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 29, isPriorityOverride: true);
+      // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 59, isPriorityOverride: true);
+
       getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 0, isPriorityOverride: true);
-      getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 29, isPriorityOverride: true);
-      getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 59, isPriorityOverride: true);
+      getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 0, isPriorityOverride: true);
+      getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 6, isPriorityOverride: true);
     }
+
     if (totalHours == 0 && totalMinutes == 0 && seconds == 100) {
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
         /// Dừng Chuyển Tiếp
@@ -229,7 +243,7 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -267,18 +281,17 @@ class SequentialExecutionDetail with ExecutionCore {
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
         getSequentialExecutionController?.getIntroductoryConversationFeature?.onActivateWindow();
-      }
 
-      getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
 
-      ///
-    }
-    /// TODO: 00:00:03
-    else if (totalHours == 0 && totalMinutes == 0 && seconds == 3) {
-      printTerminal(str: '00:00:03');
-
-      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getIntroductoryConversationFeature?.onDeactivateWindow();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 3, isPriorityOverride: true);
       }
 
       ///
@@ -288,19 +301,24 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:04');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getIntroductionFeature?.onActivateWindow();
-      }
+        getSequentialExecutionController?.getIntroductoryConversationFeature?.onDeactivateWindow();
 
-      getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+        /// Dừng Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
-      ///
-    }
-    /// TODO: 00:00:05
-    else if (totalHours == 0 && totalMinutes == 0 && seconds == 5) {
-      printTerminal(str: '00:00:05');
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '00:00:04');
+        });
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
 
-      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getIntroductionFeature?.onDeactivateWindow();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 5, isPriorityOverride: true);
       }
 
       ///
@@ -310,20 +328,25 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:06');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        // getSequentialExecutionController?.getBlackboardFeature?.onActivateWindow();
+        getSequentialExecutionController?.getIntroductionFeature?.onActivateWindow();
+
+        /// Dừng Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// Giả Lập Chuyển Tiếp
+        // Future.delayed(Duration(seconds: 1), () {
+        //   getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+        // });
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
+
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 7, isPriorityOverride: true);
       }
-
-      ///
-    }
-    /// TODO: 00:00:07
-    else if (totalHours == 0 && totalMinutes == 0 && seconds == 7) {
-      printTerminal(str: '00:00:07');
-
-      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getIntroductoryConversationFeature?.onActivateWindow();
-      }
-
-      getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
       ///
     }
@@ -332,17 +355,24 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:08');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getIntroductoryConversationFeature?.onDeactivateWindow();
-      }
+        getSequentialExecutionController?.getIntroductionFeature?.onDeactivateWindow();
 
-      ///
-    }
-    /// TODO: 00:00:09
-    else if (totalHours == 0 && totalMinutes == 0 && seconds == 9) {
-      printTerminal(str: '00:00:09');
+        /// Dừng Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
-      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getBlackboardFeature?.onActivateWindow();
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '00:00:08');
+        });
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
+
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 9, isPriorityOverride: true);
       }
 
       ///
@@ -352,17 +382,18 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:10');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getVocabularySubjectFeature?.onActivateWindow();
-      }
+        getSequentialExecutionController?.getIntroductoryConversationFeature?.onActivateWindow();
 
-      ///
-    }
-    /// TODO: 00:00:11
-    else if (totalHours == 0 && totalMinutes == 0 && seconds == 11) {
-      printTerminal(str: '00:00:11');
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
 
-      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getCountdownTimerFeature?.onActivateWindow();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 11, isPriorityOverride: true);
       }
 
       ///
@@ -372,14 +403,95 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:00:12');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        getSequentialExecutionController?.getPomodoroFeature?.onActivateWindow();
+        getSequentialExecutionController?.getIntroductoryConversationFeature?.onDeactivateWindow();
 
         /// Dừng Chuyển Tiếp
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '00:00:12');
+        });
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
+
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 13, isPriorityOverride: true);
+      }
+
+      ///
+    }
+    /// TODO: 00:00:14
+    else if (totalHours == 0 && totalMinutes == 0 && seconds == 14) {
+      printTerminal(str: '00:00:14');
+
+      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+        getSequentialExecutionController?.getBlackboardFeature?.onActivateWindow();
+
+        /// Dừng Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '00:00:14');
+        });
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
+
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 15, isPriorityOverride: true);
+      }
+
+      ///
+    }
+    /// TODO: 00:00:16
+    else if (totalHours == 0 && totalMinutes == 0 && seconds == 16) {
+      printTerminal(str: '00:00:16');
+
+      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+        getSequentialExecutionController?.getVocabularySubjectFeature?.onActivateWindow();
+
+        /// Dừng Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '00:00:16');
+        });
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
+
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 17, isPriorityOverride: true);
+      }
+
+      ///
+    }
+    /// TODO: 00:00:18
+    else if (totalHours == 0 && totalMinutes == 0 && seconds == 18) {
+      printTerminal(str: '00:00:18');
+
+      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+        getSequentialExecutionController?.getCountdownTimerFeature?.onActivateWindow();
+
+        /// Dừng Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '00:00:18');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -394,9 +506,135 @@ class SequentialExecutionDetail with ExecutionCore {
 
       ///
     }
+    ///
+    ///
+    ///
+    ///
+    ///
+    /// TODO: 00:00:03
+    // else if (totalHours == 0 && totalMinutes == 0 && seconds == 3) {
+    //   printTerminal(str: '00:00:03');
+    //
+    //   if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+    //     getSequentialExecutionController?.getIntroductoryConversationFeature?.onDeactivateWindow();
+    //   }
+    //
+    //   ///
+    // }
+    /// TODO: 00:00:04
+    // else if (totalHours == 0 && totalMinutes == 0 && seconds == 4) {
+    //   printTerminal(str: '00:00:04');
+    //
+    //   if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+    //     getSequentialExecutionController?.getIntroductionFeature?.onActivateWindow();
+    //   }
+    //
+    //   getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+    //
+    //   ///
+    // }
+    /// TODO: 00:00:05
+    // else if (totalHours == 0 && totalMinutes == 0 && seconds == 5) {
+    //   printTerminal(str: '00:00:05');
+    //
+    //   if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+    //     getSequentialExecutionController?.getIntroductionFeature?.onDeactivateWindow();
+    //   }
+    //
+    //   ///
+    // }
+    /// TODO: 00:00:06
+    // else if (totalHours == 0 && totalMinutes == 0 && seconds == 6) {
+    //   printTerminal(str: '00:00:06');
+    //
+    //   if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+    //     // getSequentialExecutionController?.getBlackboardFeature?.onActivateWindow();
+    //   }
+    //
+    //   ///
+    // }
+    /// TODO: 00:00:07
+    // else if (totalHours == 0 && totalMinutes == 0 && seconds == 7) {
+    //   printTerminal(str: '00:00:07');
+    //
+    //   if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+    //     getSequentialExecutionController?.getIntroductoryConversationFeature?.onActivateWindow();
+    //   }
+    //
+    //   getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+    //
+    //   ///
+    // }
+    /// TODO: 00:00:08
+    // else if (totalHours == 0 && totalMinutes == 0 && seconds == 8) {
+    //   printTerminal(str: '00:00:08');
+    //
+    //   if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+    //     getSequentialExecutionController?.getIntroductoryConversationFeature?.onDeactivateWindow();
+    //   }
+    //
+    //   ///
+    // }
+    /// TODO: 00:00:09
+    // else if (totalHours == 0 && totalMinutes == 0 && seconds == 9) {
+    //   printTerminal(str: '00:00:09');
+    //
+    //   if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+    //     getSequentialExecutionController?.getBlackboardFeature?.onActivateWindow();
+    //   }
+    //
+    //   ///
+    // }
+    /// TODO: 00:00:10
+    // else if (totalHours == 0 && totalMinutes == 0 && seconds == 10) {
+    //   printTerminal(str: '00:00:10');
+    //
+    //   if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+    //     getSequentialExecutionController?.getVocabularySubjectFeature?.onActivateWindow();
+    //   }
+    //
+    //   ///
+    // }
+    /// TODO: 00:00:11
+    // else if (totalHours == 0 && totalMinutes == 0 && seconds == 11) {
+    //   printTerminal(str: '00:00:11');
+    //
+    //   if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+    //     getSequentialExecutionController?.getCountdownTimerFeature?.onActivateWindow();
+    //   }
+    //
+    //   ///
+    // }
     /// TODO: 00:00:20
     else if (totalHours == 0 && totalMinutes == 0 && seconds == 20) {
       printTerminal(str: '00:00:20');
+
+      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+        getSequentialExecutionController?.getPomodoroFeature?.onActivateWindow();
+
+        /// Dừng Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '00:00:20');
+        });
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
+
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 21, isPriorityOverride: true);
+      }
+
+      ///
+    }
+    /// TODO: 00:00:22
+    else if (totalHours == 0 && totalMinutes == 0 && seconds == 22) {
+      printTerminal(str: '00:00:22');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
         /// Chuẩn bị chạy Pomodoro đầu tiên
@@ -435,7 +673,7 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '00:00:30');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -964,7 +1202,7 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '00:30:02');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -992,7 +1230,7 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '00:30:04');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1017,15 +1255,14 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '01:00:00');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        /// Chuẩn bị chạy Pomodoro đầu tiên
-        getSequentialExecutionController?.getPomodoroStartingConversationFeature?.onDeactivateWindow();
+        ///
 
         /// Dừng Chuyển Tiếp
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '01:00:00');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1081,12 +1318,18 @@ class SequentialExecutionDetail with ExecutionCore {
         ///
         getSequentialExecutionController?.getPomodoroStartingConversationFeature?.onDeactivateWindow();
 
+        /// TODO:
+        /// TODO: Đóng Các Widget Thông Tin Khác
+        /// TODO:
+        getSequentialExecutionController?.getBlackboardFeature?.onDeactivateWindow();
+        getSequentialExecutionController?.getVocabularySubjectFeature?.onDeactivateWindow();
+
         /// Dừng Chuyển Tiếp
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '01:30:02');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1113,7 +1356,7 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '01:30:04');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1145,7 +1388,7 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '02:00:00');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1173,7 +1416,7 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '02:00:02');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1182,35 +1425,25 @@ class SequentialExecutionDetail with ExecutionCore {
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
 
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
-        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 29, isPriorityOverride: true);
-        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 59, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 3, isPriorityOverride: true);
       }
 
       ///
     }
-    /// TODO: 02:00:03
-    else if (totalHours == 2 && totalMinutes == 0 && seconds == 3) {
-      printTerminal(str: '02:00:02');
+    /// TODO: 02:00:04
+    else if (totalHours == 2 && totalMinutes == 0 && seconds == 4) {
+      printTerminal(str: '02:00:04');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        /// Tiếp Tục Danh Sách Từ Vựng Bắt Đầu Từ Số 6
-        Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getVocabularySceneTransitionFeature?.onActivateWindow(
-            onDeactivatedWindowAsParameter: () {
-              Future.delayed(Duration(seconds: 1), () {
-                getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.clearStack();
-                getSequentialExecutionController?.getVocabularyScript?.onStartVocabularyDefinitionSS06();
-              });
-            },
-          );
-        });
+        ///
 
         /// Dừng Chuyển Tiếp
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '02:00:04');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1258,7 +1491,7 @@ class SequentialExecutionDetail with ExecutionCore {
 
       ///
     }
-    /// TODO: 00:30:02
+    /// TODO: 02:30:02
     else if (totalHours == 2 && totalMinutes == 30 && seconds == 2) {
       printTerminal(str: '02:30:02');
 
@@ -1271,7 +1504,35 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '02:30:02');
+        });
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
+
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 3, isPriorityOverride: true);
+      }
+
+      ///
+    }
+    /// TODO: 02:30:04
+    else if (totalHours == 2 && totalMinutes == 30 && seconds == 4) {
+      printTerminal(str: '02:30:04');
+
+      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+        ///
+        getSequentialExecutionController?.getSequentialExecutionDetail?.onStartAfterCompletedBreakTimeSS01?.call();
+
+        /// Dừng Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '02:30:04');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1296,15 +1557,14 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '03:00:00');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        /// Chuẩn bị chạy Pomodoro đầu tiên
-        getSequentialExecutionController?.getPomodoroStartingConversationFeature?.onDeactivateWindow();
+        ///
 
         /// Dừng Chuyển Tiếp
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '03:00:00');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1360,12 +1620,18 @@ class SequentialExecutionDetail with ExecutionCore {
         /// Chuẩn bị chạy Pomodoro đầu tiên
         getSequentialExecutionController?.getPomodoroStartingConversationFeature?.onDeactivateWindow();
 
+        /// TODO:
+        /// TODO: Đóng Các Widget Thông Tin Khác
+        /// TODO:
+        getSequentialExecutionController?.getBlackboardFeature?.onDeactivateWindow();
+        getSequentialExecutionController?.getVocabularySubjectFeature?.onDeactivateWindow();
+
         /// Dừng Chuyển Tiếp
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '03:30:02');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1393,7 +1659,7 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '03:30:04');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1418,25 +1684,14 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '04:00:00');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-
-        /// Tiếp Tục Danh Sách Từ Vựng Bắt Đầu Từ Số 11
-        Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getVocabularySceneTransitionFeature?.onActivateWindow(
-            onDeactivatedWindowAsParameter: () {
-              Future.delayed(Duration(seconds: 1), () {
-                getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.clearStack();
-                getSequentialExecutionController?.getVocabularyScript?.onStartVocabularyDefinitionSS11();
-              });
-            },
-          );
-        });
+        ///
 
         /// Dừng Chuyển Tiếp
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '04:00:00');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1453,7 +1708,7 @@ class SequentialExecutionDetail with ExecutionCore {
     }
     /// TODO: 04:00:02
     else if (totalHours == 4 && totalMinutes == 0 && seconds == 2) {
-      printTerminal(str: '04:00:00');
+      printTerminal(str: '04:00:02');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
         ///
@@ -1464,7 +1719,34 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '04:00:02');
+        });
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
+
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 3, isPriorityOverride: true);
+      }
+
+      ///
+    }
+    /// TODO: 04:00:04
+    else if (totalHours == 4 && totalMinutes == 0 && seconds == 4) {
+      printTerminal(str: '04:00:04');
+
+      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+        /// Tiếp Tục Danh Sách Từ Vựng
+
+        /// Dừng Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '04:00:04');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1514,7 +1796,7 @@ class SequentialExecutionDetail with ExecutionCore {
     }
     /// TODO: 04:30:02
     else if (totalHours == 4 && totalMinutes == 30 && seconds == 2) {
-      printTerminal(str: '03:30:02');
+      printTerminal(str: '04:30:02');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
         /// Chuẩn bị chạy Pomodoro đầu tiên
@@ -1525,7 +1807,35 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '04:30:02');
+        });
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
+
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 3, isPriorityOverride: true);
+      }
+
+      ///
+    }
+    /// TODO: 04:30:04
+    else if (totalHours == 4 && totalMinutes == 30 && seconds == 4) {
+      printTerminal(str: '04:30:04');
+
+      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+        ///
+        getSequentialExecutionController?.getSequentialExecutionDetail?.onStartAfterCompletedBreakTimeSS02?.call();
+
+        /// Dừng Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '04:30:04');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1542,7 +1852,7 @@ class SequentialExecutionDetail with ExecutionCore {
     }
     /// TODO: -----
     /// TODO: -----
-    /// TODO: Điểm Nối StayFocusedSS01 - BreakTimeSS01
+    /// TODO: Điểm Nối StayFocusedSS03 - BreakTimeSS03
     /// TODO: -----
     /// TODO: -----
     /// TODO: 05:00:00
@@ -1550,15 +1860,14 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '05:00:00');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        /// Chuẩn bị chạy Pomodoro đầu tiên
-        getSequentialExecutionController?.getPomodoroStartingConversationFeature?.onDeactivateWindow();
+        ///
 
         /// Dừng Chuyển Tiếp
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '05:00:00');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1580,7 +1889,7 @@ class SequentialExecutionDetail with ExecutionCore {
     /// TODO: -----
     /// TODO: 05:30:00
     else if (totalHours == 5 && totalMinutes == 30 && seconds == 0) {
-      printTerminal(str: '04:30:00');
+      printTerminal(str: '05:30:00');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
         /// Chuẩn bị chạy Pomodoro đầu tiên
@@ -1608,18 +1917,24 @@ class SequentialExecutionDetail with ExecutionCore {
     }
     /// TODO: 05:30:02
     else if (totalHours == 5 && totalMinutes == 30 && seconds == 2) {
-      printTerminal(str: '03:30:02');
+      printTerminal(str: '05:30:02');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
         /// Chuẩn bị chạy Pomodoro đầu tiên
         getSequentialExecutionController?.getPomodoroStartingConversationFeature?.onDeactivateWindow();
+
+        /// TODO:
+        /// TODO: Đóng Các Widget Thông Tin Khác
+        /// TODO:
+        getSequentialExecutionController?.getBlackboardFeature?.onDeactivateWindow();
+        getSequentialExecutionController?.getVocabularySubjectFeature?.onDeactivateWindow();
 
         /// Dừng Chuyển Tiếp
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '05:30:02');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1634,9 +1949,9 @@ class SequentialExecutionDetail with ExecutionCore {
 
       ///
     }
-    /// TODO: 05:30:03
+    /// TODO: 05:30:04
     else if (totalHours == 5 && totalMinutes == 30 && seconds == 4) {
-      printTerminal(str: '03:30:03');
+      printTerminal(str: '05:30:04');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
         ///
@@ -1647,7 +1962,7 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '05:30:04');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1672,24 +1987,14 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '06:00:00');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        /// Tiếp Tục Danh Sách Từ Vựng Bắt Đầu Từ Số 16
-        Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getVocabularySceneTransitionFeature?.onActivateWindow(
-            onDeactivatedWindowAsParameter: () {
-              Future.delayed(Duration(seconds: 1), () {
-                getSequentialExecutionController?.getVocabularyDefinitionFeature?.getVocabularyTime?.clearStack();
-                getSequentialExecutionController?.getVocabularyScript?.onStartVocabularyDefinitionSS16();
-              });
-            },
-          );
-        });
+        ///
 
         /// Dừng Chuyển Tiếp
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '06:00:00');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1703,8 +2008,10 @@ class SequentialExecutionDetail with ExecutionCore {
       }
 
       ///
-    } else if (totalHours == 6 && totalMinutes == 0 && seconds == 2) {
-      printTerminal(str: '06:00:00');
+    }
+    /// TODO: 06:00:02
+    else if (totalHours == 6 && totalMinutes == 0 && seconds == 2) {
+      printTerminal(str: '06:00:02');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
         ///
@@ -1715,7 +2022,34 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '06:00:02');
+        });
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
+
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 3, isPriorityOverride: true);
+      }
+
+      ///
+    }
+    /// TODO: 06:00:04
+    else if (totalHours == 6 && totalMinutes == 0 && seconds == 4) {
+      printTerminal(str: '06:00:04');
+
+      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+        ///
+
+        /// Dừng Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '06:00:04');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1776,7 +2110,35 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '06:30:02');
+        });
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
+
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 3, isPriorityOverride: true);
+      }
+
+      ///
+    }
+    /// TODO: 06:30:04
+    else if (totalHours == 6 && totalMinutes == 30 && seconds == 4) {
+      printTerminal(str: '06:30:04');
+
+      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+        ///
+        getSequentialExecutionController?.getSequentialExecutionDetail?.onStartAfterCompletedBreakTimeSS03?.call();
+
+        /// Dừng Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '06:30:04');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1796,20 +2158,19 @@ class SequentialExecutionDetail with ExecutionCore {
     /// TODO: Điểm Nối StayFocusedSS04 - BreakTimeSS04
     /// TODO: -----
     /// TODO: -----
-    /// TODO: 01:00:00
+    /// TODO: 07:00:00
     else if (totalHours == 7 && totalMinutes == 0 && seconds == 0) {
       printTerminal(str: '07:00:00');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        /// Chuẩn bị chạy Pomodoro đầu tiên
-        getSequentialExecutionController?.getPomodoroStartingConversationFeature?.onDeactivateWindow();
+        ///
 
         /// Dừng Chuyển Tiếp
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '07:00:00');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1865,12 +2226,18 @@ class SequentialExecutionDetail with ExecutionCore {
         /// Chuẩn bị chạy Pomodoro đầu tiên
         getSequentialExecutionController?.getPomodoroStartingConversationFeature?.onDeactivateWindow();
 
+        /// TODO:
+        /// TODO: Đóng Các Widget Thông Tin Khác
+        /// TODO:
+        getSequentialExecutionController?.getBlackboardFeature?.onDeactivateWindow();
+        getSequentialExecutionController?.getVocabularySubjectFeature?.onDeactivateWindow();
+
         /// Dừng Chuyển Tiếp
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '07:30:02');
         });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
@@ -1885,9 +2252,9 @@ class SequentialExecutionDetail with ExecutionCore {
 
       ///
     }
-    /// TODO: 07:30:03
+    /// TODO: 07:30:04
     else if (totalHours == 7 && totalMinutes == 30 && seconds == 4) {
-      printTerminal(str: '07:30:02');
+      printTerminal(str: '07:30:04');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
         /// Chuẩn bị chạy Pomodoro đầu tiên
@@ -1898,8 +2265,64 @@ class SequentialExecutionDetail with ExecutionCore {
 
         /// Giả Lập Chuyển Tiếp
         Future.delayed(Duration(seconds: 1), () {
-          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution();
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '07:30:04');
         });
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
+
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 99, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 0, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 0, isPriorityOverride: true);
+      }
+
+      ///
+    }
+    /// TODO: 08:00:00
+    else if (totalHours == 8 && totalMinutes == 0 && seconds == 0) {
+      printTerminal(str: '08:00:00');
+
+      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+        /// Chuẩn bị chạy Pomodoro đầu tiên
+        getSequentialExecutionController?.getBreakTimeSpaceFeature?.onDeactivateWindow();
+
+        /// Dừng Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// Giả Lập Chuyển Tiếp
+        Future.delayed(Duration(seconds: 1), () {
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '08:00:00');
+        });
+      } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
+          getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
+        /// Tiếp Tục Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.resume();
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setIsMoveToNextExecution(value: false, isPriorityOverride: true);
+
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: totalHours, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 29, isPriorityOverride: true);
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 59, isPriorityOverride: true);
+      }
+
+      ///
+    }
+    /// TODO: 08:30:00
+    else if (totalHours == 8 && totalMinutes == 30 && seconds == 0) {
+      printTerminal(str: '08:30:00');
+
+      if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
+        /// Chuẩn bị chạy Pomodoro đầu tiên
+        getSequentialExecutionController?.getEndingConversationFeature?.onActivateWindow();
+
+        /// Dừng Chuyển Tiếp
+        getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();
+
+        /// Giả Lập Chuyển Tiếp
+        // Future.delayed(Duration(seconds: 1), () {
+        //   getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.moveToNextExecution(markId: '08:30:00');
+        // });
       } else if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == false &&
           getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isMoveToNextExecution() == true) {
         /// Tiếp Tục Chuyển Tiếp

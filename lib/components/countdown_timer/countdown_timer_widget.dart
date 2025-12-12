@@ -749,8 +749,6 @@ class _CountdownTimerWidgetState extends State<CountdownTimerWidget0> {
           ),
         ),
 
-
-
         ClipRRect(
           borderRadius: BorderRadius.circular(15.0),
           child: BackdropFilter(
