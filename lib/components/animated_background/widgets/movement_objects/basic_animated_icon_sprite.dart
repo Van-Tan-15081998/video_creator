@@ -1,34 +1,50 @@
-import 'dart:ui';
 import 'dart:async';
-import 'dart:math';
+import 'package:flame/text.dart';
+import 'package:flutter/material.dart';
 import 'package:flame/components.dart';
 import 'package:frame_creator_v2/components/animated_background/models/animated_icon_status.dart';
 import 'package:frame_creator_v2/components/animated_background/models/basic_sprite_unit.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 ///
 /// TODO:
 ///
 class BasicAnimatedIconSprite extends SpriteAnimationComponent with HasVisibility {
-
-  double? rangeDx;
-  double? rangeDy;
-
   /// -----
   /// TODO:
   /// -----
-  BasicAnimatedIconSprite({required Component? parentComponent, required double? rangeDx, required double? rangeDy}) {
+  BasicAnimatedIconSprite({required Component? parentComponent, required AnimatedIconStatus? animatedIconStatus}) {
     caiDatParentComponent(value: parentComponent);
+    caiDatAnimatedIconStatus(value: animatedIconStatus);
+
+    position.setValues(getAnimatedIconStatus?.getMoHinh?.getDxTrongTam ?? 0, getAnimatedIconStatus?.getMoHinh?.getDyTrongTam ?? 0);
+  }
+
+  AnimatedIconStatus? _animatedIconStatus;
+  AnimatedIconStatus? get getAnimatedIconStatus => _animatedIconStatus;
+  Future<void> caiDatAnimatedIconStatus({required AnimatedIconStatus? value}) async {
+    _animatedIconStatus ??= value;
+    return;
   }
 
   /// -----
   /// TODO: Init Root
   /// -----
   Future<void> onInitRoot() async {
+    caiDatTextComponent(
+      value: TextComponent(
+        text: 'X',
+        position: Vector2(100, 50),
+        anchor: Anchor.topLeft,
+        // textRenderer: TextPaint(style: GoogleFonts.titanOne(fontSize: 26, color: Color(0xFF3C3C3C).withValues(alpha: 0.8))),
+        textRenderer: getTextRenderer,
+      ),
+    );
+    if (getTextComponent != null) {
+      add(getTextComponent!);
+    }
+
     onVoidCaiDatKiemTraHienThi(value: true);
-
-    await caiDatDonViSprite(value: BasicSpriteUnit(maDinhDanh: null, spriteAnimation: null, sprite: null, nguonHinhAnh: null));
-
-    await caiDatMoHinhChiTiet();
 
     return;
   }
@@ -37,6 +53,20 @@ class BasicAnimatedIconSprite extends SpriteAnimationComponent with HasVisibilit
   /// TODO: Reset Root
   /// -----
   Future<void> onResetRoot() async {
+    return;
+  }
+
+  TextComponent? _textComponent;
+  TextComponent? get getTextComponent => _textComponent;
+  Future<void> caiDatTextComponent({required TextComponent? value}) async {
+    _textComponent ??= value;
+    return;
+  }
+
+  TextRenderer? _textRenderer;
+  TextRenderer? get getTextRenderer => _textRenderer;
+  Future<void> caiDatTextRenderer({required TextRenderer? value}) async {
+    _textRenderer ??= value;
     return;
   }
 
@@ -74,7 +104,6 @@ class BasicAnimatedIconSprite extends SpriteAnimationComponent with HasVisibilit
   }
 
   void onRemoveFromParent() {
-
     onVoidCaiDatKiemTraHienThi(value: false);
 
     animation = null;
@@ -98,30 +127,6 @@ class BasicAnimatedIconSprite extends SpriteAnimationComponent with HasVisibilit
   }
 
   /// -----
-  /// TODO: Kiểm Tra Tần Xuất Cập Nhật
-  /// -----
-  int _bienTangTienGiamTanXuatCapNhat = 0;
-  int get getBienTangTienGiamTanXuatCapNhat => _bienTangTienGiamTanXuatCapNhat;
-  void onVoidCaiDatTuDongBienTangTienGiamTanXuatCapNhat() {
-    if (_bienTangTienGiamTanXuatCapNhat < 1000000) {
-      _bienTangTienGiamTanXuatCapNhat += 1;
-    } else {
-      _bienTangTienGiamTanXuatCapNhat = 0;
-    }
-    return;
-  }
-
-  bool onVoidKiemTraTanXuatCapNhat() {
-    // if (getTrangThaiTongQuat?.getThietLapTongQuat?.onKiemTraChoPhepCapNhatTheoTocDoKhungHinh(
-    //     maDinhDanh: '[SPRITE_ANIMATION_CHIEN_DAU_CO_CHIEN_DAU]',
-    //     chiSoTangTienGiamTanXuatCapNhat: _bienTangTienGiamTanXuatCapNhat) == true) {
-    //   return true;
-    // }
-
-    return true;
-  }
-
-  /// -----
   /// TODO: Kiểm Tra Hiển Thị
   /// -----
   bool? _kiemTraHienThi;
@@ -139,80 +144,33 @@ class BasicAnimatedIconSprite extends SpriteAnimationComponent with HasVisibilit
   }
 
   /// -----
-  /// TODO:
-  /// -----
-  void onVoidCapNhatKiemTraHienThi() {
-
-    // if (getMoHinh?.getMoHinh?.getTrangThaiTonTai?.onCheckBoolKhoiTaoHoanTat() == true) {
-    if (getMoHinh?.getMoHinh?.getTrangThaiTonTai?.onCheckBoolDangKichHoat() == true) {
-      if (getDonViSprite?.getSpriteAnimation == null) {
-        final random = Random();
-        int randomNumber = random.nextInt(3) + 1; // tạo số từ 1 đến 3
-
-        SpriteAnimation? spriteAnimationVienDan;
-
-        getDonViSprite?.onVoidCaiDatSpriteAnimation(value: spriteAnimationVienDan);
-        animation = getDonViSprite?.getSpriteAnimation;
-      }
-      onVoidCaiDatKiemTraHienThi(value: true);
-    } else {
-      getDonViSprite?.onVoidCaiDatSpriteAnimation(value: null);
-      animation = null;
-      onVoidCaiDatKiemTraHienThi(value: false);
-    }
-  }
-
-  /// -----
-  /// TODO: Kiểm Tra Xử Lý Hoạt Ảnh
-  /// -----
-  bool? _kiemTraXuLyHoatAnh;
-  bool? get getKiemTraXuLyHoatAnh => _kiemTraXuLyHoatAnh;
-  Future<void> caiDatKiemTraXuLyHoatAnh({required bool? value}) async {
-    _kiemTraXuLyHoatAnh = value;
-    return;
-  }
-
-  /// -----
-  /// TODO: Mô Hình Phương Tiện
-  /// -----
-  AnimatedIconStatus? _moHinh;
-  AnimatedIconStatus? get getMoHinh => _moHinh;
-  Future<void> caiDatMoHinh({required AnimatedIconStatus? value}) async {
-    _moHinh = value;
-
-    await caiDatMaDinhDanhMoHinhHienHanh(value: getMoHinh?.getMoHinh?.getMaDinhDanh);
-    return;
-  }
-
-  /// -----
   /// TODO: Cài Đặt Mô Hình Chi Tiết
   /// -----
-  Future<void> caiDatMoHinhChiTiet();
+  Future<void> caiDatMoHinhChiTiet() async {
+    return;
+  }
 
   /// -----
   /// TODO: Cập Nhật Position Và Size
   /// -----
-  Map<String, dynamic>? duLieuJsonLamPhangCapNhat = {};
-
   double dxCapNhat = 0;
   double dyCapNhat = 0;
   double chieuCaoThanCapNhat = 0;
   double chieuRongThanCapNhat = 0;
   double gocXoay = 0;
 
-  void onVoidCapNhatPositionSizeValues()  {
+  void onVoidCapNhatPositionSizeValues() {
     if (getKiemTraHienThi == true) {
       ///
       /// TODO:
       ///
-      // duLieuJsonLamPhangCapNhat = getMoHinh?.getMoHinh?.getTrangThaiTonTai?.onCheckBoolDangKichHoat();
 
-      dxCapNhat = duLieuJsonLamPhangCapNhat?['[DX_TRONG_TAM]'] ?? 1.0;
-      dyCapNhat = duLieuJsonLamPhangCapNhat?['[DY_TRONG_TAM]'] ?? 1.0;
-      chieuCaoThanCapNhat = duLieuJsonLamPhangCapNhat?['[CHIEU_CAO_THAN]'] ?? 1.0;
-      chieuRongThanCapNhat = duLieuJsonLamPhangCapNhat?['[CHIEU_RONG_THAN]'] ?? 1.0;
+      dxCapNhat = getAnimatedIconStatus?.getMoHinh?.getDxTrongTam ?? 0;
+      dyCapNhat = getAnimatedIconStatus?.getMoHinh?.getDyTrongTam ?? 0;
+      chieuCaoThanCapNhat = getAnimatedIconStatus?.getMoHinh?.getChieuCaoThan ?? 0;
+      chieuRongThanCapNhat = getAnimatedIconStatus?.getMoHinh?.getChieuRongThan ?? 0;
 
-      gocXoay = getMoHinh?.getMoHinh?.getGocXoay ?? 1.0;
+      gocXoay = getAnimatedIconStatus?.getMoHinh?.getGocXoay ?? 0;
 
       if (dxCapNhat.isNaN == false && dyCapNhat.isNaN == false && chieuCaoThanCapNhat.isNaN == false && chieuRongThanCapNhat.isNaN == false) {
         ///
@@ -224,6 +182,7 @@ class BasicAnimatedIconSprite extends SpriteAnimationComponent with HasVisibilit
         if (size.x != chieuRongThanCapNhat || size.y != chieuCaoThanCapNhat) {
           size.setValues(chieuRongThanCapNhat, chieuCaoThanCapNhat);
         }
+
         /// -----
         /// TODO:
         /// -----
@@ -232,14 +191,6 @@ class BasicAnimatedIconSprite extends SpriteAnimationComponent with HasVisibilit
         }
       }
     }
-  }
-
-  /// -----
-  /// TODO: Cập Nhật Trạng Thái Mô Hình
-  /// -----
-  void onVoidCapNhatTrangThaiMoHinh() {
-    getMoHinh?.getMoHinh?.onDieuKhienDiChuyen(chiSoTangTienTheoThoiGianThuc: _bienTangTienGiamTanXuatCapNhat);
-    return;
   }
 
   @override
@@ -253,16 +204,9 @@ class BasicAnimatedIconSprite extends SpriteAnimationComponent with HasVisibilit
   }
 
   @override
-  void renderTree(Canvas canvas) {
-    // import 'dart:ui';
-    try {
-      if (getKiemTraHienThi == true && animation != null) {
-        super.renderTree(canvas);
-      }
-    } catch (e) {
-      return;
-    }
+  FutureOr<void> update(double dt) {
+    super.update(dt);
 
-    return;
+    onVoidCapNhatPositionSizeValues();
   }
 }

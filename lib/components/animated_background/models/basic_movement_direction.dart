@@ -7,7 +7,7 @@ class BasicMovementDirection {
   /// -----
   String? _dinhHuong;
   String? get getDinhHuong => _dinhHuong;
-  Future<void> caiDatDinhHuong({required String? value}) async {
+  void caiDatDinhHuong({required String? value}) {
     _dinhHuong = value;
     return;
   }
@@ -47,14 +47,14 @@ class BasicMovementDirection {
   /// -----
   /// TODO:
   /// -----
-  Future<void> onInitRoot() async {
+  void onInitRoot() {
     return;
   }
 
   /// -----
   /// TODO:
   /// -----
-  Future<void> onResetRoot() async {
+  void onResetRoot() {
     return;
   }
 
@@ -69,12 +69,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI]');
   }
 
-  Future<void> caiDatDinhHuongTheoTrenXuongDuoi() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI]');
+  void caiDatDinhHuongTheoTrenXuongDuoi() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoTrenXuongDuoi() async {
+  bool isDinhHuongTheoTrenXuongDuoi() {
     if (getDinhHuong == '[DINH_HUONG_THEO_TREN_XUONG_DUOI]') {
       return true;
     }
@@ -88,12 +88,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_TRAI]');
   }
 
-  Future<void> caiDatDinhHuongTheoTrenXuongDuoiLechTrai() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_TRAI]');
+  void caiDatDinhHuongTheoTrenXuongDuoiLechTrai() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_TRAI]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoTrenXuongDuoiLechTrai() async {
+  bool isDinhHuongTheoTrenXuongDuoiLechTrai() {
     if (getDinhHuong == '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_TRAI]') {
       return true;
     }
@@ -107,12 +107,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_PHAI]');
   }
 
-  Future<void> caiDatDinhHuongTheoTrenXuongDuoiLechPhai() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_PHAI]');
+  void caiDatDinhHuongTheoTrenXuongDuoiLechPhai() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_PHAI]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoTrenXuongDuoiLechPhai() async {
+  bool isDinhHuongTheoTrenXuongDuoiLechPhai() {
     if (getDinhHuong == '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_PHAI]') {
       return true;
     }
@@ -126,12 +126,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_LEN_TREN]');
   }
 
-  Future<void> caiDatDinhHuongTheoDuoiLenTren() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_LEN_TREN]');
+  void caiDatDinhHuongTheoDuoiLenTren() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_LEN_TREN]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoDuoiLenTren() async {
+  bool isDinhHuongTheoDuoiLenTren() {
     if (getDinhHuong == '[DINH_HUONG_THEO_DUOI_LEN_TREN]') {
       return true;
     }
@@ -145,12 +145,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_TRAI_SANG_PHAI]');
   }
 
-  Future<void> caiDatDinhHuongTheoTraiSangPhai() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_TRAI_SANG_PHAI]');
+  void caiDatDinhHuongTheoTraiSangPhai() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TRAI_SANG_PHAI]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoTraiSangPhai() async {
+  bool isDinhHuongTheoTraiSangPhai() {
     if (getDinhHuong == '[DINH_HUONG_THEO_TRAI_SANG_PHAI]') {
       return true;
     }
@@ -164,12 +164,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHAI_SANG_TRAI]');
   }
 
-  Future<void> caiDatDinhHuongTheoPhaiSangTrai() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHAI_SANG_TRAI]');
+  void caiDatDinhHuongTheoPhaiSangTrai() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHAI_SANG_TRAI]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoPhaiSangTrai() async {
+  bool isDinhHuongTheoPhaiSangTrai() {
     if (getDinhHuong == '[DINH_HUONG_THEO_PHAI_SANG_TRAI]') {
       return true;
     }
@@ -183,12 +183,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_TRAI_SANG_DUOI_PHAI]');
   }
 
-  Future<void> caiDatDinhHuongTheoTrenTraiSangDuoiPhai() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_TRAI_SANG_DUOI_PHAI]');
+  void caiDatDinhHuongTheoTrenTraiSangDuoiPhai() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_TRAI_SANG_DUOI_PHAI]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoTrenTraiSangDuoiPhai() async {
+  bool isDinhHuongTheoTrenTraiSangDuoiPhai() {
     if (getDinhHuong == '[DINH_HUONG_THEO_TREN_TRAI_SANG_DUOI_PHAI]') {
       return true;
     }
@@ -202,12 +202,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_TRAI_SANG_TREN_PHAI]');
   }
 
-  Future<void> caiDatDinhHuongTheoDuoiTraiSangTrenPhai() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_TRAI_SANG_TREN_PHAI]');
+  void caiDatDinhHuongTheoDuoiTraiSangTrenPhai() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_TRAI_SANG_TREN_PHAI]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoDuoiTraiSangTrenPhai() async {
+  bool isDinhHuongTheoDuoiTraiSangTrenPhai() {
     if (getDinhHuong == '[DINH_HUONG_THEO_DUOI_TRAI_SANG_TREN_PHAI]') {
       return true;
     }
@@ -221,12 +221,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_PHAI_SANG_DUOI_TRAI]');
   }
 
-  Future<void> caiDatDinhHuongTheoTrenPhaiSangDuoiTrai() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_PHAI_SANG_DUOI_TRAI]');
+  void caiDatDinhHuongTheoTrenPhaiSangDuoiTrai() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_PHAI_SANG_DUOI_TRAI]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoTrenPhaiSangDuoiTrai() async {
+  bool isDinhHuongTheoTrenPhaiSangDuoiTrai() {
     if (getDinhHuong == '[DINH_HUONG_THEO_TREN_PHAI_SANG_DUOI_TRAI]') {
       return true;
     }
@@ -240,12 +240,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_PHAI_SANG_TREN_TRAI]');
   }
 
-  Future<void> caiDatDinhHuongTheoDuoiPhaiSangTrenTrai() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_PHAI_SANG_TREN_TRAI]');
+  void caiDatDinhHuongTheoDuoiPhaiSangTrenTrai() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_PHAI_SANG_TREN_TRAI]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoDuoiPhaiSangTrenTrai() async {
+  bool isDinhHuongTheoDuoiPhaiSangTrenTrai() {
     if (getDinhHuong == '[DINH_HUONG_THEO_DUOI_PHAI_SANG_TREN_TRAI]') {
       return true;
     }
@@ -259,12 +259,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_CHI_SO_TANG_TIEN]');
   }
 
-  Future<void> caiDatDinhHuongTheoChiSoTangTien() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_CHI_SO_TANG_TIEN]');
+  void caiDatDinhHuongTheoChiSoTangTien() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_CHI_SO_TANG_TIEN]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoChiSoTangTien() async {
+  bool isDinhHuongTheoChiSoTangTien() {
     if (getDinhHuong == '[DINH_HUONG_THEO_CHI_SO_TANG_TIEN]') {
       return true;
     }
@@ -279,12 +279,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_KICH_BAN]');
   }
 
-  Future<void> caiDatDinhHuongTheoDoanDuongBayThuocKichBan() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_KICH_BAN]');
+  void caiDatDinhHuongTheoDoanDuongBayThuocKichBan() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_KICH_BAN]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoDoanDuongBayThuocKichBan() async {
+  bool isDinhHuongTheoDoanDuongBayThuocKichBan() {
     if (getDinhHuong == '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_KICH_BAN]') {
       return true;
     }
@@ -299,12 +299,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_LICH_SU_BAY]');
   }
 
-  Future<void> caiDatDinhHuongTheoDoanDuongBayThuocLichSuBay() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_LICH_SU_BAY]');
+  void caiDatDinhHuongTheoDoanDuongBayThuocLichSuBay() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_LICH_SU_BAY]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoDoanDuongBayThuocLichSuBay() async {
+  bool isDinhHuongTheoDoanDuongBayThuocLichSuBay() {
     if (getDinhHuong == '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_LICH_SU_BAY]') {
       return true;
     }
@@ -318,12 +318,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CO_GIAI_DOAN_BAN_HANH_TRINH]');
   }
 
-  Future<void> caiDatDinhHuongTheoViTriChienDauCoGiaiDoanBanHanhTrinh() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CO_GIAI_DOAN_BAN_HANH_TRINH]');
+  void caiDatDinhHuongTheoViTriChienDauCoGiaiDoanBanHanhTrinh() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CO_GIAI_DOAN_BAN_HANH_TRINH]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoViTriChienDauCoGiaiDoanBanHanhTrinh() async {
+  bool isDinhHuongTheoViTriChienDauCoGiaiDoanBanHanhTrinh() {
     if (getDinhHuong == '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CO_GIAI_DOAN_BAN_HANH_TRINH]') {
       return true;
     }
@@ -343,12 +343,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
   }
 
-  Future<void> caiDatDinhHuongTheoViTriXuatPhatNguyenBanChienDauCo() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
+  void caiDatDinhHuongTheoViTriXuatPhatNguyenBanChienDauCo() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoViTriXuatPhatNguyenBanChienDauCo() async {
+  bool isDinhHuongTheoViTriXuatPhatNguyenBanChienDauCo() {
     if (getDinhHuong == '[DINH_HUONG_THEO_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]') {
       return true;
     }
@@ -362,12 +362,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CHIEN_DAU_CO]');
   }
 
-  Future<void> caiDatDinhHuongTheoViTriChienDauChienDauCo() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CHIEN_DAU_CO]');
+  void caiDatDinhHuongTheoViTriChienDauChienDauCo() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CHIEN_DAU_CO]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoViTriChienDauChienDauCo() async {
+  bool isDinhHuongTheoViTriChienDauChienDauCo() {
     if (getDinhHuong == '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CHIEN_DAU_CO]') {
       return true;
     }
@@ -381,12 +381,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_TRAI_SANG_PHAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
   }
 
-  Future<void> caiDatDinhHuongTheoTraiSangPhaiViTriXuatPhatNguyenBanChienDauCo() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_TRAI_SANG_PHAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
+  void caiDatDinhHuongTheoTraiSangPhaiViTriXuatPhatNguyenBanChienDauCo() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TRAI_SANG_PHAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoTraiSangPhaiViTriXuatPhatNguyenBanChienDauCo() async {
+  bool isDinhHuongTheoTraiSangPhaiViTriXuatPhatNguyenBanChienDauCo() {
     if (getDinhHuong == '[DINH_HUONG_THEO_TRAI_SANG_PHAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]') {
       return true;
     }
@@ -400,12 +400,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHAI_SANG_TRAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
   }
 
-  Future<void> caiDatDinhHuongTheoPhaiSangTraiViTriXuatPhatNguyenBanChienDauCo() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHAI_SANG_TRAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
+  void caiDatDinhHuongTheoPhaiSangTraiViTriXuatPhatNguyenBanChienDauCo() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHAI_SANG_TRAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoPhaiSangTraiViTriXuatPhatNguyenBanChienDauCo() async {
+  bool isDinhHuongTheoPhaiSangTraiViTriXuatPhatNguyenBanChienDauCo() {
     if (getDinhHuong == '[DINH_HUONG_THEO_PHAI_SANG_TRAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]') {
       return true;
     }
@@ -425,12 +425,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS01]');
   }
 
-  Future<void> caiDatDinhHuongTheoPhuongThucXSieuCapSs01() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS01]');
+  void caiDatDinhHuongTheoPhuongThucXSieuCapSs01() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS01]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoPhuongThucXSieuCapSs01() async {
+  bool isDinhHuongTheoPhuongThucXSieuCapSs01() {
     if (getDinhHuong == '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS01]') {
       return true;
     }
@@ -444,12 +444,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS02]');
   }
 
-  Future<void> caiDatDinhHuongTheoPhuongThucXSieuCapSs02() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS02]');
+  void caiDatDinhHuongTheoPhuongThucXSieuCapSs02() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS02]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoPhuongThucXSieuCapSs02() async {
+  bool isDinhHuongTheoPhuongThucXSieuCapSs02() {
     if (getDinhHuong == '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS02]') {
       return true;
     }
@@ -463,12 +463,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS03]');
   }
 
-  Future<void> caiDatDinhHuongTheoPhuongThucXSieuCapSs03() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS03]');
+  void caiDatDinhHuongTheoPhuongThucXSieuCapSs03() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS03]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoPhuongThucXSieuCapSs03() async {
+  bool isDinhHuongTheoPhuongThucXSieuCapSs03() {
     if (getDinhHuong == '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS03]') {
       return true;
     }
@@ -482,12 +482,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS04]');
   }
 
-  Future<void> caiDatDinhHuongTheoPhuongThucXSieuCapSs04() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS04]');
+  void caiDatDinhHuongTheoPhuongThucXSieuCapSs04() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS04]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoPhuongThucXSieuCapSs04() async {
+  bool isDinhHuongTheoPhuongThucXSieuCapSs04() {
     if (getDinhHuong == '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS04]') {
       return true;
     }
@@ -501,12 +501,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS05]');
   }
 
-  Future<void> caiDatDinhHuongTheoPhuongThucXSieuCapSs05() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS05]');
+  void caiDatDinhHuongTheoPhuongThucXSieuCapSs05() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS05]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoPhuongThucXSieuCapSs05() async {
+  bool isDinhHuongTheoPhuongThucXSieuCapSs05() {
     if (getDinhHuong == '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS05]') {
       return true;
     }
@@ -520,12 +520,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS06]');
   }
 
-  Future<void> caiDatDinhHuongTheoPhuongThucXSieuCapSs06() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS06]');
+  void caiDatDinhHuongTheoPhuongThucXSieuCapSs06() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS06]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoPhuongThucXSieuCapSs06() async {
+  bool isDinhHuongTheoPhuongThucXSieuCapSs06() {
     if (getDinhHuong == '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS06]') {
       return true;
     }
@@ -539,12 +539,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS07]');
   }
 
-  Future<void> caiDatDinhHuongTheoPhuongThucXSieuCapSs07() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS07]');
+  void caiDatDinhHuongTheoPhuongThucXSieuCapSs07() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS07]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoPhuongThucXSieuCapSs07() async {
+  bool isDinhHuongTheoPhuongThucXSieuCapSs07() {
     if (getDinhHuong == '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS07]') {
       return true;
     }
@@ -558,12 +558,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS08]');
   }
 
-  Future<void> caiDatDinhHuongTheoPhuongThucXSieuCapSs08() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS08]');
+  void caiDatDinhHuongTheoPhuongThucXSieuCapSs08() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS08]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoPhuongThucXSieuCapSs08() async {
+  bool isDinhHuongTheoPhuongThucXSieuCapSs08() {
     if (getDinhHuong == '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS08]') {
       return true;
     }
@@ -577,12 +577,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS09]');
   }
 
-  Future<void> caiDatDinhHuongTheoPhuongThucXSieuCapSs09() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS09]');
+  void caiDatDinhHuongTheoPhuongThucXSieuCapSs09() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS09]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoPhuongThucXSieuCapSs09() async {
+  bool isDinhHuongTheoPhuongThucXSieuCapSs09() {
     if (getDinhHuong == '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS09]') {
       return true;
     }
@@ -596,12 +596,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS10]');
   }
 
-  Future<void> caiDatDinhHuongTheoPhuongThucXSieuCapSs10() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS10]');
+  void caiDatDinhHuongTheoPhuongThucXSieuCapSs10() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS10]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoPhuongThucXSieuCapSs10() async {
+  bool isDinhHuongTheoPhuongThucXSieuCapSs10() {
     if (getDinhHuong == '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS10]') {
       return true;
     }
@@ -615,8 +615,8 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_PHUONG_TIEN_LAY_MUC_TIEU]');
   }
 
-  Future<void> caiDatDinhHuongTheoViTriPhuongTienLayMucTieu() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_PHUONG_TIEN_LAY_MUC_TIEU]');
+  void caiDatDinhHuongTheoViTriPhuongTienLayMucTieu() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_PHUONG_TIEN_LAY_MUC_TIEU]');
     return;
   }
 
@@ -634,12 +634,12 @@ class BasicMovementDirection {
     caiDatDinhHuong(value: '[DINH_HUONG_THEO_QUAN_TINH_LICH_SU_DI_CHUYEN]');
   }
 
-  Future<void> caiDatDinhHuongTheoQuanTinhLichSuDiChuyen() async {
-    await caiDatDinhHuong(value: '[DINH_HUONG_THEO_QUAN_TINH_LICH_SU_DI_CHUYEN]');
+  void caiDatDinhHuongTheoQuanTinhLichSuDiChuyen() {
+    caiDatDinhHuong(value: '[DINH_HUONG_THEO_QUAN_TINH_LICH_SU_DI_CHUYEN]');
     return;
   }
 
-  Future<bool> isDinhHuongTheoQuanTinhLichSuDiChuyen() async {
+  bool isDinhHuongTheoQuanTinhLichSuDiChuyen() {
     if (getDinhHuong == '[DINH_HUONG_THEO_QUAN_TINH_LICH_SU_DI_CHUYEN]') {
       return true;
     }

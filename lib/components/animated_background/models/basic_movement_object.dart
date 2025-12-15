@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
+import 'package:frame_creator_v2/components/animated_background/models/animated_background_state_management.dart';
 import 'package:frame_creator_v2/components/animated_background/models/basic_active_ticker.dart';
 import 'package:frame_creator_v2/components/animated_background/models/basic_existence_status.dart';
 import 'package:frame_creator_v2/components/animated_background/models/basic_fly_speed.dart';
@@ -10,6 +11,18 @@ import 'package:frame_creator_v2/components/animated_background/models/basic_spr
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 
 class BasicMovementObject with ExecutionCore {
+  BasicMovementObject({required AnimatedBackgroundStateManagement? animatedBackgroundStateManagement, required int? rangeDx, required int? rangeDy}) {
+    caiDatAnimatedBackgroundStateManagement(value: animatedBackgroundStateManagement);
+    caiDatRangeDx(value: rangeDx);
+    caiDatRangeDy(value: rangeDy);
+
+    caiDatChieuCaoManHinhPhiVatLy(value: getAnimatedBackgroundStateManagement?.getChieuCaoManHinhPhiVatLy);
+    caiDatChieuRongManHinhPhiVatLy(value: getAnimatedBackgroundStateManagement?.getChieuRongManHinhPhiVatLy);
+
+    caiDatDxTrongTam(value: ((getChieuRongManHinhPhiVatLy ?? 0) / 19) * (getRangeDx ?? 0));
+    caiDatDyTrongTam(value: ((getChieuCaoManHinhPhiVatLy ?? 0) / 19) * (getRangeDy ?? 0));
+  }
+
   /// -----
   /// TODO: Attach Root
   /// -----
@@ -159,6 +172,51 @@ class BasicMovementObject with ExecutionCore {
   @override
   Future<void> onResetRootForSubCom() async {
     ///
+    return;
+  }
+
+  AnimatedBackgroundStateManagement? _animatedBackgroundStateManagement;
+  AnimatedBackgroundStateManagement? get getAnimatedBackgroundStateManagement => _animatedBackgroundStateManagement;
+  Future<void> caiDatAnimatedBackgroundStateManagement({required AnimatedBackgroundStateManagement? value}) async {
+    _animatedBackgroundStateManagement = value;
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  int? _rangeDx;
+  int? get getRangeDx => _rangeDx;
+  int get getRangeDxNotNull => _rangeDx ?? 0;
+  Future<void> caiDatRangeDx({required int? value}) async {
+    if (value != null && value != 0) {
+      if (value.isNaN == false && value.isFinite == true) {
+        _rangeDx = value;
+      } else {
+        _rangeDx = 0;
+      }
+    } else {
+      _rangeDx = 0;
+    }
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  int? _rangeDy;
+  int? get getRangeDy => _rangeDy;
+  int get getRangeDyNotNull => _rangeDy ?? 0;
+  Future<void> caiDatRangeDy({required int? value}) async {
+    if (value != null && value != 0) {
+      if (value.isNaN == false && value.isFinite == true) {
+        _rangeDy = value;
+      } else {
+        _rangeDy = 0;
+      }
+    } else {
+      _rangeDy = 0;
+    }
     return;
   }
 
