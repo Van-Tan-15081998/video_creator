@@ -269,7 +269,7 @@ class _PomodoroIntroductionContentWidgetState extends State<PomodoroIntroduction
               width: 2000.0,
               height: 3000.0,
               decoration: BoxDecoration(
-                color: Color(0xFFFFFFFF).withValues(alpha: 0.8),
+                color: Color(0xFF1C1C1C).withValues(alpha: 0.85),
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
                 border: Border.all(width: 15.0, color: Colors.black),
               ),
@@ -277,25 +277,25 @@ class _PomodoroIntroductionContentWidgetState extends State<PomodoroIntroduction
           ),
         ),
 
-        AnimatedPositioned(
-          duration: const Duration(milliseconds: 500),
-          top: -150.0,
-          right: -1200.0,
-          width: 2500.0,
-          height: 2000.0,
-          child: Transform.rotate(
-            angle: pi * -0.3,
-            child: Container(
-              width: 2500.0,
-              height: 3000.0,
-              decoration: BoxDecoration(
-                color: Color(0xFFFFFFFF).withValues(alpha: 0),
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                image: DecorationImage(image: AssetImage('assets/images/background/background_04.jpg'), fit: BoxFit.fitHeight),
-              ),
-            ),
-          ),
-        ),
+        // AnimatedPositioned(
+        //   duration: const Duration(milliseconds: 500),
+        //   top: -150.0,
+        //   right: -1200.0,
+        //   width: 2500.0,
+        //   height: 2000.0,
+        //   child: Transform.rotate(
+        //     angle: pi * -0.3,
+        //     child: Container(
+        //       width: 2500.0,
+        //       height: 3000.0,
+        //       decoration: BoxDecoration(
+        //         color: Color(0xFFFFFFFF).withValues(alpha: 0),
+        //         borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+        //         image: DecorationImage(image: AssetImage('assets/images/background/background_04.jpg'), fit: BoxFit.fitHeight),
+        //       ),
+        //     ),
+        //   ),
+        // ),
 
         AnimatedPositioned(
           duration: const Duration(milliseconds: 500),
@@ -598,7 +598,7 @@ class _PomodoroIntroductionContentWidgetState extends State<PomodoroIntroduction
                   child: Container(
                     padding: EdgeInsets.only(left: 20.0, top: 15.0, right: 300.0),
                     decoration: BoxDecoration(
-                      color: Color(0xFF1C1C1C).withValues(alpha: 0.5),
+                      color: Color(0xFF2C2C2C).withValues(alpha: 0.5),
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(1.0), topRight: Radius.circular(1.0), bottomRight: Radius.circular(1.0), bottomLeft: Radius.circular(1.0)),
                       boxShadow: [BoxShadow(color: Color(0xFF1C1C1C).withValues(alpha: 1.0), blurRadius: 1.0, spreadRadius: 1.0, offset: Offset(0, 0))],
                     ),
@@ -630,7 +630,7 @@ class _PomodoroIntroductionContentWidgetState extends State<PomodoroIntroduction
               child: Text(
                 title,
                 style: GoogleFonts.coiny(
-                  textStyle: TextStyle(fontSize: 50.0, fontWeight: FontWeight.w800, fontStyle: FontStyle.normal, color: Color(0xFF1C1C1C), letterSpacing: 2.0),
+                  textStyle: TextStyle(fontSize: 45.0, fontWeight: FontWeight.w800, fontStyle: FontStyle.normal, color: Color(0xFF1C1C1C), letterSpacing: 2.0),
                 ),
                 textAlign: TextAlign.start,
                 overflow: TextOverflow.ellipsis,

@@ -272,33 +272,33 @@ class _VocabularyIntroductionContentWidgetState extends State<VocabularyIntroduc
               width: 2000.0,
               height: 3000.0,
               decoration: BoxDecoration(
-                color: Color(0xFFFFFFFF).withValues(alpha: 0.8),
+                color: Color(0xFF1C1C1C).withValues(alpha: 0.85),
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                border: Border.all(width: 15.0, color: Colors.black),
+                border: Border.all(width: 15.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.9)),
               ),
             ),
           ),
         ),
 
-        AnimatedPositioned(
-          duration: const Duration(milliseconds: 500),
-          top: -150.0,
-          right: -1200.0,
-          width: 2500.0,
-          height: 2000.0,
-          child: Transform.rotate(
-            angle: pi * -0.3,
-            child: Container(
-              width: 2500.0,
-              height: 3000.0,
-              decoration: BoxDecoration(
-                color: Color(0xFFFFFFFF).withValues(alpha: 0),
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                image: DecorationImage(image: AssetImage('assets/images/background/background_04.jpg'), fit: BoxFit.fitHeight),
-              ),
-            ),
-          ),
-        ),
+        // AnimatedPositioned(
+        //   duration: const Duration(milliseconds: 500),
+        //   top: -150.0,
+        //   right: -1200.0,
+        //   width: 2500.0,
+        //   height: 2000.0,
+        //   child: Transform.rotate(
+        //     angle: pi * -0.3,
+        //     child: Container(
+        //       width: 2500.0,
+        //       height: 3000.0,
+        //       decoration: BoxDecoration(
+        //         color: Color(0xFFFFFFFF).withValues(alpha: 0),
+        //         borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+        //         image: DecorationImage(image: AssetImage('assets/images/background/background_04.jpg'), fit: BoxFit.fitHeight),
+        //       ),
+        //     ),
+        //   ),
+        // ),
 
         AnimatedPositioned(
           duration: const Duration(milliseconds: 500),
@@ -518,7 +518,7 @@ class _VocabularyIntroductionContentWidgetState extends State<VocabularyIntroduc
       backgroundColor = Color(0xFFFFFF00).withValues(alpha: 1);
       textColor = Color(0xFF1C1C1C).withValues(alpha: 1);
     } else {
-      backgroundColor = Color(0xFF1C1C1C).withValues(alpha: 1);
+      backgroundColor = Color(0xFF2C2C2C).withValues(alpha: 1);
       textColor = Color(0xFFF0FFFF).withValues(alpha: 1);
     }
 
@@ -558,7 +558,7 @@ class _VocabularyIntroductionContentWidgetState extends State<VocabularyIntroduc
               child: Text(
                 title,
                 style: GoogleFonts.coiny(
-                  textStyle: TextStyle(fontSize: 50.0, fontWeight: FontWeight.w800, fontStyle: FontStyle.normal, color: textColor, letterSpacing: 2.0),
+                  textStyle: TextStyle(fontSize: 45.0, fontWeight: FontWeight.w800, fontStyle: FontStyle.normal, color: textColor, letterSpacing: 2.0),
                 ),
                 textAlign: TextAlign.start,
                 overflow: TextOverflow.ellipsis,

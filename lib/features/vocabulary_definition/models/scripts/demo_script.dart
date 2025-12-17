@@ -1,6 +1,7 @@
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_data_model.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_time.dart';
+import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_topic_data_model.dart';
 
 class DemoScript with ExecutionCore {
   DemoScript({required VocabularyTime? vocabularyTime}) {
@@ -55,6 +56,14 @@ class DemoScript with ExecutionCore {
       /// -----
       /// TODO:
       /// -----
+
+      getVocabularyTime?.getVocabularyTopic?.setParentTopicEng(value: 'Parent Topic', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularyTopic?.setParentTopicVie(value: 'Chủ đề cha', isPriorityOverride: true);
+
+      getVocabularyTime?.getVocabularyTopic?.setMainTopicEng(value: 'Main Topic', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularyTopic?.setMainTopicVie(value: 'Chủ đề chính', isPriorityOverride: true);
+
+      getVocabularyTime?.getVocabularyTopic?.setTotalWords(value: 20, isPriorityOverride: true);
 
       /// -----
       /// TODO: VocabularySS01

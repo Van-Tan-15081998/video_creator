@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/animation_components/active_container/active_container_widget.dart';
+import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_topic_data_model.dart';
 import 'package:frame_creator_v2/features/vocabulary_subject/widgets/contents/animated_topic_title_widget.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,9 +22,46 @@ class VocabularySubjectContentWidget extends StatefulWidget {
 }
 
 class _VocabularySubjectContentWidgetState extends State<VocabularySubjectContentWidget> with SingleTickerProviderStateMixin {
+  late final Ticker _ticker;
+
+  /// -----
+  /// TODO:
+  /// -----
+  VocabularyTopicDataModel? _vocabularyTopic;
+  VocabularyTopicDataModel? get getVocabularyTopic => _vocabularyTopic;
+  void setVocabularyTopic({required VocabularyTopicDataModel? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _vocabularyTopic = value;
+    } else {
+      _vocabularyTopic ??= value;
+    }
+
+    return;
+  }
+
   @override
   void initState() {
     super.initState();
+
+    _ticker = createTicker((Duration elapsed) {
+      if (widget.systemStateManagement?.getVocabularySubjectFeature?.checkConditionActiveByDirection() == true) {
+        if (getVocabularyTopic == null) {
+          setVocabularyTopic(value: widget.systemStateManagement?.getVocabularyDefinitionFeature?.getVocabularyTime?.getVocabularyTopic, isPriorityOverride: true);
+
+          setState(() {
+            ///
+          });
+        }
+
+        ///
+      }
+    })..start();
+  }
+
+  @override
+  void dispose() {
+    _ticker.dispose();
+    super.dispose();
   }
 
   @override
@@ -44,7 +83,8 @@ class _VocabularySubjectContentWidgetState extends State<VocabularySubjectConten
           top: 30.0,
           left: 40.0,
           duration: const Duration(milliseconds: 100),
-          child: mainTopicTitle(word: 'Personal Qualities'),
+          // child: mainTopicTitle(word: 'Personal Qualities'),
+          child: mainTopicTitle(word: getVocabularyTopic?.getParentTopicEng ?? ''),
         ),
         AnimatedPositioned(
           top: 100.0,
@@ -54,7 +94,8 @@ class _VocabularySubjectContentWidgetState extends State<VocabularySubjectConten
           child: Text.rich(
             TextSpan(
               style: TextStyle(fontSize: 20, height: 1.0),
-              children: [pronunciationString(word: 'Phẩm chất cá nhân', isUKPronunciation: true)],
+              // children: [pronunciationString(word: 'Phẩm chất cá nhân', isUKPronunciation: true)],
+              children: [pronunciationString(word: getVocabularyTopic?.getParentTopicVie ?? '', isUKPronunciation: true)],
             ),
           ),
         ),
@@ -110,7 +151,8 @@ class _VocabularySubjectContentWidgetState extends State<VocabularySubjectConten
           child: Text.rich(
             TextSpan(
               style: TextStyle(fontSize: 20, height: 1.0),
-              children: [subTopicTitleAnimation(word: 'Intelligence')],
+              // children: [subTopicTitleAnimation(word: 'Intelligence')],
+              children: [subTopicTitleAnimation(word: getVocabularyTopic?.getMainTopicEng ?? '')],
             ),
           ),
         ),
@@ -121,7 +163,8 @@ class _VocabularySubjectContentWidgetState extends State<VocabularySubjectConten
           child: Text.rich(
             TextSpan(
               style: TextStyle(fontSize: 20, height: 1.0),
-              children: [pronunciationString(word: 'Sự thông minh', isUKPronunciation: false)],
+              // children: [pronunciationString(word: 'Sự thông minh', isUKPronunciation: false)],
+              children: [pronunciationString(word: getVocabularyTopic?.getMainTopicVie ?? '', isUKPronunciation: false)],
             ),
           ),
         ),
@@ -129,7 +172,7 @@ class _VocabularySubjectContentWidgetState extends State<VocabularySubjectConten
           top: 430.0,
           left: 350.0,
           duration: const Duration(milliseconds: 100),
-          child: numberOfWordsTitle(word: 'Number of words: 30'),
+          child: numberOfWordsTitle(word: 'Number of words: ${getVocabularyTopic?.getTotalWords?.toInt() ?? '0'}'),
         ),
       ],
     );

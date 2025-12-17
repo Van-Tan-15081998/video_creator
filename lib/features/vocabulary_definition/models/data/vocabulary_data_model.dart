@@ -1,4 +1,6 @@
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
+import 'package:frame_creator_v2/features/helpful_study_advice/models/data/helpful_study_advice_data_model.dart';
+import 'package:frame_creator_v2/features/helpful_study_advice_related_to_topic/models/data/helpful_study_advice_related_to_topic_data_model.dart';
 
 class VocabularyDataModel with ExecutionCore {
   /// -----
@@ -416,6 +418,66 @@ class VocabularyDataModel with ExecutionCore {
       _vocabularyInterestingKnowledgeConversation = value;
     } else {
       _vocabularyInterestingKnowledgeConversation ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  HelpfulStudyAdviceDataModel? _helpfulStudyAdvice;
+  HelpfulStudyAdviceDataModel? get getHelpfulStudyAdvice => _helpfulStudyAdvice;
+  void setHelpfulStudyAdvice({required HelpfulStudyAdviceDataModel? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _helpfulStudyAdvice = value;
+    } else {
+      _helpfulStudyAdvice ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  bool? _isHasHelpfulStudyAdvice;
+  bool? get getIsHasHelpfulStudyAdvice => _isHasHelpfulStudyAdvice;
+  void setIsHasHelpfulStudyAdvice({required bool? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _isHasHelpfulStudyAdvice = value;
+    } else {
+      _isHasHelpfulStudyAdvice ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  HelpfulStudyAdviceRelatedToTopicDataModel? _helpfulStudyAdviceRelatedToTopic;
+  HelpfulStudyAdviceRelatedToTopicDataModel? get getHelpfulStudyAdviceRelatedToTopic => _helpfulStudyAdviceRelatedToTopic;
+  void setHelpfulStudyAdviceRelatedToTopic({required HelpfulStudyAdviceRelatedToTopicDataModel? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _helpfulStudyAdviceRelatedToTopic = value;
+    } else {
+      _helpfulStudyAdviceRelatedToTopic ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  bool? _isHasHelpfulStudyAdviceRelatedToTopic;
+  bool? get getIsHasHelpfulStudyAdviceRelatedToTopic => _isHasHelpfulStudyAdviceRelatedToTopic;
+  void setIsHasHelpfulStudyAdviceRelatedToTopic({required bool? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _isHasHelpfulStudyAdviceRelatedToTopic = value;
+    } else {
+      _isHasHelpfulStudyAdviceRelatedToTopic ??= value;
     }
 
     return;
@@ -897,13 +959,7 @@ class VocabularyInterestingKnowledgeConversation with ExecutionCore {
 }
 
 class VocabularyInterestingKnowledgeConversationItem {
-  VocabularyInterestingKnowledgeConversationItem({
-    required bool? isLeftCharacterSS01,
-    required bool? isRightCharacterSS02,
-    required String? engSentence,
-    required String? vieSentence,
-    required String? imageSource,
-  }) {
+  VocabularyInterestingKnowledgeConversationItem({required bool? isLeftCharacterSS01, required bool? isRightCharacterSS02, required String? engSentence, required String? vieSentence, required String? imageSource}) {
     setIsLeftCharacterSS01(value: isLeftCharacterSS01, isPriorityOverride: true);
     setIsRightCharacterSS02(value: isRightCharacterSS02, isPriorityOverride: true);
     setEngSentence(value: engSentence, isPriorityOverride: true);

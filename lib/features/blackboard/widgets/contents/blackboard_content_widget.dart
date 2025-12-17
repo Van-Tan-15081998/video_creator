@@ -63,32 +63,38 @@ class _BlackboardContentWidgetState extends State<BlackboardContentWidget> {
                 ),
               ),
 
-              Positioned(
-                // top: 0,
-                // left: 0,
-                width: widget.sizeDx * 2,
-                height: widget.sizeDx * 2,
-                child: Container(
-                  color: Colors.white,
-                  child: ShaderMask(
-                    blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
-                    shaderCallback: (Rect bounds) {
-                      return LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          Colors.white,
-                          Colors.transparent, // Hoàn toàn biến mất bên phải
-                        ],
-                        stops: [0.25, 1.0],
-                      ).createShader(bounds);
-                    },
-                    child: GameWidget(
-                      game: AnimatedBackgroundWidget(chieuCaoManHinhPhiVatLy: widget.sizeDy * 2.5, chieuRongManHinhPhiVatLy: widget.sizeDx * 2.5),
-                    ),
-                  ),
-                ),
-              ),
+              // Positioned(
+              //   // top: 0,
+              //   // left: 0,
+              //   width: widget.sizeDx * 2,
+              //   height: widget.sizeDx * 2,
+              //   child: Container(
+              //     color: Color(0xFFFFFFFF).withValues(alpha: 0.99),
+              //     child: ShaderMask(
+              //       blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
+              //       shaderCallback: (Rect bounds) {
+              //         return LinearGradient(
+              //           begin: Alignment.centerLeft,
+              //           end: Alignment.centerRight,
+              //           colors: [
+              //             Colors.white,
+              //             Colors.transparent, // Hoàn toàn biến mất bên phải
+              //           ],
+              //           stops: [0.25, 1.0],
+              //         ).createShader(bounds);
+              //       },
+              //       child: Stack(
+              //         children: [
+              //           Container(color: Color(0xFF1C1C1C).withValues(alpha: 0.1)),
+              //           GameWidget(
+              //             game: AnimatedBackgroundWidget(chieuCaoManHinhPhiVatLy: widget.sizeDy * 2.5, chieuRongManHinhPhiVatLy: widget.sizeDx * 2.5, textRenderer: null, backgroundAnimatedIcon: null, movementUnit: null),
+              //           ),
+              //           Container(color: Color(0xFFFFFFFF).withValues(alpha: 0.8)),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),

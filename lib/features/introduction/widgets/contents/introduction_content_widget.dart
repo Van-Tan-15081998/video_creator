@@ -5,6 +5,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/animation_components/active_container/active_container_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/introduction/introduction_animated_background_widget.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:frame_creator_v2/features/introduction/widgets/contents/pomodoro/pomodoro_introduction_content_widget.dart';
 import 'package:frame_creator_v2/features/introduction/widgets/contents/vocabulary/vocabulary_introduction_content_widget.dart';
@@ -118,9 +119,121 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
               width: 5000.0,
               height: 5000.0,
               decoration: BoxDecoration(
-                color: Color(0xFF000000).withValues(alpha: 0.9),
+                color: Color(0xFF000000).withValues(alpha: 1),
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(30.0), bottomLeft: Radius.circular(30.0)),
                 border: Border.all(width: 15.0, color: Colors.black),
+              ),
+            ),
+          ),
+
+          Positioned(
+            width: widget.sizeDx,
+            height: widget.sizeDx,
+            child: Container(
+              color: Color(0xFFFFFFFF).withValues(alpha: 0),
+              child: ShaderMask(
+                blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
+                shaderCallback: (Rect bounds) {
+                  return LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Colors.white,
+                      Colors.transparent, // Hoàn toàn biến mất bên phải
+                    ],
+                    stops: [0.25, 1.0],
+                  ).createShader(bounds);
+                },
+                child: Stack(
+                  children: [
+                    Container(color: Color(0xFF1C1C1C).withValues(alpha: 0.1)),
+
+                    const IntroductionAnimatedBackgroundWidget(sizeDx: 4500, sizeDy: 6000),
+                    Container(color: Color(0xFFFFFFFF).withValues(alpha: 0.25)),
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 500),
+            // top: 330.0,
+            top: 160.0,
+            left: 1550.0,
+            width: 1000.0,
+            height: 180.0,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 500),
+              width: 1000.0,
+              height: 180.0,
+              decoration: BoxDecoration(
+                color: isShowPomodoroIntroductionContent ? Color(0xFFFF4040).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(2.0), topRight: Radius.circular(2.0), bottomRight: Radius.circular(2.0), bottomLeft: Radius.circular(2.0)),
+                // border: Border.all(width: 15.0, color: Color(0xFF2C2C2C)),
+                image: DecorationImage(image: AssetImage('assets/images/background/background_06.jpg'), fit: BoxFit.fitWidth),
+                boxShadow: [BoxShadow(color: Color(0xFF2C2C2C).withValues(alpha: 1), blurRadius: 1.0, spreadRadius: 1.0, offset: Offset(1, 1))],
+              ),
+            ),
+          ),
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 500),
+            // top: 330.0,
+            top: 160.0,
+            left: 900.0,
+            width: 1000.0,
+            height: 180.0,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 500),
+              width: 1000.0,
+              height: 180.0,
+              decoration: BoxDecoration(
+                color: isShowPomodoroIntroductionContent ? Color(0xFFFF4040).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(2.0), topRight: Radius.circular(2.0), bottomRight: Radius.circular(2.0), bottomLeft: Radius.circular(2.0)),
+                // border: Border.all(width: 15.0, color: Color(0xFF2C2C2C)),
+                image: DecorationImage(image: AssetImage('assets/images/background/background_06.jpg'), fit: BoxFit.fitWidth),
+                boxShadow: [BoxShadow(color: Color(0xFF2C2C2C).withValues(alpha: 1), blurRadius: 1.0, spreadRadius: 1.0, offset: Offset(1, 1))],
+              ),
+            ),
+          ),
+
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 500),
+            // top: 100.0,
+            top: 0,
+            left: 1600.0,
+            width: 1000.0,
+            height: 180.0,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 500),
+              width: 1000.0,
+              height: 180.0,
+              decoration: BoxDecoration(
+                color: isShowVocabularyIntroductionContent ? Color(0xFFFF4040).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(2.0), topRight: Radius.circular(2.0), bottomRight: Radius.circular(2.0), bottomLeft: Radius.circular(2.0)),
+                // border: Border.all(width: 15.0, color: Color(0xFF2C2C2C)),
+                image: DecorationImage(image: AssetImage('assets/images/background/background_06.jpg'), fit: BoxFit.fitWidth),
+                boxShadow: [BoxShadow(color: Color(0xFF2C2C2C).withValues(alpha: 1), blurRadius: 1.0, spreadRadius: 1.0, offset: Offset(1, 1))],
+              ),
+            ),
+          ),
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 500),
+            // top: 100.0,
+            top: 0,
+            left: 1000.0,
+            width: 1000.0,
+            height: 180.0,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 500),
+              width: 1000.0,
+              height: 180.0,
+              decoration: BoxDecoration(
+                color: isShowVocabularyIntroductionContent ? Color(0xFFFF4040).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(2.0), topRight: Radius.circular(2.0), bottomRight: Radius.circular(2.0), bottomLeft: Radius.circular(2.0)),
+                // border: Border.all(width: 15.0, color: Color(0xFF2C2C2C)),
+                image: DecorationImage(image: AssetImage('assets/images/background/background_06.jpg'), fit: BoxFit.fitWidth),
+                boxShadow: [BoxShadow(color: Color(0xFF2C2C2C).withValues(alpha: 1), blurRadius: 1.0, spreadRadius: 1.0, offset: Offset(1, 1))],
               ),
             ),
           ),
@@ -239,77 +352,27 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                 )
               : Container(),
 
-          AnimatedPositioned(
-            duration: const Duration(milliseconds: 300),
-            top: isShowVocabularyIntroductionContent ? 110.0 : 100.0,
-            left: isShowVocabularyIntroductionContent ? 310.0 : 300.0,
-            width: 1000.0,
-            height: 180.0,
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 500),
-              width: 1000.0,
-              height: 180.0,
-              decoration: BoxDecoration(
-                color: isShowVocabularyIntroductionContent ? Color(0xFF00BFFF).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(2.0), topRight: Radius.circular(2.0), bottomRight: Radius.circular(2.0), bottomLeft: Radius.circular(2.0)),
-              ),
-            ),
-          ),
-          AnimatedPositioned(
-            duration: const Duration(milliseconds: 500),
-            top: 100.0,
-            left: 300.0,
-            width: 1000.0,
-            height: 180.0,
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 500),
-              width: 1000.0,
-              height: 180.0,
-              decoration: BoxDecoration(
-                color: isShowVocabularyIntroductionContent ? Color(0xFFFF4040).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0), bottomRight: Radius.circular(5.0), bottomLeft: Radius.circular(5.0)),
-                border: Border.all(width: 20.0, color: Color(0xFF2C2C2C)),
-                boxShadow: [
-                  // BoxShadow(
-                  //   color: isShowVocabularyIntroductionContent ? Color(0xFFFFFFFF).withValues(alpha: 1.0) : Color(0xFF2C2C2C).withValues(alpha: 1),
-                  //   blurRadius: 10.0,
-                  //   spreadRadius: 0,
-                  //   offset: Offset(3, 3),
-                  // ),
-                ],
-                image: DecorationImage(image: AssetImage('assets/images/background/background_06.jpg'), fit: BoxFit.fitWidth),
-              ),
-              child: Stack(
-                alignment: AlignmentDirectional.centerEnd,
-                children: [
-                  isShowVocabularyIntroductionContent
-                      ? mainTitleWidget(title: 'Topic', titleColor: Color(0xFFFFFFFF), width: 1000.0, height: 180.0)
-                      : mainTitleWidget(title: 'Topic', titleColor: Color(0xFF3C3C3C), width: 1000.0, height: 180.0),
-                ],
-              ),
-            ),
-          ),
-
-          AnimatedPositioned(
-            duration: const Duration(milliseconds: 300),
-            top: isShowPomodoroIntroductionContent ? 340.0 : 330.0,
-            left: isShowPomodoroIntroductionContent ? 160.0 : 150.0,
-            width: 1000.0,
-            height: 180.0,
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 500),
-              width: 1000.0,
-              height: 180.0,
-              decoration: BoxDecoration(
-                color: isShowPomodoroIntroductionContent ? Color(0xFF00BFFF).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(2.0), topRight: Radius.circular(2.0), bottomRight: Radius.circular(2.0), bottomLeft: Radius.circular(2.0)),
-              ),
-            ),
-          ),
+          // AnimatedPositioned(
+          //   duration: const Duration(milliseconds: 300),
+          //   top: isShowVocabularyIntroductionContent ? 110.0 : 100.0,
+          //   left: isShowVocabularyIntroductionContent ? 310.0 : 300.0,
+          //   width: 1000.0,
+          //   height: 180.0,
+          //   child: AnimatedContainer(
+          //     duration: const Duration(milliseconds: 500),
+          //     width: 1000.0,
+          //     height: 180.0,
+          //     decoration: BoxDecoration(
+          //       color: isShowVocabularyIntroductionContent ? Color(0xFF00BFFF).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
+          //       borderRadius: BorderRadius.only(topLeft: Radius.circular(2.0), topRight: Radius.circular(2.0), bottomRight: Radius.circular(2.0), bottomLeft: Radius.circular(2.0)),
+          //     ),
+          //   ),
+          // ),
           AnimatedPositioned(
             duration: const Duration(milliseconds: 500),
-            top: 330.0,
-            left: 150.0,
+            // top: 330.0,
+            top: 160.0,
+            left: 260.0,
             width: 1000.0,
             height: 180.0,
             child: AnimatedContainer(
@@ -318,15 +381,15 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
               height: 180.0,
               decoration: BoxDecoration(
                 color: isShowPomodoroIntroductionContent ? Color(0xFFFF4040).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(5.0), topRight: Radius.circular(5.0), bottomRight: Radius.circular(5.0), bottomLeft: Radius.circular(5.0)),
-                border: Border.all(width: 20.0, color: Color(0xFF2C2C2C)),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(2.0), topRight: Radius.circular(2.0), bottomRight: Radius.circular(2.0), bottomLeft: Radius.circular(2.0)),
+                border: Border.all(width: 15.0, color: isShowPomodoroIntroductionContent ? Color(0xFF00BFFF).withValues(alpha: 1.0) : Color(0xFF2C2C2C)),
                 boxShadow: [
-                  // BoxShadow(
-                  //   color: isShowPomodoroIntroductionContent ? Color(0xFFFFFFFF).withValues(alpha: 1.0) : Color(0xFF2C2C2C).withValues(alpha: 1),
-                  //   blurRadius: 10.0,
-                  //   spreadRadius: 0,
-                  //   offset: Offset(3, 3),
-                  // ),
+                  BoxShadow(
+                    color: isShowPomodoroIntroductionContent ? Color(0xFF1C1C1C).withValues(alpha: 1) : Color(0xFF2C2C2C).withValues(alpha: 1),
+                    blurRadius: isShowPomodoroIntroductionContent ? 2.0 : 1.0,
+                    spreadRadius: isShowPomodoroIntroductionContent ? 2.0 : 1.0,
+                    offset: Offset(1, 1),
+                  ),
                 ],
                 image: DecorationImage(image: AssetImage('assets/images/background/background_06.jpg'), fit: BoxFit.fitWidth),
               ),
@@ -341,6 +404,58 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
             ),
           ),
 
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 500),
+            // top: 100.0,
+            top: 0,
+            left: 360.0,
+            width: 1000.0,
+            height: 180.0,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 500),
+              width: 1000.0,
+              height: 180.0,
+              decoration: BoxDecoration(
+                color: isShowVocabularyIntroductionContent ? Color(0xFFFF4040).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(2.0), topRight: Radius.circular(2.0), bottomRight: Radius.circular(2.0), bottomLeft: Radius.circular(2.0)),
+                border: Border.all(width: 15.0, color: isShowVocabularyIntroductionContent ? Color(0xFF00BFFF).withValues(alpha: 1.0) : Color(0xFF2C2C2C)),
+                boxShadow: [
+                  BoxShadow(
+                    color: isShowVocabularyIntroductionContent ? Color(0xFF1C1C1C).withValues(alpha: 1) : Color(0xFF2C2C2C).withValues(alpha: 1),
+                    blurRadius: isShowVocabularyIntroductionContent ? 2.0 : 1.0,
+                    spreadRadius: isShowVocabularyIntroductionContent ? 2.0 : 1.0,
+                    offset: Offset(1, 1),
+                  ),
+                ],
+                image: DecorationImage(image: AssetImage('assets/images/background/background_06.jpg'), fit: BoxFit.fitWidth),
+              ),
+              child: Stack(
+                alignment: AlignmentDirectional.centerEnd,
+                children: [
+                  isShowVocabularyIntroductionContent
+                      ? mainTitleWidget(title: 'Topic', titleColor: Color(0xFFFFFFFF), width: 1000.0, height: 180.0)
+                      : mainTitleWidget(title: 'Topic', titleColor: Color(0xFF3C3C3C), width: 1000.0, height: 180.0),
+                ],
+              ),
+            ),
+          ),
+
+          // AnimatedPositioned(
+          //   duration: const Duration(milliseconds: 300),
+          //   top: isShowPomodoroIntroductionContent ? 340.0 : 330.0,
+          //   left: isShowPomodoroIntroductionContent ? 160.0 : 150.0,
+          //   width: 1000.0,
+          //   height: 180.0,
+          //   child: AnimatedContainer(
+          //     duration: const Duration(milliseconds: 500),
+          //     width: 1000.0,
+          //     height: 180.0,
+          //     decoration: BoxDecoration(
+          //       color: isShowPomodoroIntroductionContent ? Color(0xFF00BFFF).withValues(alpha: 1.0) : Color(0xFF1C1C1C).withValues(alpha: 1.0),
+          //       borderRadius: BorderRadius.only(topLeft: Radius.circular(2.0), topRight: Radius.circular(2.0), bottomRight: Radius.circular(2.0), bottomLeft: Radius.circular(2.0)),
+          //     ),
+          //   ),
+          // ),
           isShowContentWord
               ? AnimatedPositioned(
                   left: 380.0,

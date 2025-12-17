@@ -12,6 +12,7 @@ import 'package:frame_creator_v2/features/flame_world/models/flame_world_feature
 import 'package:frame_creator_v2/features/global_announcement/models/global_announcement_feature.dart';
 import 'package:frame_creator_v2/features/helpful_advice/models/helpful_advice_feature.dart';
 import 'package:frame_creator_v2/features/helpful_study_advice/models/helpful_study_advice_feature.dart';
+import 'package:frame_creator_v2/features/helpful_study_advice_related_to_topic/models/helpful_study_advice_related_to_topic_feature.dart';
 import 'package:frame_creator_v2/features/interesting_knowledge/models/interesting_knowledge_conversation_feature.dart';
 import 'package:frame_creator_v2/features/introduction/models/introduction_feature.dart';
 import 'package:frame_creator_v2/features/introductory_conversation/models/introductory_conversation_feature.dart';
@@ -121,6 +122,7 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
 
       getSystemStateManagement?.setHelpfulAdviceFeature(value: getHelpfulAdviceFeature);
       getSystemStateManagement?.setHelpfulStudyAdviceFeature(value: getHelpfulStudyAdviceFeature);
+      getSystemStateManagement?.setHelpfulStudyAdviceRelatedToTopicFeature(value: getHelpfulStudyAdviceRelatedToTopicFeature);
 
       getSystemStateManagement?.setVocabularyConversationFeature(value: getVocabularyConversationFeature);
 
@@ -298,6 +300,12 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       getHelpfulStudyAdviceFeature?.setBottomPosition(value: 15.0, isPriorityOverride: true, isSetActiveBottomPosition: true);
       getHelpfulStudyAdviceFeature?.setLeftPosition(value: 15.0, isPriorityOverride: true, isSetActiveLeftPosition: true);
 
+      setHelpfulStudyAdviceRelatedToTopicFeature(value: HelpfulStudyAdviceRelatedToTopicFeature(systemStateManagement: getSystemStateManagement, sizeDx: null, sizeDy: null), isPriorityOverride: true);
+      getHelpfulStudyAdviceRelatedToTopicFeature?.setSizeDx(value: getSizeDx * 0.6, isPriorityOverride: true, isSetActiveSizeDx: true);
+      getHelpfulStudyAdviceRelatedToTopicFeature?.setSizeDy(value: getSizeDy * 1.0 - (getSizeDy * 0.6 + 45.0), isPriorityOverride: true, isSetActiveSizeDy: true);
+      getHelpfulStudyAdviceRelatedToTopicFeature?.setBottomPosition(value: 15.0, isPriorityOverride: true, isSetActiveBottomPosition: true);
+      getHelpfulStudyAdviceRelatedToTopicFeature?.setLeftPosition(value: 15.0, isPriorityOverride: true, isSetActiveLeftPosition: true);
+
       setVocabularyListOverallFeature(value: VocabularyListOverallFeature(systemStateManagement: getSystemStateManagement, sizeDx: null, sizeDy: null), isPriorityOverride: true);
       getVocabularyListOverallFeature?.setSizeDx(value: getSizeDx * 0.6, isPriorityOverride: true, isSetActiveSizeDx: true);
       getVocabularyListOverallFeature?.setSizeDy(value: getSizeDy * 1.0 - 30.0, isPriorityOverride: true, isSetActiveSizeDy: true);
@@ -461,7 +469,24 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                 AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularyListFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: HelpfulStudyAdviceFeature
-                AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getHelpfulStudyAdviceFeature?.getWindowWidget ?? Container()),
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 100),
+                  top: 0,
+                  left: 0,
+                  width: getSizeDx,
+                  height: getSizeDy,
+                  child: getHelpfulStudyAdviceFeature?.getWindowWidget ?? Container(),
+                ),
+
+                /// TODO: HelpfulStudyAdviceRelatedToTopicFeature
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 100),
+                  top: 0,
+                  left: 0,
+                  width: getSizeDx,
+                  height: getSizeDy,
+                  child: getHelpfulStudyAdviceRelatedToTopicFeature?.getWindowWidget ?? Container(),
+                ),
 
                 /// TODO: VocabularyListOverallFeature
                 AnimatedPositioned(
@@ -663,6 +688,7 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       await getConversationFeature?.onSetupRoot();
       await getVocabularyListFeature?.onSetupRoot();
       await getHelpfulStudyAdviceFeature?.onSetupRoot();
+      await getHelpfulStudyAdviceRelatedToTopicFeature?.onSetupRoot();
       await getVocabularyListOverallFeature?.onSetupRoot();
       await getVocabularyDefinitionFeature?.onSetupRoot();
       await getVocabularyTitleFeature?.onSetupRoot();
@@ -715,6 +741,9 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
         ?..setConditionActiveByLeftDirection()
         ..onDeactivateWindow();
       getHelpfulStudyAdviceFeature
+        ?..setConditionActiveByLeftDirection()
+        ..onDeactivateWindow();
+      getHelpfulStudyAdviceRelatedToTopicFeature
         ?..setConditionActiveByLeftDirection()
         ..onDeactivateWindow();
       getVocabularyListOverallFeature
@@ -797,6 +826,7 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       await getConversationFeature?.onInitRoot();
       await getVocabularyListFeature?.onInitRoot();
       await getHelpfulStudyAdviceFeature?.onInitRoot();
+      await getHelpfulStudyAdviceRelatedToTopicFeature?.onInitRoot();
       await getVocabularyListOverallFeature?.onInitRoot();
       await getVocabularyDefinitionFeature?.onInitRoot();
       await getVocabularyTitleFeature?.onInitRoot();

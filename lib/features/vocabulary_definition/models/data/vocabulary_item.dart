@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
+import 'package:frame_creator_v2/features/helpful_study_advice/models/data/helpful_study_advice_data_model.dart';
+import 'package:frame_creator_v2/features/helpful_study_advice_related_to_topic/models/data/helpful_study_advice_related_to_topic_data_model.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_data_model.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_status.dart';
 import 'package:frame_creator_v2/system/sequential_execution_controller/models/sequential_execution_controller.dart';
@@ -11,12 +13,18 @@ class VocabularyItem with ExecutionCore {
     required double? totalMinutes,
     required VocabularyItem? currentVocabularyItem,
     required List<VocabularyItem>? currentVocabularyItemStack,
+    required HelpfulStudyAdviceDataModel? currentHelpfulStudyAdvice,
+    required HelpfulStudyAdviceRelatedToTopicDataModel? currentHelpfulStudyAdviceRelatedToTopic,
+
     required this.onComplete,
   }) {
     setId(value: id, isPriorityOverride: true);
     setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
     setCurrentVocabularyItem(value: currentVocabularyItem, isPriorityOverride: true);
     setSequentialExecutionController(value: sequentialExecutionController, isPriorityOverride: true);
+
+    setCurrentHelpfulStudyAdvice(value: currentHelpfulStudyAdvice, isPriorityOverride: true);
+    setCurrentHelpfulStudyAdviceRelatedToTopic(value: currentHelpfulStudyAdviceRelatedToTopic, isPriorityOverride: true);
   }
 
   /// -----
@@ -64,6 +72,38 @@ class VocabularyItem with ExecutionCore {
 
     return;
   }
+
+  /// -----
+  /// TODO:
+  /// -----
+  HelpfulStudyAdviceDataModel? _currentHelpfulStudyAdvice;
+  HelpfulStudyAdviceDataModel? get getCurrentHelpfulStudyAdvice => _currentHelpfulStudyAdvice;
+  void setCurrentHelpfulStudyAdvice({required HelpfulStudyAdviceDataModel? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentHelpfulStudyAdvice = value;
+    } else {
+      _currentHelpfulStudyAdvice ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  HelpfulStudyAdviceRelatedToTopicDataModel? _currentHelpfulStudyAdviceRelatedToTopic;
+  HelpfulStudyAdviceRelatedToTopicDataModel? get getCurrentHelpfulStudyAdviceRelatedToTopic => _currentHelpfulStudyAdviceRelatedToTopic;
+  void setCurrentHelpfulStudyAdviceRelatedToTopic({required HelpfulStudyAdviceRelatedToTopicDataModel? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentHelpfulStudyAdviceRelatedToTopic = value;
+    } else {
+      _currentHelpfulStudyAdviceRelatedToTopic ??= value;
+    }
+
+    return;
+  }
+
+  VoidCallback? onAdviceCallback;
 
   VoidCallback? onStartPhaseSS01AsShow; // Show
   VoidCallback? onCompletedPhaseSS01AsShow; // Show
@@ -351,10 +391,22 @@ class VocabularyItem with ExecutionCore {
             getCurrentVocabularyItem?.getVocabularyDataModel?.setIsSimplifyType(value: getVocabularyDataModel?.getIsSimplifyType, isPriorityOverride: true);
 
             getCurrentVocabularyItem?.getVocabularyDataModel?.setVocabularyExampleConversation(value: getVocabularyDataModel?.getVocabularyExampleConversation, isPriorityOverride: true);
-            getCurrentVocabularyItem?.getVocabularyDataModel?.setVocabularyInterestingKnowledgeConversation(
-              value: getVocabularyDataModel?.getVocabularyInterestingKnowledgeConversation,
-              isPriorityOverride: true,
-            );
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setVocabularyInterestingKnowledgeConversation(value: getVocabularyDataModel?.getVocabularyInterestingKnowledgeConversation, isPriorityOverride: true);
+
+            /// -----
+            /// TODO:
+            /// -----
+            if (getVocabularyDataModel?.getIsHasHelpfulStudyAdvice == true) {
+              getCurrentHelpfulStudyAdvice?.setTitle(value: getVocabularyDataModel?.getHelpfulStudyAdvice?.getTitle, isPriorityOverride: true);
+              getCurrentHelpfulStudyAdvice?.setSentenceEng(value: getVocabularyDataModel?.getHelpfulStudyAdvice?.getSentenceEng, isPriorityOverride: true);
+              getCurrentHelpfulStudyAdvice?.setSentenceVie(value: getVocabularyDataModel?.getHelpfulStudyAdvice?.getSentenceVie, isPriorityOverride: true);
+            }
+
+            if (getVocabularyDataModel?.getIsHasHelpfulStudyAdviceRelatedToTopic == true) {
+              getCurrentHelpfulStudyAdviceRelatedToTopic?.setTitle(value: getVocabularyDataModel?.getHelpfulStudyAdviceRelatedToTopic?.getTitle, isPriorityOverride: true);
+              getCurrentHelpfulStudyAdviceRelatedToTopic?.setSentenceEng(value: getVocabularyDataModel?.getHelpfulStudyAdviceRelatedToTopic?.getSentenceEng, isPriorityOverride: true);
+              getCurrentHelpfulStudyAdviceRelatedToTopic?.setSentenceVie(value: getVocabularyDataModel?.getHelpfulStudyAdviceRelatedToTopic?.getSentenceVie, isPriorityOverride: true);
+            }
 
             ///
             getSequentialExecutionController?.getVocabularyListFeature?.onActivateWindow();
@@ -460,18 +512,9 @@ class VocabularyItem with ExecutionCore {
 
             getCurrentVocabularyItem?.getVocabularyDataModel?.setIsShowExampleOnSide(value: true, isPriorityOverride: true);
 
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setTitle(
-              value: getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.getTitle,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setEngSentence(
-              value: getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.getEngSentence,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setVieSentence(
-              value: getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.getVieSentence,
-              isPriorityOverride: true,
-            );
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setTitle(value: getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.getTitle, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setEngSentence(value: getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.getEngSentence, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setVieSentence(value: getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.getVieSentence, isPriorityOverride: true);
 
             ///
             getCurrentVocabularyItem?.getVocabularyDataModel?.setIsExampleOnLeft(value: getVocabularyDataModel?.getIsExampleOnLeft, isPriorityOverride: true);
@@ -496,18 +539,9 @@ class VocabularyItem with ExecutionCore {
               print('[onStart_PhaseSS02_AsExampleSentenceSS02]');
             }
 
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setTitle(
-              value: getVocabularyDataModel?.getVocabularyExampleSentenceSS02?.getTitle,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setEngSentence(
-              value: getVocabularyDataModel?.getVocabularyExampleSentenceSS02?.getEngSentence,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setVieSentence(
-              value: getVocabularyDataModel?.getVocabularyExampleSentenceSS02?.getVieSentence,
-              isPriorityOverride: true,
-            );
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setTitle(value: getVocabularyDataModel?.getVocabularyExampleSentenceSS02?.getTitle, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setEngSentence(value: getVocabularyDataModel?.getVocabularyExampleSentenceSS02?.getEngSentence, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setVieSentence(value: getVocabularyDataModel?.getVocabularyExampleSentenceSS02?.getVieSentence, isPriorityOverride: true);
 
             ///
             getCurrentVocabularyItem?.getVocabularyDataModel?.setIsExampleOnLeft(value: getVocabularyDataModel?.getIsExampleOnLeft, isPriorityOverride: true);
@@ -532,18 +566,9 @@ class VocabularyItem with ExecutionCore {
               print('[onStart_PhaseSS02_AsExampleSentenceSS03]');
             }
 
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setTitle(
-              value: getVocabularyDataModel?.getVocabularyExampleSentenceSS03?.getTitle,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setEngSentence(
-              value: getVocabularyDataModel?.getVocabularyExampleSentenceSS03?.getEngSentence,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setVieSentence(
-              value: getVocabularyDataModel?.getVocabularyExampleSentenceSS03?.getVieSentence,
-              isPriorityOverride: true,
-            );
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setTitle(value: getVocabularyDataModel?.getVocabularyExampleSentenceSS03?.getTitle, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setEngSentence(value: getVocabularyDataModel?.getVocabularyExampleSentenceSS03?.getEngSentence, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleSentence?.setVieSentence(value: getVocabularyDataModel?.getVocabularyExampleSentenceSS03?.getVieSentence, isPriorityOverride: true);
 
             ///
             getCurrentVocabularyItem?.getVocabularyDataModel?.setIsExampleOnLeft(value: getVocabularyDataModel?.getIsExampleOnLeft, isPriorityOverride: true);
@@ -588,6 +613,38 @@ class VocabularyItem with ExecutionCore {
           }
 
           /// -----
+          /// TODO: PhaseSS02.1 : Các Khung Advice
+          /// -----
+
+          if (totalSeconds == 49) {
+          // if (totalSeconds == 5) {
+            if (getVocabularyDataModel?.getIsHasHelpfulStudyAdvice == true) {
+              getSequentialExecutionController?.getVocabularyListFeature?.onDeactivateWindow();
+
+              /// TEST
+              // getSequentialExecutionController?.getHelpfulStudyAdviceFeature?.onActivateWindow();
+            }
+          }
+          if (totalSeconds == 50) {
+            if (getVocabularyDataModel?.getIsHasHelpfulStudyAdvice == true) {
+              getSequentialExecutionController?.getHelpfulStudyAdviceFeature?.onActivateWindow();
+            }
+          }
+
+          if (totalSeconds == 99) {
+            getSequentialExecutionController?.getHelpfulStudyAdviceFeature?.onDeactivateWindow();
+          }
+
+          if (totalSeconds == 100) {
+            if (getVocabularyDataModel?.getIsHasHelpfulStudyAdviceRelatedToTopic == true) {
+              getSequentialExecutionController?.getHelpfulStudyAdviceRelatedToTopicFeature?.onActivateWindow();
+            }
+          }
+          if (totalSeconds == 149) {
+            getSequentialExecutionController?.getHelpfulStudyAdviceRelatedToTopicFeature?.onDeactivateWindow();
+          }
+
+          /// -----
           /// TODO: PhaseSS03
           /// -----
           if (totalSeconds == 151) {
@@ -595,22 +652,10 @@ class VocabularyItem with ExecutionCore {
               print('[onStart_PhaseSS03_AsExampleParagraphSS01]');
             }
 
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setTitle(
-              value: getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.getTitle,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS01(
-              value: getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.getEngSentenceSS01,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS02(
-              value: getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.getEngSentenceSS02,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS03(
-              value: getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.getEngSentenceSS03,
-              isPriorityOverride: true,
-            );
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setTitle(value: getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.getTitle, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS01(value: getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.getEngSentenceSS01, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS02(value: getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.getEngSentenceSS02, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS03(value: getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.getEngSentenceSS03, isPriorityOverride: true);
 
             onStartPhaseSS03AsExampleParagraphSS01?.call();
           }
@@ -632,22 +677,10 @@ class VocabularyItem with ExecutionCore {
               print('[onStart_PhaseSS03_AsExampleParagraphSS02]');
             }
 
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setTitle(
-              value: getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.getTitle,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS01(
-              value: getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.getEngSentenceSS01,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS02(
-              value: getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.getEngSentenceSS02,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS03(
-              value: getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.getEngSentenceSS03,
-              isPriorityOverride: true,
-            );
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setTitle(value: getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.getTitle, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS01(value: getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.getEngSentenceSS01, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS02(value: getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.getEngSentenceSS02, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS03(value: getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.getEngSentenceSS03, isPriorityOverride: true);
 
             onStartPhaseSS03AsExampleParagraphSS02?.call();
           }
@@ -669,22 +702,10 @@ class VocabularyItem with ExecutionCore {
               print('[onStart_PhaseSS03_AsExampleParagraphSS03]');
             }
 
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setTitle(
-              value: getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.getTitle,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS01(
-              value: getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.getEngSentenceSS01,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS02(
-              value: getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.getEngSentenceSS02,
-              isPriorityOverride: true,
-            );
-            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS03(
-              value: getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.getEngSentenceSS03,
-              isPriorityOverride: true,
-            );
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setTitle(value: getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.getTitle, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS01(value: getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.getEngSentenceSS01, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS02(value: getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.getEngSentenceSS02, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.getCurrentVocabularyExampleParagraph?.setEngSentenceSS03(value: getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.getEngSentenceSS03, isPriorityOverride: true);
 
             onStartPhaseSS03AsExampleParagraphSS03?.call();
           }

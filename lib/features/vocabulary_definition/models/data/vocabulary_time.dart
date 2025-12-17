@@ -1,6 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
+import 'package:frame_creator_v2/features/helpful_study_advice/models/data/helpful_study_advice_data_model.dart';
+import 'package:frame_creator_v2/features/helpful_study_advice_related_to_topic/models/data/helpful_study_advice_related_to_topic_data_model.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
+import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_topic_data_model.dart';
+import 'package:frame_creator_v2/features/vocabulary_definition/models/scripts/advice_script.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/scripts/demo_script.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 import 'package:frame_creator_v2/system/sequential_execution_controller/models/sequential_execution_controller.dart';
@@ -24,6 +28,81 @@ class VocabularyTime with ExecutionCore {
     }
 
     ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  VocabularyTopicDataModel? _vocabularyTopic;
+  VocabularyTopicDataModel? get getVocabularyTopic => _vocabularyTopic;
+  void setVocabularyTopic({required VocabularyTopicDataModel? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _vocabularyTopic = value;
+    } else {
+      _vocabularyTopic ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  HelpfulStudyAdviceList? _helpfulStudyAdviceList;
+  HelpfulStudyAdviceList? get getHelpfulStudyAdviceList => _helpfulStudyAdviceList;
+  void setHelpfulStudyAdviceList({required HelpfulStudyAdviceList? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _helpfulStudyAdviceList = value;
+    } else {
+      _helpfulStudyAdviceList ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  HelpfulStudyAdviceRelatedToTopicList? _helpfulStudyAdviceRelatedToTopicList;
+  HelpfulStudyAdviceRelatedToTopicList? get getHelpfulStudyAdviceRelatedToTopicList => _helpfulStudyAdviceRelatedToTopicList;
+  void setHelpfulStudyAdviceRelatedToTopicList({required HelpfulStudyAdviceRelatedToTopicList? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _helpfulStudyAdviceRelatedToTopicList = value;
+    } else {
+      _helpfulStudyAdviceRelatedToTopicList ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  HelpfulStudyAdviceDataModel? _currentHelpfulStudyAdvice;
+  HelpfulStudyAdviceDataModel? get getCurrentHelpfulStudyAdvice => _currentHelpfulStudyAdvice;
+  void setCurrentHelpfulStudyAdvice({required HelpfulStudyAdviceDataModel? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentHelpfulStudyAdvice = value;
+    } else {
+      _currentHelpfulStudyAdvice ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  HelpfulStudyAdviceRelatedToTopicDataModel? _currentHelpfulStudyAdviceRelatedToTopic;
+  HelpfulStudyAdviceRelatedToTopicDataModel? get getCurrentHelpfulStudyAdviceRelatedToTopic => _currentHelpfulStudyAdviceRelatedToTopic;
+  void setCurrentHelpfulStudyAdviceRelatedToTopic({required HelpfulStudyAdviceRelatedToTopicDataModel? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentHelpfulStudyAdviceRelatedToTopic = value;
+    } else {
+      _currentHelpfulStudyAdviceRelatedToTopic ??= value;
+    }
+
     return;
   }
 
@@ -404,6 +483,21 @@ class VocabularyTime with ExecutionCore {
     return;
   }
 
+  /// -----
+  /// TODO:
+  /// -----
+  AdviceScript? _adviceScript;
+  AdviceScript? get getAdviceScript => _adviceScript;
+  void setAdviceScript({required AdviceScript? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _adviceScript = value;
+    } else {
+      _adviceScript ??= value;
+    }
+
+    return;
+  }
+
   void onUpdate() {
     if ((getCurrentVocabularyItemStack?.length ?? 0) <= 5) {
       getVocabularySS01?.onUpdate();
@@ -504,6 +598,14 @@ class VocabularyTime with ExecutionCore {
       /// TODO:
       /// -----
 
+      setVocabularyTopic(value: VocabularyTopicDataModel(), isPriorityOverride: true);
+
+      setHelpfulStudyAdviceList(value: HelpfulStudyAdviceList(), isPriorityOverride: true);
+      setHelpfulStudyAdviceRelatedToTopicList(value: HelpfulStudyAdviceRelatedToTopicList(), isPriorityOverride: true);
+
+      setCurrentHelpfulStudyAdvice(value: HelpfulStudyAdviceDataModel(), isPriorityOverride: true);
+      setCurrentHelpfulStudyAdviceRelatedToTopic(value: HelpfulStudyAdviceRelatedToTopicDataModel(), isPriorityOverride: true);
+
       setCurrentVocabularyItem(
         value: VocabularyItem(
           id: '[CURRENT_VOCABULARY]',
@@ -516,6 +618,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: null,
           currentVocabularyItemStack: null,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -536,6 +640,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -555,6 +661,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -574,6 +682,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -593,6 +703,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -612,6 +724,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -631,6 +745,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -650,6 +766,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -669,6 +787,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -688,6 +808,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -707,6 +829,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -726,6 +850,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -745,6 +871,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -764,6 +892,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -783,6 +913,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -802,6 +934,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -821,6 +955,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -840,6 +976,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -859,6 +997,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -878,6 +1018,8 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
@@ -897,12 +1039,15 @@ class VocabularyTime with ExecutionCore {
           currentVocabularyItem: getCurrentVocabularyItem,
           currentVocabularyItemStack: getCurrentVocabularyItemStack,
           sequentialExecutionController: getSequentialExecutionController,
+          currentHelpfulStudyAdvice: getCurrentHelpfulStudyAdvice,
+          currentHelpfulStudyAdviceRelatedToTopic: getCurrentHelpfulStudyAdviceRelatedToTopic,
         ),
         isPriorityOverride: true,
       );
 
       ///
       setDemoScript(value: DemoScript(vocabularyTime: this), isPriorityOverride: true);
+      setAdviceScript(value: AdviceScript(vocabularyTime: this), isPriorityOverride: true);
 
       /// -----
       /// TODO: Setup Root For SubCom
@@ -969,6 +1114,11 @@ class VocabularyTime with ExecutionCore {
       /// TODO:
       /// -----
 
+      await getHelpfulStudyAdviceList?.onSetupRoot();
+      await getHelpfulStudyAdviceRelatedToTopicList?.onSetupRoot();
+      await getCurrentHelpfulStudyAdvice?.onSetupRoot();
+      await getCurrentHelpfulStudyAdviceRelatedToTopic?.onSetupRoot();
+
       await getCurrentVocabularyItem?.onSetupRoot();
 
       await getVocabularySS01?.onSetupRoot();
@@ -994,6 +1144,7 @@ class VocabularyTime with ExecutionCore {
 
       ///
       await getDemoScript?.onSetupRoot();
+      await getAdviceScript?.onSetupRoot();
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onSetupRootForSubCom]');
     }
@@ -1011,6 +1162,11 @@ class VocabularyTime with ExecutionCore {
       /// -----
       /// TODO:
       /// -----
+
+      await getHelpfulStudyAdviceList?.onInitRoot();
+      await getHelpfulStudyAdviceRelatedToTopicList?.onInitRoot();
+      await getCurrentHelpfulStudyAdvice?.onInitRoot();
+      await getCurrentHelpfulStudyAdviceRelatedToTopic?.onInitRoot();
 
       await getCurrentVocabularyItem?.onInitRoot();
 
@@ -1037,6 +1193,7 @@ class VocabularyTime with ExecutionCore {
 
       ///
       await getDemoScript?.onInitRoot();
+      await getAdviceScript?.onInitRoot();
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onInitRootForSubCom]');
     }

@@ -28,12 +28,22 @@ class BasicAnimatedIconSprite extends SpriteAnimationComponent with HasVisibilit
   }
 
   /// -----
+  /// TODO:
+  /// -----
+  String? _backgroundAnimatedIcon;
+  String? get getBackgroundAnimatedIcon => _backgroundAnimatedIcon;
+  Future<void> setBackgroundAnimatedIcon({required String? value}) async {
+    _backgroundAnimatedIcon = value;
+    return;
+  }
+
+  /// -----
   /// TODO: Init Root
   /// -----
   Future<void> onInitRoot() async {
     caiDatTextComponent(
       value: TextComponent(
-        text: 'X',
+        text: getBackgroundAnimatedIcon ?? '🐤',
         position: Vector2(100, 50),
         anchor: Anchor.topLeft,
         // textRenderer: TextPaint(style: GoogleFonts.titanOne(fontSize: 26, color: Color(0xFF3C3C3C).withValues(alpha: 0.8))),

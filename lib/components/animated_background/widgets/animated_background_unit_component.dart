@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flame/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/components.dart';
 import 'package:frame_creator_v2/components/animated_background/models/animated_background_state_management.dart';
@@ -1279,11 +1280,39 @@ class AnimatedBackgroundUnitComponent extends PositionComponent with HasVisibili
     return;
   }
 
+  TextRenderer? _textRenderer;
+  TextRenderer? get getTextRenderer => _textRenderer;
+  Future<void> caiDatTextRenderer({required TextRenderer? value}) async {
+    _textRenderer ??= value;
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  String? _backgroundAnimatedIcon;
+  String? get getBackgroundAnimatedIcon => _backgroundAnimatedIcon;
+  Future<void> setBackgroundAnimatedIcon({required String? value}) async {
+    _backgroundAnimatedIcon = value;
+    return;
+  }
+
   onChangeColor({Color? color}) {
     for (var element in animatedIconSpriteList) {
+
+      if (getBackgroundAnimatedIcon?.isNotEmpty == true) {
+        element?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon ?? '');
+      }
+
       element?.caiDatTextRenderer(
-        value: TextPaint(
-          style: TextStyle(fontFamily: 'TitanOne', fontSize: 30, color: color ?? Color(0xFF00BFFF).withValues(alpha: 0.8)),
+        value: getTextRenderer ?? TextPaint(
+          style: TextStyle(
+            fontFamily: 'TitanOne',
+            fontSize: 50,
+            fontWeight: FontWeight.w800,
+            color: color ?? Color(0xFF000000).withValues(alpha: 0.8),
+            shadows: [BoxShadow(color: Color(0xFF1C1C1C).withValues(alpha: 0.25), offset: Offset(1, 1), blurRadius: 1)],
+          ),
         ),
       );
     }

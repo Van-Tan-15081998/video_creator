@@ -8,6 +8,7 @@ import 'package:frame_creator_v2/features/flame_world/models/flame_world_feature
 import 'package:frame_creator_v2/features/global_announcement/models/global_announcement_feature.dart';
 import 'package:frame_creator_v2/features/helpful_advice/models/helpful_advice_feature.dart';
 import 'package:frame_creator_v2/features/helpful_study_advice/models/helpful_study_advice_feature.dart';
+import 'package:frame_creator_v2/features/helpful_study_advice_related_to_topic/models/helpful_study_advice_related_to_topic_feature.dart';
 import 'package:frame_creator_v2/features/interesting_knowledge/models/interesting_knowledge_conversation_feature.dart';
 import 'package:frame_creator_v2/features/introduction/models/introduction_feature.dart';
 import 'package:frame_creator_v2/features/introductory_conversation/models/introductory_conversation_feature.dart';
@@ -294,6 +295,22 @@ mixin FeatureMixin {
       _helpfulStudyAdviceFeature = value;
     } else {
       _helpfulStudyAdviceFeature ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  HelpfulStudyAdviceRelatedToTopicFeature? _helpfulStudyAdviceRelatedToTopicFeature;
+  HelpfulStudyAdviceRelatedToTopicFeature? get getHelpfulStudyAdviceRelatedToTopicFeature => _helpfulStudyAdviceRelatedToTopicFeature;
+  void setHelpfulStudyAdviceRelatedToTopicFeature({required HelpfulStudyAdviceRelatedToTopicFeature? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _helpfulStudyAdviceRelatedToTopicFeature = value;
+    } else {
+      _helpfulStudyAdviceRelatedToTopicFeature ??= value;
     }
 
     ///

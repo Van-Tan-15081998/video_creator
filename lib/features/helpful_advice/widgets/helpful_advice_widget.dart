@@ -127,8 +127,7 @@ class _HelpfulAdviceWidgetState extends State<HelpfulAdviceWidget> with SimpleAn
       height: sizeDy,
 
       child: isAnimatedShow
-          ? FadeInDown(
-              duration: const Duration(seconds: 1),
+          ? FadeInRight(
               animate: true,
               child: Container(
                 width: sizeDx,

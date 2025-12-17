@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frame_creator_v2/features/helpful_advice/widgets/contents/helpful_advice_widget.dart';
-import 'package:frame_creator_v2/features/helpful_study_advice/widgets/contents/helpful_study_advice_widget.dart';
+import 'package:frame_creator_v2/features/helpful_study_advice/widgets/contents/helpful_study_advice_detail_widget.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 
 class HelpfulStudyAdviceContentWidget extends StatefulWidget {
@@ -43,7 +42,7 @@ class _HelpfulStudyAdviceContentWidgetState extends State<HelpfulStudyAdviceCont
           //   borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
           //   child: TransparentEffectWallWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
           // ),
-          HelpfulStudyAdviceWidget(systemStateManagement: widget.systemStateManagement, sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
+          HelpfulStudyAdviceDetailWidget(systemStateManagement: widget.systemStateManagement, sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
 
           Positioned(
             top: 0,

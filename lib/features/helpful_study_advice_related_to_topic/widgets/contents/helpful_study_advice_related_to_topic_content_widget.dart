@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:frame_creator_v2/features/helpful_advice/widgets/contents/helpful_advice_detail_widget.dart';
+import 'package:frame_creator_v2/features/helpful_study_advice_related_to_topic/widgets/contents/helpful_study_advice_related_to_topic_detail_widget.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 
-class HelpfulAdviceContentWidget extends StatefulWidget {
-  const HelpfulAdviceContentWidget({super.key, required this.systemStateManagement, required this.sizeDx, required this.sizeDy});
+class HelpfulStudyAdviceRelatedToTopicContentWidget extends StatefulWidget {
+  const HelpfulStudyAdviceRelatedToTopicContentWidget({super.key, required this.systemStateManagement, required this.sizeDx, required this.sizeDy});
 
   /// -----
   /// TODO:
@@ -14,10 +14,10 @@ class HelpfulAdviceContentWidget extends StatefulWidget {
   final double sizeDy;
 
   @override
-  State<HelpfulAdviceContentWidget> createState() => _HelpfulAdviceContentWidgetState();
+  State<HelpfulStudyAdviceRelatedToTopicContentWidget> createState() => _HelpfulStudyAdviceRelatedToTopicContentWidgetState();
 }
 
-class _HelpfulAdviceContentWidgetState extends State<HelpfulAdviceContentWidget> {
+class _HelpfulStudyAdviceRelatedToTopicContentWidgetState extends State<HelpfulStudyAdviceRelatedToTopicContentWidget> {
   bool isExampleSentencePhrase = false;
   bool isCommunicationPhrase = false;
 
@@ -42,8 +42,7 @@ class _HelpfulAdviceContentWidgetState extends State<HelpfulAdviceContentWidget>
           //   borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
           //   child: TransparentEffectWallWidget(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
           // ),
-
-          HelpfulAdviceDetailWidget(systemStateManagement: widget.systemStateManagement, sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
+          HelpfulStudyAdviceRelatedToTopicDetailWidget(systemStateManagement: widget.systemStateManagement, sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
 
           Positioned(
             top: 0,
@@ -56,7 +55,7 @@ class _HelpfulAdviceContentWidgetState extends State<HelpfulAdviceContentWidget>
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 border: Border.all(width: 5.0, color: Colors.black),
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(30.0)),
               ),
             ),
           ),

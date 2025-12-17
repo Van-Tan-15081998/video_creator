@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flame/components.dart';
+import 'package:flame/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
@@ -9,10 +10,19 @@ class AnimatedBackgroundWidget extends FlameGame {
   @override
   Color backgroundColor() => Colors.transparent;
 
-  AnimatedBackgroundWidget({required double? chieuCaoManHinhPhiVatLy, required double? chieuRongManHinhPhiVatLy}) {
+  AnimatedBackgroundWidget({
+    required double? chieuCaoManHinhPhiVatLy,
+    required double? chieuRongManHinhPhiVatLy,
+    required TextRenderer? textRenderer,
+    required String? backgroundAnimatedIcon,
+    required double? movementUnit,
+  }) {
     ///
     caiDatChieuCaoManHinhPhiVatLy(value: chieuCaoManHinhPhiVatLy);
     caiDatChieuRongManHinhPhiVatLy(value: chieuRongManHinhPhiVatLy);
+    caiDatTextRenderer(value: textRenderer);
+    setBackgroundAnimatedIcon(value: backgroundAnimatedIcon);
+    setMovementUnit(value: movementUnit);
   }
 
   /// -----
@@ -50,7 +60,43 @@ class AnimatedBackgroundWidget extends FlameGame {
     return;
   }
 
+  double? _movementUnit;
+  double? get getMovementUnit => _movementUnit;
+  void setMovementUnit({required double? value}) {
+    if (value != null && value != 0) {
+      if (value.isNaN == false && value.isFinite == true) {
+        _movementUnit = value;
+      } else {
+        _movementUnit = 0;
+      }
+    } else {
+      _movementUnit = 0;
+    }
+    return;
+  }
+
+  TextRenderer? _textRenderer;
+  TextRenderer? get getTextRenderer => _textRenderer;
+  Future<void> caiDatTextRenderer({required TextRenderer? value}) async {
+    _textRenderer ??= value;
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  String? _backgroundAnimatedIcon;
+  String? get getBackgroundAnimatedIcon => _backgroundAnimatedIcon;
+  Future<void> setBackgroundAnimatedIcon({required String? value}) async {
+    _backgroundAnimatedIcon = value;
+    return;
+  }
+
+  VoidCallback? onInit;
+
   AnimatedBackgroundUnitComponent? _animatedBackgroundUnitComponentA;
+  AnimatedBackgroundUnitComponent? get getAnimatedBackgroundUnitComponentA => _animatedBackgroundUnitComponentA;
+
   AnimatedBackgroundUnitComponent? _animatedBackgroundUnitComponentB;
   AnimatedBackgroundUnitComponent? _animatedBackgroundUnitComponentC;
   AnimatedBackgroundUnitComponent? _animatedBackgroundUnitComponentD;
@@ -68,6 +114,8 @@ class AnimatedBackgroundWidget extends FlameGame {
   AnimatedBackgroundUnitComponent? _animatedBackgroundUnitComponentP;
 
   double sizeUnit = 0;
+  double sizeDxUnit = 0;
+  double sizeDyUnit = 0;
 
   @override
   FutureOr<void> onLoad() async {
@@ -75,102 +123,105 @@ class AnimatedBackgroundWidget extends FlameGame {
 
     sizeUnit = (getChieuRongManHinhPhiVatLy ?? 0) / 10;
 
+    sizeDxUnit = (getChieuRongManHinhPhiVatLy ?? 0) / 10;
+    sizeDyUnit = (getChieuCaoManHinhPhiVatLy ?? 0) / 10;
+
     _animatedBackgroundUnitComponentA = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * 2,
-      dyTrongTam: sizeUnit * 2,
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * 2,
+      dyTrongTam: sizeDyUnit * 2,
     );
     _animatedBackgroundUnitComponentB = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * 8 + (sizeUnit * 6 / 19),
-      dyTrongTam: sizeUnit * 2,
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * 8 + (sizeDxUnit * 6 / 19),
+      dyTrongTam: sizeDyUnit * 2,
     );
     _animatedBackgroundUnitComponentC = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * 8 + (sizeUnit * 6 / 19),
-      dyTrongTam: sizeUnit * 8 + (sizeUnit * 6 / 19),
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * 8 + (sizeDxUnit * 6 / 19),
+      dyTrongTam: sizeDyUnit * 8 + (sizeDyUnit * 6 / 19),
     );
     _animatedBackgroundUnitComponentD = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * 2,
-      dyTrongTam: sizeUnit * 8 + (sizeUnit * 6 / 19),
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * 2,
+      dyTrongTam: sizeDyUnit * 8 + (sizeDyUnit * 6 / 19),
     );
 
     _animatedBackgroundUnitComponentE = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * (-4),
-      dyTrongTam: sizeUnit * (-4),
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * (-4),
+      dyTrongTam: sizeDyUnit * (-4),
     );
     _animatedBackgroundUnitComponentF = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * 2,
-      dyTrongTam: sizeUnit * (-4) - (sizeUnit * 6 / 19),
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * 2,
+      dyTrongTam: sizeDyUnit * (-4) - (sizeDyUnit * 6 / 19),
     );
     _animatedBackgroundUnitComponentG = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * 8 + (sizeUnit * 6 / 19),
-      dyTrongTam: sizeUnit * (-4) - (sizeUnit * 6 / 19),
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * 8 + (sizeDxUnit * 6 / 19),
+      dyTrongTam: sizeDyUnit * (-4) - (sizeDyUnit * 6 / 19),
     );
     _animatedBackgroundUnitComponentH = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * 14 + (sizeUnit * 6 / 19) * 2,
-      dyTrongTam: sizeUnit * (-4) - (sizeUnit * 6 / 19),
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * 14 + (sizeDxUnit * 6 / 19) * 2,
+      dyTrongTam: sizeDyUnit * (-4) - (sizeDyUnit * 6 / 19),
     );
     _animatedBackgroundUnitComponentI = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * 14 + (sizeUnit * 6 / 19) * 2,
-      dyTrongTam: sizeUnit * 2,
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * 14 + (sizeDxUnit * 6 / 19) * 2,
+      dyTrongTam: sizeDyUnit * 2,
     );
     _animatedBackgroundUnitComponentJ = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * 14 + (sizeUnit * 6 / 19) * 2,
-      dyTrongTam: sizeUnit * 8 + (sizeUnit * 6 / 19),
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * 14 + (sizeDxUnit * 6 / 19) * 2,
+      dyTrongTam: sizeDyUnit * 8 + (sizeDyUnit * 6 / 19),
     );
     _animatedBackgroundUnitComponentK = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * 14 + (sizeUnit * 6 / 19) * 2,
-      dyTrongTam: sizeUnit * 14 + (sizeUnit * 6 / 19) * 2,
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * 14 + (sizeDxUnit * 6 / 19) * 2,
+      dyTrongTam: sizeDyUnit * 14 + (sizeDyUnit * 6 / 19) * 2,
     );
     _animatedBackgroundUnitComponentL = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * 8 + (sizeUnit * 6 / 19),
-      dyTrongTam: sizeUnit * 14 + (sizeUnit * 6 / 19) * 2,
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * 8 + (sizeDxUnit * 6 / 19),
+      dyTrongTam: sizeDyUnit * 14 + (sizeDyUnit * 6 / 19) * 2,
     );
     _animatedBackgroundUnitComponentM = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * 2,
-      dyTrongTam: sizeUnit * 14 + (sizeUnit * 6 / 19) * 2,
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * 2,
+      dyTrongTam: sizeDyUnit * 14 + (sizeDyUnit * 6 / 19) * 2,
     );
     _animatedBackgroundUnitComponentN = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * (-4) - (sizeUnit * 6 / 19),
-      dyTrongTam: sizeUnit * 14 + (sizeUnit * 6 / 19) * 2,
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * (-4) - (sizeDxUnit * 6 / 19),
+      dyTrongTam: sizeDyUnit * 14 + (sizeDyUnit * 6 / 19) * 2,
     );
     _animatedBackgroundUnitComponentO = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * (-4) - (sizeUnit * 6 / 19),
-      dyTrongTam: sizeUnit * 8 + (sizeUnit * 6 / 19),
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * (-4) - (sizeDxUnit * 6 / 19),
+      dyTrongTam: sizeDyUnit * 8 + (sizeDyUnit * 6 / 19),
     );
     _animatedBackgroundUnitComponentP = AnimatedBackgroundUnitComponent(
-      chieuCaoManHinhPhiVatLy: sizeUnit * 6,
-      chieuRongManHinhPhiVatLy: sizeUnit * 6,
-      dxTrongTam: sizeUnit * (-4) - (sizeUnit * 6 / 19),
-      dyTrongTam: sizeUnit * 2,
+      chieuCaoManHinhPhiVatLy: sizeDyUnit * 6,
+      chieuRongManHinhPhiVatLy: sizeDxUnit * 6,
+      dxTrongTam: sizeDxUnit * (-4) - (sizeDxUnit * 6 / 19),
+      dyTrongTam: sizeDyUnit * 2,
     );
 
     if (_animatedBackgroundUnitComponentA != null) {
@@ -241,8 +292,47 @@ class AnimatedBackgroundWidget extends FlameGame {
     _animatedBackgroundUnitComponentO?.anchor = Anchor.center;
     _animatedBackgroundUnitComponentP?.anchor = Anchor.center;
 
+    _animatedBackgroundUnitComponentA?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentB?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentC?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentD?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentE?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentF?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentG?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentH?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentI?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentJ?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentK?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentL?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentM?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentN?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentO?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+    _animatedBackgroundUnitComponentP?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon);
+
+    ///
+    ///
+    ///
+    _animatedBackgroundUnitComponentA?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentB?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentC?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentD?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentE?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentF?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentG?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentH?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentI?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentJ?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentK?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentL?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentM?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentN?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentO?.caiDatTextRenderer(value: getTextRenderer);
+    _animatedBackgroundUnitComponentP?.caiDatTextRenderer(value: getTextRenderer);
+
     // _animatedBackgroundUnitComponentA?.getDinhHuongBay?.caiDatDinhHuongTheoDuoiLenTren();
     _animatedBackgroundUnitComponentA?.getDinhHuongBay?.caiDatDinhHuongTheoDuoiTraiSangTrenPhai();
+
+    onInit?.call();
 
     if (kDebugMode) {
       print('onLoad');
@@ -273,22 +363,22 @@ class AnimatedBackgroundWidget extends FlameGame {
       // _animatedBackgroundUnitComponentO?.onChangeColor(color: Color(0xFF54FF9F));
       // _animatedBackgroundUnitComponentP?.onChangeColor(color: Color(0xFFFFEC8B));
 
-      _animatedBackgroundUnitComponentA?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentB?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentC?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentD?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentE?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentF?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentG?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentH?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentI?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentJ?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentK?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentL?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentM?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentN?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentO?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
-      _animatedBackgroundUnitComponentP?.onChangeColor(color: Color(0xFF3C3C3C).withValues(alpha: 0.5));
+      _animatedBackgroundUnitComponentA?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentB?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentC?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentD?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentE?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentF?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentG?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentH?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentI?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentJ?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentK?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentL?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentM?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentN?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentO?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
+      _animatedBackgroundUnitComponentP?.onChangeColor(color: Color(0xFF1C1C1C).withValues(alpha: 0.9));
 
       updatedColor = true;
     }
@@ -365,7 +455,7 @@ class AnimatedBackgroundWidget extends FlameGame {
     double bottomRightDx = sizeUnit * (5.1);
     double bottomRightDy = sizeUnit * (5.1);
 
-    double movementUnit = 0.25;
+    double movementUnit = getMovementUnit ?? 0.5;
 
     if (_animatedBackgroundUnitComponentA?.getDinhHuongBay?.isDinhHuongTheoTrenXuongDuoi() == true) {
       /// y++
