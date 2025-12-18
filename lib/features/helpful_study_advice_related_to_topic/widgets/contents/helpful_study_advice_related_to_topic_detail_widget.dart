@@ -150,8 +150,8 @@ class _HelpfulStudyAdviceRelatedToTopicDetailWidgetState extends State<HelpfulSt
                 width: widget.sizeDx * 2,
                 height: widget.sizeDx * 2,
                 child: Container(
-                  color: Color(0xFFFFFF00).withValues(alpha: 0),
-                  // color: Color(0xFF00FF00).withValues(alpha: 0.99),
+                  color: Color(0xFFFFFF00).withValues(alpha: 0.99),
+                  // color: Color(0xFFFFFFFF).withValues(alpha: 0.99),
                   child: ShaderMask(
                     blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
                     shaderCallback: (Rect bounds) {

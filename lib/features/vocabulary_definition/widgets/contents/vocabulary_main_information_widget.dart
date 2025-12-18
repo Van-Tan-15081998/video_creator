@@ -23,26 +23,80 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
   late final Ticker _ticker;
   Timer? _timer;
 
+  int totalMinutes = 2;
+  int totalSeconds = 0;
+  int totalMilliseconds = 0;
+
+  double limitedTimeProgressbarLength = 0;
+  double limitedTimeProgressbar = 0;
+
+  final int totalSecondsConst = 25;
+
   @override
   void initState() {
     super.initState();
 
     setCurrentVocabularyItem(value: widget.systemStateManagement?.getVocabularyDefinitionFeature?.getVocabularyTime?.getCurrentVocabularyItem, isPriorityOverride: true);
 
-    _ticker = createTicker((Duration elapsed) {
-      if (definitionString != getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificMeaning) {
-        setState(() {
-          definitionString = getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificMeaning ?? '';
-          isShow = true;
-        });
-      }
-    })..start();
+    totalSeconds = totalSecondsConst;
+
+    limitedTimeProgressbarLength = 1000.0;
+    limitedTimeProgressbar = limitedTimeProgressbarLength;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(Duration(seconds: 25), () {
+      _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+        if (totalSeconds > 0) {
+          totalSeconds -= 1;
+
+          limitedTimeProgressbar = (limitedTimeProgressbarLength / totalSecondsConst) * totalSeconds;
+          if (mounted) {
+            setState(() {});
+          }
+        } else {
+          totalSeconds = totalSecondsConst;
+        }
+      });
+
+      _ticker = createTicker((Duration elapsed) {
+        if (definitionString != getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificMeaning) {
+          setState(() {
+            definitionString = getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificMeaning ?? '';
+
+            if (getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificImage?.isNotEmpty == true) {
+              currentImageSource = getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificImage ?? defaultImageSource;
+            } else {
+              currentImageSource = defaultImageSource;
+            }
+
+            isShow = true;
+          });
+        }
+      })..start();
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(Duration(seconds: 3), () {
+        if (mounted) {
+          if (currentImageSource.isNotEmpty == true) {
+            setState(() {
+              showImage = '[SHOW]';
+            });
+          }
+        }
+      });
+
+      Future.delayed(Duration(seconds: 2), () {
         if (mounted) {
           setState(() {
             bottomDefinitionTitle = -200.0;
+          });
+        }
+      });
+
+      Future.delayed(Duration(seconds: 27), () {
+        if (mounted) {
+          setState(() {
+            showImage = '[HIDE]';
           });
         }
       });
@@ -69,8 +123,13 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
     return;
   }
 
+  String defaultImageSource = 'assets/images/interesting_knowledge/knowledge_01.jpg';
+  String currentImageSource = '';
+  String showImage = '[DEFAULT]';
+
   @override
   void dispose() {
+    _timer?.cancel();
     _ticker.dispose();
     super.dispose();
   }
@@ -146,18 +205,100 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
               : Container(),
         ),
 
-        AnimatedPositioned(
-          top: 320.0,
-          left: 50.0,
-          duration: const Duration(milliseconds: 100),
-          child: title(word: 'SYNONYMS:'),
-        ),
+        // AnimatedPositioned(
+        //   top: 320.0,
+        //   left: 50.0,
+        //   duration: const Duration(milliseconds: 100),
+        //   child: title(word: 'SYNONYMS:'),
+        // ),
+        //
+        // AnimatedPositioned(
+        //   top: 440.0,
+        //   left: 50.0,
+        //   duration: const Duration(milliseconds: 100),
+        //   child: title(word: 'COMMON COLLOCATIONS:'),
+        // ),
 
-        AnimatedPositioned(
-          top: 440.0,
-          left: 50.0,
-          duration: const Duration(milliseconds: 100),
-          child: title(word: 'COMMON COLLOCATIONS:'),
+        Positioned(
+          bottom: 15.0,
+          width: 1000.0,
+          height: 500.0,
+          left: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true ? 15.0 : null,
+          right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true ? 15.0 : null,
+          child: showImage == '[SHOW]'
+              ? BounceInUp(
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 1000.0,
+                        height: 500.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+                          border: Border.all(width: 8.0, color: Color(0xFF1C1C1C)),
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                          image: DecorationImage(image: AssetImage(currentImageSource), fit: BoxFit.fitWidth),
+                          boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 1), blurRadius: 5.0, spreadRadius: 1.0, offset: Offset(0, 0))],
+                        ),
+                      ),
+                      Container(
+                        width: 1000.0,
+                        height: 500.0,
+                        decoration: BoxDecoration(
+                          border: Border.all(width: 16.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        ),
+                      ),
+
+                      AnimatedPositioned(
+                        bottom: 8.0,
+                        left: 25.0,
+                        width: 1000.0 - 50.0,
+                        height: 6.0,
+                        duration: const Duration(milliseconds: 100),
+                        child: Row(
+                          children: [
+                            AnimatedContainer(
+                              duration: const Duration(milliseconds: 1000),
+                              width: limitedTimeProgressbar,
+                              height: 6.0,
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                border: Border.all(width: 1.0, color: Colors.transparent),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : showImage == '[HIDE]'
+              ? FadeOutDown(
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 1000.0,
+                        height: 500.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+                          border: Border.all(width: 8.0, color: Color(0xFF1C1C1C)),
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                          image: DecorationImage(image: AssetImage(currentImageSource), fit: BoxFit.fitWidth),
+                          boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 1), blurRadius: 5.0, spreadRadius: 1.0, offset: Offset(0, 0))],
+                        ),
+                      ),
+                      Container(
+                        width: 1000.0,
+                        height: 500.0,
+                        decoration: BoxDecoration(
+                          border: Border.all(width: 16.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : Container(),
         ),
 
         AnimatedPositioned(

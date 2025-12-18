@@ -75,12 +75,8 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Sentence
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setTitle(value: 'Example: 1/3');
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setEngSentence(
-        value: 'Sunny weather offers excellent conditions for outdoor activities, but it can also increase the risk of dehydration if proper care is not taken.',
-      );
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setVieSentence(
-        value: 'Thời tiết nắng mang lại điều kiện tuyệt vời cho các hoạt động ngoài trời, nhưng cũng có thể làm tăng nguy cơ mất nước nếu không chú ý chăm sóc cơ thể.',
-      );
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setEngSentence(value: 'Sunny weather offers excellent conditions for outdoor activities, but it can also increase the risk of dehydration if proper care is not taken.');
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setVieSentence(value: 'Thời tiết nắng mang lại điều kiện tuyệt vời cho các hoạt động ngoài trời, nhưng cũng có thể làm tăng nguy cơ mất nước nếu không chú ý chăm sóc cơ thể.');
 
       ///
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleSentenceSS02?.setTitle(value: 'Example: 2/3');
@@ -97,47 +93,38 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]',
-      );
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]',
-      );
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]',
-      );
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]');
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]');
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]');
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]',
-      );
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]',
-      );
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]',
-      );
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]');
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]');
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]');
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]',
-      );
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]',
-      );
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]',
-      );
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]');
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]');
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01] [VocabularySS01]');
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS01', isPriorityOverride: true);
       getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.setPronunciationUS(value: 'PronunciationUS VocabSS01', isPriorityOverride: true);
 
       /// TODO: MeaningInEng
-      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.setTopicSpecificMeaningInEng(
-        value: '[VocabSS01] Overcast describes weather in which the sky is completely covered with clouds, blocking direct sunlight and creating a uniformly gray appearance.',
-        isPriorityOverride: true,
-      );
+      getVocabularyTime?.getVocabularySS01?.getVocabularyDataModel?.setTopicSpecificMeaningInEng(value: '[VocabSS01] Overcast describes weather in which the sky is completely covered with clouds, blocking direct sunlight and creating a uniformly gray appearance.', isPriorityOverride: true);
 
       /// TODO: Conversation
       /// Item 1
@@ -247,10 +234,8 @@ class DemoScript with ExecutionCore {
         VocabularyInterestingKnowledgeConversationItem(
           isLeftCharacterSS01: true, //
           isRightCharacterSS02: false, //
-          engSentence:
-              '[isLeftCharacterSS01] Learning daily builds _confidence and long term success. Learning daily builds _confidence and long term success. Learning daily builds _confidence and long term success. Learning daily builds _confidence and long term success.', //
-          vieSentence:
-              '[isLeftCharacterSS01] Học mỗi ngày sẽ xây dựng _sự _tự _tin và tạo nên thành công lâu dài. Học mỗi ngày sẽ xây dựng _sự _tự _tin và tạo nên thành công lâu dài. Học mỗi ngày sẽ xây dựng _sự _tự _tin và tạo nên thành công lâu dài.', //
+          engSentence: '[isLeftCharacterSS01] Learning daily builds _confidence and long term success. Learning daily builds _confidence and long term success. Learning daily builds _confidence and long term success. Learning daily builds _confidence and long term success.', //
+          vieSentence: '[isLeftCharacterSS01] Học mỗi ngày sẽ xây dựng _sự _tự _tin và tạo nên thành công lâu dài. Học mỗi ngày sẽ xây dựng _sự _tự _tin và tạo nên thành công lâu dài. Học mỗi ngày sẽ xây dựng _sự _tự _tin và tạo nên thành công lâu dài.', //
           imageSource: 'assets/images/interesting_knowledge/knowledge_01.jpg',
         ),
       );
@@ -291,37 +276,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]',
-      );
-      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]',
-      );
-      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]',
-      );
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]');
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]');
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]');
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]',
-      );
-      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]',
-      );
-      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]',
-      );
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]');
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]');
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]');
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]',
-      );
-      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]',
-      );
-      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]',
-      );
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]');
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]');
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02] [VocabularySS02]');
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS02', isPriorityOverride: true);
@@ -372,37 +351,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]',
-      );
-      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]',
-      );
-      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]',
-      );
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]');
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]');
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]');
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]',
-      );
-      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]',
-      );
-      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]',
-      );
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]');
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]');
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]');
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]',
-      );
-      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]',
-      );
-      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]',
-      );
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]');
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]');
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03] [VocabularySS03]');
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS03?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS03', isPriorityOverride: true);
@@ -453,37 +426,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]',
-      );
-      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]',
-      );
-      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]',
-      );
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]');
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]');
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]');
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]',
-      );
-      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]',
-      );
-      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]',
-      );
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]');
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]');
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]');
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]',
-      );
-      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]',
-      );
-      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]',
-      );
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]');
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]');
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04] [VocabularySS04]');
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS04?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS04', isPriorityOverride: true);
@@ -534,37 +501,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]',
-      );
-      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]',
-      );
-      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]',
-      );
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]');
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]');
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]');
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]',
-      );
-      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]',
-      );
-      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]',
-      );
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]');
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]');
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]');
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]',
-      );
-      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]',
-      );
-      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]',
-      );
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]');
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]');
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05] [VocabularySS05]');
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS05?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS05', isPriorityOverride: true);
@@ -615,37 +576,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]',
-      );
-      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]',
-      );
-      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]',
-      );
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]');
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]');
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]');
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]',
-      );
-      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]',
-      );
-      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]',
-      );
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]');
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]');
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]');
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]',
-      );
-      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]',
-      );
-      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]',
-      );
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]');
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]');
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06] [VocabularySS06]');
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS06?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS06', isPriorityOverride: true);
@@ -696,37 +651,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]',
-      );
-      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]',
-      );
-      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]',
-      );
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]');
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]');
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]');
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]',
-      );
-      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]',
-      );
-      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]',
-      );
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]');
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]');
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]');
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]',
-      );
-      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]',
-      );
-      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]',
-      );
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]');
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]');
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07] [VocabularySS07]');
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS07?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS07', isPriorityOverride: true);
@@ -777,37 +726,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]',
-      );
-      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]',
-      );
-      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]',
-      );
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]');
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]');
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]');
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]',
-      );
-      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]',
-      );
-      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]',
-      );
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]');
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]');
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]');
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]',
-      );
-      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]',
-      );
-      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]',
-      );
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]');
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]');
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08] [VocabularySS08]');
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS08?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS08', isPriorityOverride: true);
@@ -858,37 +801,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]',
-      );
-      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]',
-      );
-      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]',
-      );
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]');
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]');
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]');
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]',
-      );
-      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]',
-      );
-      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]',
-      );
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]');
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]');
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]');
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]',
-      );
-      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]',
-      );
-      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]',
-      );
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]');
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]');
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09] [VocabularySS09]');
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS09?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS09', isPriorityOverride: true);
@@ -939,37 +876,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]',
-      );
-      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]',
-      );
-      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]',
-      );
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]');
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]');
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]');
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]',
-      );
-      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]',
-      );
-      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]',
-      );
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]');
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]');
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]');
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]',
-      );
-      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]',
-      );
-      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]',
-      );
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]');
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]');
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10] [VocabularySS10]');
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS10?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS10', isPriorityOverride: true);
@@ -1020,37 +951,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]',
-      );
-      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]',
-      );
-      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]',
-      );
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]');
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]');
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]');
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]',
-      );
-      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]',
-      );
-      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]',
-      );
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]');
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]');
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]');
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]',
-      );
-      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]',
-      );
-      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]',
-      );
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]');
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]');
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11] [VocabularySS11]');
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS11?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS11', isPriorityOverride: true);
@@ -1101,37 +1026,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]',
-      );
-      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]',
-      );
-      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]',
-      );
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]');
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]');
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]');
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]',
-      );
-      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]',
-      );
-      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]',
-      );
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]');
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]');
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]');
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]',
-      );
-      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]',
-      );
-      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]',
-      );
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]');
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]');
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12] [VocabularySS12]');
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS12?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS12', isPriorityOverride: true);
@@ -1182,37 +1101,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]',
-      );
-      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]',
-      );
-      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]',
-      );
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]');
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]');
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]');
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]',
-      );
-      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]',
-      );
-      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]',
-      );
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]');
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]');
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]');
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]',
-      );
-      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]',
-      );
-      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]',
-      );
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]');
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]');
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13] [VocabularySS13]');
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS13?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS13', isPriorityOverride: true);
@@ -1263,37 +1176,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]',
-      );
-      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]',
-      );
-      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]',
-      );
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]');
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]');
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]');
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]',
-      );
-      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]',
-      );
-      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]',
-      );
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]');
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]');
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]');
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]',
-      );
-      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]',
-      );
-      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]',
-      );
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]');
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]');
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14] [VocabularySS14]');
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS14?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS14', isPriorityOverride: true);
@@ -1344,37 +1251,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]',
-      );
-      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]',
-      );
-      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]',
-      );
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]');
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]');
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]');
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]',
-      );
-      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]',
-      );
-      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]',
-      );
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]');
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]');
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]');
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]',
-      );
-      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]',
-      );
-      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]',
-      );
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]');
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]');
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15] [VocabularySS15]');
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS15?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS15', isPriorityOverride: true);
@@ -1425,37 +1326,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]',
-      );
-      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]',
-      );
-      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]',
-      );
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]');
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]');
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]');
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]',
-      );
-      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]',
-      );
-      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]',
-      );
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]');
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]');
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]');
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]',
-      );
-      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]',
-      );
-      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]',
-      );
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]');
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]');
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16] [VocabularySS16]');
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS16?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS16', isPriorityOverride: true);
@@ -1506,37 +1401,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]',
-      );
-      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]',
-      );
-      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]',
-      );
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]');
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]');
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]');
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]',
-      );
-      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]',
-      );
-      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]',
-      );
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]');
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]');
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]');
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]',
-      );
-      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]',
-      );
-      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]',
-      );
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]');
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]');
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17] [VocabularySS17]');
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS17?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS17', isPriorityOverride: true);
@@ -1587,37 +1476,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]',
-      );
-      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]',
-      );
-      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]',
-      );
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]');
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]');
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]');
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]',
-      );
-      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]',
-      );
-      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]',
-      );
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]');
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]');
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]');
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]',
-      );
-      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]',
-      );
-      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]',
-      );
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]');
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]');
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18] [VocabularySS18]');
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS18?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS18', isPriorityOverride: true);
@@ -1668,37 +1551,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]',
-      );
-      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]',
-      );
-      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]',
-      );
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]');
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]');
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]');
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]',
-      );
-      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]',
-      );
-      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]',
-      );
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]');
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]');
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]');
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]',
-      );
-      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]',
-      );
-      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]',
-      );
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]');
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]');
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19] [VocabularySS19]');
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS19?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS19', isPriorityOverride: true);
@@ -1749,37 +1626,31 @@ class DemoScript with ExecutionCore {
 
       /// TODO: Paragraph
       getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setTitle(value: 'Paragraph: 1/3');
-      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS01 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]',
-      );
-      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS01 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]',
-      );
-      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS01 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]',
-      );
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS01(value: 'ExampleParagraphSS01 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]');
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS02(value: 'ExampleParagraphSS01 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]');
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setEngSentenceSS03(value: 'ExampleParagraphSS01 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]');
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS01(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS02(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS03(value: 'ExampleParagraphSS01', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS01?.setInsightVocabSS04(value: 'ExampleParagraphSS01', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setTitle(value: 'Paragraph: 2/3');
-      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS02 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]',
-      );
-      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS02 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]',
-      );
-      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS02 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]',
-      );
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS01(value: 'ExampleParagraphSS02 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]');
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS02(value: 'ExampleParagraphSS02 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]');
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setEngSentenceSS03(value: 'ExampleParagraphSS02 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]');
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS01(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS02(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS03(value: 'ExampleParagraphSS02', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS02?.setInsightVocabSS04(value: 'ExampleParagraphSS02', isPriorityOverride: true);
 
       getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setTitle(value: 'Paragraph: 3/3');
-      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(
-        value: 'ExampleParagraphSS03 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]',
-      );
-      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(
-        value: 'ExampleParagraphSS03 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]',
-      );
-      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(
-        value: 'ExampleParagraphSS03 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]',
-      );
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS01(value: 'ExampleParagraphSS03 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]');
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS02(value: 'ExampleParagraphSS03 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]');
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setEngSentenceSS03(value: 'ExampleParagraphSS03 [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20] [VocabularySS20]');
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS01(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS02(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS03(value: 'ExampleParagraphSS03', isPriorityOverride: true);
+      getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.getVocabularyExampleParagraphSS03?.setInsightVocabSS04(value: 'ExampleParagraphSS03', isPriorityOverride: true);
 
       /// TODO: Pronunciation
       getVocabularyTime?.getVocabularySS20?.getVocabularyDataModel?.setPronunciationUK(value: 'PronunciationUK VocabSS20', isPriorityOverride: true);

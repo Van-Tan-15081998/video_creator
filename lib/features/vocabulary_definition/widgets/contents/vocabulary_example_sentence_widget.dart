@@ -166,17 +166,18 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                           children: [
                             AnimatedPositioned(
                               duration: const Duration(milliseconds: 100),
-                              bottom: widget.sizeDy * 0.015 - 3.0,
-                              left: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true ? widget.sizeDx * 0.25 - 5.0 : null,
-                              right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true ? widget.sizeDx * 0.25 - 5.0 : null,
+                              bottom: widget.sizeDy * 0.015,
+                              left: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true ? widget.sizeDx * 0.25 - 10.0 : null,
+                              right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true ? widget.sizeDx * 0.25 - 10.0 : null,
                               width: widget.sizeDx * 0.75 - 3.0,
-                              height: widget.sizeDy * 0.15,
+                              height: widget.sizeDy * 0.15 + 30.0,
                               child: Container(
                                 // width: widget.sizeDx * 0.65,
-                                height: widget.sizeDy * 0.16,
+                                // height: widget.sizeDy * 0.16,
+                                height: widget.sizeDy * 0.15 + 30.0,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(width: 8.0, color: Colors.black),
+                                  color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+                                  border: Border.all(width: 8.0, color: Color(0xFF2C2C2C).withValues(alpha: 0.75)),
                                   borderRadius: BorderRadius.all(Radius.circular(15.0)),
                                 ),
                                 child: Column(
@@ -186,7 +187,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
                                       child: RichText(
-                                        textAlign: TextAlign.center,
+                                        textAlign: TextAlign.start,
                                         overflow: TextOverflow.ellipsis,
 
                                         maxLines: 2,
@@ -196,7 +197,8 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                                             TextSpan(
                                               text: _currentVocabularyExampleSentence?.getVieSentence ?? '',
 
-                                              style: GoogleFonts.sansitaSwashed(color: Color(0xFF1C1C1C), fontWeight: FontWeight.bold, fontSize: 40.0), // ok
+                                              // style: GoogleFonts.sansitaSwashed(color: Color(0xFF1C1C1C), fontWeight: FontWeight.bold, fontSize: 40.0), // ok
+                                              style: GoogleFonts.agbalumo(color: Color(0xFF838B83), fontWeight: FontWeight.w100, fontSize: 42.0, height: 1.3), // ok
                                             ),
                                           ],
                                         ),
@@ -209,7 +211,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
 
                             AnimatedPositioned(
                               duration: const Duration(milliseconds: 100),
-                              bottom: widget.sizeDy * 0.15,
+                              bottom: widget.sizeDy * 0.15 + 30.0,
                               left: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true ? widget.sizeDx * 0.22 - 5.0 : null,
                               right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true ? widget.sizeDx * 0.22 - 5.0 : null,
                               width: widget.sizeDx * 0.78 - 3.0,
@@ -244,7 +246,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                             ),
 
                             AnimatedPositioned(
-                              bottom: widget.sizeDy * 0.15 + 8.0,
+                              bottom: widget.sizeDy * 0.15 + 8.0 + 30.0,
                               left: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true ? widget.sizeDx * 0.22 + 20.0 : null,
                               right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true ? widget.sizeDx * 0.22 - 10.0 : null,
                               width: widget.sizeDx * 0.78 - 25.0,
@@ -269,7 +271,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                             ),
 
                             AnimatedPositioned(
-                              bottom: widget.sizeDy * 0.15 + 20.0,
+                              bottom: widget.sizeDy * 0.15 + 20.0 + 30.0,
                               right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true
                                   ? 30.0
                                   : getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true
@@ -298,17 +300,18 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                           children: [
                             AnimatedPositioned(
                               duration: const Duration(milliseconds: 100),
-                              bottom: widget.sizeDy * 0.015 - 3.0,
-                              left: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true ? widget.sizeDx * 0.25 - 5.0 : null,
-                              right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true ? widget.sizeDx * 0.25 - 5.0 : null,
+                              bottom: widget.sizeDy * 0.015,
+                              left: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true ? widget.sizeDx * 0.25 - 10.0 : null,
+                              right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true ? widget.sizeDx * 0.25 - 10.0 : null,
                               width: widget.sizeDx * 0.75 - 3.0,
-                              height: widget.sizeDy * 0.15,
+                              height: widget.sizeDy * 0.15 + 30.0,
                               child: Container(
                                 // width: widget.sizeDx * 0.65,
-                                height: widget.sizeDy * 0.16,
+                                // height: widget.sizeDy * 0.16,
+                                height: widget.sizeDy * 0.15 + 30.0,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(width: 8.0, color: Colors.black),
+                                  color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+                                  border: Border.all(width: 8.0, color: Color(0xFF2C2C2C).withValues(alpha: 0.75)),
                                   borderRadius: BorderRadius.all(Radius.circular(15.0)),
                                 ),
                                 child: Column(
@@ -318,7 +321,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
                                       child: RichText(
-                                        textAlign: TextAlign.center,
+                                        textAlign: TextAlign.start,
                                         overflow: TextOverflow.ellipsis,
 
                                         maxLines: 2,
@@ -328,7 +331,8 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                                             TextSpan(
                                               text: _currentVocabularyExampleSentence?.getVieSentence ?? '',
 
-                                              style: GoogleFonts.sansitaSwashed(color: Color(0xFF1C1C1C), fontWeight: FontWeight.bold, fontSize: 40.0), // ok
+                                              // style: GoogleFonts.sansitaSwashed(color: Color(0xFF1C1C1C), fontWeight: FontWeight.bold, fontSize: 40.0), // ok
+                                              style: GoogleFonts.agbalumo(color: Color(0xFF838B83), fontWeight: FontWeight.w100, fontSize: 42.0, height: 1.3), // ok
                                             ),
                                           ],
                                         ),
@@ -341,7 +345,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
 
                             AnimatedPositioned(
                               duration: const Duration(milliseconds: 100),
-                              bottom: widget.sizeDy * 0.15,
+                              bottom: widget.sizeDy * 0.15 + 30.0,
                               left: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true ? widget.sizeDx * 0.22 - 5.0 : null,
                               right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true ? widget.sizeDx * 0.22 - 5.0 : null,
                               width: widget.sizeDx * 0.78 - 3.0,
@@ -376,7 +380,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                             ),
 
                             AnimatedPositioned(
-                              bottom: widget.sizeDy * 0.15 + 8.0,
+                              bottom: widget.sizeDy * 0.15 + 8.0 + 30.0,
                               left: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true ? widget.sizeDx * 0.22 + 20.0 : null,
                               right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true ? widget.sizeDx * 0.22 - 10.0 : null,
                               width: widget.sizeDx * 0.78 - 25.0,
@@ -401,7 +405,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                             ),
 
                             AnimatedPositioned(
-                              bottom: widget.sizeDy * 0.15 + 20.0,
+                              bottom: widget.sizeDy * 0.15 + 20.0 + 30.0,
                               right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true
                                   ? 30.0
                                   : getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true
@@ -432,11 +436,11 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
   TextSpan wordItem({required String word, required bool? isNormal, required bool? isSpecial}) {
     Color textColor = Color(0xFF000000);
     Color backgroundColor = Color(0xFFFFFFFF);
-    double textFontSize = 45.0;
+    double textFontSize = 42.0;
 
     if (isNormal == true) {
       textColor = Color(0xFF000000);
-      textFontSize = 45.0;
+      textFontSize = 42.0;
     } else if (isSpecial == true) {
       textColor = Color(0xFF4876FF);
       textFontSize = 48.0;
@@ -447,7 +451,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
       text: word,
       style: GoogleFonts.robotoSlab(
         backgroundColor: backgroundColor,
-        textStyle: TextStyle(fontSize: textFontSize, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal, color: textColor),
+        textStyle: TextStyle(fontSize: textFontSize, fontWeight: FontWeight.w700, fontStyle: FontStyle.normal, color: textColor),
       ),
     );
   }

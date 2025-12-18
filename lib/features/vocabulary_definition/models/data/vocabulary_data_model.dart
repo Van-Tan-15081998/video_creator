@@ -36,6 +36,21 @@ class VocabularyDataModel with ExecutionCore {
   /// -----
   /// TODO:
   /// -----
+  String? _topicSpecificImage;
+  String? get getTopicSpecificImage => _topicSpecificImage;
+  void setTopicSpecificImage({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _topicSpecificImage = value;
+    } else {
+      _topicSpecificImage ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
   String? _pronunciationUS;
   String? get getPronunciationUS => _pronunciationUS;
   void setPronunciationUS({required String? value, bool? isPriorityOverride}) {
@@ -811,6 +826,66 @@ class VocabularyExampleParagraph with ExecutionCore {
       _vieSentence = value;
     } else {
       _vieSentence ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  String? _insightVocabSS01;
+  String? get getInsightVocabSS01 => _insightVocabSS01;
+  void setInsightVocabSS01({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _insightVocabSS01 = value;
+    } else {
+      _insightVocabSS01 ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  String? _insightVocabSS02;
+  String? get getInsightVocabSS02 => _insightVocabSS02;
+  void setInsightVocabSS02({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _insightVocabSS02 = value;
+    } else {
+      _insightVocabSS02 ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  String? _insightVocabSS03;
+  String? get getInsightVocabSS03 => _insightVocabSS03;
+  void setInsightVocabSS03({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _insightVocabSS03 = value;
+    } else {
+      _insightVocabSS03 ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  String? _insightVocabSS04;
+  String? get getInsightVocabSS04 => _insightVocabSS04;
+  void setInsightVocabSS04({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _insightVocabSS04 = value;
+    } else {
+      _insightVocabSS04 ??= value;
     }
 
     return;
