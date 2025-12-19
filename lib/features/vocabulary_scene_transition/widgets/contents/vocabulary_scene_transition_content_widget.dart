@@ -4,6 +4,15 @@ import 'dart:math';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/animation_components/active_container/active_container_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS01_animated_background_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS02_animated_background_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS03_animated_background_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS04_animated_background_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS05_animated_background_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS06_animated_background_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS07_animated_background_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS08_animated_background_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS09_animated_background_widget.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
@@ -26,6 +35,8 @@ class VocabularySceneTransitionContentWidget extends StatefulWidget {
 
 class _VocabularySceneTransitionContentWidgetState extends State<VocabularySceneTransitionContentWidget> {
   bool isCompleted = false;
+
+  int animatedBackgroundWidgetIndex = 1;
 
   /// -----
   /// TODO:
@@ -58,7 +69,9 @@ class _VocabularySceneTransitionContentWidgetState extends State<VocabularyScene
     rightPositionLayerB02 = -1800.0;
     rightPositionLayerB03 = -1450.0;
 
-    // return;
+    final random = Random();
+    int number = random.nextInt(9) + 1;
+    animatedBackgroundWidgetIndex = number;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Timer.periodic(Duration(seconds: 1), (timer) {
@@ -152,9 +165,49 @@ class _VocabularySceneTransitionContentWidgetState extends State<VocabularyScene
                 width: 5000.0,
                 height: 5000.0,
                 decoration: BoxDecoration(
-                  color: Color(0xFF000000).withValues(alpha: 0.25),
+                  color: Color(0xFF000000).withValues(alpha: 1),
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(30.0)),
                   border: Border.all(width: 15.0, color: Colors.black),
+                ),
+              ),
+            ),
+          ),
+
+          Positioned(
+            // top: 0,
+            // left: 0,
+            width: widget.sizeDx * 2,
+            height: widget.sizeDx * 2,
+            child: Container(
+              color: Color(0xFF1C1C1C).withValues(alpha: 0.99),
+              child: ShaderMask(
+                blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
+                shaderCallback: (Rect bounds) {
+                  return LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Colors.white,
+                      Colors.transparent, // Hoàn toàn biến mất bên phải
+                    ],
+                    stops: [0.65, 1.0],
+                  ).createShader(bounds);
+                },
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    Container(color: Color(0xFF1C1C1C).withValues(alpha: 0.1)),
+                    animatedBackgroundWidgetIndex == 1 ? const VocabularyTransitionSs01AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    animatedBackgroundWidgetIndex == 2 ? const VocabularyTransitionSs02AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    animatedBackgroundWidgetIndex == 3 ? const VocabularyTransitionSs03AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    animatedBackgroundWidgetIndex == 4 ? const VocabularyTransitionSs04AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    animatedBackgroundWidgetIndex == 5 ? const VocabularyTransitionSs05AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    animatedBackgroundWidgetIndex == 6 ? const VocabularyTransitionSs06AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    animatedBackgroundWidgetIndex == 7 ? const VocabularyTransitionSs07AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    animatedBackgroundWidgetIndex == 8 ? const VocabularyTransitionSs08AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    animatedBackgroundWidgetIndex == 9 ? const VocabularyTransitionSs09AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    // Container(color: Color(0xFFFFFFFF).withValues(alpha: 0.05)),
+                  ],
                 ),
               ),
             ),
@@ -173,25 +226,26 @@ class _VocabularySceneTransitionContentWidgetState extends State<VocabularyScene
                       decoration: BoxDecoration(
                         color: Color(0xFFFFFFFF).withValues(alpha: 1.0),
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(40.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(40.0), bottomLeft: Radius.circular(15.0)),
-                        border: Border.all(width: 10.0, color: Color(0xFF1C1C1C)),
+                        border: Border.all(width: 0, color: Color(0xFF1C1C1C)),
+                        image: DecorationImage(image: AssetImage('assets/images/background/background_06.jpg'), fit: BoxFit.fitWidth),
                       ),
                       child: Stack(
                         alignment: AlignmentDirectional.center,
                         children: [
-                          Container(
-                            width: 800.0,
-                            height: 400.0,
-                            decoration: BoxDecoration(
-                              // image: DecorationImage(image: AssetImage('assets/images/background/background_03.jpg'), fit: BoxFit.fitWidth),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(5.0), bottomRight: Radius.circular(30.0), bottomLeft: Radius.circular(5.0)),
-                              child: Stack(
-                                alignment: AlignmentDirectional.center,
-                                children: [Positioned(top: -50.0, left: -50.0, width: 3000.0, height: 1500.0, child: TransparentEffectWallWidget(sizeDx: 3000.0, sizeDy: 1500.0))],
-                              ),
-                            ),
-                          ),
+                          // ClipRRect(
+                          //   borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(5.0), bottomRight: Radius.circular(30.0), bottomLeft: Radius.circular(5.0)),
+                          //   child: Container(
+                          //     width: 800.0,
+                          //     height: 400.0,
+                          //     decoration: BoxDecoration(
+                          //       // image: DecorationImage(image: AssetImage('assets/images/background/background_03.jpg'), fit: BoxFit.fitWidth),
+                          //     ),
+                          //     child: Stack(
+                          //       alignment: AlignmentDirectional.center,
+                          //       children: [Positioned(top: -150.0, left: -150.0, width: 3000.0, height: 1500.0, child: TransparentEffectWallWidget(sizeDx: 3000.0, sizeDy: 1500.0))],
+                          //     ),
+                          //   ),
+                          // ),
 
                           AnimatedPositioned(
                             duration: const Duration(milliseconds: 100),
@@ -375,12 +429,7 @@ class _VocabularySceneTransitionContentWidgetState extends State<VocabularyScene
                                   width: 3000.0,
                                   height: 1500.0,
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(30.0),
-                                      topRight: Radius.circular(15.0),
-                                      bottomRight: Radius.circular(15.0),
-                                      bottomLeft: Radius.circular(30.0),
-                                    ),
+                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(30.0)),
                                     child: TransparentEffectWallWidget(sizeDx: 3000.0, sizeDy: 1500.0),
                                   ),
                                 ),
@@ -476,12 +525,7 @@ class _VocabularySceneTransitionContentWidgetState extends State<VocabularyScene
                                   width: 3000.0,
                                   height: 1500.0,
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(30.0),
-                                      topRight: Radius.circular(15.0),
-                                      bottomRight: Radius.circular(15.0),
-                                      bottomLeft: Radius.circular(30.0),
-                                    ),
+                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(30.0)),
                                     child: TransparentEffectWallWidget(sizeDx: 3000.0, sizeDy: 1500.0),
                                   ),
                                 ),

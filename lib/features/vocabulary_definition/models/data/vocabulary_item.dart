@@ -812,6 +812,16 @@ class VocabularyItem with ExecutionCore {
             setIsActive(value: false, isPriorityOverride: true);
 
             /// TODO: Tuyệt đối quan trọng => Mở comment
+            ///
+            /// TODO: RESET
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setIsNoun(value: null, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setIsPronoun(value: null, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setIsVerb(value: null, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setIsAdjective(value: null, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setIsAdverb(value: null, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setIsPreposition(value: null, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setIsConjunction(value: null, isPriorityOverride: true);
+            getCurrentVocabularyItem?.getVocabularyDataModel?.setIsInterjection(value: null, isPriorityOverride: true);
           }
         } else if ((getTotalRemainingSeconds ?? 0) == 0) {
           getStatus?.setStatusComplete();

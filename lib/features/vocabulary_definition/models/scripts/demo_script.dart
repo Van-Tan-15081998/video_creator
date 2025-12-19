@@ -254,7 +254,7 @@ class DemoScript with ExecutionCore {
       /// -----
       getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.setWord(value: 'Vocabulary_SS02');
       getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.setTopicSpecificMeaning(value: 'Nghĩa vocabulary_SS02');
-      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.setIsNoun(value: true);
+      getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.setIsVerb(value: true);
 
       /// TODO: Sentence
       getVocabularyTime?.getVocabularySS02?.getVocabularyDataModel?.getVocabularyExampleSentenceSS01?.setTitle(value: 'Example: 1/3');

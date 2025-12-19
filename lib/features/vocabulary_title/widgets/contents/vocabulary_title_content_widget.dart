@@ -73,7 +73,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
             isShowSimplifyType = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsSimplifyType ?? false;
 
             if (isShowSimplifyType == true) {
-              isShowType = false;
+              // isShowType = false;
+              isShowFullType = '[HIDE]';
             }
           });
         }
@@ -83,7 +84,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
             _isNoun = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsNoun;
 
             if (isShowSimplifyType == false) {
-              isShowType = true;
+              // isShowType = true;
+              isShowFullType = '[SHOW]';
             }
           });
           return;
@@ -92,7 +94,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isPronoun = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsPronoun;
             if (isShowSimplifyType == false) {
-              isShowType = true;
+              // isShowType = true;
+              isShowFullType = '[SHOW]';
             }
           });
           return;
@@ -101,7 +104,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isVerb = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsVerb;
             if (isShowSimplifyType == false) {
-              isShowType = true;
+              // isShowType = true;
+              isShowFullType = '[SHOW]';
             }
           });
           return;
@@ -110,7 +114,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isAdjective = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsAdjective;
             if (isShowSimplifyType == false) {
-              isShowType = true;
+              // isShowType = true;
+              isShowFullType = '[SHOW]';
             }
           });
           return;
@@ -119,7 +124,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isAdverb = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsAdverb;
             if (isShowSimplifyType == false) {
-              isShowType = true;
+              // isShowType = true;
+              isShowFullType = '[SHOW]';
             }
           });
           return;
@@ -128,7 +134,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isPreposition = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsPreposition;
             if (isShowSimplifyType == false) {
-              isShowType = true;
+              // isShowType = true;
+              isShowFullType = '[SHOW]';
             }
           });
           return;
@@ -137,7 +144,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isConjunction = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsConjunction;
             if (isShowSimplifyType == false) {
-              isShowType = true;
+              // isShowType = true;
+              isShowFullType = '[SHOW]';
             }
           });
           return;
@@ -146,7 +154,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isInterjection = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsInterjection;
             if (isShowSimplifyType == false) {
-              isShowType = true;
+              // isShowType = true;
+              isShowFullType = '[SHOW]';
             }
           });
           return;
@@ -155,7 +164,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isOtherType = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsOtherType;
             if (isShowSimplifyType == false) {
-              isShowType = true;
+              // isShowType = true;
+              isShowFullType = '[SHOW]';
             }
           });
           return;
@@ -168,7 +178,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
 
   String wordString = '';
   bool isShowWord = false;
-  bool isShowType = false;
+  // bool isShowType = false;
+  String isShowFullType = '[DEFAULT]';
   bool isShowSimplifyType = false;
 
   bool? _isNoun = false;
@@ -205,16 +216,7 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
                       children: [
                         vocabWordItem(word: wordString),
                         isShowSimplifyType
-                            ? simplifyPartsOfSpeechWidgetSpan(
-                                isNoun: _isNoun,
-                                isPronoun: _isPronoun,
-                                isVerb: _isVerb,
-                                isAdjective: _isAdjective,
-                                isAdverb: _isAdverb,
-                                isPreposition: _isPreposition,
-                                isConjunction: _isConjunction,
-                                isInterjection: _isInterjection,
-                              )
+                            ? simplifyPartsOfSpeechWidgetSpan(isNoun: _isNoun, isPronoun: _isPronoun, isVerb: _isVerb, isAdjective: _isAdjective, isAdverb: _isAdverb, isPreposition: _isPreposition, isConjunction: _isConjunction, isInterjection: _isInterjection)
                             : WidgetSpan(child: Container()),
                       ],
                     ),
@@ -227,18 +229,13 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           top: 40.0,
           right: 40.0,
           duration: const Duration(milliseconds: 100),
-          child: isShowType
+          child: isShowFullType == '[SHOW]'
               ? FadeIn(
-                  child: partsOfSpeech(
-                    isNoun: _isNoun,
-                    isPronoun: _isPronoun,
-                    isVerb: _isVerb,
-                    isAdjective: _isAdjective,
-                    isAdverb: _isAdverb,
-                    isPreposition: _isPreposition,
-                    isConjunction: _isConjunction,
-                    isInterjection: _isInterjection,
-                  ),
+                  child: partsOfSpeech(isNoun: _isNoun, isPronoun: _isPronoun, isVerb: _isVerb, isAdjective: _isAdjective, isAdverb: _isAdverb, isPreposition: _isPreposition, isConjunction: _isConjunction, isInterjection: _isInterjection),
+                )
+              : isShowFullType == '[HIDE]'
+              ? FadeOut(
+                  child: partsOfSpeech(isNoun: _isNoun, isPronoun: _isPronoun, isVerb: _isVerb, isAdjective: _isAdjective, isAdverb: _isAdverb, isPreposition: _isPreposition, isConjunction: _isConjunction, isInterjection: _isInterjection),
                 )
               : Container(),
         ),

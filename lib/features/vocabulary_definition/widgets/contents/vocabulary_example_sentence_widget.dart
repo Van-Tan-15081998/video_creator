@@ -271,7 +271,8 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                             ),
 
                             AnimatedPositioned(
-                              bottom: widget.sizeDy * 0.15 + 20.0 + 30.0,
+                              // bottom: widget.sizeDy * 0.15 + 20.0 + 30.0,
+                              bottom: widget.sizeDy * 0.15 + 30.0 + (widget.sizeDy * 0.20),
                               right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true
                                   ? 30.0
                                   : getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true
@@ -287,7 +288,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                                 child: Text(
                                   _currentVocabularyExampleSentence?.getTitle ?? '',
                                   textAlign: TextAlign.end,
-                                  style: GoogleFonts.concertOne(color: Color(0xFF3CB371).withValues(alpha: 0.35), fontWeight: FontWeight.w600, fontSize: 25.0, letterSpacing: 1.1),
+                                  style: GoogleFonts.concertOne(color: Color(0xFF3CB371).withValues(alpha: 0.65), fontWeight: FontWeight.w600, fontSize: 25.0, letterSpacing: 1.1),
                                 ),
                               ),
                             ),
@@ -405,7 +406,8 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                             ),
 
                             AnimatedPositioned(
-                              bottom: widget.sizeDy * 0.15 + 20.0 + 30.0,
+                              // bottom: widget.sizeDy * 0.15 + 20.0 + 30.0,
+                              bottom: widget.sizeDy * 0.15 + 30.0 + (widget.sizeDy * 0.20),
                               right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true
                                   ? 30.0
                                   : getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true
@@ -421,7 +423,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                                 child: Text(
                                   _currentVocabularyExampleSentence?.getTitle ?? '',
                                   textAlign: TextAlign.end,
-                                  style: GoogleFonts.concertOne(color: Color(0xFF3CB371).withValues(alpha: 0.35), fontWeight: FontWeight.w600, fontSize: 25.0, letterSpacing: 1.1),
+                                  style: GoogleFonts.concertOne(color: Color(0xFF3CB371).withValues(alpha: 0.65), fontWeight: FontWeight.w600, fontSize: 25.0, letterSpacing: 1.1),
                                 ),
                               ),
                             ),
@@ -443,7 +445,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
       textFontSize = 42.0;
     } else if (isSpecial == true) {
       textColor = Color(0xFF4876FF);
-      textFontSize = 48.0;
+      textFontSize = 43.0;
       backgroundColor = Color(0xFFFFFFE0);
     }
 
@@ -451,7 +453,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
       text: word,
       style: GoogleFonts.robotoSlab(
         backgroundColor: backgroundColor,
-        textStyle: TextStyle(fontSize: textFontSize, fontWeight: FontWeight.w700, fontStyle: FontStyle.normal, color: textColor),
+        textStyle: TextStyle(fontSize: textFontSize, fontWeight: FontWeight.w800, fontStyle: FontStyle.normal, color: textColor),
       ),
     );
   }

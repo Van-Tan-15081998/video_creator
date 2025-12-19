@@ -218,7 +218,6 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
         //   duration: const Duration(milliseconds: 100),
         //   child: title(word: 'COMMON COLLOCATIONS:'),
         // ),
-
         Positioned(
           bottom: 15.0,
           width: 1000.0,

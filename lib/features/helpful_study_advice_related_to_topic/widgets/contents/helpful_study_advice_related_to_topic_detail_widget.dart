@@ -137,6 +137,7 @@ class _HelpfulStudyAdviceRelatedToTopicDetailWidgetState extends State<HelpfulSt
               // Bóng tối (dưới phải)
               // BoxShadow(color: Colors.black.withValues(alpha: 0.5), blurRadius: 15.0, spreadRadius: 1.0, offset: Offset(0, 0)),
             ],
+            image: DecorationImage(image: AssetImage('assets/images/background/background_07.jpg'), fit: BoxFit.fitWidth),
           ),
           child: Stack(
             alignment: AlignmentDirectional.center,
@@ -150,7 +151,7 @@ class _HelpfulStudyAdviceRelatedToTopicDetailWidgetState extends State<HelpfulSt
                 width: widget.sizeDx * 2,
                 height: widget.sizeDx * 2,
                 child: Container(
-                  color: Color(0xFFFFFF00).withValues(alpha: 0.99),
+                  color: Color(0xFFFFFF00).withValues(alpha: 0),
                   // color: Color(0xFFFFFFFF).withValues(alpha: 0.99),
                   child: ShaderMask(
                     blendMode: BlendMode.dstIn, // Giữ phần gradient trong text
@@ -162,7 +163,7 @@ class _HelpfulStudyAdviceRelatedToTopicDetailWidgetState extends State<HelpfulSt
                           Colors.white,
                           Colors.transparent, // Hoàn toàn biến mất bên phải
                         ],
-                        stops: [0.25, 1.0],
+                        stops: [0.65, 1.0],
                       ).createShader(bounds);
                     },
                     child: Stack(
@@ -175,7 +176,7 @@ class _HelpfulStudyAdviceRelatedToTopicDetailWidgetState extends State<HelpfulSt
                         // ),
                         const HelpfulStudyAdviceRelatedToTopicAnimatedBackgroundWidget(sizeDx: 3500.0, sizeDy: 3500.0),
                         // Container(color: Color(0xFFFFFFFF).withValues(alpha: 0.65)),
-                        Container(color: Color(0xFFFFFFFF).withValues(alpha: 0.25)),
+                        // Container(color: Color(0xFFFFFFFF).withValues(alpha: 0.15)),
                       ],
                     ),
                   ),
@@ -220,13 +221,32 @@ class _HelpfulStudyAdviceRelatedToTopicDetailWidgetState extends State<HelpfulSt
                               // '"Sunny weather offers excellent conditions for outdoor activities, but it can also increase the risk of dehydration if proper care is not taken. Sunny weather offers excellent conditions for outdoor activities, but it can also increase the risk of dehydration if proper care is not taken."',
                               getCurrentVocabularyItem?.getCurrentHelpfulStudyAdviceRelatedToTopic?.getSentenceEng ?? '',
                           // style: GoogleFonts.sriracha(color: Color(0xFF838B83), fontWeight: FontWeight.w600, fontSize: 40.0, height: 1.5),
-                          style: GoogleFonts.robotoSlab(color: Color(0xFF1C1C1C), fontWeight: FontWeight.bold, fontSize: 42.0),
+                          style: GoogleFonts.robotoSlab(color: Color(0xFF1C1C1C), fontWeight: FontWeight.w800, fontSize: 42.0),
                         ),
                       ],
                     ),
                   ),
                 ),
               ],
+            ),
+          ),
+        ),
+
+        AnimatedPositioned(
+          duration: const Duration(milliseconds: 100),
+          bottom: 15.0,
+          left: 15.0,
+          width: widget.sizeDx * 0.95,
+          height: 150.0,
+          child: Container(
+            // width: widget.sizeDx * 0.65,
+            height: widget.sizeDy * 0.15,
+            decoration: BoxDecoration(
+              // color: Color(0xFF1C1C1C).withValues(alpha: 0.9),
+              color: Color(0xFFFFFF00).withValues(alpha: 0.45),
+              border: Border.all(width: 8.0, color: Color(0xFFFFFFFF).withValues(alpha: 0.65)),
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(0)),
+              boxShadow: [BoxShadow(color: Color(0xFF1C1C1C).withValues(alpha: 0.15), blurRadius: 2.0, spreadRadius: 1.0, offset: Offset(0, 0))],
             ),
           ),
         ),
@@ -266,7 +286,8 @@ class _HelpfulStudyAdviceRelatedToTopicDetailWidgetState extends State<HelpfulSt
                               // '"Cô ấy rất tỉ mỉ trong công việc, kiểm tra từng chi tiết hai lần. Cô ấy rất tỉ mỉ trong công việc, kiểm tra từng chi tiết hai lần, kiểm tra từng chi tiết hai lần. Cô ấy rất tỉ mỉ trong công việc, kiểm tra từng chi tiết hai lần."',
                               getCurrentVocabularyItem?.getCurrentHelpfulStudyAdviceRelatedToTopic?.getSentenceVie ?? '',
                           // style: GoogleFonts.sriracha(color: Color(0xFF838B83), fontWeight: FontWeight.w600, fontSize: 40.0, height: 1.5),
-                          style: GoogleFonts.agbalumo(color: Color(0xFF5C5C5C), fontWeight: FontWeight.w100, fontSize: 42.0, height: 1.5),
+                          // style: GoogleFonts.agbalumo(color: Color(0xFF5C5C5C), fontWeight: FontWeight.w100, fontSize: 42.0, height: 1.5),
+                          style: GoogleFonts.agbalumo(color: Color(0xFF2C2C2C), fontWeight: FontWeight.w100, fontSize: 42.0, height: 1.5),
                         ),
                       ],
                     ),
@@ -316,7 +337,8 @@ class _HelpfulStudyAdviceRelatedToTopicDetailWidgetState extends State<HelpfulSt
             width: 500.0,
             height: 100.0,
             decoration: BoxDecoration(
-              color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+              // color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+              color: Color(0xFFFFFF00).withValues(alpha: 0.85),
               border: Border.all(width: 8.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
               borderRadius: BorderRadius.only(topLeft: Radius.circular(0), topRight: Radius.circular(0), bottomRight: Radius.circular(30.0), bottomLeft: Radius.circular(0)),
             ),

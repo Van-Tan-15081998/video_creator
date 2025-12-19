@@ -147,14 +147,7 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
                       ),
                     );
                   } else {
-                    messageList.add(
-                      messageByWordWidget(
-                        isLeftSide: true,
-                        isRightSide: false,
-                        engSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getEngSentence ?? '',
-                        vieSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getVieSentence ?? '',
-                      ),
-                    );
+                    messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false, engSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getEngSentence ?? '', vieSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getVieSentence ?? ''));
                   }
                 });
               } else if (getInterestingKnowledgeConversationItemList?.firstOrNull?.getIsRightCharacterSS02 == true) {
@@ -170,14 +163,7 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
                       ),
                     );
                   } else {
-                    messageList.add(
-                      messageByWordWidget(
-                        isLeftSide: false,
-                        isRightSide: true,
-                        engSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getEngSentence ?? '',
-                        vieSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getVieSentence ?? '',
-                      ),
-                    );
+                    messageList.add(messageByWordWidget(isLeftSide: false, isRightSide: true, engSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getEngSentence ?? '', vieSentence: getInterestingKnowledgeConversationItemList?.firstOrNull?.getVieSentence ?? ''));
                   }
                 });
               }
@@ -645,12 +631,12 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
                   Padding(
                     padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
                     child: RichText(
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.start,
                       overflow: TextOverflow.ellipsis,
                       maxLines: engSentenceHeight == 180.0 ? 2 : 1,
 
                       text: TextSpan(
-                        style: GoogleFonts.robotoSlab(textStyle: TextStyle(color: Color(0xFFECECEC).withValues(alpha: 0.5)), fontSize: 40.0),
+                        style: GoogleFonts.robotoSlab(textStyle: TextStyle(color: Color(0xFFECECEC).withValues(alpha: 0.5)), fontSize: 35.0),
                         children: vieWordWidgetSpan,
                       ),
                     ),
@@ -683,8 +669,7 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   RichText(
-                    // textAlign: TextAlign.start,
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                     overflow: TextOverflow.ellipsis,
 
                     maxLines: vieSentenceHeight == 180.0 ? 2 : 1,
@@ -737,14 +722,14 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
         engWordWidgetSpan.add(
           TextSpan(
             text: '$trueWord ',
-            style: GoogleFonts.robotoSlab(color: Color(0xFF1E90FF), fontWeight: FontWeight.bold, fontSize: 45),
+            style: GoogleFonts.robotoSlab(color: Color(0xFF1E90FF), fontWeight: FontWeight.w800, fontSize: 42),
           ),
         );
       } else {
         engWordWidgetSpan.add(
           TextSpan(
             text: '$word ',
-            style: GoogleFonts.robotoSlab(color: Color(0xFF000000), fontWeight: FontWeight.bold, fontSize: 42),
+            style: GoogleFonts.robotoSlab(color: Color(0xFF000000), fontWeight: FontWeight.w800, fontSize: 40),
           ),
         );
       }
@@ -759,21 +744,21 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
           vieWordWidgetSpan.add(
             TextSpan(
               text: '"$trueWord ',
-              style: GoogleFonts.sriracha(color: Color(0xFF1E90FF), fontWeight: FontWeight.bold, fontSize: 40.0, height: 1.5),
+              style: GoogleFonts.sriracha(color: Color(0xFF1E90FF), fontWeight: FontWeight.w800, fontSize: 38.0, height: 1.5),
             ),
           );
         } else if (index == vieWordList.length - 1) {
           vieWordWidgetSpan.add(
             TextSpan(
               text: '$trueWord."',
-              style: GoogleFonts.sriracha(color: Color(0xFF1E90FF), fontWeight: FontWeight.bold, fontSize: 40.0, height: 1.5),
+              style: GoogleFonts.sriracha(color: Color(0xFF1E90FF), fontWeight: FontWeight.w800, fontSize: 38.0, height: 1.5),
             ),
           );
         } else {
           vieWordWidgetSpan.add(
             TextSpan(
               text: '$trueWord ',
-              style: GoogleFonts.sriracha(color: Color(0xFF1E90FF), fontWeight: FontWeight.bold, fontSize: 40.0, height: 1.5),
+              style: GoogleFonts.sriracha(color: Color(0xFF1E90FF), fontWeight: FontWeight.w800, fontSize: 38.0, height: 1.5),
             ),
           );
         }
@@ -782,21 +767,21 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
           vieWordWidgetSpan.add(
             TextSpan(
               text: '"${vieWordList[index]} ',
-              style: GoogleFonts.sriracha(color: Color(0xFF838B83), fontWeight: FontWeight.bold, fontSize: 40.0, height: 1.5),
+              style: GoogleFonts.sriracha(color: Color(0xFF838B83), fontWeight: FontWeight.w800, fontSize: 38.0, height: 1.5),
             ),
           );
         } else if (index == vieWordList.length - 1) {
           vieWordWidgetSpan.add(
             TextSpan(
               text: '${vieWordList[index]}."',
-              style: GoogleFonts.sriracha(color: Color(0xFF838B83), fontWeight: FontWeight.bold, fontSize: 40.0, height: 1.5),
+              style: GoogleFonts.sriracha(color: Color(0xFF838B83), fontWeight: FontWeight.w800, fontSize: 38.0, height: 1.5),
             ),
           );
         } else {
           vieWordWidgetSpan.add(
             TextSpan(
               text: '${vieWordList[index]} ',
-              style: GoogleFonts.sriracha(color: Color(0xFF838B83), fontWeight: FontWeight.bold, fontSize: 40.0, height: 1.5),
+              style: GoogleFonts.sriracha(color: Color(0xFF838B83), fontWeight: FontWeight.w800, fontSize: 38.0, height: 1.5),
             ),
           );
         }
@@ -1048,12 +1033,12 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
                           Padding(
                             padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
                             child: RichText(
-                              textAlign: TextAlign.justify,
+                              textAlign: TextAlign.start,
                               overflow: TextOverflow.ellipsis,
                               maxLines: vieMaxLines,
 
                               text: TextSpan(
-                                style: GoogleFonts.robotoSlab(textStyle: TextStyle(color: Color(0xFFECECEC).withValues(alpha: 0.5)), fontSize: 40.0),
+                                style: GoogleFonts.robotoSlab(textStyle: TextStyle(color: Color(0xFFECECEC).withValues(alpha: 0.5)), fontSize: 35.0),
                                 children: vieWordWidgetSpan,
                               ),
                             ),
@@ -1086,7 +1071,7 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           RichText(
-                            textAlign: TextAlign.justify,
+                            textAlign: TextAlign.start,
                             overflow: TextOverflow.ellipsis,
 
                             maxLines: engMaxLines,

@@ -33,7 +33,7 @@ class _HelpfulStudyAdviceAnimatedBackgroundWidgetState extends State<HelpfulStud
             shadows: [BoxShadow(color: Color(0xFF1C1C1C).withValues(alpha: 0.75), spreadRadius: 5.0, offset: Offset(1, 1), blurRadius: 1)],
           ),
         ),
-        backgroundAnimatedIcon: '🍇',
+        backgroundAnimatedIcon: '⭐️',
         movementUnit: 0.5
       ),
     );
