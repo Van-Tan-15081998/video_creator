@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_data_model.dart';
@@ -169,6 +170,8 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
               }
 
               getInterestingKnowledgeConversationItemList?.removeAt(0);
+
+              onPlaySFXInterestingKnowledgeConversationSentenceAppear();
             }
 
             // if (getConversationItemList?.isNotEmpty == true) {
@@ -213,6 +216,10 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
         _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
       }
     });
+  }
+
+  onPlaySFXInterestingKnowledgeConversationSentenceAppear() {
+    FlameAudio.play('sfx/text_appear/interesting_knowledge_conversation_sentence_appear2.mp3', volume: 0.25);
   }
 
   @override

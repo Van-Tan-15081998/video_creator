@@ -6,7 +6,7 @@ import 'package:frame_creator_v2/components/animated_background/models/basic_fir
 abstract class BasicSpeed {
   double? _tocDo;
   double? get getTocDo => _tocDo;
-  Future<void> caiDatTocDo({required double? value}) async {
+  Future<void> setTocDo({required double? value}) async {
     _tocDo = value;
 
     onVoidCaiDatTocDoHienHanh(value: getTocDo ?? 1.0);
@@ -16,8 +16,8 @@ abstract class BasicSpeed {
 
   double? _tocDoHienHanh;
   double? get getTocDoHienHanh => _tocDoHienHanh;
-  void onVoidCaiDatTocDoHienHanh({required double? value, bool? caiDatUuTien}) async {
-    if (caiDatUuTien == true) {
+  void onVoidCaiDatTocDoHienHanh({required double? value, bool? setUuTien}) async {
+    if (setUuTien == true) {
       _tocDoHienHanh = value;
     } else {
       _tocDoHienHanh = value;

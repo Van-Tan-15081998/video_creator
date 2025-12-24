@@ -7,7 +7,7 @@ class BasicSpreadMovementDirection {
   /// -----
   String? _dinhHuong;
   String? get getDinhHuong => _dinhHuong;
-  Future<void> caiDatDinhHuong({required String? value}) async {
+  Future<void> setDinhHuong({required String? value}) async {
     _dinhHuong = value;
     return;
   }

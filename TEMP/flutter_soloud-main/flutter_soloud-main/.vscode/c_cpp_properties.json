@@ -1,0 +1,85 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/flutter_soloud_ios/ios/Classes/src",
+                "${workspaceFolder}/flutter_soloud_ios/ios/Classes/src/soloud/include",
+                "${workspaceFolder}/src"
+            ],
+            "defines": ["WITH_MINIAUDIO", "DR_MP3_IMPLEMENTATION", "DR_MP3_FLOAT_OUTPUT", "MINIMP3_IMPLEMENTATION"], // to see the code in between "#if defined"
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-clang-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        },
+        {
+            "name": "Chrome",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/src",
+                "/usr/lib/emscripten/system/include"
+            ],
+            "defines": ["WITH_MINIAUDIO", "DR_MP3_IMPLEMENTATION", "DR_MP3_FLOAT_OUTPUT", "__EMSCRIPTEN__"], // to see the code in between "#if defined"
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "${default}",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        },
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                // to see the code in between "#if defined"
+                "WITH_MINIAUDIO",
+                "DR_MP3_IMPLEMENTATION",
+                "DR_MP3_FLOAT_OUTPUT"
+            ],
+            "windowsSdkVersion": "10.0.19041.0",
+            "compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.32.31326/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        },
+        {
+            "name": "MacOS",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/flutter_soloud_ios/ios/Classes/src",
+                "${workspaceFolder}/flutter_soloud_ios/ios/Classes/src/soloud/include",
+                "${workspaceFolder}/src"
+            ],
+            "defines": ["WITH_MINIAUDIO", "DR_MP3_IMPLEMENTATION", "DR_MP3_FLOAT_OUTPUT"],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "macos-clang-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        },
+        {
+            "name": "iOS",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/flutter_soloud_ios/ios/Classes/src",
+                "${workspaceFolder}/flutter_soloud_ios/ios/Classes/src/soloud/include",
+                "${workspaceFolder}/src"
+            ],
+            "defines": ["WITH_MINIAUDIO", "DR_MP3_IMPLEMENTATION", "DR_MP3_FLOAT_OUTPUT"],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "ios-clang-arm64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}

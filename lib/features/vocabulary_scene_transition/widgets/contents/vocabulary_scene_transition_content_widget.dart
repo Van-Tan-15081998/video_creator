@@ -13,6 +13,12 @@ import 'package:frame_creator_v2/components/animated_background/widgets/helpful_
 import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS07_animated_background_widget.dart';
 import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS08_animated_background_widget.dart';
 import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS09_animated_background_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS10_animated_background_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS11_animated_background_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS12_animated_background_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS13_animated_background_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS14_animated_background_widget.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/vocabulary_transition_SS15_animated_background_widget.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
@@ -70,7 +76,7 @@ class _VocabularySceneTransitionContentWidgetState extends State<VocabularyScene
     rightPositionLayerB03 = -1450.0;
 
     final random = Random();
-    int number = random.nextInt(9) + 1;
+    int number = random.nextInt(15) + 1;
     animatedBackgroundWidgetIndex = number;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -206,6 +212,12 @@ class _VocabularySceneTransitionContentWidgetState extends State<VocabularyScene
                     animatedBackgroundWidgetIndex == 7 ? const VocabularyTransitionSs07AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
                     animatedBackgroundWidgetIndex == 8 ? const VocabularyTransitionSs08AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
                     animatedBackgroundWidgetIndex == 9 ? const VocabularyTransitionSs09AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    animatedBackgroundWidgetIndex == 10 ? const VocabularyTransitionSs10AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    animatedBackgroundWidgetIndex == 11 ? const VocabularyTransitionSs11AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    animatedBackgroundWidgetIndex == 12 ? const VocabularyTransitionSs12AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    animatedBackgroundWidgetIndex == 13 ? const VocabularyTransitionSs13AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    animatedBackgroundWidgetIndex == 14 ? const VocabularyTransitionSs14AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
+                    animatedBackgroundWidgetIndex == 15 ? const VocabularyTransitionSs15AnimatedBackgroundWidget(sizeDx: 4500.0 * 1.25, sizeDy: 6000.0 * 1.25) : Container(),
                     // Container(color: Color(0xFFFFFFFF).withValues(alpha: 0.05)),
                   ],
                 ),

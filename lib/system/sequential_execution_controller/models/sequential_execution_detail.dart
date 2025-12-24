@@ -203,8 +203,7 @@ class SequentialExecutionDetail with ExecutionCore {
     int totalMinutes = getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.getTotalMinutes ?? 0;
     int seconds = getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.getSeconds ?? 0;
 
-    getSequentialExecutionController?.getBackgroundImageFeature?.onActivateWindow();
-    getSequentialExecutionController?.getGlobalAnnouncementFeature?.onActivateWindow();
+
 
     // getSequentialExecutionController?.getVocabularyDefinitionFeature?.onActivateWindow();
     // getSequentialExecutionController?.getVocabularyConversationFeature?.onActivateWindow();
@@ -222,6 +221,9 @@ class SequentialExecutionDetail with ExecutionCore {
     /// TODO: 00:00:01 => Bước Nhảy Debug
     /// TODO: 00:00:20
     if (totalHours == 0 && totalMinutes == 0 && seconds == 1) {
+      getSequentialExecutionController?.getBackgroundImageFeature?.onActivateWindow();
+      getSequentialExecutionController?.getGlobalAnnouncementFeature?.onActivateWindow();
+
       // getSequentialExecutionController?.getHelpfulAdviceFeature?.onActivateWindow();
       // getSequentialExecutionController?.getHelpfulStudyAdviceFeature?.onActivateWindow();
       // getSequentialExecutionController?.getHelpfulStudyAdviceRelatedToTopicFeature?.onActivateWindow();
@@ -234,9 +236,9 @@ class SequentialExecutionDetail with ExecutionCore {
       // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 999, isPriorityOverride: true);
       // return;
 
-      // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 0, isPriorityOverride: true);
-      // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 29, isPriorityOverride: true);
-      // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 59, isPriorityOverride: true);
+      getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 0, isPriorityOverride: true);
+      getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 29, isPriorityOverride: true);
+      getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 59, isPriorityOverride: true);
 
       // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 0, isPriorityOverride: true);
       // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 0, isPriorityOverride: true);

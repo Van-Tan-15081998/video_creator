@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
@@ -30,7 +32,7 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
   double limitedTimeProgressbarLength = 0;
   double limitedTimeProgressbar = 0;
 
-  final int totalSecondsConst = 25;
+  final int totalSecondsConst = 24;
 
   @override
   void initState() {
@@ -58,17 +60,21 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
       });
 
       _ticker = createTicker((Duration elapsed) {
-        if (definitionString != getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificMeaning) {
+        if (currentImageSource != getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificImage && getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificImage?.isNotEmpty == true) {
+          currentImageSource = getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificImage ?? defaultImageSource;
+        } else {
+          if (currentImageSource.isEmpty == true) {
+            currentImageSource = defaultImageSource;
+          }
+        }
+
+        if (definitionString != getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificMeaning && getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificMeaning?.isNotEmpty == true) {
           setState(() {
             definitionString = getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificMeaning ?? '';
 
-            if (getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificImage?.isNotEmpty == true) {
-              currentImageSource = getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificImage ?? defaultImageSource;
-            } else {
-              currentImageSource = defaultImageSource;
-            }
-
             isShow = true;
+
+            onPlaySFXVocabularyMainInformationAppear();
           });
         }
       })..start();
@@ -80,6 +86,7 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
           if (currentImageSource.isNotEmpty == true) {
             setState(() {
               showImage = '[SHOW]';
+              onPlaySFXImageAppear();
             });
           }
         }
@@ -126,6 +133,19 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
   String defaultImageSource = 'assets/images/interesting_knowledge/knowledge_01.jpg';
   String currentImageSource = '';
   String showImage = '[DEFAULT]';
+
+  final Random _random = Random();
+  onPlaySFXVocabularyMainInformationAppear() {
+    String nextSFX;
+    nextSFX = sfxList[_random.nextInt(sfxList.length)];
+    FlameAudio.play(nextSFX, volume: 0.15);
+  }
+
+  final List<String> sfxList = ['sfx/vocabulary_definition/vocabulary_definition_appear_a01.mp3', 'sfx/vocabulary_definition/vocabulary_definition_appear_a02.mp3'];
+
+  onPlaySFXImageAppear() {
+    FlameAudio.play('sfx/vocabulary_definition/image_appear.mp3', volume: 0.25);
+  }
 
   @override
   void dispose() {

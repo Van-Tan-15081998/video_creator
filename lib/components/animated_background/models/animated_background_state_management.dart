@@ -1,7 +1,7 @@
 class AnimatedBackgroundStateManagement {
   AnimatedBackgroundStateManagement({required double? chieuRongManHinhPhiVatLy, required double? chieuCaoManHinhPhiVatLy, required double? sizeDx, required double? sizeDy}) {
-    caiDatChieuCaoManHinhPhiVatLy(value: chieuCaoManHinhPhiVatLy);
-    caiDatChieuRongManHinhPhiVatLy(value: chieuRongManHinhPhiVatLy);
+    setChieuCaoManHinhPhiVatLy(value: chieuCaoManHinhPhiVatLy);
+    setChieuRongManHinhPhiVatLy(value: chieuRongManHinhPhiVatLy);
   }
 
   /// -----
@@ -10,7 +10,7 @@ class AnimatedBackgroundStateManagement {
   double? _chieuRongManHinhPhiVatLy;
   double? get getChieuRongManHinhPhiVatLy => _chieuRongManHinhPhiVatLy;
   double get getChieuRongManHinhPhiVatLyNotNull => _chieuRongManHinhPhiVatLy ?? 0;
-  Future<void> caiDatChieuRongManHinhPhiVatLy({required double? value}) async {
+  Future<void> setChieuRongManHinhPhiVatLy({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _chieuRongManHinhPhiVatLy = value;
@@ -26,7 +26,7 @@ class AnimatedBackgroundStateManagement {
   double? _chieuCaoManHinhPhiVatLy;
   double? get getChieuCaoManHinhPhiVatLy => _chieuCaoManHinhPhiVatLy;
   double get getChieuCaoManHinhPhiVatLyNotNull => _chieuCaoManHinhPhiVatLy ?? 0;
-  Future<void> caiDatChieuCaoManHinhPhiVatLy({required double? value}) async {
+  Future<void> setChieuCaoManHinhPhiVatLy({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _chieuCaoManHinhPhiVatLy = value;
@@ -45,7 +45,7 @@ class AnimatedBackgroundStateManagement {
   double? _sizeDx;
   double? get getSizeDx => _sizeDx;
   double get getSizeDxNotNull => _sizeDx ?? 0;
-  Future<void> caiDatSizeDx({required double? value}) async {
+  Future<void> setSizeDx({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _sizeDx = value;
@@ -64,7 +64,7 @@ class AnimatedBackgroundStateManagement {
   double? _sizeDy;
   double? get getSizeDy => _sizeDy;
   double get getSizeDyNotNull => _sizeDy ?? 0;
-  Future<void> caiDatSizeDy({required double? value}) async {
+  Future<void> setSizeDy({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _sizeDy = value;

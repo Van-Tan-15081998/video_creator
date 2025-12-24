@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flame_audio/flame_audio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/screens/main_screen/main_screen.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
@@ -122,32 +124,133 @@ class _MyAppState extends State<MyApp> {
 
       /// TEST ÂM THANH
       await FlameAudio.audioCache.load('bgm/jazz-background-music.mp3');
+      // await FlameAudio.audioCache.load('sfx/close_window_01.mp3');
+      // await FlameAudio.audioCache.load('sfx/open_window_01.mp3');
+      // await FlameAudio.audioCache.load('sfx/open_window_02.mp3');
       // FlameAudio.play('bgm/jazz-background-music.mp3');
 
-      final player = FlameAudio.bgm.audioPlayer;
-      FlameAudio.bgm.play('bgm/jazz-background-music.mp3');
+      // await FlameAudio.audioCache.loadAll(bgmList);
+      await FlameAudio.audioCache.loadAll(longBgmList);
 
-      fadeOutBGM(duration: 5);
+      // final player = FlameAudio.bgm.audioPlayer;
+      // FlameAudio.bgm.play('bgm/jazz-background-music.mp3');
+      // fadeOutBGM(duration: 5);
+
+      playRandomBgm();
+      // FlameAudio.bgm.audioPlayer.onPlayerComplete.listen((event) {
+      // FlameAudio.bgm.audioPlayer.onPlayerComplete.listen((event) {
+      //   playRandomBgm();
+      // });
     });
+  }
+
+  final List<String> longBgmList = [
+    'bgm/dragon_studio/long/chill-rain-sounds-fx.mp3',
+    'bgm/dragon_studio/long/copyright-free-rain-sounds.mp3',
+    'bgm/dragon_studio/long/gentle-rain-01.mp3',
+    'bgm/dragon_studio/long/gentle-rain-03.mp3',
+    'bgm/dragon_studio/long/gentle-rain-04.mp3',
+    'bgm/dragon_studio/long/gentle-rain-06.mp3',
+    'bgm/dragon_studio/long/gentle-rain-07.mp3',
+    'bgm/dragon_studio/long/lo-fi-rain-sounds.mp3',
+    'bgm/dragon_studio/long/rain.mp3',
+    'bgm/dragon_studio/long/rain-asmr.mp3',
+    'bgm/dragon_studio/long/relaxing-rain.mp3',
+    'bgm/dragon_studio/long/relaxing-rain-sounds.mp3',
+  ];
+
+  final List<String> bgmList = [
+    'bgm/dragon_studio/cozy-midnight-rain-01.mp3',
+    'bgm/dragon_studio/cozy-midnight-rain-02.mp3',
+    'bgm/dragon_studio/cozy-midnight-rain-03.mp3',
+    'bgm/dragon_studio/cozy-midnight-rain-04.mp3',
+    'bgm/dragon_studio/cozy-midnight-rain-05.mp3',
+    'bgm/dragon_studio/cozy-midnight-rain-06.mp3',
+    'bgm/dragon_studio/cozy-midnight-rain-07.mp3',
+  ];
+
+  final Random _random = Random();
+  String? _currentBgm;
+
+  Future<void> playRandomBgm() async {
+    final player = FlameAudio.bgm.audioPlayer;
+
+    // chọn bài khác bài hiện tại
+    String nextBgm;
+    do {
+      // nextBgm = bgmList[_random.nextInt(bgmList.length)];
+      nextBgm = longBgmList[_random.nextInt(longBgmList.length)];
+    } while (nextBgm == _currentBgm);
+
+    _currentBgm = nextBgm;
+
+    FlameAudio.bgm.play(nextBgm, volume: 0.45);
+
+    // 🔥 TẮT LOOP
+    // FlameAudio.bgm.audioPlayer.setReleaseMode(ReleaseMode.release);
+
+    // Khi bài hát kết thúc → phát bài tiếp
+    // FlameAudio.bgm.audioPlayer.onPlayerComplete.listen((event) {
+    //   playRandomBgm();
+    // });
+
+    double current = 0.45; // Volume hiện tại
+    const int stepCount = 60; // số bước tăng
+    final double step = (current / stepCount) * 0.2;
+    final int delay = (60 * 1000 ~/ stepCount);
+
+    for (int i = 0; i < stepCount; i++) {
+      /// Không to hẳn
+      if (current <= 0.6) {
+        current += step;
+
+        if (current < 0) {
+          current = 0;
+        }
+        await player.setVolume(current);
+        await Future.delayed(Duration(milliseconds: delay));
+        if (kDebugMode) {
+          print('[FlameAudio-delay-increase] $current - $step');
+        }
+      }
+    }
+
+    fadeOutBGM(duration: 60);
   }
 
   /// Giảm Âm Lượng Âm Thanh Trước Khi Tắt Hẳn
   Future<void> fadeOutBGM({double duration = 1.5}) async {
     final player = FlameAudio.bgm.audioPlayer;
 
-    double current = 1; // Volume hiện tại
-    const int stepCount = 30; // số bước giảm
-    final double step = current / stepCount;
+    double current = 0.6; // Volume hiện tại
+    // const int stepCount = 30; // số bước giảm
+    const int stepCount = 60; // số bước giảm
+    final double step = (current / stepCount) * 0.2;
     final int delay = (duration * 1000 ~/ stepCount);
 
     for (int i = 0; i < stepCount; i++) {
-      current -= step;
-      if (current < 0) current = 0;
-      await player.setVolume(current);
-      await Future.delayed(Duration(milliseconds: delay));
+      /// Không tắt hẳn
+      if (current >= 0.45) {
+        current -= step;
+
+        if (current < 0) {
+          current = 0;
+        }
+        await player.setVolume(current);
+        await Future.delayed(Duration(milliseconds: delay));
+        if (kDebugMode) {
+          print('[FlameAudio-delay_decrease] $current - $step');
+        }
+      }
     }
 
-    await FlameAudio.bgm.stop(); // dừng hẳn
+    // await FlameAudio.bgm.stop(); // dừng hẳn
+    await FlameAudio.bgm.stop().whenComplete(() {
+      playRandomBgm();
+      if (kDebugMode) {
+        print('[FlameAudio] playRandomBgm');
+      }
+    });
   }
 
   @override
@@ -276,11 +379,7 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: FloatingActionButton(onPressed: _incrementCounter, tooltip: 'Increment', child: const Icon(Icons.add)), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

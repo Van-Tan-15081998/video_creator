@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -843,25 +844,35 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
           prepareSecondString = prepareSecondStringTick;
 
           if (isPrepare == true) {
-            isStayFocused = false;
-            isBreakTime = false;
+            if (isStayFocused != false || isBreakTime != false) {
+              isStayFocused = false;
+              isBreakTime = false;
+
+              onPlaySFXStayFocusedBreakTime();
+            }
           } else if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getCurrentPomodoroItem?.getId == '[POMODORO_STAY_FOCUSED_SS01]' ||
               widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getCurrentPomodoroItem?.getId == '[POMODORO_STAY_FOCUSED_SS02]' ||
               widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getCurrentPomodoroItem?.getId == '[POMODORO_STAY_FOCUSED_SS03]' ||
               widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getCurrentPomodoroItem?.getId == '[POMODORO_STAY_FOCUSED_SS04]') {
             if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getCurrentPomodoroItem?.isCompletedPreparing() == true) {
-              isStayFocused = true;
-              isBreakTime = false;
-              backgroundColor = Color(0xFF00BFFF);
+              if (isStayFocused != true || isBreakTime != false) {
+                isStayFocused = true;
+                isBreakTime = false;
+                backgroundColor = Color(0xFF00BFFF);
+                onPlaySFXStayFocusedBreakTime();
+              }
             }
           } else if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getCurrentPomodoroItem?.getId == '[POMODORO_BREAK_TIME_SS01]' ||
               widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getCurrentPomodoroItem?.getId == '[POMODORO_BREAK_TIME_SS02]' ||
               widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getCurrentPomodoroItem?.getId == '[POMODORO_BREAK_TIME_SS03]' ||
               widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getCurrentPomodoroItem?.getId == '[POMODORO_BREAK_TIME_SS04]') {
             if (widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getCurrentPomodoroItem?.isCompletedPreparing() == true) {
-              isBreakTime = true;
-              isStayFocused = false;
-              backgroundColor = Color(0xFF7CFC00);
+              if (isStayFocused != false || isBreakTime != true) {
+                isBreakTime = true;
+                isStayFocused = false;
+                backgroundColor = Color(0xFF7CFC00);
+                onPlaySFXStayFocusedBreakTime();
+              }
             }
           }
         });
@@ -876,6 +887,10 @@ class _CountdownTimerContentWidgetState extends State<CountdownTimerContentWidge
   bool isStart = false;
 
   Color backgroundColor = Color(0xFFFFFFFF);
+
+  onPlaySFXStayFocusedBreakTime() {
+    FlameAudio.play('sfx/text_change/stay_focused_break_time.mp3', volume: 0.45);
+  }
 
   @override
   void dispose() {

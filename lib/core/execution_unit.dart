@@ -10,7 +10,7 @@ class ExecutionUnit with ExecutionCore {
   }
 
   ExecutionUnit({required this.onThucThi, required this.onThucThiHoanTat}) {
-    onCaiDatTienTrinhThucThi(value: SequentialExecutionProcess.onMacDinh(), caiDatUuTien: true);
+    onCaiDatTienTrinhThucThi(value: SequentialExecutionProcess.onMacDinh(), setUuTien: true);
   }
 
   /// -----
@@ -228,8 +228,8 @@ class ExecutionUnit with ExecutionCore {
   /// -----
   SequentialExecutionProcess? _tienTrinhThucThi;
   SequentialExecutionProcess? get getTienTrinhThucThi => _tienTrinhThucThi;
-  Future<void> onCaiDatTienTrinhThucThi({required SequentialExecutionProcess? value, bool? caiDatUuTien}) async {
-    if (caiDatUuTien == true) {
+  Future<void> onCaiDatTienTrinhThucThi({required SequentialExecutionProcess? value, bool? setUuTien}) async {
+    if (setUuTien == true) {
       _tienTrinhThucThi = value;
     } else {
       _tienTrinhThucThi ??= value;

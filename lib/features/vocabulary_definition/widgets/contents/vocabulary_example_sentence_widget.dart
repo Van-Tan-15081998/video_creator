@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_data_model.dart';
@@ -113,6 +114,8 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
             progressbarOpacity = 0;
             totalSecondsConst = totalSecondsConst--;
             limitedTimeProgressbar = limitedTimeProgressbarLength;
+
+            onPlaySFXVocabularyExampleDisappear();
           } else {
             isShow = true;
             isActiveTimer = true;
@@ -132,10 +135,19 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
                 }
               }
             }
+
+            onPlaySFXVocabularyExampleAppear();
           }
         });
       }
     })..start();
+  }
+
+  onPlaySFXVocabularyExampleAppear() {
+    FlameAudio.play('sfx/text_appear/vocabulary_example_appear.mp3', volume: 0.5);
+  }
+  onPlaySFXVocabularyExampleDisappear() {
+    FlameAudio.play('sfx/text_appear/vocabulary_example_disappear.mp3', volume: 0.5);
   }
 
   @override

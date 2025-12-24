@@ -7,7 +7,7 @@ class BasicIncreasingDecreasingSpeed {
   /// -----
   String? _tangGiamToc;
   String? get getTangGiamToc => _tangGiamToc;
-  Future<void> caiDatTangGiamToc({required String? value}) async {
+  Future<void> setTangGiamToc({required String? value}) async {
     _tangGiamToc = value;
     return;
   }
@@ -17,7 +17,7 @@ class BasicIncreasingDecreasingSpeed {
   /// -----
   int? _capDoTangGiamToc;
   int? get getCapDoTangGiamToc => _capDoTangGiamToc;
-  Future<void> caiDatCapDoTangGiamToc({required int? value}) async {
+  Future<void> setCapDoTangGiamToc({required int? value}) async {
     _capDoTangGiamToc = value;
     return;
   }
@@ -39,7 +39,7 @@ class BasicIncreasingDecreasingSpeed {
   /// -----
   /// TODO: Cài Đặt Tăng Tốc
   /// -----
-  Future<void> caiDatTangToc() async {
+  Future<void> setTangToc() async {
     _tangGiamToc = '[TANG_TOC]';
     return;
   }
@@ -54,7 +54,7 @@ class BasicIncreasingDecreasingSpeed {
   /// -----
   /// TODO: Cài Đặt Giảm Tốc
   /// -----
-  Future<void> caiDatGiamToc() async {
+  Future<void> setGiamToc() async {
     _tangGiamToc = '[GIAM_TOC]';
     return;
   }
@@ -67,16 +67,16 @@ class BasicIncreasingDecreasingSpeed {
   }
 
   BasicIncreasingDecreasingSpeed.onMacDinh() {
-    caiDatTangGiamToc(value: null);
+    setTangGiamToc(value: null);
   }
 
   BasicIncreasingDecreasingSpeed.tangToc({required int capDo}) {
-    caiDatTangGiamToc(value: '[TANG_TOC]');
-    caiDatCapDoTangGiamToc(value: capDo);
+    setTangGiamToc(value: '[TANG_TOC]');
+    setCapDoTangGiamToc(value: capDo);
   }
 
   BasicIncreasingDecreasingSpeed.giamToc({required int capDo}) {
-    caiDatTangGiamToc(value: '[GIAM_TOC]');
-    caiDatCapDoTangGiamToc(value: capDo);
+    setTangGiamToc(value: '[GIAM_TOC]');
+    setCapDoTangGiamToc(value: capDo);
   }
 }

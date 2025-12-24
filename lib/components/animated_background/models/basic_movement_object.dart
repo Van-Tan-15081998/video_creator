@@ -12,15 +12,15 @@ import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 
 class BasicMovementObject with ExecutionCore {
   BasicMovementObject({required AnimatedBackgroundStateManagement? animatedBackgroundStateManagement, required int? rangeDx, required int? rangeDy}) {
-    caiDatAnimatedBackgroundStateManagement(value: animatedBackgroundStateManagement);
-    caiDatRangeDx(value: rangeDx);
-    caiDatRangeDy(value: rangeDy);
+    setAnimatedBackgroundStateManagement(value: animatedBackgroundStateManagement);
+    setRangeDx(value: rangeDx);
+    setRangeDy(value: rangeDy);
 
-    caiDatChieuCaoManHinhPhiVatLy(value: getAnimatedBackgroundStateManagement?.getChieuCaoManHinhPhiVatLy);
-    caiDatChieuRongManHinhPhiVatLy(value: getAnimatedBackgroundStateManagement?.getChieuRongManHinhPhiVatLy);
+    setChieuCaoManHinhPhiVatLy(value: getAnimatedBackgroundStateManagement?.getChieuCaoManHinhPhiVatLy);
+    setChieuRongManHinhPhiVatLy(value: getAnimatedBackgroundStateManagement?.getChieuRongManHinhPhiVatLy);
 
-    caiDatDxTrongTam(value: ((getChieuRongManHinhPhiVatLy ?? 0) / 19) * (getRangeDx ?? 0));
-    caiDatDyTrongTam(value: ((getChieuCaoManHinhPhiVatLy ?? 0) / 19) * (getRangeDy ?? 0));
+    setDxTrongTam(value: ((getChieuRongManHinhPhiVatLy ?? 0) / 19) * (getRangeDx ?? 0));
+    setDyTrongTam(value: ((getChieuCaoManHinhPhiVatLy ?? 0) / 19) * (getRangeDy ?? 0));
   }
 
   /// -----
@@ -177,7 +177,7 @@ class BasicMovementObject with ExecutionCore {
 
   AnimatedBackgroundStateManagement? _animatedBackgroundStateManagement;
   AnimatedBackgroundStateManagement? get getAnimatedBackgroundStateManagement => _animatedBackgroundStateManagement;
-  Future<void> caiDatAnimatedBackgroundStateManagement({required AnimatedBackgroundStateManagement? value}) async {
+  Future<void> setAnimatedBackgroundStateManagement({required AnimatedBackgroundStateManagement? value}) async {
     _animatedBackgroundStateManagement = value;
     return;
   }
@@ -188,7 +188,7 @@ class BasicMovementObject with ExecutionCore {
   int? _rangeDx;
   int? get getRangeDx => _rangeDx;
   int get getRangeDxNotNull => _rangeDx ?? 0;
-  Future<void> caiDatRangeDx({required int? value}) async {
+  Future<void> setRangeDx({required int? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _rangeDx = value;
@@ -207,7 +207,7 @@ class BasicMovementObject with ExecutionCore {
   int? _rangeDy;
   int? get getRangeDy => _rangeDy;
   int get getRangeDyNotNull => _rangeDy ?? 0;
-  Future<void> caiDatRangeDy({required int? value}) async {
+  Future<void> setRangeDy({required int? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _rangeDy = value;
@@ -226,7 +226,7 @@ class BasicMovementObject with ExecutionCore {
   String? _maDinhDanh;
   String? get getMaDinhDanh => _maDinhDanh;
   String get getMaDinhDanhNotNull => _maDinhDanh ?? '[]';
-  Future<void> caiDatMaDinhDanh({required String? value}) async {
+  Future<void> setMaDinhDanh({required String? value}) async {
     _maDinhDanh = value;
     return;
   }
@@ -237,7 +237,7 @@ class BasicMovementObject with ExecutionCore {
   String? _maDinhDanhHinhThuc;
   String? get getMaDinhDanhHinhThuc => _maDinhDanhHinhThuc;
   String get getMaDinhDanhHinhThucNotNull => _maDinhDanhHinhThuc ?? '[]';
-  Future<void> caiDatMaDinhDanhHinhThuc({required String? value}) async {
+  Future<void> setMaDinhDanhHinhThuc({required String? value}) async {
     _maDinhDanhHinhThuc = value;
     return;
   }
@@ -248,7 +248,7 @@ class BasicMovementObject with ExecutionCore {
   String? _maDinhDanhChienDauCo;
   String? get getMaDinhDanhChienDauCo => _maDinhDanhChienDauCo;
   String get getMaDinhDanhChienDauCoNotNull => _maDinhDanhChienDauCo ?? '[]';
-  Future<void> caiDatMaDinhDanhChienDauCo({required String? value}) async {
+  Future<void> setMaDinhDanhChienDauCo({required String? value}) async {
     _maDinhDanhChienDauCo = value;
     return;
   }
@@ -258,7 +258,7 @@ class BasicMovementObject with ExecutionCore {
   /// -----
   BasicExistenceStatus? _trangThaiTonTai;
   BasicExistenceStatus? get getTrangThaiTonTai => _trangThaiTonTai;
-  Future<void> caiDatTrangThaiTonTai({required BasicExistenceStatus? value}) async {
+  Future<void> setTrangThaiTonTai({required BasicExistenceStatus? value}) async {
     _trangThaiTonTai = value;
     return;
   }
@@ -303,7 +303,7 @@ class BasicMovementObject with ExecutionCore {
   double? _bienTrai;
   double? get getBienTrai => _bienTrai;
   double get getBienTraiNotNull => _bienTrai ?? 0;
-  Future<void> caiDatBienTrai({required double? value}) async {
+  Future<void> setBienTrai({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _bienTrai = value;
@@ -322,7 +322,7 @@ class BasicMovementObject with ExecutionCore {
   double? _lichSuBienTrai;
   double? get getLichSuBienTrai => _lichSuBienTrai;
   double get getLichSuBienTraiNotNull => _lichSuBienTrai ?? 0;
-  Future<void> caiDatLichSuBienTrai({required double? value}) async {
+  Future<void> setLichSuBienTrai({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _lichSuBienTrai = value;
@@ -338,7 +338,7 @@ class BasicMovementObject with ExecutionCore {
   double? _lichSuDx;
   double? get getLichSuDx => _lichSuDx;
   double get getLichSuDxNotNull => _lichSuDx ?? 0;
-  Future<void> caiDatLichSuDx({required double? value}) async {
+  Future<void> setLichSuDx({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _lichSuDx = value;
@@ -357,7 +357,7 @@ class BasicMovementObject with ExecutionCore {
   double? _bienPhai;
   double? get getBienPhai => _bienPhai;
   double get getBienPhaiNotNull => _bienPhai ?? (getBienTraiNotNull + getChieuRongThanNotNull);
-  Future<void> caiDatBienPhai({required double? value}) async {
+  Future<void> setBienPhai({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _bienPhai = value;
@@ -376,7 +376,7 @@ class BasicMovementObject with ExecutionCore {
   double? _bienDuoi;
   double? get getBienDuoi => _bienDuoi;
   double get getBienDuoiNotNull => _bienDuoi ?? 0;
-  Future<void> caiDatBienDuoi({required double? value}) async {
+  Future<void> setBienDuoi({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _bienDuoi = value;
@@ -395,7 +395,7 @@ class BasicMovementObject with ExecutionCore {
   double? _lichSuBienDuoi;
   double? get getLichSuBienDuoi => _lichSuBienDuoi;
   double get getLichSuBienDuoiNotNull => _lichSuBienDuoi ?? 0;
-  Future<void> caiDatLichSuBienDuoi({required double? value}) async {
+  Future<void> setLichSuBienDuoi({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _lichSuBienDuoi = value;
@@ -411,7 +411,7 @@ class BasicMovementObject with ExecutionCore {
   double? _lichSuDy;
   double? get getLichSuDy => _lichSuDy;
   double get getLichSuDyNotNull => _lichSuDy ?? 0;
-  Future<void> caiDatLichSuDy({required double? value}) async {
+  Future<void> setLichSuDy({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _lichSuDy = value;
@@ -430,7 +430,7 @@ class BasicMovementObject with ExecutionCore {
   double? _bienTren;
   double? get getBienTren => _bienTren;
   double get getBienTrenNotNull => _bienTren ?? (getBienDuoiNotNull + getChieuCaoThanNotNull);
-  Future<void> caiDatBienTren({required double? value}) async {
+  Future<void> setBienTren({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _bienTren = value;
@@ -449,7 +449,7 @@ class BasicMovementObject with ExecutionCore {
   double? _chieuRongThan;
   double? get getChieuRongThan => _chieuRongThan;
   double get getChieuRongThanNotNull => _chieuRongThan ?? 0;
-  Future<void> caiDatChieuRongThan({required double? value}) async {
+  Future<void> setChieuRongThan({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _chieuRongThan = value;
@@ -465,7 +465,7 @@ class BasicMovementObject with ExecutionCore {
   double? _chieuCaoThan;
   double? get getChieuCaoThan => _chieuCaoThan;
   double get getChieuCaoThanNotNull => _chieuCaoThan ?? 0;
-  Future<void> caiDatChieuCaoThan({required double? value}) async {
+  Future<void> setChieuCaoThan({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _chieuCaoThan = value;
@@ -484,7 +484,7 @@ class BasicMovementObject with ExecutionCore {
   double? _chieuRongManHinhPhiVatLy;
   double? get getChieuRongManHinhPhiVatLy => _chieuRongManHinhPhiVatLy;
   double get getChieuRongManHinhPhiVatLyNotNull => _chieuRongManHinhPhiVatLy ?? 0;
-  Future<void> caiDatChieuRongManHinhPhiVatLy({required double? value}) async {
+  Future<void> setChieuRongManHinhPhiVatLy({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _chieuRongManHinhPhiVatLy = value;
@@ -500,7 +500,7 @@ class BasicMovementObject with ExecutionCore {
   double? _chieuCaoManHinhPhiVatLy;
   double? get getChieuCaoManHinhPhiVatLy => _chieuCaoManHinhPhiVatLy;
   double get getChieuCaoManHinhPhiVatLyNotNull => _chieuCaoManHinhPhiVatLy ?? 0;
-  Future<void> caiDatChieuCaoManHinhPhiVatLy({required double? value}) async {
+  Future<void> setChieuCaoManHinhPhiVatLy({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _chieuCaoManHinhPhiVatLy = value;
@@ -519,7 +519,7 @@ class BasicMovementObject with ExecutionCore {
   double? _dx;
   double? get getDx => _dx;
   double get getDxNotNull => _dx ?? 0;
-  Future<void> caiDatDx({required double? value}) async {
+  Future<void> setDx({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _dx = value;
@@ -538,7 +538,7 @@ class BasicMovementObject with ExecutionCore {
   double? _dy;
   double? get getDy => _dy;
   double get getDyNotNull => _dy ?? 0;
-  Future<void> caiDatDy({required double? value}) async {
+  Future<void> setDy({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _dy = value;
@@ -557,7 +557,7 @@ class BasicMovementObject with ExecutionCore {
   double? _dxTrongTam;
   double? get getDxTrongTam => _dxTrongTam;
   double get getDxTrongTamNotNull => _dxTrongTam ?? 0;
-  Future<void> caiDatDxTrongTam({required double? value}) async {
+  Future<void> setDxTrongTam({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _dxTrongTam = value;
@@ -586,11 +586,11 @@ class BasicMovementObject with ExecutionCore {
   /// -----
   /// TODO: Cài Đặt Dx Trọng Tâm Cập Nhật Biên Trái Cùng Biên Phải (Biên Theo Chiều Ngang)
   /// -----
-  Future<void> caiDatDxTrongTamCapNhatCacGiaTriBien({required double? value}) async {
+  Future<void> setDxTrongTamCapNhatCacGiaTriBien({required double? value}) async {
     /// -----
     /// TODO: Cập Nhật Lịch Sử Dx Trọng Tâm
     /// -----
-    await caiDatLichSuDxTrongTam(value: getDxTrongTam);
+    await setLichSuDxTrongTam(value: getDxTrongTam);
 
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
@@ -648,7 +648,7 @@ class BasicMovementObject with ExecutionCore {
   double? _lichSuDxTrongTam;
   double? get getLichSuDxTrongTam => _lichSuDxTrongTam;
   double get getLichSuDxTrongTamNotNull => _lichSuDxTrongTam ?? 0;
-  Future<void> caiDatLichSuDxTrongTam({required double? value}) async {
+  Future<void> setLichSuDxTrongTam({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _lichSuDxTrongTam = value;
@@ -680,7 +680,7 @@ class BasicMovementObject with ExecutionCore {
   double? _dyTrongTam;
   double? get getDyTrongTam => _dyTrongTam;
   double get getDyTrongTamNotNull => _dyTrongTam ?? 0;
-  Future<void> caiDatDyTrongTam({required double? value}) async {
+  Future<void> setDyTrongTam({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _dyTrongTam = value;
@@ -709,11 +709,11 @@ class BasicMovementObject with ExecutionCore {
   /// -----
   /// TODO: Cài Đặt Dy Trọng Tâm Cập Nhật Biên Trên Cùng Biên Dưới (Biên Theo Chiều Dọc)
   /// -----
-  Future<void> caiDatDyTrongTamCapNhatCacGiaTriBien({required double? value}) async {
+  Future<void> setDyTrongTamCapNhatCacGiaTriBien({required double? value}) async {
     /// -----
     /// TODO: Cập Nhật Lịch Sử Dy Trọng Tâm
     /// -----
-    await caiDatLichSuDyTrongTam(value: getDyTrongTam);
+    await setLichSuDyTrongTam(value: getDyTrongTam);
 
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
@@ -771,7 +771,7 @@ class BasicMovementObject with ExecutionCore {
   double? _lichSuDyTrongTam;
   double? get getLichSuDyTrongTam => _lichSuDyTrongTam;
   double get getLichSuDyTrongTamNotNull => _lichSuDyTrongTam ?? 0;
-  Future<void> caiDatLichSuDyTrongTam({required double? value}) async {
+  Future<void> setLichSuDyTrongTam({required double? value}) async {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _lichSuDyTrongTam = value;
@@ -895,8 +895,8 @@ class BasicMovementObject with ExecutionCore {
   double? _dxTrongTamNguyenBan;
   double? get getDxTrongTamNguyenBan => _dxTrongTamNguyenBan;
   double get getDxTrongTamNguyenBanNotNull => _dxTrongTamNguyenBan ?? 0;
-  void onVoidCaiDatDxTrongTamNguyenBan({required double? value, bool? caiDatUuTien}) {
-    if (caiDatUuTien == true) {
+  void onVoidCaiDatDxTrongTamNguyenBan({required double? value, bool? setUuTien}) {
+    if (setUuTien == true) {
       _dxTrongTamNguyenBan = value;
     } else {
       if (value != null && value != 0) {
@@ -937,8 +937,8 @@ class BasicMovementObject with ExecutionCore {
   double? _dyTrongTamNguyenBan;
   double? get getDyTrongTamNguyenBan => _dyTrongTamNguyenBan;
   double get getDyTrongTamNguyenBanNotNull => _dyTrongTamNguyenBan ?? 0;
-  void onVoidCaiDatDyTrongTamNguyenBan({required double? value, bool? caiDatUuTien}) {
-    if (caiDatUuTien == true) {
+  void onVoidCaiDatDyTrongTamNguyenBan({required double? value, bool? setUuTien}) {
+    if (setUuTien == true) {
       _dyTrongTamNguyenBan = value;
     } else {
       if (value != null && value != 0) {
@@ -959,8 +959,8 @@ class BasicMovementObject with ExecutionCore {
   /// -----
   bool? _vienDanKhucXaVaChamVatCan;
   bool? get getVienDanKhucXaVaChamVatCan => _vienDanKhucXaVaChamVatCan;
-  void onVoidCaiDatVienDanKhucXaVaChamVatCan({required bool? value, bool? caiDatUuTien}) async {
-    if (caiDatUuTien == true) {
+  void onVoidCaiDatVienDanKhucXaVaChamVatCan({required bool? value, bool? setUuTien}) async {
+    if (setUuTien == true) {
       _vienDanKhucXaVaChamVatCan = value;
     } else {
       _vienDanKhucXaVaChamVatCan ??= value;
@@ -986,7 +986,7 @@ class BasicMovementObject with ExecutionCore {
   BasicMovementDirection? _dinhHuongBay;
   BasicMovementDirection? get getDinhHuongBay => _dinhHuongBay;
   BasicMovementDirection get getDinhHuongBayNotNull => _dinhHuongBay ?? BasicMovementDirection.onMacDinh();
-  Future<void> caiDatDinhHuongBay({required BasicMovementDirection? value}) async {
+  Future<void> setDinhHuongBay({required BasicMovementDirection? value}) async {
     _dinhHuongBay = value;
     return;
   }
@@ -997,7 +997,7 @@ class BasicMovementObject with ExecutionCore {
   BasicSpreadMovementDirection? _dinhHuongBayLan;
   BasicSpreadMovementDirection? get getDinhHuongBayLan => _dinhHuongBayLan;
   BasicSpreadMovementDirection get getDinhHuongBayLanNotNull => _dinhHuongBayLan ?? BasicSpreadMovementDirection.onMacDinh();
-  Future<void> caiDatDinhHuongBayLan({required BasicSpreadMovementDirection? value}) async {
+  Future<void> setDinhHuongBayLan({required BasicSpreadMovementDirection? value}) async {
     _dinhHuongBayLan = value;
     return;
   }
@@ -1026,17 +1026,17 @@ class BasicMovementObject with ExecutionCore {
     switch (soNgauNhien) {
       case 1:
         {
-          await caiDatMaDinhDanhHinhThuc(value: '[HINH_THUC_SS01]');
+          await setMaDinhDanhHinhThuc(value: '[HINH_THUC_SS01]');
         }
         break;
       case 2:
         {
-          await caiDatMaDinhDanhHinhThuc(value: '[HINH_THUC_SS02]');
+          await setMaDinhDanhHinhThuc(value: '[HINH_THUC_SS02]');
         }
         break;
       case 3:
         {
-          await caiDatMaDinhDanhHinhThuc(value: '[HINH_THUC_SS03]');
+          await setMaDinhDanhHinhThuc(value: '[HINH_THUC_SS03]');
         }
         break;
     }
@@ -1067,25 +1067,25 @@ class BasicMovementObject with ExecutionCore {
     /// -----
     /// TODO: Cập nhật lịch sử
     /// -----
-    await caiDatLichSuBienTrai(value: getBienTraiNotNull);
-    await caiDatLichSuBienDuoi(value: getBienDuoiNotNull);
-    await caiDatLichSuDx(value: getDxNotNull);
-    await caiDatLichSuDy(value: getDyNotNull);
+    await setLichSuBienTrai(value: getBienTraiNotNull);
+    await setLichSuBienDuoi(value: getBienDuoiNotNull);
+    await setLichSuDx(value: getDxNotNull);
+    await setLichSuDy(value: getDyNotNull);
 
-    await caiDatBienTrai(value: bienTrai ?? getBienTraiNotNull);
-    await caiDatBienPhai(value: bienPhai ?? ((bienTrai ?? getBienTraiNotNull) + (chieuRongThan ?? getChieuRongThanNotNull)));
-    await caiDatBienDuoi(value: bienDuoi ?? getBienDuoiNotNull);
-    await caiDatBienTren(value: bienTren ?? ((bienDuoi ?? getBienDuoiNotNull) + (chieuCaoThan ?? getChieuCaoThanNotNull)));
-    await caiDatChieuRongThan(value: chieuRongThan ?? getChieuRongThanNotNull);
-    await caiDatChieuCaoThan(value: chieuCaoThan ?? getChieuCaoThanNotNull);
+    await setBienTrai(value: bienTrai ?? getBienTraiNotNull);
+    await setBienPhai(value: bienPhai ?? ((bienTrai ?? getBienTraiNotNull) + (chieuRongThan ?? getChieuRongThanNotNull)));
+    await setBienDuoi(value: bienDuoi ?? getBienDuoiNotNull);
+    await setBienTren(value: bienTren ?? ((bienDuoi ?? getBienDuoiNotNull) + (chieuCaoThan ?? getChieuCaoThanNotNull)));
+    await setChieuRongThan(value: chieuRongThan ?? getChieuRongThanNotNull);
+    await setChieuCaoThan(value: chieuCaoThan ?? getChieuCaoThanNotNull);
 
     ///
     ///
     ///
     double dxCapNhat = getBienTraiNotNull;
     double dyCapNhat = getChieuCaoManHinhPhiVatLyNotNull - getBienTrenNotNull;
-    await caiDatDx(value: dxCapNhat);
-    await caiDatDy(value: dyCapNhat);
+    await setDx(value: dxCapNhat);
+    await setDy(value: dyCapNhat);
 
     if (kDebugMode == true) {
       final double? bienTraiCapNhat = getBienTrai;
@@ -1105,8 +1105,8 @@ class BasicMovementObject with ExecutionCore {
   Future<void> onCapNhatToaDoViTri() async {
     if (getChieuRongManHinhPhiVatLy != null && getChieuRongManHinhPhiVatLy != 0) {
       if (getChieuCaoManHinhPhiVatLy != null && getChieuCaoManHinhPhiVatLy != 0) {
-        await caiDatDxTrongTamCapNhatCacGiaTriBien(value: getDxTrongTam ?? 0);
-        await caiDatDyTrongTamCapNhatCacGiaTriBien(value: getDyTrongTam ?? 0);
+        await setDxTrongTamCapNhatCacGiaTriBien(value: getDxTrongTam ?? 0);
+        await setDyTrongTamCapNhatCacGiaTriBien(value: getDyTrongTam ?? 0);
       }
     }
 

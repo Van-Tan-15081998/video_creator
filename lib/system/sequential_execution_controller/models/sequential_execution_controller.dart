@@ -414,14 +414,7 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getBackgroundImageFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: GlobalAnnouncementFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 500),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getGlobalAnnouncementFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getGlobalAnnouncementFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: BlackboardFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getBlackboardFeature?.getWindowWidget ?? Container()),
@@ -433,34 +426,13 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getPomodoroFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: PomodoroEndingConversationFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 500),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getPomodoroEndingConversationFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getPomodoroEndingConversationFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: PomodoroStartingConversationFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 500),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getPomodoroStartingConversationFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getPomodoroStartingConversationFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: VocabularySubjectFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 500),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getVocabularySubjectFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularySubjectFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: ConversationFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getConversationFeature?.getWindowWidget ?? Container()),
@@ -469,90 +441,31 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                 AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularyListFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: HelpfulStudyAdviceFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 100),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getHelpfulStudyAdviceFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getHelpfulStudyAdviceFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: HelpfulStudyAdviceRelatedToTopicFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 100),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getHelpfulStudyAdviceRelatedToTopicFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getHelpfulStudyAdviceRelatedToTopicFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: VocabularyListOverallFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 100),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getVocabularyListOverallFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 100), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularyListOverallFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: VocabularyDefinitionFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 500),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getVocabularyDefinitionFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularyDefinitionFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: VocabularyEnglishDefinitionFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 500),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getVocabularyEnglishDefinitionFeature?.getWindowWidget ?? Container(),
-                ),
-
-                /// TODO: HelpfulAdviceFeature
-                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getHelpfulAdviceFeature?.getWindowWidget ?? Container()),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularyEnglishDefinitionFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: VocabularyConversationFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 500),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getVocabularyConversationFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularyConversationFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: VocabularyParagraphFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 500),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getVocabularyParagraphFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularyParagraphFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: VocabularyTitleFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularyTitleFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: InterestingKnowledgeConversationFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 500),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getInterestingKnowledgeConversationFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getInterestingKnowledgeConversationFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: FlameWorldFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getFlameWorldFeature?.getWindowWidget ?? Container()),
@@ -561,14 +474,7 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getSceneTransitionFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: VocabularySceneTransitionFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 500),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getVocabularySceneTransitionFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularySceneTransitionFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: SystemTimelineFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getSystemTimelineFeature?.getWindowWidget ?? Container()),
@@ -576,25 +482,14 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                 /// TODO: BreakTimeSpaceFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getBreakTimeSpaceFeature?.getWindowWidget ?? Container()),
 
+                /// TODO: HelpfulAdviceFeature
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getHelpfulAdviceFeature?.getWindowWidget ?? Container()),
+
                 /// TODO: IntroductoryConversationFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 500),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getIntroductoryConversationFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getIntroductoryConversationFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: EndingConversationFeature
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 500),
-                  top: 0,
-                  left: 0,
-                  width: getSizeDx,
-                  height: getSizeDy,
-                  child: getEndingConversationFeature?.getWindowWidget ?? Container(),
-                ),
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getEndingConversationFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: IntroductionFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getIntroductionFeature?.getWindowWidget ?? Container()),

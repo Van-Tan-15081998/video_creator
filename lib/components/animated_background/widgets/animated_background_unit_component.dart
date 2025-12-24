@@ -6,7 +6,7 @@ import 'package:frame_creator_v2/components/animated_background/models/animated_
 import 'package:frame_creator_v2/components/animated_background/models/animated_icon_status.dart';
 import 'package:frame_creator_v2/components/animated_background/models/basic_movement_direction.dart';
 import 'package:frame_creator_v2/components/animated_background/models/basic_movement_object.dart';
-import 'package:frame_creator_v2/components/animated_background/widgets/movement_objects/basic_animated_icon_sprite.dart';
+import 'package:frame_creator_v2/components/animated_background/widgets/movement_objects/basic_animated_symbol_sprite.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 /// -----
@@ -17,19 +17,19 @@ class AnimatedBackgroundUnitComponent extends PositionComponent with HasVisibili
   /// TODO:
   /// -----
   AnimatedBackgroundUnitComponent({required double? chieuCaoManHinhPhiVatLy, required double? chieuRongManHinhPhiVatLy, required double? dxTrongTam, required double? dyTrongTam}) {
-    caiDatAnimatedBackgroundStateManagement(
+    setAnimatedBackgroundStateManagement(
       value: AnimatedBackgroundStateManagement(chieuCaoManHinhPhiVatLy: chieuCaoManHinhPhiVatLy, chieuRongManHinhPhiVatLy: chieuRongManHinhPhiVatLy, sizeDx: null, sizeDy: null),
     );
 
     ///
-    caiDatChieuCaoManHinhPhiVatLy(value: chieuCaoManHinhPhiVatLy);
-    caiDatChieuRongManHinhPhiVatLy(value: chieuRongManHinhPhiVatLy);
+    setChieuCaoManHinhPhiVatLy(value: chieuCaoManHinhPhiVatLy);
+    setChieuRongManHinhPhiVatLy(value: chieuRongManHinhPhiVatLy);
 
     ///
-    caiDatDxTrongTam(value: dxTrongTam);
-    caiDatDyTrongTam(value: dyTrongTam);
+    setDxTrongTam(value: dxTrongTam);
+    setDyTrongTam(value: dyTrongTam);
 
-    caiDatDinhHuongBay(value: BasicMovementDirection.onMacDinh());
+    setDinhHuongBay(value: BasicMovementDirection.onMacDinh());
   }
 
   /// -----
@@ -38,7 +38,7 @@ class AnimatedBackgroundUnitComponent extends PositionComponent with HasVisibili
   double? _chieuCaoManHinhPhiVatLy;
   double? get getChieuCaoManHinhPhiVatLy => _chieuCaoManHinhPhiVatLy;
   double get getChieuCaoManHinhPhiVatLyNotNull => _chieuCaoManHinhPhiVatLy ?? 0;
-  void caiDatChieuCaoManHinhPhiVatLy({required double? value}) {
+  void setChieuCaoManHinhPhiVatLy({required double? value}) {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _chieuCaoManHinhPhiVatLy = value;
@@ -54,7 +54,7 @@ class AnimatedBackgroundUnitComponent extends PositionComponent with HasVisibili
   double? _chieuRongManHinhPhiVatLy;
   double? get getChieuRongManHinhPhiVatLy => _chieuRongManHinhPhiVatLy;
   double get getChieuRongManHinhPhiVatLyNotNull => _chieuRongManHinhPhiVatLy ?? 0;
-  void caiDatChieuRongManHinhPhiVatLy({required double? value}) {
+  void setChieuRongManHinhPhiVatLy({required double? value}) {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _chieuRongManHinhPhiVatLy = value;
@@ -73,7 +73,7 @@ class AnimatedBackgroundUnitComponent extends PositionComponent with HasVisibili
   double? _dxTrongTam;
   double? get getDxTrongTam => _dxTrongTam;
   double get getDxTrongTamNotNull => _dxTrongTam ?? 0;
-  void caiDatDxTrongTam({required double? value}) {
+  void setDxTrongTam({required double? value}) {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _dxTrongTam = value;
@@ -97,7 +97,7 @@ class AnimatedBackgroundUnitComponent extends PositionComponent with HasVisibili
   double? _dyTrongTam;
   double? get getDyTrongTam => _dyTrongTam;
   double get getDyTrongTamNotNull => _dyTrongTam ?? 0;
-  void caiDatDyTrongTam({required double? value}) {
+  void setDyTrongTam({required double? value}) {
     if (value != null && value != 0) {
       if (value.isNaN == false && value.isFinite == true) {
         _dyTrongTam = value;
@@ -116,8 +116,8 @@ class AnimatedBackgroundUnitComponent extends PositionComponent with HasVisibili
   }
 
   void onCapNhatPosition({required double? dxTrongTam, required double? dyTrongTam}) {
-    caiDatDxTrongTam(value: dxTrongTam);
-    caiDatDyTrongTam(value: dyTrongTam);
+    setDxTrongTam(value: dxTrongTam);
+    setDyTrongTam(value: dyTrongTam);
   }
 
   @override
@@ -139,7 +139,7 @@ class AnimatedBackgroundUnitComponent extends PositionComponent with HasVisibili
   /// -----
   AnimatedBackgroundStateManagement? _animatedBackgroundStateManagement;
   AnimatedBackgroundStateManagement? get getAnimatedBackgroundStateManagement => _animatedBackgroundStateManagement;
-  Future<void> caiDatAnimatedBackgroundStateManagement({required AnimatedBackgroundStateManagement? value}) async {
+  Future<void> setAnimatedBackgroundStateManagement({required AnimatedBackgroundStateManagement? value}) async {
     _animatedBackgroundStateManagement = value;
     return;
   }
@@ -147,227 +147,227 @@ class AnimatedBackgroundUnitComponent extends PositionComponent with HasVisibili
   /// -----
   /// TODO:
   /// -----
-  BasicAnimatedIconSprite? _spriteAnimatedIconAX00Y00;
-  BasicAnimatedIconSprite? _spriteAnimatedIconAX02Y00;
-  BasicAnimatedIconSprite? _spriteAnimatedIconAX04Y00;
-  BasicAnimatedIconSprite? _spriteAnimatedIconAX06Y00;
-  BasicAnimatedIconSprite? _spriteAnimatedIconAX08Y00;
-  BasicAnimatedIconSprite? _spriteAnimatedIconAX10Y00;
-  BasicAnimatedIconSprite? _spriteAnimatedIconAX12Y00;
-  BasicAnimatedIconSprite? _spriteAnimatedIconAX14Y00;
-  BasicAnimatedIconSprite? _spriteAnimatedIconAX16Y00;
-  BasicAnimatedIconSprite? _spriteAnimatedIconAX18Y00;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconAX00Y00;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconAX02Y00;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconAX04Y00;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconAX06Y00;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconAX08Y00;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconAX10Y00;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconAX12Y00;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconAX14Y00;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconAX16Y00;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconAX18Y00;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconBX01Y01;
-  BasicAnimatedIconSprite? _spriteAnimatedIconBX03Y01;
-  BasicAnimatedIconSprite? _spriteAnimatedIconBX05Y01;
-  BasicAnimatedIconSprite? _spriteAnimatedIconBX07Y01;
-  BasicAnimatedIconSprite? _spriteAnimatedIconBX09Y01;
-  BasicAnimatedIconSprite? _spriteAnimatedIconBX11Y01;
-  BasicAnimatedIconSprite? _spriteAnimatedIconBX13Y01;
-  BasicAnimatedIconSprite? _spriteAnimatedIconBX15Y01;
-  BasicAnimatedIconSprite? _spriteAnimatedIconBX17Y01;
-  BasicAnimatedIconSprite? _spriteAnimatedIconBX19Y01;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconBX01Y01;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconBX03Y01;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconBX05Y01;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconBX07Y01;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconBX09Y01;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconBX11Y01;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconBX13Y01;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconBX15Y01;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconBX17Y01;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconBX19Y01;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconCX00Y02;
-  BasicAnimatedIconSprite? _spriteAnimatedIconCX02Y02;
-  BasicAnimatedIconSprite? _spriteAnimatedIconCX04Y02;
-  BasicAnimatedIconSprite? _spriteAnimatedIconCX06Y02;
-  BasicAnimatedIconSprite? _spriteAnimatedIconCX08Y02;
-  BasicAnimatedIconSprite? _spriteAnimatedIconCX10Y02;
-  BasicAnimatedIconSprite? _spriteAnimatedIconCX12Y02;
-  BasicAnimatedIconSprite? _spriteAnimatedIconCX14Y02;
-  BasicAnimatedIconSprite? _spriteAnimatedIconCX16Y02;
-  BasicAnimatedIconSprite? _spriteAnimatedIconCX18Y02;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconCX00Y02;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconCX02Y02;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconCX04Y02;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconCX06Y02;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconCX08Y02;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconCX10Y02;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconCX12Y02;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconCX14Y02;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconCX16Y02;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconCX18Y02;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconDX01Y03;
-  BasicAnimatedIconSprite? _spriteAnimatedIconDX03Y03;
-  BasicAnimatedIconSprite? _spriteAnimatedIconDX05Y03;
-  BasicAnimatedIconSprite? _spriteAnimatedIconDX07Y03;
-  BasicAnimatedIconSprite? _spriteAnimatedIconDX09Y03;
-  BasicAnimatedIconSprite? _spriteAnimatedIconDX11Y03;
-  BasicAnimatedIconSprite? _spriteAnimatedIconDX13Y03;
-  BasicAnimatedIconSprite? _spriteAnimatedIconDX15Y03;
-  BasicAnimatedIconSprite? _spriteAnimatedIconDX17Y03;
-  BasicAnimatedIconSprite? _spriteAnimatedIconDX19Y03;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconDX01Y03;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconDX03Y03;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconDX05Y03;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconDX07Y03;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconDX09Y03;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconDX11Y03;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconDX13Y03;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconDX15Y03;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconDX17Y03;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconDX19Y03;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconEX00Y04;
-  BasicAnimatedIconSprite? _spriteAnimatedIconEX02Y04;
-  BasicAnimatedIconSprite? _spriteAnimatedIconEX04Y04;
-  BasicAnimatedIconSprite? _spriteAnimatedIconEX06Y04;
-  BasicAnimatedIconSprite? _spriteAnimatedIconEX08Y04;
-  BasicAnimatedIconSprite? _spriteAnimatedIconEX10Y04;
-  BasicAnimatedIconSprite? _spriteAnimatedIconEX12Y04;
-  BasicAnimatedIconSprite? _spriteAnimatedIconEX14Y04;
-  BasicAnimatedIconSprite? _spriteAnimatedIconEX16Y04;
-  BasicAnimatedIconSprite? _spriteAnimatedIconEX18Y04;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconEX00Y04;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconEX02Y04;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconEX04Y04;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconEX06Y04;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconEX08Y04;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconEX10Y04;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconEX12Y04;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconEX14Y04;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconEX16Y04;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconEX18Y04;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconFX01Y05;
-  BasicAnimatedIconSprite? _spriteAnimatedIconFX03Y05;
-  BasicAnimatedIconSprite? _spriteAnimatedIconFX05Y05;
-  BasicAnimatedIconSprite? _spriteAnimatedIconFX07Y05;
-  BasicAnimatedIconSprite? _spriteAnimatedIconFX09Y05;
-  BasicAnimatedIconSprite? _spriteAnimatedIconFX11Y05;
-  BasicAnimatedIconSprite? _spriteAnimatedIconFX13Y05;
-  BasicAnimatedIconSprite? _spriteAnimatedIconFX15Y05;
-  BasicAnimatedIconSprite? _spriteAnimatedIconFX17Y05;
-  BasicAnimatedIconSprite? _spriteAnimatedIconFX19Y05;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconFX01Y05;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconFX03Y05;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconFX05Y05;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconFX07Y05;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconFX09Y05;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconFX11Y05;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconFX13Y05;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconFX15Y05;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconFX17Y05;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconFX19Y05;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconGX00Y06;
-  BasicAnimatedIconSprite? _spriteAnimatedIconGX02Y06;
-  BasicAnimatedIconSprite? _spriteAnimatedIconGX04Y06;
-  BasicAnimatedIconSprite? _spriteAnimatedIconGX06Y06;
-  BasicAnimatedIconSprite? _spriteAnimatedIconGX08Y06;
-  BasicAnimatedIconSprite? _spriteAnimatedIconGX10Y06;
-  BasicAnimatedIconSprite? _spriteAnimatedIconGX12Y06;
-  BasicAnimatedIconSprite? _spriteAnimatedIconGX14Y06;
-  BasicAnimatedIconSprite? _spriteAnimatedIconGX16Y06;
-  BasicAnimatedIconSprite? _spriteAnimatedIconGX18Y06;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconGX00Y06;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconGX02Y06;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconGX04Y06;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconGX06Y06;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconGX08Y06;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconGX10Y06;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconGX12Y06;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconGX14Y06;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconGX16Y06;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconGX18Y06;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconHX01Y07;
-  BasicAnimatedIconSprite? _spriteAnimatedIconHX03Y07;
-  BasicAnimatedIconSprite? _spriteAnimatedIconHX05Y07;
-  BasicAnimatedIconSprite? _spriteAnimatedIconHX07Y07;
-  BasicAnimatedIconSprite? _spriteAnimatedIconHX09Y07;
-  BasicAnimatedIconSprite? _spriteAnimatedIconHX11Y07;
-  BasicAnimatedIconSprite? _spriteAnimatedIconHX13Y07;
-  BasicAnimatedIconSprite? _spriteAnimatedIconHX15Y07;
-  BasicAnimatedIconSprite? _spriteAnimatedIconHX17Y07;
-  BasicAnimatedIconSprite? _spriteAnimatedIconHX19Y07;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconHX01Y07;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconHX03Y07;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconHX05Y07;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconHX07Y07;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconHX09Y07;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconHX11Y07;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconHX13Y07;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconHX15Y07;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconHX17Y07;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconHX19Y07;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconIX00Y08;
-  BasicAnimatedIconSprite? _spriteAnimatedIconIX02Y08;
-  BasicAnimatedIconSprite? _spriteAnimatedIconIX04Y08;
-  BasicAnimatedIconSprite? _spriteAnimatedIconIX06Y08;
-  BasicAnimatedIconSprite? _spriteAnimatedIconIX08Y08;
-  BasicAnimatedIconSprite? _spriteAnimatedIconIX10Y08;
-  BasicAnimatedIconSprite? _spriteAnimatedIconIX12Y08;
-  BasicAnimatedIconSprite? _spriteAnimatedIconIX14Y08;
-  BasicAnimatedIconSprite? _spriteAnimatedIconIX16Y08;
-  BasicAnimatedIconSprite? _spriteAnimatedIconIX18Y08;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconIX00Y08;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconIX02Y08;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconIX04Y08;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconIX06Y08;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconIX08Y08;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconIX10Y08;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconIX12Y08;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconIX14Y08;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconIX16Y08;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconIX18Y08;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconJX01Y09;
-  BasicAnimatedIconSprite? _spriteAnimatedIconJX03Y09;
-  BasicAnimatedIconSprite? _spriteAnimatedIconJX05Y09;
-  BasicAnimatedIconSprite? _spriteAnimatedIconJX07Y09;
-  BasicAnimatedIconSprite? _spriteAnimatedIconJX09Y09;
-  BasicAnimatedIconSprite? _spriteAnimatedIconJX11Y09;
-  BasicAnimatedIconSprite? _spriteAnimatedIconJX13Y09;
-  BasicAnimatedIconSprite? _spriteAnimatedIconJX15Y09;
-  BasicAnimatedIconSprite? _spriteAnimatedIconJX17Y09;
-  BasicAnimatedIconSprite? _spriteAnimatedIconJX19Y09;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconJX01Y09;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconJX03Y09;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconJX05Y09;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconJX07Y09;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconJX09Y09;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconJX11Y09;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconJX13Y09;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconJX15Y09;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconJX17Y09;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconJX19Y09;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconKX00Y10;
-  BasicAnimatedIconSprite? _spriteAnimatedIconKX02Y10;
-  BasicAnimatedIconSprite? _spriteAnimatedIconKX04Y10;
-  BasicAnimatedIconSprite? _spriteAnimatedIconKX06Y10;
-  BasicAnimatedIconSprite? _spriteAnimatedIconKX08Y10;
-  BasicAnimatedIconSprite? _spriteAnimatedIconKX10Y10;
-  BasicAnimatedIconSprite? _spriteAnimatedIconKX12Y10;
-  BasicAnimatedIconSprite? _spriteAnimatedIconKX14Y10;
-  BasicAnimatedIconSprite? _spriteAnimatedIconKX16Y10;
-  BasicAnimatedIconSprite? _spriteAnimatedIconKX18Y10;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconKX00Y10;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconKX02Y10;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconKX04Y10;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconKX06Y10;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconKX08Y10;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconKX10Y10;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconKX12Y10;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconKX14Y10;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconKX16Y10;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconKX18Y10;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconLX01Y11;
-  BasicAnimatedIconSprite? _spriteAnimatedIconLX03Y11;
-  BasicAnimatedIconSprite? _spriteAnimatedIconLX05Y11;
-  BasicAnimatedIconSprite? _spriteAnimatedIconLX07Y11;
-  BasicAnimatedIconSprite? _spriteAnimatedIconLX09Y11;
-  BasicAnimatedIconSprite? _spriteAnimatedIconLX11Y11;
-  BasicAnimatedIconSprite? _spriteAnimatedIconLX13Y11;
-  BasicAnimatedIconSprite? _spriteAnimatedIconLX15Y11;
-  BasicAnimatedIconSprite? _spriteAnimatedIconLX17Y11;
-  BasicAnimatedIconSprite? _spriteAnimatedIconLX19Y11;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconLX01Y11;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconLX03Y11;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconLX05Y11;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconLX07Y11;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconLX09Y11;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconLX11Y11;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconLX13Y11;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconLX15Y11;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconLX17Y11;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconLX19Y11;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconMX00Y12;
-  BasicAnimatedIconSprite? _spriteAnimatedIconMX02Y12;
-  BasicAnimatedIconSprite? _spriteAnimatedIconMX04Y12;
-  BasicAnimatedIconSprite? _spriteAnimatedIconMX06Y12;
-  BasicAnimatedIconSprite? _spriteAnimatedIconMX08Y12;
-  BasicAnimatedIconSprite? _spriteAnimatedIconMX10Y12;
-  BasicAnimatedIconSprite? _spriteAnimatedIconMX12Y12;
-  BasicAnimatedIconSprite? _spriteAnimatedIconMX14Y12;
-  BasicAnimatedIconSprite? _spriteAnimatedIconMX16Y12;
-  BasicAnimatedIconSprite? _spriteAnimatedIconMX18Y12;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconMX00Y12;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconMX02Y12;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconMX04Y12;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconMX06Y12;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconMX08Y12;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconMX10Y12;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconMX12Y12;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconMX14Y12;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconMX16Y12;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconMX18Y12;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconNX01Y13;
-  BasicAnimatedIconSprite? _spriteAnimatedIconNX03Y13;
-  BasicAnimatedIconSprite? _spriteAnimatedIconNX05Y13;
-  BasicAnimatedIconSprite? _spriteAnimatedIconNX07Y13;
-  BasicAnimatedIconSprite? _spriteAnimatedIconNX09Y13;
-  BasicAnimatedIconSprite? _spriteAnimatedIconNX11Y13;
-  BasicAnimatedIconSprite? _spriteAnimatedIconNX13Y13;
-  BasicAnimatedIconSprite? _spriteAnimatedIconNX15Y13;
-  BasicAnimatedIconSprite? _spriteAnimatedIconNX17Y13;
-  BasicAnimatedIconSprite? _spriteAnimatedIconNX19Y13;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconNX01Y13;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconNX03Y13;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconNX05Y13;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconNX07Y13;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconNX09Y13;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconNX11Y13;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconNX13Y13;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconNX15Y13;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconNX17Y13;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconNX19Y13;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconOX00Y14;
-  BasicAnimatedIconSprite? _spriteAnimatedIconOX02Y14;
-  BasicAnimatedIconSprite? _spriteAnimatedIconOX04Y14;
-  BasicAnimatedIconSprite? _spriteAnimatedIconOX06Y14;
-  BasicAnimatedIconSprite? _spriteAnimatedIconOX08Y14;
-  BasicAnimatedIconSprite? _spriteAnimatedIconOX10Y14;
-  BasicAnimatedIconSprite? _spriteAnimatedIconOX12Y14;
-  BasicAnimatedIconSprite? _spriteAnimatedIconOX14Y14;
-  BasicAnimatedIconSprite? _spriteAnimatedIconOX16Y14;
-  BasicAnimatedIconSprite? _spriteAnimatedIconOX18Y14;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconOX00Y14;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconOX02Y14;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconOX04Y14;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconOX06Y14;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconOX08Y14;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconOX10Y14;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconOX12Y14;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconOX14Y14;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconOX16Y14;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconOX18Y14;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconPX01Y15;
-  BasicAnimatedIconSprite? _spriteAnimatedIconPX03Y15;
-  BasicAnimatedIconSprite? _spriteAnimatedIconPX05Y15;
-  BasicAnimatedIconSprite? _spriteAnimatedIconPX07Y15;
-  BasicAnimatedIconSprite? _spriteAnimatedIconPX09Y15;
-  BasicAnimatedIconSprite? _spriteAnimatedIconPX11Y15;
-  BasicAnimatedIconSprite? _spriteAnimatedIconPX13Y15;
-  BasicAnimatedIconSprite? _spriteAnimatedIconPX15Y15;
-  BasicAnimatedIconSprite? _spriteAnimatedIconPX17Y15;
-  BasicAnimatedIconSprite? _spriteAnimatedIconPX19Y15;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconPX01Y15;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconPX03Y15;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconPX05Y15;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconPX07Y15;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconPX09Y15;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconPX11Y15;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconPX13Y15;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconPX15Y15;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconPX17Y15;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconPX19Y15;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconQX00Y16;
-  BasicAnimatedIconSprite? _spriteAnimatedIconQX02Y16;
-  BasicAnimatedIconSprite? _spriteAnimatedIconQX04Y16;
-  BasicAnimatedIconSprite? _spriteAnimatedIconQX06Y16;
-  BasicAnimatedIconSprite? _spriteAnimatedIconQX08Y16;
-  BasicAnimatedIconSprite? _spriteAnimatedIconQX10Y16;
-  BasicAnimatedIconSprite? _spriteAnimatedIconQX12Y16;
-  BasicAnimatedIconSprite? _spriteAnimatedIconQX14Y16;
-  BasicAnimatedIconSprite? _spriteAnimatedIconQX16Y16;
-  BasicAnimatedIconSprite? _spriteAnimatedIconQX18Y16;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconQX00Y16;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconQX02Y16;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconQX04Y16;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconQX06Y16;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconQX08Y16;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconQX10Y16;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconQX12Y16;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconQX14Y16;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconQX16Y16;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconQX18Y16;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconRX01Y17;
-  BasicAnimatedIconSprite? _spriteAnimatedIconRX03Y17;
-  BasicAnimatedIconSprite? _spriteAnimatedIconRX05Y17;
-  BasicAnimatedIconSprite? _spriteAnimatedIconRX07Y17;
-  BasicAnimatedIconSprite? _spriteAnimatedIconRX09Y17;
-  BasicAnimatedIconSprite? _spriteAnimatedIconRX11Y17;
-  BasicAnimatedIconSprite? _spriteAnimatedIconRX13Y17;
-  BasicAnimatedIconSprite? _spriteAnimatedIconRX15Y17;
-  BasicAnimatedIconSprite? _spriteAnimatedIconRX17Y17;
-  BasicAnimatedIconSprite? _spriteAnimatedIconRX19Y17;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconRX01Y17;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconRX03Y17;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconRX05Y17;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconRX07Y17;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconRX09Y17;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconRX11Y17;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconRX13Y17;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconRX15Y17;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconRX17Y17;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconRX19Y17;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconSX00Y18;
-  BasicAnimatedIconSprite? _spriteAnimatedIconSX02Y18;
-  BasicAnimatedIconSprite? _spriteAnimatedIconSX04Y18;
-  BasicAnimatedIconSprite? _spriteAnimatedIconSX06Y18;
-  BasicAnimatedIconSprite? _spriteAnimatedIconSX08Y18;
-  BasicAnimatedIconSprite? _spriteAnimatedIconSX10Y18;
-  BasicAnimatedIconSprite? _spriteAnimatedIconSX12Y18;
-  BasicAnimatedIconSprite? _spriteAnimatedIconSX14Y18;
-  BasicAnimatedIconSprite? _spriteAnimatedIconSX16Y18;
-  BasicAnimatedIconSprite? _spriteAnimatedIconSX18Y18;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconSX00Y18;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconSX02Y18;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconSX04Y18;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconSX06Y18;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconSX08Y18;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconSX10Y18;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconSX12Y18;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconSX14Y18;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconSX16Y18;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconSX18Y18;
 
-  BasicAnimatedIconSprite? _spriteAnimatedIconTX01Y19;
-  BasicAnimatedIconSprite? _spriteAnimatedIconTX03Y19;
-  BasicAnimatedIconSprite? _spriteAnimatedIconTX05Y19;
-  BasicAnimatedIconSprite? _spriteAnimatedIconTX07Y19;
-  BasicAnimatedIconSprite? _spriteAnimatedIconTX09Y19;
-  BasicAnimatedIconSprite? _spriteAnimatedIconTX11Y19;
-  BasicAnimatedIconSprite? _spriteAnimatedIconTX13Y19;
-  BasicAnimatedIconSprite? _spriteAnimatedIconTX15Y19;
-  BasicAnimatedIconSprite? _spriteAnimatedIconTX17Y19;
-  BasicAnimatedIconSprite? _spriteAnimatedIconTX19Y19;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconTX01Y19;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconTX03Y19;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconTX05Y19;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconTX07Y19;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconTX09Y19;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconTX11Y19;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconTX13Y19;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconTX15Y19;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconTX17Y19;
+  BasicAnimatedSymbolSprite? _spriteAnimatedIconTX19Y19;
 
-  List<BasicAnimatedIconSprite?> animatedIconSpriteList = [];
+  List<BasicAnimatedSymbolSprite?> animatedIconSpriteList = [];
 
   /// TODO:
   /// TODO:
@@ -601,7 +601,7 @@ class AnimatedBackgroundUnitComponent extends PositionComponent with HasVisibili
   BasicMovementDirection? _dinhHuongBay;
   BasicMovementDirection? get getDinhHuongBay => _dinhHuongBay;
   BasicMovementDirection get getDinhHuongBayNotNull => _dinhHuongBay ?? BasicMovementDirection.onMacDinh();
-  Future<void> caiDatDinhHuongBay({required BasicMovementDirection? value}) async {
+  Future<void> setDinhHuongBay({required BasicMovementDirection? value}) async {
     _dinhHuongBay = value;
     return;
   }
@@ -835,225 +835,225 @@ class AnimatedBackgroundUnitComponent extends PositionComponent with HasVisibili
     /// TODO:
     /// -----
     /// -----
-    _spriteAnimatedIconAX00Y00 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX00Y00);
-    _spriteAnimatedIconAX02Y00 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX02Y00);
-    _spriteAnimatedIconAX04Y00 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX04Y00);
-    _spriteAnimatedIconAX06Y00 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX06Y00);
-    _spriteAnimatedIconAX08Y00 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX08Y00);
-    _spriteAnimatedIconAX10Y00 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX10Y00);
-    _spriteAnimatedIconAX12Y00 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX12Y00);
-    _spriteAnimatedIconAX14Y00 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX14Y00);
-    _spriteAnimatedIconAX16Y00 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX16Y00);
-    _spriteAnimatedIconAX18Y00 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX18Y00);
+    _spriteAnimatedIconAX00Y00 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX00Y00);
+    _spriteAnimatedIconAX02Y00 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX02Y00);
+    _spriteAnimatedIconAX04Y00 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX04Y00);
+    _spriteAnimatedIconAX06Y00 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX06Y00);
+    _spriteAnimatedIconAX08Y00 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX08Y00);
+    _spriteAnimatedIconAX10Y00 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX10Y00);
+    _spriteAnimatedIconAX12Y00 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX12Y00);
+    _spriteAnimatedIconAX14Y00 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX14Y00);
+    _spriteAnimatedIconAX16Y00 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX16Y00);
+    _spriteAnimatedIconAX18Y00 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusAX18Y00);
 
-    _spriteAnimatedIconBX01Y01 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX01Y01);
-    _spriteAnimatedIconBX03Y01 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX03Y01);
-    _spriteAnimatedIconBX05Y01 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX05Y01);
-    _spriteAnimatedIconBX07Y01 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX07Y01);
-    _spriteAnimatedIconBX09Y01 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX09Y01);
-    _spriteAnimatedIconBX11Y01 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX11Y01);
-    _spriteAnimatedIconBX13Y01 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX13Y01);
-    _spriteAnimatedIconBX15Y01 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX15Y01);
-    _spriteAnimatedIconBX17Y01 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX17Y01);
-    _spriteAnimatedIconBX19Y01 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX19Y01);
+    _spriteAnimatedIconBX01Y01 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX01Y01);
+    _spriteAnimatedIconBX03Y01 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX03Y01);
+    _spriteAnimatedIconBX05Y01 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX05Y01);
+    _spriteAnimatedIconBX07Y01 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX07Y01);
+    _spriteAnimatedIconBX09Y01 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX09Y01);
+    _spriteAnimatedIconBX11Y01 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX11Y01);
+    _spriteAnimatedIconBX13Y01 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX13Y01);
+    _spriteAnimatedIconBX15Y01 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX15Y01);
+    _spriteAnimatedIconBX17Y01 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX17Y01);
+    _spriteAnimatedIconBX19Y01 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusBX19Y01);
 
-    _spriteAnimatedIconCX00Y02 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX00Y02);
-    _spriteAnimatedIconCX02Y02 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX02Y02);
-    _spriteAnimatedIconCX04Y02 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX04Y02);
-    _spriteAnimatedIconCX06Y02 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX06Y02);
-    _spriteAnimatedIconCX08Y02 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX08Y02);
-    _spriteAnimatedIconCX10Y02 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX10Y02);
-    _spriteAnimatedIconCX12Y02 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX12Y02);
-    _spriteAnimatedIconCX14Y02 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX14Y02);
-    _spriteAnimatedIconCX16Y02 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX16Y02);
-    _spriteAnimatedIconCX18Y02 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX18Y02);
+    _spriteAnimatedIconCX00Y02 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX00Y02);
+    _spriteAnimatedIconCX02Y02 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX02Y02);
+    _spriteAnimatedIconCX04Y02 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX04Y02);
+    _spriteAnimatedIconCX06Y02 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX06Y02);
+    _spriteAnimatedIconCX08Y02 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX08Y02);
+    _spriteAnimatedIconCX10Y02 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX10Y02);
+    _spriteAnimatedIconCX12Y02 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX12Y02);
+    _spriteAnimatedIconCX14Y02 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX14Y02);
+    _spriteAnimatedIconCX16Y02 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX16Y02);
+    _spriteAnimatedIconCX18Y02 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusCX18Y02);
 
-    _spriteAnimatedIconDX01Y03 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX01Y03);
-    _spriteAnimatedIconDX03Y03 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX03Y03);
-    _spriteAnimatedIconDX05Y03 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX05Y03);
-    _spriteAnimatedIconDX07Y03 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX07Y03);
-    _spriteAnimatedIconDX09Y03 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX09Y03);
-    _spriteAnimatedIconDX11Y03 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX11Y03);
-    _spriteAnimatedIconDX13Y03 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX13Y03);
-    _spriteAnimatedIconDX15Y03 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX15Y03);
-    _spriteAnimatedIconDX17Y03 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX17Y03);
-    _spriteAnimatedIconDX19Y03 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX19Y03);
+    _spriteAnimatedIconDX01Y03 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX01Y03);
+    _spriteAnimatedIconDX03Y03 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX03Y03);
+    _spriteAnimatedIconDX05Y03 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX05Y03);
+    _spriteAnimatedIconDX07Y03 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX07Y03);
+    _spriteAnimatedIconDX09Y03 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX09Y03);
+    _spriteAnimatedIconDX11Y03 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX11Y03);
+    _spriteAnimatedIconDX13Y03 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX13Y03);
+    _spriteAnimatedIconDX15Y03 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX15Y03);
+    _spriteAnimatedIconDX17Y03 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX17Y03);
+    _spriteAnimatedIconDX19Y03 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusDX19Y03);
 
-    _spriteAnimatedIconEX00Y04 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX00Y04);
-    _spriteAnimatedIconEX02Y04 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX02Y04);
-    _spriteAnimatedIconEX04Y04 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX04Y04);
-    _spriteAnimatedIconEX06Y04 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX06Y04);
-    _spriteAnimatedIconEX08Y04 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX08Y04);
-    _spriteAnimatedIconEX10Y04 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX10Y04);
-    _spriteAnimatedIconEX12Y04 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX12Y04);
-    _spriteAnimatedIconEX14Y04 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX14Y04);
-    _spriteAnimatedIconEX16Y04 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX16Y04);
-    _spriteAnimatedIconEX18Y04 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX18Y04);
+    _spriteAnimatedIconEX00Y04 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX00Y04);
+    _spriteAnimatedIconEX02Y04 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX02Y04);
+    _spriteAnimatedIconEX04Y04 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX04Y04);
+    _spriteAnimatedIconEX06Y04 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX06Y04);
+    _spriteAnimatedIconEX08Y04 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX08Y04);
+    _spriteAnimatedIconEX10Y04 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX10Y04);
+    _spriteAnimatedIconEX12Y04 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX12Y04);
+    _spriteAnimatedIconEX14Y04 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX14Y04);
+    _spriteAnimatedIconEX16Y04 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX16Y04);
+    _spriteAnimatedIconEX18Y04 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusEX18Y04);
 
-    _spriteAnimatedIconFX01Y05 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX01Y05);
-    _spriteAnimatedIconFX03Y05 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX03Y05);
-    _spriteAnimatedIconFX05Y05 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX05Y05);
-    _spriteAnimatedIconFX07Y05 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX07Y05);
-    _spriteAnimatedIconFX09Y05 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX09Y05);
-    _spriteAnimatedIconFX11Y05 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX11Y05);
-    _spriteAnimatedIconFX13Y05 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX13Y05);
-    _spriteAnimatedIconFX15Y05 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX15Y05);
-    _spriteAnimatedIconFX17Y05 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX17Y05);
-    _spriteAnimatedIconFX19Y05 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX19Y05);
+    _spriteAnimatedIconFX01Y05 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX01Y05);
+    _spriteAnimatedIconFX03Y05 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX03Y05);
+    _spriteAnimatedIconFX05Y05 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX05Y05);
+    _spriteAnimatedIconFX07Y05 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX07Y05);
+    _spriteAnimatedIconFX09Y05 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX09Y05);
+    _spriteAnimatedIconFX11Y05 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX11Y05);
+    _spriteAnimatedIconFX13Y05 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX13Y05);
+    _spriteAnimatedIconFX15Y05 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX15Y05);
+    _spriteAnimatedIconFX17Y05 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX17Y05);
+    _spriteAnimatedIconFX19Y05 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusFX19Y05);
 
-    _spriteAnimatedIconGX00Y06 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX00Y06);
-    _spriteAnimatedIconGX02Y06 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX02Y06);
-    _spriteAnimatedIconGX04Y06 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX04Y06);
-    _spriteAnimatedIconGX06Y06 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX06Y06);
-    _spriteAnimatedIconGX08Y06 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX08Y06);
-    _spriteAnimatedIconGX10Y06 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX10Y06);
-    _spriteAnimatedIconGX12Y06 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX12Y06);
-    _spriteAnimatedIconGX14Y06 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX14Y06);
-    _spriteAnimatedIconGX16Y06 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX16Y06);
-    _spriteAnimatedIconGX18Y06 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX18Y06);
+    _spriteAnimatedIconGX00Y06 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX00Y06);
+    _spriteAnimatedIconGX02Y06 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX02Y06);
+    _spriteAnimatedIconGX04Y06 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX04Y06);
+    _spriteAnimatedIconGX06Y06 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX06Y06);
+    _spriteAnimatedIconGX08Y06 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX08Y06);
+    _spriteAnimatedIconGX10Y06 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX10Y06);
+    _spriteAnimatedIconGX12Y06 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX12Y06);
+    _spriteAnimatedIconGX14Y06 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX14Y06);
+    _spriteAnimatedIconGX16Y06 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX16Y06);
+    _spriteAnimatedIconGX18Y06 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusGX18Y06);
 
-    _spriteAnimatedIconHX01Y07 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX01Y07);
-    _spriteAnimatedIconHX03Y07 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX03Y07);
-    _spriteAnimatedIconHX05Y07 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX05Y07);
-    _spriteAnimatedIconHX07Y07 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX07Y07);
-    _spriteAnimatedIconHX09Y07 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX09Y07);
-    _spriteAnimatedIconHX11Y07 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX11Y07);
-    _spriteAnimatedIconHX13Y07 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX13Y07);
-    _spriteAnimatedIconHX15Y07 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX15Y07);
-    _spriteAnimatedIconHX17Y07 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX17Y07);
-    _spriteAnimatedIconHX19Y07 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX19Y07);
+    _spriteAnimatedIconHX01Y07 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX01Y07);
+    _spriteAnimatedIconHX03Y07 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX03Y07);
+    _spriteAnimatedIconHX05Y07 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX05Y07);
+    _spriteAnimatedIconHX07Y07 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX07Y07);
+    _spriteAnimatedIconHX09Y07 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX09Y07);
+    _spriteAnimatedIconHX11Y07 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX11Y07);
+    _spriteAnimatedIconHX13Y07 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX13Y07);
+    _spriteAnimatedIconHX15Y07 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX15Y07);
+    _spriteAnimatedIconHX17Y07 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX17Y07);
+    _spriteAnimatedIconHX19Y07 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusHX19Y07);
 
-    _spriteAnimatedIconIX00Y08 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX00Y08);
-    _spriteAnimatedIconIX02Y08 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX02Y08);
-    _spriteAnimatedIconIX04Y08 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX04Y08);
-    _spriteAnimatedIconIX06Y08 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX06Y08);
-    _spriteAnimatedIconIX08Y08 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX08Y08);
-    _spriteAnimatedIconIX10Y08 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX10Y08);
-    _spriteAnimatedIconIX12Y08 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX12Y08);
-    _spriteAnimatedIconIX14Y08 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX14Y08);
-    _spriteAnimatedIconIX16Y08 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX16Y08);
-    _spriteAnimatedIconIX18Y08 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX18Y08);
+    _spriteAnimatedIconIX00Y08 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX00Y08);
+    _spriteAnimatedIconIX02Y08 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX02Y08);
+    _spriteAnimatedIconIX04Y08 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX04Y08);
+    _spriteAnimatedIconIX06Y08 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX06Y08);
+    _spriteAnimatedIconIX08Y08 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX08Y08);
+    _spriteAnimatedIconIX10Y08 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX10Y08);
+    _spriteAnimatedIconIX12Y08 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX12Y08);
+    _spriteAnimatedIconIX14Y08 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX14Y08);
+    _spriteAnimatedIconIX16Y08 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX16Y08);
+    _spriteAnimatedIconIX18Y08 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusIX18Y08);
 
-    _spriteAnimatedIconJX01Y09 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX01Y09);
-    _spriteAnimatedIconJX03Y09 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX03Y09);
-    _spriteAnimatedIconJX05Y09 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX05Y09);
-    _spriteAnimatedIconJX07Y09 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX07Y09);
-    _spriteAnimatedIconJX09Y09 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX09Y09);
-    _spriteAnimatedIconJX11Y09 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX11Y09);
-    _spriteAnimatedIconJX13Y09 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX13Y09);
-    _spriteAnimatedIconJX15Y09 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX15Y09);
-    _spriteAnimatedIconJX17Y09 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX17Y09);
-    _spriteAnimatedIconJX19Y09 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX19Y09);
+    _spriteAnimatedIconJX01Y09 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX01Y09);
+    _spriteAnimatedIconJX03Y09 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX03Y09);
+    _spriteAnimatedIconJX05Y09 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX05Y09);
+    _spriteAnimatedIconJX07Y09 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX07Y09);
+    _spriteAnimatedIconJX09Y09 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX09Y09);
+    _spriteAnimatedIconJX11Y09 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX11Y09);
+    _spriteAnimatedIconJX13Y09 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX13Y09);
+    _spriteAnimatedIconJX15Y09 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX15Y09);
+    _spriteAnimatedIconJX17Y09 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX17Y09);
+    _spriteAnimatedIconJX19Y09 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusJX19Y09);
 
-    _spriteAnimatedIconKX00Y10 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX00Y10);
-    _spriteAnimatedIconKX02Y10 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX02Y10);
-    _spriteAnimatedIconKX04Y10 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX04Y10);
-    _spriteAnimatedIconKX06Y10 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX06Y10);
-    _spriteAnimatedIconKX08Y10 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX08Y10);
-    _spriteAnimatedIconKX10Y10 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX10Y10);
-    _spriteAnimatedIconKX12Y10 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX12Y10);
-    _spriteAnimatedIconKX14Y10 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX14Y10);
-    _spriteAnimatedIconKX16Y10 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX16Y10);
-    _spriteAnimatedIconKX18Y10 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX18Y10);
+    _spriteAnimatedIconKX00Y10 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX00Y10);
+    _spriteAnimatedIconKX02Y10 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX02Y10);
+    _spriteAnimatedIconKX04Y10 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX04Y10);
+    _spriteAnimatedIconKX06Y10 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX06Y10);
+    _spriteAnimatedIconKX08Y10 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX08Y10);
+    _spriteAnimatedIconKX10Y10 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX10Y10);
+    _spriteAnimatedIconKX12Y10 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX12Y10);
+    _spriteAnimatedIconKX14Y10 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX14Y10);
+    _spriteAnimatedIconKX16Y10 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX16Y10);
+    _spriteAnimatedIconKX18Y10 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusKX18Y10);
 
-    _spriteAnimatedIconLX01Y11 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX01Y11);
-    _spriteAnimatedIconLX03Y11 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX03Y11);
-    _spriteAnimatedIconLX05Y11 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX05Y11);
-    _spriteAnimatedIconLX07Y11 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX07Y11);
-    _spriteAnimatedIconLX09Y11 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX09Y11);
-    _spriteAnimatedIconLX11Y11 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX11Y11);
-    _spriteAnimatedIconLX13Y11 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX13Y11);
-    _spriteAnimatedIconLX15Y11 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX15Y11);
-    _spriteAnimatedIconLX17Y11 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX17Y11);
-    _spriteAnimatedIconLX19Y11 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX19Y11);
+    _spriteAnimatedIconLX01Y11 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX01Y11);
+    _spriteAnimatedIconLX03Y11 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX03Y11);
+    _spriteAnimatedIconLX05Y11 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX05Y11);
+    _spriteAnimatedIconLX07Y11 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX07Y11);
+    _spriteAnimatedIconLX09Y11 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX09Y11);
+    _spriteAnimatedIconLX11Y11 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX11Y11);
+    _spriteAnimatedIconLX13Y11 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX13Y11);
+    _spriteAnimatedIconLX15Y11 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX15Y11);
+    _spriteAnimatedIconLX17Y11 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX17Y11);
+    _spriteAnimatedIconLX19Y11 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusLX19Y11);
 
-    _spriteAnimatedIconMX00Y12 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX00Y12);
-    _spriteAnimatedIconMX02Y12 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX02Y12);
-    _spriteAnimatedIconMX04Y12 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX04Y12);
-    _spriteAnimatedIconMX06Y12 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX06Y12);
-    _spriteAnimatedIconMX08Y12 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX08Y12);
-    _spriteAnimatedIconMX10Y12 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX10Y12);
-    _spriteAnimatedIconMX12Y12 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX12Y12);
-    _spriteAnimatedIconMX14Y12 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX14Y12);
-    _spriteAnimatedIconMX16Y12 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX16Y12);
-    _spriteAnimatedIconMX18Y12 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX18Y12);
+    _spriteAnimatedIconMX00Y12 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX00Y12);
+    _spriteAnimatedIconMX02Y12 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX02Y12);
+    _spriteAnimatedIconMX04Y12 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX04Y12);
+    _spriteAnimatedIconMX06Y12 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX06Y12);
+    _spriteAnimatedIconMX08Y12 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX08Y12);
+    _spriteAnimatedIconMX10Y12 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX10Y12);
+    _spriteAnimatedIconMX12Y12 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX12Y12);
+    _spriteAnimatedIconMX14Y12 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX14Y12);
+    _spriteAnimatedIconMX16Y12 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX16Y12);
+    _spriteAnimatedIconMX18Y12 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusMX18Y12);
 
-    _spriteAnimatedIconNX01Y13 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX01Y13);
-    _spriteAnimatedIconNX03Y13 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX03Y13);
-    _spriteAnimatedIconNX05Y13 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX05Y13);
-    _spriteAnimatedIconNX07Y13 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX07Y13);
-    _spriteAnimatedIconNX09Y13 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX09Y13);
-    _spriteAnimatedIconNX11Y13 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX11Y13);
-    _spriteAnimatedIconNX13Y13 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX13Y13);
-    _spriteAnimatedIconNX15Y13 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX15Y13);
-    _spriteAnimatedIconNX17Y13 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX17Y13);
-    _spriteAnimatedIconNX19Y13 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX19Y13);
+    _spriteAnimatedIconNX01Y13 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX01Y13);
+    _spriteAnimatedIconNX03Y13 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX03Y13);
+    _spriteAnimatedIconNX05Y13 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX05Y13);
+    _spriteAnimatedIconNX07Y13 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX07Y13);
+    _spriteAnimatedIconNX09Y13 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX09Y13);
+    _spriteAnimatedIconNX11Y13 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX11Y13);
+    _spriteAnimatedIconNX13Y13 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX13Y13);
+    _spriteAnimatedIconNX15Y13 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX15Y13);
+    _spriteAnimatedIconNX17Y13 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX17Y13);
+    _spriteAnimatedIconNX19Y13 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusNX19Y13);
 
-    _spriteAnimatedIconOX00Y14 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX00Y14);
-    _spriteAnimatedIconOX02Y14 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX02Y14);
-    _spriteAnimatedIconOX04Y14 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX04Y14);
-    _spriteAnimatedIconOX06Y14 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX06Y14);
-    _spriteAnimatedIconOX08Y14 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX08Y14);
-    _spriteAnimatedIconOX10Y14 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX10Y14);
-    _spriteAnimatedIconOX12Y14 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX12Y14);
-    _spriteAnimatedIconOX14Y14 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX14Y14);
-    _spriteAnimatedIconOX16Y14 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX16Y14);
-    _spriteAnimatedIconOX18Y14 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX18Y14);
+    _spriteAnimatedIconOX00Y14 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX00Y14);
+    _spriteAnimatedIconOX02Y14 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX02Y14);
+    _spriteAnimatedIconOX04Y14 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX04Y14);
+    _spriteAnimatedIconOX06Y14 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX06Y14);
+    _spriteAnimatedIconOX08Y14 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX08Y14);
+    _spriteAnimatedIconOX10Y14 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX10Y14);
+    _spriteAnimatedIconOX12Y14 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX12Y14);
+    _spriteAnimatedIconOX14Y14 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX14Y14);
+    _spriteAnimatedIconOX16Y14 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX16Y14);
+    _spriteAnimatedIconOX18Y14 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusOX18Y14);
 
-    _spriteAnimatedIconPX01Y15 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX01Y15);
-    _spriteAnimatedIconPX03Y15 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX03Y15);
-    _spriteAnimatedIconPX05Y15 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX05Y15);
-    _spriteAnimatedIconPX07Y15 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX07Y15);
-    _spriteAnimatedIconPX09Y15 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX09Y15);
-    _spriteAnimatedIconPX11Y15 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX11Y15);
-    _spriteAnimatedIconPX13Y15 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX13Y15);
-    _spriteAnimatedIconPX15Y15 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX15Y15);
-    _spriteAnimatedIconPX17Y15 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX17Y15);
-    _spriteAnimatedIconPX19Y15 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX19Y15);
+    _spriteAnimatedIconPX01Y15 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX01Y15);
+    _spriteAnimatedIconPX03Y15 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX03Y15);
+    _spriteAnimatedIconPX05Y15 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX05Y15);
+    _spriteAnimatedIconPX07Y15 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX07Y15);
+    _spriteAnimatedIconPX09Y15 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX09Y15);
+    _spriteAnimatedIconPX11Y15 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX11Y15);
+    _spriteAnimatedIconPX13Y15 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX13Y15);
+    _spriteAnimatedIconPX15Y15 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX15Y15);
+    _spriteAnimatedIconPX17Y15 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX17Y15);
+    _spriteAnimatedIconPX19Y15 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusPX19Y15);
 
-    _spriteAnimatedIconQX00Y16 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX00Y16);
-    _spriteAnimatedIconQX02Y16 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX02Y16);
-    _spriteAnimatedIconQX04Y16 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX04Y16);
-    _spriteAnimatedIconQX06Y16 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX06Y16);
-    _spriteAnimatedIconQX08Y16 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX08Y16);
-    _spriteAnimatedIconQX10Y16 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX10Y16);
-    _spriteAnimatedIconQX12Y16 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX12Y16);
-    _spriteAnimatedIconQX14Y16 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX14Y16);
-    _spriteAnimatedIconQX16Y16 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX16Y16);
-    _spriteAnimatedIconQX18Y16 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX18Y16);
+    _spriteAnimatedIconQX00Y16 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX00Y16);
+    _spriteAnimatedIconQX02Y16 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX02Y16);
+    _spriteAnimatedIconQX04Y16 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX04Y16);
+    _spriteAnimatedIconQX06Y16 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX06Y16);
+    _spriteAnimatedIconQX08Y16 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX08Y16);
+    _spriteAnimatedIconQX10Y16 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX10Y16);
+    _spriteAnimatedIconQX12Y16 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX12Y16);
+    _spriteAnimatedIconQX14Y16 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX14Y16);
+    _spriteAnimatedIconQX16Y16 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX16Y16);
+    _spriteAnimatedIconQX18Y16 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusQX18Y16);
 
-    _spriteAnimatedIconRX01Y17 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX01Y17);
-    _spriteAnimatedIconRX03Y17 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX03Y17);
-    _spriteAnimatedIconRX05Y17 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX05Y17);
-    _spriteAnimatedIconRX07Y17 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX07Y17);
-    _spriteAnimatedIconRX09Y17 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX09Y17);
-    _spriteAnimatedIconRX11Y17 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX11Y17);
-    _spriteAnimatedIconRX13Y17 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX13Y17);
-    _spriteAnimatedIconRX15Y17 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX15Y17);
-    _spriteAnimatedIconRX17Y17 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX17Y17);
-    _spriteAnimatedIconRX19Y17 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX19Y17);
+    _spriteAnimatedIconRX01Y17 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX01Y17);
+    _spriteAnimatedIconRX03Y17 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX03Y17);
+    _spriteAnimatedIconRX05Y17 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX05Y17);
+    _spriteAnimatedIconRX07Y17 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX07Y17);
+    _spriteAnimatedIconRX09Y17 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX09Y17);
+    _spriteAnimatedIconRX11Y17 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX11Y17);
+    _spriteAnimatedIconRX13Y17 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX13Y17);
+    _spriteAnimatedIconRX15Y17 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX15Y17);
+    _spriteAnimatedIconRX17Y17 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX17Y17);
+    _spriteAnimatedIconRX19Y17 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusRX19Y17);
 
-    _spriteAnimatedIconSX00Y18 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX00Y18);
-    _spriteAnimatedIconSX02Y18 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX02Y18);
-    _spriteAnimatedIconSX04Y18 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX04Y18);
-    _spriteAnimatedIconSX06Y18 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX06Y18);
-    _spriteAnimatedIconSX08Y18 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX08Y18);
-    _spriteAnimatedIconSX10Y18 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX10Y18);
-    _spriteAnimatedIconSX12Y18 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX12Y18);
-    _spriteAnimatedIconSX14Y18 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX14Y18);
-    _spriteAnimatedIconSX16Y18 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX16Y18);
-    _spriteAnimatedIconSX18Y18 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX18Y18);
+    _spriteAnimatedIconSX00Y18 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX00Y18);
+    _spriteAnimatedIconSX02Y18 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX02Y18);
+    _spriteAnimatedIconSX04Y18 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX04Y18);
+    _spriteAnimatedIconSX06Y18 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX06Y18);
+    _spriteAnimatedIconSX08Y18 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX08Y18);
+    _spriteAnimatedIconSX10Y18 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX10Y18);
+    _spriteAnimatedIconSX12Y18 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX12Y18);
+    _spriteAnimatedIconSX14Y18 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX14Y18);
+    _spriteAnimatedIconSX16Y18 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX16Y18);
+    _spriteAnimatedIconSX18Y18 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusSX18Y18);
 
-    _spriteAnimatedIconTX01Y19 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX01Y19);
-    _spriteAnimatedIconTX03Y19 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX03Y19);
-    _spriteAnimatedIconTX05Y19 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX05Y19);
-    _spriteAnimatedIconTX07Y19 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX07Y19);
-    _spriteAnimatedIconTX09Y19 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX09Y19);
-    _spriteAnimatedIconTX11Y19 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX11Y19);
-    _spriteAnimatedIconTX13Y19 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX13Y19);
-    _spriteAnimatedIconTX15Y19 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX15Y19);
-    _spriteAnimatedIconTX17Y19 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX17Y19);
-    _spriteAnimatedIconTX19Y19 = BasicAnimatedIconSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX19Y19);
+    _spriteAnimatedIconTX01Y19 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX01Y19);
+    _spriteAnimatedIconTX03Y19 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX03Y19);
+    _spriteAnimatedIconTX05Y19 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX05Y19);
+    _spriteAnimatedIconTX07Y19 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX07Y19);
+    _spriteAnimatedIconTX09Y19 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX09Y19);
+    _spriteAnimatedIconTX11Y19 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX11Y19);
+    _spriteAnimatedIconTX13Y19 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX13Y19);
+    _spriteAnimatedIconTX15Y19 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX15Y19);
+    _spriteAnimatedIconTX17Y19 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX17Y19);
+    _spriteAnimatedIconTX19Y19 = BasicAnimatedSymbolSprite(parentComponent: this, animatedIconStatus: _animatedIconStatusTX19Y19);
 
     animatedIconSpriteList = [
       _spriteAnimatedIconAX00Y00,
@@ -1282,7 +1282,7 @@ class AnimatedBackgroundUnitComponent extends PositionComponent with HasVisibili
 
   TextRenderer? _textRenderer;
   TextRenderer? get getTextRenderer => _textRenderer;
-  Future<void> caiDatTextRenderer({required TextRenderer? value}) async {
+  Future<void> setTextRenderer({required TextRenderer? value}) async {
     _textRenderer ??= value;
     return;
   }
@@ -1297,26 +1297,54 @@ class AnimatedBackgroundUnitComponent extends PositionComponent with HasVisibili
     return;
   }
 
+  /// -----
+  /// TODO:
+  /// -----
+  String? _imageSpriteSource;
+  String? get getImageSpriteSource => _imageSpriteSource;
+  Future<void> setImageSpriteSource({required String? value}) async {
+    _imageSpriteSource = value;
+    return;
+  }
+
   onChangeColor({Color? color}) {
     for (var element in animatedIconSpriteList) {
-
       if (getBackgroundAnimatedIcon?.isNotEmpty == true) {
         element?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon ?? '');
       }
 
-      element?.caiDatTextRenderer(
-        value: getTextRenderer ?? TextPaint(
-          style: TextStyle(
-            fontFamily: 'TitanOne',
-            fontSize: 50,
-            fontWeight: FontWeight.w800,
-            color: color ?? Color(0xFF000000).withValues(alpha: 0.8),
-            shadows: [BoxShadow(color: Color(0xFF1C1C1C).withValues(alpha: 0.25), offset: Offset(1, 1), blurRadius: 1)],
-          ),
-        ),
+      element?.setTextRenderer(
+        value:
+            getTextRenderer ??
+            TextPaint(
+              style: TextStyle(
+                fontFamily: 'TitanOne',
+                fontSize: 50,
+                fontWeight: FontWeight.w800,
+                color: color ?? Color(0xFF000000).withValues(alpha: 0.8),
+                shadows: [BoxShadow(color: Color(0xFF1C1C1C).withValues(alpha: 0.25), offset: Offset(1, 1), blurRadius: 1)],
+              ),
+            ),
       );
     }
   }
+  //
+  // onChangeImageSprite() async {
+  //   await _spriteAnimatedIconAX00Y00?.setImageSpriteSource(value: getImageSpriteSource);
+  //   await _spriteAnimatedIconAX00Y00?.onChangeImageSprite();
+  //
+  //   for (var element in animatedIconSpriteList) {
+  //     if (getBackgroundAnimatedIcon?.isNotEmpty == true) {
+  //       // element?.setBackgroundAnimatedIcon(value: getBackgroundAnimatedIcon ?? '');
+  //     }
+  //
+  //     // element?.setImageSpriteSource(value: getImageSpriteSource);
+  //     // element?.onChangeImageSprite();
+  //     if (element != _spriteAnimatedIconAX00Y00) {
+  //       element?.sprite = _spriteAnimatedIconAX00Y00?.sprite;
+  //     }
+  //   }
+  // }
 
   onChangeAngle({double? angle}) {
     for (var element in animatedIconSpriteList) {

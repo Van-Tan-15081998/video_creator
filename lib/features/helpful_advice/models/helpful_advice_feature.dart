@@ -8,6 +8,8 @@ import 'package:frame_creator_v2/state_managements/system_state_management.dart'
 
 class HelpfulAdviceFeature with ExecutionCore, WindowFeature {
   HelpfulAdviceFeature({required SystemStateManagement? systemStateManagement, required double? sizeDx, required double? sizeDy}) {
+    setWindowId(value: '[helpful_advice_feature]', isPriorityOverride: true);
+
     setSystemStateManagement(value: systemStateManagement);
     setSizeDx(value: sizeDx, isPriorityOverride: true);
     setSizeDy(value: sizeDy, isPriorityOverride: true);

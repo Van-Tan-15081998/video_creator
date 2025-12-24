@@ -7,7 +7,7 @@ class BasicMovementDirection {
   /// -----
   String? _dinhHuong;
   String? get getDinhHuong => _dinhHuong;
-  void caiDatDinhHuong({required String? value}) {
+  void setDinhHuong({required String? value}) {
     _dinhHuong = value;
     return;
   }
@@ -59,18 +59,18 @@ class BasicMovementDirection {
   }
 
   BasicMovementDirection.onMacDinh() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI]');
   }
 
   /// -----
   /// TODO: Định Hướng Theo Trên Xuống Dưới
   /// -----
   BasicMovementDirection.dinhHuongTheoTrenXuongDuoi() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI]');
   }
 
-  void caiDatDinhHuongTheoTrenXuongDuoi() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI]');
+  void setDinhHuongTheoTrenXuongDuoi() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI]');
     return;
   }
 
@@ -85,11 +85,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Trên Xuống Dưới Lệch Trái
   /// -----
   BasicMovementDirection.dinhHuongTheoTrenXuongDuoiLechTrai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_TRAI]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_TRAI]');
   }
 
-  void caiDatDinhHuongTheoTrenXuongDuoiLechTrai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_TRAI]');
+  void setDinhHuongTheoTrenXuongDuoiLechTrai() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_TRAI]');
     return;
   }
 
@@ -104,11 +104,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Trên Xuống Dưới Lệch Phải
   /// -----
   BasicMovementDirection.dinhHuongTheoTrenXuongDuoiLechPhai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_PHAI]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_PHAI]');
   }
 
-  void caiDatDinhHuongTheoTrenXuongDuoiLechPhai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_PHAI]');
+  void setDinhHuongTheoTrenXuongDuoiLechPhai() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_TREN_XUONG_DUOI_LECH_PHAI]');
     return;
   }
 
@@ -123,11 +123,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Dưới Lên Trên
   /// -----
   BasicMovementDirection.dinhHuongTheoDuoiLenTren() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_LEN_TREN]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_DUOI_LEN_TREN]');
   }
 
-  void caiDatDinhHuongTheoDuoiLenTren() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_LEN_TREN]');
+  void setDinhHuongTheoDuoiLenTren() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_DUOI_LEN_TREN]');
     return;
   }
 
@@ -142,11 +142,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Trái Sang Phải
   /// -----
   BasicMovementDirection.dinhHuongTheoTraiSangPhai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TRAI_SANG_PHAI]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_TRAI_SANG_PHAI]');
   }
 
-  void caiDatDinhHuongTheoTraiSangPhai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TRAI_SANG_PHAI]');
+  void setDinhHuongTheoTraiSangPhai() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_TRAI_SANG_PHAI]');
     return;
   }
 
@@ -161,11 +161,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Phải Sang Trái
   /// -----
   BasicMovementDirection.dinhHuongTheoPhaiSangTrai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHAI_SANG_TRAI]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHAI_SANG_TRAI]');
   }
 
-  void caiDatDinhHuongTheoPhaiSangTrai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHAI_SANG_TRAI]');
+  void setDinhHuongTheoPhaiSangTrai() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHAI_SANG_TRAI]');
     return;
   }
 
@@ -180,11 +180,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo [Trên Trái] Sang [Dưới Phải]
   /// -----
   BasicMovementDirection.dinhHuongTheoTrenTraiSangDuoiPhai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_TRAI_SANG_DUOI_PHAI]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_TREN_TRAI_SANG_DUOI_PHAI]');
   }
 
-  void caiDatDinhHuongTheoTrenTraiSangDuoiPhai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_TRAI_SANG_DUOI_PHAI]');
+  void setDinhHuongTheoTrenTraiSangDuoiPhai() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_TREN_TRAI_SANG_DUOI_PHAI]');
     return;
   }
 
@@ -199,11 +199,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo [Dưới Trái] Sang [Trên Phải]
   /// -----
   BasicMovementDirection.dinhHuongTheoDuoiTraiSangTrenPhai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_TRAI_SANG_TREN_PHAI]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_DUOI_TRAI_SANG_TREN_PHAI]');
   }
 
-  void caiDatDinhHuongTheoDuoiTraiSangTrenPhai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_TRAI_SANG_TREN_PHAI]');
+  void setDinhHuongTheoDuoiTraiSangTrenPhai() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_DUOI_TRAI_SANG_TREN_PHAI]');
     return;
   }
 
@@ -218,11 +218,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo [Trên Phải] Sang [Dưới Trái]
   /// -----
   BasicMovementDirection.dinhHuongTheoTrenPhaiSangDuoiTrai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_PHAI_SANG_DUOI_TRAI]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_TREN_PHAI_SANG_DUOI_TRAI]');
   }
 
-  void caiDatDinhHuongTheoTrenPhaiSangDuoiTrai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TREN_PHAI_SANG_DUOI_TRAI]');
+  void setDinhHuongTheoTrenPhaiSangDuoiTrai() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_TREN_PHAI_SANG_DUOI_TRAI]');
     return;
   }
 
@@ -237,11 +237,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo [Dưới Phải] Sang [Trên Trái]
   /// -----
   BasicMovementDirection.dinhHuongTheoDuoiPhaiSangTrenTrai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_PHAI_SANG_TREN_TRAI]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_DUOI_PHAI_SANG_TREN_TRAI]');
   }
 
-  void caiDatDinhHuongTheoDuoiPhaiSangTrenTrai() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DUOI_PHAI_SANG_TREN_TRAI]');
+  void setDinhHuongTheoDuoiPhaiSangTrenTrai() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_DUOI_PHAI_SANG_TREN_TRAI]');
     return;
   }
 
@@ -256,11 +256,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Dựa Theo Chỉ Số Tăng Tiến
   /// -----
   BasicMovementDirection.dinhHuongTheoChiSoTangTien() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_CHI_SO_TANG_TIEN]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_CHI_SO_TANG_TIEN]');
   }
 
-  void caiDatDinhHuongTheoChiSoTangTien() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_CHI_SO_TANG_TIEN]');
+  void setDinhHuongTheoChiSoTangTien() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_CHI_SO_TANG_TIEN]');
     return;
   }
 
@@ -276,11 +276,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Đoạn Đường Bay Thuộc Kịch Bản
   /// -----
   BasicMovementDirection.dinhHuongTheoDoanDuongBayThuocKichBan() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_KICH_BAN]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_KICH_BAN]');
   }
 
-  void caiDatDinhHuongTheoDoanDuongBayThuocKichBan() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_KICH_BAN]');
+  void setDinhHuongTheoDoanDuongBayThuocKichBan() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_KICH_BAN]');
     return;
   }
 
@@ -296,11 +296,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Đoạn Đường Bay Thuộc Lịch Sử Bay
   /// -----
   BasicMovementDirection.dinhHuongTheoDoanDuongBayThuocLichSuBay() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_LICH_SU_BAY]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_LICH_SU_BAY]');
   }
 
-  void caiDatDinhHuongTheoDoanDuongBayThuocLichSuBay() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_LICH_SU_BAY]');
+  void setDinhHuongTheoDoanDuongBayThuocLichSuBay() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_DOAN_DUONG_BAY_THUOC_LICH_SU_BAY]');
     return;
   }
 
@@ -315,11 +315,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Vị Trí Chiến Đấu Cơ Giai Đoạn Bắt Đầu Bán Hành Trình
   /// -----
   BasicMovementDirection.dinhHuongTheoViTriChienDauCoGiaiDoanBanHanhTrinh() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CO_GIAI_DOAN_BAN_HANH_TRINH]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CO_GIAI_DOAN_BAN_HANH_TRINH]');
   }
 
-  void caiDatDinhHuongTheoViTriChienDauCoGiaiDoanBanHanhTrinh() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CO_GIAI_DOAN_BAN_HANH_TRINH]');
+  void setDinhHuongTheoViTriChienDauCoGiaiDoanBanHanhTrinh() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CO_GIAI_DOAN_BAN_HANH_TRINH]');
     return;
   }
 
@@ -340,11 +340,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Vị Trí Xuất Phát Nguyên Bản Của Chiến Đấu Cơ
   /// -----
   BasicMovementDirection.dinhHuongTheoViTriXuatPhatNguyenBanChienDauCo() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
   }
 
-  void caiDatDinhHuongTheoViTriXuatPhatNguyenBanChienDauCo() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
+  void setDinhHuongTheoViTriXuatPhatNguyenBanChienDauCo() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
     return;
   }
 
@@ -359,11 +359,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Vị Trí Chiến Đấu Của Chiến Đấu Cơ
   /// -----
   BasicMovementDirection.dinhHuongTheoViTriChienDauChienDauCo() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CHIEN_DAU_CO]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CHIEN_DAU_CO]');
   }
 
-  void caiDatDinhHuongTheoViTriChienDauChienDauCo() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CHIEN_DAU_CO]');
+  void setDinhHuongTheoViTriChienDauChienDauCo() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_CHIEN_DAU_CHIEN_DAU_CO]');
     return;
   }
 
@@ -378,11 +378,11 @@ class BasicMovementDirection {
   /// -----
   /// -----
   BasicMovementDirection.dinhHuongTheoTraiSangPhaiViTriXuatPhatNguyenBanChienDauCo() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TRAI_SANG_PHAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_TRAI_SANG_PHAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
   }
 
-  void caiDatDinhHuongTheoTraiSangPhaiViTriXuatPhatNguyenBanChienDauCo() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_TRAI_SANG_PHAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
+  void setDinhHuongTheoTraiSangPhaiViTriXuatPhatNguyenBanChienDauCo() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_TRAI_SANG_PHAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
     return;
   }
 
@@ -397,11 +397,11 @@ class BasicMovementDirection {
   /// -----
   /// -----
   BasicMovementDirection.dinhHuongTheoPhaiSangTraiViTriXuatPhatNguyenBanChienDauCo() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHAI_SANG_TRAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHAI_SANG_TRAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
   }
 
-  void caiDatDinhHuongTheoPhaiSangTraiViTriXuatPhatNguyenBanChienDauCo() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHAI_SANG_TRAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
+  void setDinhHuongTheoPhaiSangTraiViTriXuatPhatNguyenBanChienDauCo() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHAI_SANG_TRAI_VI_TRI_XUAT_PHAT_NGUYEN_BAN_CHIEN_DAU_CO]');
     return;
   }
 
@@ -422,11 +422,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Phương Thức X Siêu Cấp SS01
   /// -----
   BasicMovementDirection.dinhHuongTheoPhuongThucXSieuCapSs01() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS01]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS01]');
   }
 
-  void caiDatDinhHuongTheoPhuongThucXSieuCapSs01() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS01]');
+  void setDinhHuongTheoPhuongThucXSieuCapSs01() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS01]');
     return;
   }
 
@@ -441,11 +441,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Phương Thức X Siêu Cấp SS02
   /// -----
   BasicMovementDirection.dinhHuongTheoPhuongThucXSieuCapSs02() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS02]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS02]');
   }
 
-  void caiDatDinhHuongTheoPhuongThucXSieuCapSs02() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS02]');
+  void setDinhHuongTheoPhuongThucXSieuCapSs02() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS02]');
     return;
   }
 
@@ -460,11 +460,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Phương Thức X Siêu Cấp SS03
   /// -----
   BasicMovementDirection.dinhHuongTheoPhuongThucXSieuCapSs03() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS03]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS03]');
   }
 
-  void caiDatDinhHuongTheoPhuongThucXSieuCapSs03() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS03]');
+  void setDinhHuongTheoPhuongThucXSieuCapSs03() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS03]');
     return;
   }
 
@@ -479,11 +479,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Phương Thức X Siêu Cấp SS04
   /// -----
   BasicMovementDirection.dinhHuongTheoPhuongThucXSieuCapSs04() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS04]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS04]');
   }
 
-  void caiDatDinhHuongTheoPhuongThucXSieuCapSs04() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS04]');
+  void setDinhHuongTheoPhuongThucXSieuCapSs04() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS04]');
     return;
   }
 
@@ -498,11 +498,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Phương Thức X Siêu Cấp SS05
   /// -----
   BasicMovementDirection.dinhHuongTheoPhuongThucXSieuCapSs05() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS05]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS05]');
   }
 
-  void caiDatDinhHuongTheoPhuongThucXSieuCapSs05() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS05]');
+  void setDinhHuongTheoPhuongThucXSieuCapSs05() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS05]');
     return;
   }
 
@@ -517,11 +517,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Phương Thức X Siêu Cấp SS06
   /// -----
   BasicMovementDirection.dinhHuongTheoPhuongThucXSieuCapSs06() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS06]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS06]');
   }
 
-  void caiDatDinhHuongTheoPhuongThucXSieuCapSs06() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS06]');
+  void setDinhHuongTheoPhuongThucXSieuCapSs06() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS06]');
     return;
   }
 
@@ -536,11 +536,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Phương Thức X Siêu Cấp SS07
   /// -----v
   BasicMovementDirection.dinhHuongTheoPhuongThucXSieuCapSs07() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS07]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS07]');
   }
 
-  void caiDatDinhHuongTheoPhuongThucXSieuCapSs07() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS07]');
+  void setDinhHuongTheoPhuongThucXSieuCapSs07() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS07]');
     return;
   }
 
@@ -555,11 +555,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Phương Thức X Siêu Cấp SS08
   /// -----
   BasicMovementDirection.dinhHuongTheoPhuongThucXSieuCapSs08() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS08]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS08]');
   }
 
-  void caiDatDinhHuongTheoPhuongThucXSieuCapSs08() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS08]');
+  void setDinhHuongTheoPhuongThucXSieuCapSs08() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS08]');
     return;
   }
 
@@ -574,11 +574,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Phương Thức X Siêu Cấp SS06
   /// -----
   BasicMovementDirection.dinhHuongTheoPhuongThucXSieuCapSs09() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS09]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS09]');
   }
 
-  void caiDatDinhHuongTheoPhuongThucXSieuCapSs09() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS09]');
+  void setDinhHuongTheoPhuongThucXSieuCapSs09() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS09]');
     return;
   }
 
@@ -593,11 +593,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Phương Thức X Siêu Cấp SS10
   /// -----
   BasicMovementDirection.dinhHuongTheoPhuongThucXSieuCapSs10() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS10]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS10]');
   }
 
-  void caiDatDinhHuongTheoPhuongThucXSieuCapSs10() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS10]');
+  void setDinhHuongTheoPhuongThucXSieuCapSs10() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_PHUONG_THUC_X_SIEU_CAP_SS10]');
     return;
   }
 
@@ -612,11 +612,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Vị Trí Phương Tiện Lấy Mục Tiêu
   /// -----
   BasicMovementDirection.dinhHuongTheoViTriPhuongTienLayMucTieu() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_PHUONG_TIEN_LAY_MUC_TIEU]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_PHUONG_TIEN_LAY_MUC_TIEU]');
   }
 
-  void caiDatDinhHuongTheoViTriPhuongTienLayMucTieu() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_PHUONG_TIEN_LAY_MUC_TIEU]');
+  void setDinhHuongTheoViTriPhuongTienLayMucTieu() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_VI_TRI_PHUONG_TIEN_LAY_MUC_TIEU]');
     return;
   }
 
@@ -631,11 +631,11 @@ class BasicMovementDirection {
   /// TODO: Định Hướng Theo Quán Tính Lịch Sử Di Chuyển
   /// -----
   BasicMovementDirection.dinhHuongTheoQuanTinhLichSuDiChuyen() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_QUAN_TINH_LICH_SU_DI_CHUYEN]');
+    setDinhHuong(value: '[DINH_HUONG_THEO_QUAN_TINH_LICH_SU_DI_CHUYEN]');
   }
 
-  void caiDatDinhHuongTheoQuanTinhLichSuDiChuyen() {
-    caiDatDinhHuong(value: '[DINH_HUONG_THEO_QUAN_TINH_LICH_SU_DI_CHUYEN]');
+  void setDinhHuongTheoQuanTinhLichSuDiChuyen() {
+    setDinhHuong(value: '[DINH_HUONG_THEO_QUAN_TINH_LICH_SU_DI_CHUYEN]');
     return;
   }
 

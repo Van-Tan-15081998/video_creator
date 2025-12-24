@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:animate_do/animate_do.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_data_model.dart';
@@ -167,6 +168,8 @@ class _VocabularyParagraphContentWidgetState extends State<VocabularyParagraphCo
                 }
               }
             }
+
+            onPlaySFXVocabularyParagraphExampleAppear();
           });
         }
       }
@@ -177,6 +180,10 @@ class _VocabularyParagraphContentWidgetState extends State<VocabularyParagraphCo
   List<String> wordListSS02 = [];
   List<String> wordListSS03 = [];
   List<WidgetSpan> wordWidgetSpan = [];
+
+  onPlaySFXVocabularyParagraphExampleAppear() {
+    FlameAudio.play('sfx/text_appear/vocabulary_paragraph_example_appear2.mp3', volume: 0.45);
+  }
 
   @override
   void dispose() {

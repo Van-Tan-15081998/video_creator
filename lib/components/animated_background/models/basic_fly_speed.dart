@@ -7,11 +7,11 @@ import 'package:frame_creator_v2/components/animated_background/models/basic_spe
 /// -----
 class BasicFlySpeed extends BasicSpeed {
   BasicFlySpeed({required double tocDo}) {
-    caiDatTocDo(value: tocDo);
+    setTocDo(value: tocDo);
   }
 
   BasicFlySpeed.onMacDinh() {
-    caiDatTocDo(value: 1.000);
+    setTocDo(value: 1.000);
   }
 
   /// -----
@@ -20,7 +20,7 @@ class BasicFlySpeed extends BasicSpeed {
   @override
   Future<void> xuLyTangGiamTocDo({required BasicFirstSpeed? tocDoCuongChe}) async {
     if (tocDoCuongChe?.getTocDoCuongChe != null) {
-      await caiDatTocDo(value: tocDoCuongChe?.getTocDoCuongChe?.getTocDo ?? 1.000);
+      await setTocDo(value: tocDoCuongChe?.getTocDoCuongChe?.getTocDo ?? 1.000);
     } else {
       if (await tocDoCuongChe?.getHeSoTangGiamTocDo?.isTangToc() == true) {
         switch (tocDoCuongChe?.getHeSoTangGiamTocDo?.getCapDoTangGiamToc ?? 1) {
@@ -157,7 +157,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.001;
 
     if ((getKhoangCach() + donViTocDoTangTien) <= (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() + donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() + donViTocDoTangTien);
     }
 
     return;
@@ -168,7 +168,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.020;
 
     if ((getKhoangCach() + donViTocDoTangTien) <= (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() + donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() + donViTocDoTangTien);
     }
 
     return;
@@ -179,7 +179,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.030;
 
     if ((getKhoangCach() + donViTocDoTangTien) <= (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() + donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() + donViTocDoTangTien);
     }
 
     return;
@@ -190,7 +190,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.040;
 
     if ((getKhoangCach() + donViTocDoTangTien) <= (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() + donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() + donViTocDoTangTien);
     }
 
     return;
@@ -201,7 +201,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.050;
 
     if ((getKhoangCach() + donViTocDoTangTien) <= (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() + donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() + donViTocDoTangTien);
     }
 
     return;
@@ -212,7 +212,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.060;
 
     if ((getKhoangCach() + donViTocDoTangTien) <= (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() + donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() + donViTocDoTangTien);
     }
 
     return;
@@ -223,7 +223,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.070;
 
     if ((getKhoangCach() + donViTocDoTangTien) <= (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() + donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() + donViTocDoTangTien);
     }
 
     return;
@@ -234,7 +234,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.080;
 
     if ((getKhoangCach() + donViTocDoTangTien) <= (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() + donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() + donViTocDoTangTien);
     }
 
     return;
@@ -245,7 +245,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.090;
 
     if ((getKhoangCach() + donViTocDoTangTien) <= (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() + donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() + donViTocDoTangTien);
     }
 
     return;
@@ -256,7 +256,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.100;
 
     if ((getKhoangCach() + donViTocDoTangTien) <= (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() + donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() + donViTocDoTangTien);
     }
 
     return;
@@ -273,7 +273,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.001;
 
     if ((getKhoangCach() - donViTocDoTangTien) > (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() - donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() - donViTocDoTangTien);
     }
 
     return;
@@ -284,7 +284,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.020;
 
     if ((getKhoangCach() - donViTocDoTangTien) > (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() - donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() - donViTocDoTangTien);
     }
 
     return;
@@ -295,7 +295,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.030;
 
     if ((getKhoangCach() - donViTocDoTangTien) > (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() - donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() - donViTocDoTangTien);
     }
 
     return;
@@ -306,7 +306,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.040;
 
     if ((getKhoangCach() - donViTocDoTangTien) > (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() - donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() - donViTocDoTangTien);
     }
 
     return;
@@ -317,7 +317,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.050;
 
     if ((getKhoangCach() - donViTocDoTangTien) > (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() - donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() - donViTocDoTangTien);
     }
 
     return;
@@ -328,7 +328,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.060;
 
     if ((getKhoangCach() - donViTocDoTangTien) > (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() - donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() - donViTocDoTangTien);
     }
 
     return;
@@ -339,7 +339,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.070;
 
     if ((getKhoangCach() - donViTocDoTangTien) > (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() - donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() - donViTocDoTangTien);
     }
 
     return;
@@ -350,7 +350,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.080;
 
     if ((getKhoangCach() - donViTocDoTangTien) > (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() - donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() - donViTocDoTangTien);
     }
 
     return;
@@ -361,7 +361,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.090;
 
     if ((getKhoangCach() - donViTocDoTangTien) > (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() - donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() - donViTocDoTangTien);
     }
 
     return;
@@ -372,7 +372,7 @@ class BasicFlySpeed extends BasicSpeed {
     const double donViTocDoTangTien = 0.100;
 
     if ((getKhoangCach() - donViTocDoTangTien) > (tocDoCuongChe?.getTocDoToiDa?.getKhoangCach() ?? 1.0)) {
-      await caiDatTocDo(value: getKhoangCach() - donViTocDoTangTien);
+      await setTocDo(value: getKhoangCach() - donViTocDoTangTien);
     }
 
     return;

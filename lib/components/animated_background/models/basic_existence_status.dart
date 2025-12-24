@@ -4,7 +4,7 @@
 class BasicExistenceStatus {
   String? _trangThai;
   String? get getTrangThai => _trangThai;
-  Future<void> caiDatTrangThai({required String? value}) async {
+  Future<void> setTrangThai({required String? value}) async {
     _trangThai = value;
     return;
   }
@@ -27,17 +27,17 @@ class BasicExistenceStatus {
   /// TODO:
   /// -----
   BasicExistenceStatus.onMacDinh() {
-    caiDatNguyenBan();
+    setNguyenBan();
   }
 
   /// -----
   /// TODO: Trạng Thái => Trạng Thái Nguyên Bản
   /// -----
   BasicExistenceStatus.nguyenBan() {
-    caiDatTrangThai(value: '[NGUYEN_BAN]');
+    setTrangThai(value: '[NGUYEN_BAN]');
   }
-  Future<void> caiDatNguyenBan() async {
-    caiDatTrangThai(value: '[NGUYEN_BAN]');
+  Future<void> setNguyenBan() async {
+    setTrangThai(value: '[NGUYEN_BAN]');
     return;
   }
 
@@ -59,15 +59,15 @@ class BasicExistenceStatus {
   /// TODO: Trạng Thái => Khởi Tạo Hoàn Tất
   /// -----
   BasicExistenceStatus.khoiTaoHoanTat() {
-    caiDatTrangThai(value: '[KHOI_TAO_HOAN_TAT]');
+    setTrangThai(value: '[KHOI_TAO_HOAN_TAT]');
   }
-  Future<void> caiDatKhoiTaoHoanTat() async {
-    caiDatTrangThai(value: '[KHOI_TAO_HOAN_TAT]');
+  Future<void> setKhoiTaoHoanTat() async {
+    setTrangThai(value: '[KHOI_TAO_HOAN_TAT]');
     return;
   }
 
   void onVoidCaiDatKhoiTaoHoanTat() {
-    caiDatTrangThai(value: '[KHOI_TAO_HOAN_TAT]');
+    setTrangThai(value: '[KHOI_TAO_HOAN_TAT]');
     return;
   }
 
@@ -82,15 +82,15 @@ class BasicExistenceStatus {
   /// TODO: Trạng Thái => Đang Kích Hoạt
   /// -----
   BasicExistenceStatus.dangKichHoat() {
-    caiDatTrangThai(value: '[DANG_KICH_HOAT]');
+    setTrangThai(value: '[DANG_KICH_HOAT]');
   }
-  Future<void> caiDatDangKichHoat() async {
-    caiDatTrangThai(value: '[DANG_KICH_HOAT]');
+  Future<void> setDangKichHoat() async {
+    setTrangThai(value: '[DANG_KICH_HOAT]');
     return;
   }
 
   void onVoidCaiDatDangKichHoat() {
-    caiDatTrangThai(value: '[DANG_KICH_HOAT]');
+    setTrangThai(value: '[DANG_KICH_HOAT]');
     return;
   }
 
@@ -105,15 +105,15 @@ class BasicExistenceStatus {
   /// TODO: Trạng Thái => Hủy Hoàn Tất
   /// -----
   BasicExistenceStatus.huyHoanTat() {
-    caiDatTrangThai(value: '[HUY_HOAN_TAT]');
+    setTrangThai(value: '[HUY_HOAN_TAT]');
   }
-  Future<void> caiDatHuyHoanTat() async {
-    caiDatTrangThai(value: '[HUY_HOAN_TAT]');
+  Future<void> setHuyHoanTat() async {
+    setTrangThai(value: '[HUY_HOAN_TAT]');
     return;
   }
 
   void onVoidCaiDatHuyHoanTat() {
-    caiDatTrangThai(value: '[HUY_HOAN_TAT]');
+    setTrangThai(value: '[HUY_HOAN_TAT]');
     return;
   }
 

@@ -34,6 +34,7 @@ class _HelpfulAdviceAnimatedBackgroundWidgetState extends State<HelpfulAdviceAni
           ),
         ),
         backgroundAnimatedIcon: '🛡',
+        imageSpriteSource: null,
         movementUnit: 0.5
       ),
     );

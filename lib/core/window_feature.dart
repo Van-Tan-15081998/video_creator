@@ -1,9 +1,25 @@
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 
 /// -----
 /// TODO:
 /// -----
 mixin WindowFeature {
+  /// -----
+  /// TODO:
+  /// -----
+  String? _windowId;
+  String? get getWindowId => _windowId;
+  void setWindowId({required String? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _windowId = value;
+    } else {
+      _windowId ??= value;
+    }
+
+    return;
+  }
+
   /// -----
   /// TODO:
   /// -----
@@ -455,108 +471,149 @@ mixin WindowFeature {
   }
 
   void onDeactivateWindow({VoidCallback? onActivatedWindowAsParameter, VoidCallback? onDeactivatedWindowAsParameter}) {
-    if (onActivatedWindowAsParameter != null) {
-      onActivatedWindow = onActivatedWindowAsParameter;
-    }
-
-    if (onDeactivatedWindowAsParameter != null) {
-      onDeactivatedWindow = onDeactivatedWindowAsParameter;
-    }
-
-    if (getConditionActiveByDirection == '[LEFT]') {
-      if (getInActiveLeftPosition != null) {
-        setLeftPosition(value: getInActiveLeftPosition, isPriorityOverride: true);
-      } else {
-        setLeftPosition(value: getSizeDx * (-1.0), isPriorityOverride: true, isSetInActiveLeftPosition: true);
+    if (checkConditionActiveByDirection() == true) {
+      if (onActivatedWindowAsParameter != null) {
+        onActivatedWindow = onActivatedWindowAsParameter;
       }
-    }
 
-    if (getConditionActiveByDirection == '[RIGHT]') {
-      if (getInActiveRightPosition != null) {
-        setRightPosition(value: getInActiveRightPosition, isPriorityOverride: true);
-      } else {
-        setRightPosition(value: getSizeDx * (-1.0), isPriorityOverride: true, isSetInActiveRightPosition: true);
+      if (onDeactivatedWindowAsParameter != null) {
+        onDeactivatedWindow = onDeactivatedWindowAsParameter;
       }
-    }
 
-    if (getConditionActiveByDirection == '[TOP]') {
-      if (getInActiveTopPosition != null) {
-        setTopPosition(value: getInActiveTopPosition, isPriorityOverride: true);
-      } else {
-        setTopPosition(value: getSizeDy * (-1.0), isPriorityOverride: true, isSetInActiveTopPosition: true);
+      if (getConditionActiveByDirection == '[LEFT]') {
+        if (getInActiveLeftPosition != null) {
+          setLeftPosition(value: getInActiveLeftPosition, isPriorityOverride: true);
+        } else {
+          setLeftPosition(value: getSizeDx * (-1.0), isPriorityOverride: true, isSetInActiveLeftPosition: true);
+        }
       }
-    }
 
-    if (getConditionActiveByDirection == '[BOTTOM]') {
-      if (getInActiveBottomPosition != null) {
-        setBottomPosition(value: getInActiveBottomPosition, isPriorityOverride: true);
-      } else {
-        setBottomPosition(value: getSizeDy * (-1.0), isPriorityOverride: true, isSetInActiveBottomPosition: true);
+      if (getConditionActiveByDirection == '[RIGHT]') {
+        if (getInActiveRightPosition != null) {
+          setRightPosition(value: getInActiveRightPosition, isPriorityOverride: true);
+        } else {
+          setRightPosition(value: getSizeDx * (-1.0), isPriorityOverride: true, isSetInActiveRightPosition: true);
+        }
       }
+
+      if (getConditionActiveByDirection == '[TOP]') {
+        if (getInActiveTopPosition != null) {
+          setTopPosition(value: getInActiveTopPosition, isPriorityOverride: true);
+        } else {
+          setTopPosition(value: getSizeDy * (-1.0), isPriorityOverride: true, isSetInActiveTopPosition: true);
+        }
+      }
+
+      if (getConditionActiveByDirection == '[BOTTOM]') {
+        if (getInActiveBottomPosition != null) {
+          setBottomPosition(value: getInActiveBottomPosition, isPriorityOverride: true);
+        } else {
+          setBottomPosition(value: getSizeDy * (-1.0), isPriorityOverride: true, isSetInActiveBottomPosition: true);
+        }
+      }
+
+      onPlaySFXDeactivateWindow();
     }
   }
 
   void onActivateWindow({VoidCallback? onActivatedWindowAsParameter, VoidCallback? onDeactivatedWindowAsParameter}) {
-    if (onActivatedWindowAsParameter != null) {
-      onActivatedWindow = onActivatedWindowAsParameter;
-    }
-
-    if (onDeactivatedWindowAsParameter != null) {
-      onDeactivatedWindow = onDeactivatedWindowAsParameter;
-    }
-
-    if (getConditionActiveByDirection == '[LEFT]') {
-      if (getActiveLeftPosition != null) {
-        setLeftPosition(value: getActiveLeftPosition, isPriorityOverride: true);
-      }
-      if (getActiveTopPosition != null) {
-        setTopPosition(value: getActiveTopPosition, isPriorityOverride: true);
-        setBottomPosition(value: null, isPriorityOverride: true);
-      } else if (getActiveBottomPosition != null) {
-        setTopPosition(value: null, isPriorityOverride: true);
-        setBottomPosition(value: getActiveBottomPosition, isPriorityOverride: true);
-      }
-    }
-
-    if (getConditionActiveByDirection == '[RIGHT]') {
-      if (getActiveRightPosition != null) {
-        setRightPosition(value: getActiveRightPosition, isPriorityOverride: true);
+    if (checkConditionActiveByDirection() == false) {
+      if (onActivatedWindowAsParameter != null) {
+        onActivatedWindow = onActivatedWindowAsParameter;
       }
 
-      if (getActiveTopPosition != null) {
-        setTopPosition(value: getActiveTopPosition, isPriorityOverride: true);
-        setBottomPosition(value: null, isPriorityOverride: true);
-      } else if (getActiveBottomPosition != null) {
-        setTopPosition(value: null, isPriorityOverride: true);
-        setBottomPosition(value: getActiveBottomPosition, isPriorityOverride: true);
+      if (onDeactivatedWindowAsParameter != null) {
+        onDeactivatedWindow = onDeactivatedWindowAsParameter;
       }
-    }
 
-    if (getConditionActiveByDirection == '[TOP]') {
-      if (getActiveTopPosition != null) {
-        setTopPosition(value: getActiveTopPosition, isPriorityOverride: true);
+      if (getConditionActiveByDirection == '[LEFT]') {
+        if (getActiveLeftPosition != null) {
+          setLeftPosition(value: getActiveLeftPosition, isPriorityOverride: true);
+        }
+        if (getActiveTopPosition != null) {
+          setTopPosition(value: getActiveTopPosition, isPriorityOverride: true);
+          setBottomPosition(value: null, isPriorityOverride: true);
+        } else if (getActiveBottomPosition != null) {
+          setTopPosition(value: null, isPriorityOverride: true);
+          setBottomPosition(value: getActiveBottomPosition, isPriorityOverride: true);
+        }
       }
-      if (getActiveLeftPosition != null) {
-        setLeftPosition(value: getActiveLeftPosition, isPriorityOverride: true);
-        setRightPosition(value: null, isPriorityOverride: true);
-      } else if (getActiveRightPosition != null) {
-        setLeftPosition(value: null, isPriorityOverride: true);
-        setRightPosition(value: getActiveRightPosition, isPriorityOverride: true);
-      }
-    }
 
-    if (getConditionActiveByDirection == '[BOTTOM]') {
-      if (getActiveBottomPosition != null) {
-        setBottomPosition(value: getActiveBottomPosition, isPriorityOverride: true);
+      if (getConditionActiveByDirection == '[RIGHT]') {
+        if (getActiveRightPosition != null) {
+          setRightPosition(value: getActiveRightPosition, isPriorityOverride: true);
+        }
+
+        if (getActiveTopPosition != null) {
+          setTopPosition(value: getActiveTopPosition, isPriorityOverride: true);
+          setBottomPosition(value: null, isPriorityOverride: true);
+        } else if (getActiveBottomPosition != null) {
+          setTopPosition(value: null, isPriorityOverride: true);
+          setBottomPosition(value: getActiveBottomPosition, isPriorityOverride: true);
+        }
       }
-      if (getActiveLeftPosition != null) {
-        setLeftPosition(value: getActiveLeftPosition, isPriorityOverride: true);
-        setRightPosition(value: null, isPriorityOverride: true);
-      } else if (getActiveRightPosition != null) {
-        setLeftPosition(value: null, isPriorityOverride: true);
-        setRightPosition(value: getActiveRightPosition, isPriorityOverride: true);
+
+      if (getConditionActiveByDirection == '[TOP]') {
+        if (getActiveTopPosition != null) {
+          setTopPosition(value: getActiveTopPosition, isPriorityOverride: true);
+        }
+        if (getActiveLeftPosition != null) {
+          setLeftPosition(value: getActiveLeftPosition, isPriorityOverride: true);
+          setRightPosition(value: null, isPriorityOverride: true);
+        } else if (getActiveRightPosition != null) {
+          setLeftPosition(value: null, isPriorityOverride: true);
+          setRightPosition(value: getActiveRightPosition, isPriorityOverride: true);
+        }
       }
+
+      if (getConditionActiveByDirection == '[BOTTOM]') {
+        if (getActiveBottomPosition != null) {
+          setBottomPosition(value: getActiveBottomPosition, isPriorityOverride: true);
+        }
+        if (getActiveLeftPosition != null) {
+          setLeftPosition(value: getActiveLeftPosition, isPriorityOverride: true);
+          setRightPosition(value: null, isPriorityOverride: true);
+        } else if (getActiveRightPosition != null) {
+          setLeftPosition(value: null, isPriorityOverride: true);
+          setRightPosition(value: getActiveRightPosition, isPriorityOverride: true);
+        }
+      }
+
+      onPlaySFXActivateWindow();
     }
+  }
+
+  onPlaySFXActivateWindow() {
+    FlameAudio.play('sfx/open_window_00.mp3', volume: 0.10);
+
+    Future.delayed(Duration(milliseconds: 500), () {
+      switch (getWindowId) {
+        case '[helpful_advice_feature]':
+          {
+            onPlaySFXAdviceWindowAppear();
+          }
+          break;
+        case '[helpful_study_advice_feature]':
+          {
+            onPlaySFXAdviceWindowAppear();
+          }
+          break;
+        case '[helpful_study_advice_related_to_topic_feature]':
+          {
+            onPlaySFXAdviceWindowAppear();
+          }
+          break;
+
+        default:
+          {
+            FlameAudio.play('sfx/open_window_10.mp3', volume: 0.15);
+          }
+      }
+    });
+  }
+
+  onPlaySFXDeactivateWindow() {
+    FlameAudio.play('sfx/close_window_03.mp3', volume: 0.15);
   }
 
   void onActivateWindowOnCorner({bool? isTopLeft, bool? isTopRight, bool? isBottomLeft, bool? isBottomRight, double? marginLeft, double? marginRight, double? marginTop, double? marginBottom}) {
@@ -627,5 +684,9 @@ mixin WindowFeature {
     }
 
     return;
+  }
+
+  onPlaySFXAdviceWindowAppear() {
+    FlameAudio.play('sfx/advice/advice_window_appear.mp3', volume: 0.25);
   }
 }

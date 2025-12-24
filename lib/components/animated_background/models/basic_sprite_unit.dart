@@ -174,7 +174,7 @@ class BasicSpriteUnit with ExecutionCore {
   /// -----
   String? _maDinhDanh;
   String? get getMaDinhDanh => _maDinhDanh;
-  Future<void> caiDatMaDinhDanh({required String? value}) async {
+  Future<void> setMaDinhDanh({required String? value}) async {
     _maDinhDanh = value;
     return;
   }
@@ -189,7 +189,7 @@ class BasicSpriteUnit with ExecutionCore {
   /// -----
   String? _nguonHinhAnh;
   String? get getNguonHinhAnh => _nguonHinhAnh;
-  Future<void> caiDatNguonHinhAnh({required String? value}) async {
+  Future<void> setNguonHinhAnh({required String? value}) async {
     _nguonHinhAnh = value;
     return;
   }
@@ -199,7 +199,7 @@ class BasicSpriteUnit with ExecutionCore {
   /// -----
   String? _nguonHinhAnhToiUuKichThuocRS100;
   String? get getNguonHinhAnhToiUuKichThuocRS100 => _nguonHinhAnhToiUuKichThuocRS100;
-  Future<void> caiDatNguonHinhAnhToiUuKichThuocRS100({required String? value}) async {
+  Future<void> setNguonHinhAnhToiUuKichThuocRS100({required String? value}) async {
     _nguonHinhAnhToiUuKichThuocRS100 = value;
     return;
   }
@@ -209,7 +209,7 @@ class BasicSpriteUnit with ExecutionCore {
   /// -----
   String? _nguonHinhAnhToiUuKichThuocRS025;
   String? get getNguonHinhAnhToiUuKichThuocRS025 => _nguonHinhAnhToiUuKichThuocRS025;
-  Future<void> caiDatNguonHinhAnhToiUuKichThuocRS025({required String? value}) async {
+  Future<void> setNguonHinhAnhToiUuKichThuocRS025({required String? value}) async {
     _nguonHinhAnhToiUuKichThuocRS025 = value;
     return;
   }
@@ -219,7 +219,7 @@ class BasicSpriteUnit with ExecutionCore {
   /// -----
   String? _nguonHinhAnhToiUuKichThuocRS050;
   String? get getNguonHinhAnhToiUuKichThuocRS050 => _nguonHinhAnhToiUuKichThuocRS050;
-  Future<void> caiDatNguonHinhAnhToiUuKichThuocRS050({required String? value}) async {
+  Future<void> setNguonHinhAnhToiUuKichThuocRS050({required String? value}) async {
     _nguonHinhAnhToiUuKichThuocRS050 = value;
     return;
   }
@@ -229,8 +229,8 @@ class BasicSpriteUnit with ExecutionCore {
   /// -----
   String? _nguonHinhAnhLuuVaoStorage;
   String? get getNguonHinhAnhLuuVaoStorage => _nguonHinhAnhLuuVaoStorage;
-  Future<void> caiDatNguonHinhAnhLuuVaoStorage({required String? value, bool? caiDatUuTien}) async {
-    if (caiDatUuTien == true) {
+  Future<void> setNguonHinhAnhLuuVaoStorage({required String? value, bool? setUuTien}) async {
+    if (setUuTien == true) {
       _nguonHinhAnhLuuVaoStorage = value;
     } else {
       _nguonHinhAnhLuuVaoStorage ??= value;
@@ -241,8 +241,8 @@ class BasicSpriteUnit with ExecutionCore {
 
   int? _tongSoLuongThanhPhanTaiNguyen = 4;
   int? get getTongSoLuongThanhPhanTaiNguyen => _tongSoLuongThanhPhanTaiNguyen;
-  Future<void> onCaiDatTongSoLuongThanhPhanTaiNguyen({required int? value, bool? caiDatUuTien}) async {
-    if (caiDatUuTien == true) {
+  Future<void> onCaiDatTongSoLuongThanhPhanTaiNguyen({required int? value, bool? setUuTien}) async {
+    if (setUuTien == true) {
       _tongSoLuongThanhPhanTaiNguyen = value;
     } else {
       _tongSoLuongThanhPhanTaiNguyen ??= value;
@@ -256,7 +256,7 @@ class BasicSpriteUnit with ExecutionCore {
   /// -----
   // MoHinhThuocTinhDonViSprite? _thuocTinh;
   // MoHinhThuocTinhDonViSprite? get getThuocTinh => _thuocTinh;
-  // Future<void> caiDatThuocTinh({required MoHinhThuocTinhDonViSprite? value}) async {
+  // Future<void> setThuocTinh({required MoHinhThuocTinhDonViSprite? value}) async {
   //   _thuocTinh = value;
   //   return;
   // }
@@ -266,7 +266,7 @@ class BasicSpriteUnit with ExecutionCore {
   /// -----
   SpriteAnimation? _spriteAnimation;
   SpriteAnimation? get getSpriteAnimation => _spriteAnimation;
-  Future<void> caiDatSpriteAnimation({required SpriteAnimation? value}) async {
+  Future<void> setSpriteAnimation({required SpriteAnimation? value}) async {
     _spriteAnimation = value;
     return;
   }
@@ -281,7 +281,7 @@ class BasicSpriteUnit with ExecutionCore {
   /// -----
   Sprite? _sprite;
   Sprite? get getSprite => _sprite;
-  Future<void> caiDatSprite({required Sprite? value}) async {
+  Future<void> setSprite({required Sprite? value}) async {
     _sprite = value;
     return;
   }
@@ -296,7 +296,7 @@ class BasicSpriteUnit with ExecutionCore {
   ///
   int? _tongSoFrame;
   int? get getTongSoFrame => _tongSoFrame;
-  Future<void> caiDatTongSoFrame({required int? value}) async {
+  Future<void> setTongSoFrame({required int? value}) async {
     _tongSoFrame = value;
     return;
   }
@@ -306,7 +306,7 @@ class BasicSpriteUnit with ExecutionCore {
   ///
   int? _tongSoFrameTrenHang;
   int? get getTongSoFrameTrenHang => _tongSoFrameTrenHang;
-  Future<void> caiDatTongSoFrameTrenHang({required int? value}) async {
+  Future<void> setTongSoFrameTrenHang({required int? value}) async {
     _tongSoFrameTrenHang = value;
     return;
   }
@@ -316,7 +316,7 @@ class BasicSpriteUnit with ExecutionCore {
   ///
   double? _chieuRongFrame;
   double? get getChieuRongFrame => _chieuRongFrame;
-  Future<void> caiDatChieuRongFrame({required double? value}) async {
+  Future<void> setChieuRongFrame({required double? value}) async {
     _chieuRongFrame = value;
     return;
   }
@@ -326,7 +326,7 @@ class BasicSpriteUnit with ExecutionCore {
   ///
   double? _chieuRongFrameRS100;
   double? get getChieuRongFrameRS100 => _chieuRongFrameRS100;
-  Future<void> caiDatChieuRongFrameRS100({required double? value}) async {
+  Future<void> setChieuRongFrameRS100({required double? value}) async {
     _chieuRongFrameRS100 = value;
     return;
   }
@@ -336,7 +336,7 @@ class BasicSpriteUnit with ExecutionCore {
   ///
   double? _chieuRongFrameRS025;
   double? get getChieuRongFrameRS025 => _chieuRongFrameRS025;
-  Future<void> caiDatChieuRongFrameRS025({required double? value}) async {
+  Future<void> setChieuRongFrameRS025({required double? value}) async {
     _chieuRongFrameRS025 = value;
     return;
   }
@@ -346,7 +346,7 @@ class BasicSpriteUnit with ExecutionCore {
   ///
   double? _chieuRongFrameRS050;
   double? get getChieuRongFrameRS050 => _chieuRongFrameRS050;
-  Future<void> caiDatChieuRongFrameRS050({required double? value}) async {
+  Future<void> setChieuRongFrameRS050({required double? value}) async {
     _chieuRongFrameRS050 = value;
     return;
   }
@@ -356,7 +356,7 @@ class BasicSpriteUnit with ExecutionCore {
   ///
   double? _chieuCaoFrame;
   double? get getChieuCaoFrame => _chieuCaoFrame;
-  Future<void> caiDatChieuCaoFrame({required double? value}) async {
+  Future<void> setChieuCaoFrame({required double? value}) async {
     _chieuCaoFrame = value;
     return;
   }
@@ -366,7 +366,7 @@ class BasicSpriteUnit with ExecutionCore {
   ///
   double? _chieuCaoFrameRS100;
   double? get getChieuCaoFrameRS100 => _chieuCaoFrameRS100;
-  Future<void> caiDatChieuCaoFrameRS100({required double? value}) async {
+  Future<void> setChieuCaoFrameRS100({required double? value}) async {
     _chieuCaoFrameRS100 = value;
     return;
   }
@@ -376,7 +376,7 @@ class BasicSpriteUnit with ExecutionCore {
   ///
   double? _chieuCaoFrameRS025;
   double? get getChieuCaoFrameRS025 => _chieuCaoFrameRS025;
-  Future<void> caiDatChieuCaoFrameRS025({required double? value}) async {
+  Future<void> setChieuCaoFrameRS025({required double? value}) async {
     _chieuCaoFrameRS025 = value;
     return;
   }
@@ -386,7 +386,7 @@ class BasicSpriteUnit with ExecutionCore {
   ///
   double? _chieuCaoFrameRS050;
   double? get getChieuCaoFrameRS050 => _chieuCaoFrameRS050;
-  Future<void> caiDatChieuCaoFrameRS050({required double? value}) async {
+  Future<void> setChieuCaoFrameRS050({required double? value}) async {
     _chieuCaoFrameRS050 = value;
     return;
   }
@@ -401,10 +401,10 @@ class BasicSpriteUnit with ExecutionCore {
     required SpriteAnimation? spriteAnimation,
     required Sprite? sprite,
   }) {
-    caiDatMaDinhDanh(value: maDinhDanh);
-    caiDatNguonHinhAnh(value: nguonHinhAnh);
-    // caiDatThuocTinh(value: thuocTinh);
-    caiDatSpriteAnimation(value: spriteAnimation);
-    caiDatSprite(value: sprite);
+    setMaDinhDanh(value: maDinhDanh);
+    setNguonHinhAnh(value: nguonHinhAnh);
+    // setThuocTinh(value: thuocTinh);
+    setSpriteAnimation(value: spriteAnimation);
+    setSprite(value: sprite);
   }
 }

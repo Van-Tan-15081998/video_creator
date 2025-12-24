@@ -30,11 +30,12 @@ class _IntroductionAnimatedBackgroundWidgetState extends State<IntroductionAnima
         ),
       ),
       backgroundAnimatedIcon: '🦊',
+      imageSpriteSource: null,
       movementUnit: 1.0,
     );
 
     animatedBackgroundWidget?.onInit = () {
-      animatedBackgroundWidget?.getAnimatedBackgroundUnitComponentA?.getDinhHuongBay?.caiDatDinhHuongTheoPhaiSangTrai();
+      animatedBackgroundWidget?.getAnimatedBackgroundUnitComponentA?.getDinhHuongBay?.setDinhHuongTheoPhaiSangTrai();
     };
   }
 

@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:math';
 
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_data_model.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
@@ -135,6 +137,8 @@ class _VocabularyConversationContentWidgetState extends State<VocabularyConversa
               }
 
               getConversationItemList?.removeAt(0);
+
+              onPlaySFXVocabularyConversationSentenceAppear();
             }
 
             counterMessage++;
@@ -152,6 +156,26 @@ class _VocabularyConversationContentWidgetState extends State<VocabularyConversa
       }
     });
   }
+
+  final Random _random = Random();
+  onPlaySFXVocabularyConversationSentenceAppear() {
+    // FlameAudio.play('sfx/text_appear/vocabulary_conversation_sentence_appear.mp3', volume: 0.25);
+
+    String nextSFX;
+    nextSFX = sfxList[_random.nextInt(sfxList.length)];
+    FlameAudio.play(nextSFX, volume: 0.25);
+  }
+
+  final List<String> sfxList = [
+    'sfx/text_appear/vocabulary_conversation_sentence_appear_01.mp3',
+    'sfx/text_appear/vocabulary_conversation_sentence_appear_02.mp3',
+    'sfx/text_appear/vocabulary_conversation_sentence_appear_03.mp3',
+    'sfx/text_appear/vocabulary_conversation_sentence_appear_04.mp3',
+    'sfx/text_appear/vocabulary_conversation_sentence_appear_05.mp3',
+    'sfx/text_appear/vocabulary_conversation_sentence_appear_06.mp3',
+    'sfx/text_appear/vocabulary_conversation_sentence_appear_07.mp3',
+    'sfx/text_appear/vocabulary_conversation_sentence_appear_08.mp3',
+  ];
 
   @override
   void dispose() {

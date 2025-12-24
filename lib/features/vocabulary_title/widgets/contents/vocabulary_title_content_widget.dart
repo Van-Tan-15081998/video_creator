@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:animate_do/animate_do.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
@@ -50,7 +53,7 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
 
     _ticker = createTicker((Duration elapsed) {
       if (widget.systemStateManagement?.getVocabularyTitleFeature?.checkConditionActiveByDirection() == true) {
-        if (wordString != getCurrentVocabularyItem?.getVocabularyDataModel?.getWord) {
+        if (wordString != getCurrentVocabularyItem?.getVocabularyDataModel?.getWord && getCurrentVocabularyItem?.getVocabularyDataModel?.getWord?.isNotEmpty == true) {
           setState(() {
             wordString = getCurrentVocabularyItem?.getVocabularyDataModel?.getWord ?? '';
             isShowWord = true;
@@ -65,6 +68,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
             _isConjunction = false;
             _isInterjection = false;
             _isOtherType = false;
+
+            onPlaySFXVocabularyTitleContentAppear();
           });
         }
 
@@ -76,6 +81,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
               // isShowType = false;
               isShowFullType = '[HIDE]';
             }
+
+            onPlaySFXVocabularyTitleContentAppear();
           });
         }
 
@@ -87,6 +94,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
               // isShowType = true;
               isShowFullType = '[SHOW]';
             }
+
+            onPlaySFXVocabularyTitleContentAppear();
           });
           return;
         }
@@ -97,6 +106,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
               // isShowType = true;
               isShowFullType = '[SHOW]';
             }
+
+            onPlaySFXVocabularyTitleContentAppear();
           });
           return;
         }
@@ -107,6 +118,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
               // isShowType = true;
               isShowFullType = '[SHOW]';
             }
+
+            onPlaySFXVocabularyTitleContentAppear();
           });
           return;
         }
@@ -117,6 +130,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
               // isShowType = true;
               isShowFullType = '[SHOW]';
             }
+
+            onPlaySFXVocabularyTitleContentAppear();
           });
           return;
         }
@@ -127,6 +142,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
               // isShowType = true;
               isShowFullType = '[SHOW]';
             }
+
+            onPlaySFXVocabularyTitleContentAppear();
           });
           return;
         }
@@ -137,6 +154,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
               // isShowType = true;
               isShowFullType = '[SHOW]';
             }
+
+            onPlaySFXVocabularyTitleContentAppear();
           });
           return;
         }
@@ -147,6 +166,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
               // isShowType = true;
               isShowFullType = '[SHOW]';
             }
+
+            onPlaySFXVocabularyTitleContentAppear();
           });
           return;
         }
@@ -157,6 +178,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
               // isShowType = true;
               isShowFullType = '[SHOW]';
             }
+
+            onPlaySFXVocabularyTitleContentAppear();
           });
           return;
         }
@@ -167,6 +190,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
               // isShowType = true;
               isShowFullType = '[SHOW]';
             }
+
+            onPlaySFXVocabularyTitleContentAppear();
           });
           return;
         }
@@ -191,6 +216,22 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
   bool? _isConjunction = false;
   bool? _isInterjection = false;
   bool? _isOtherType = false;
+
+  final Random _random = Random();
+  onPlaySFXVocabularyTitleContentAppear() {
+
+    String nextSFX;
+    nextSFX = sfxList[_random.nextInt(sfxList.length)];
+    FlameAudio.play(nextSFX, volume: 0.15);
+  }
+
+  final List<String> sfxList = [
+    'sfx/vocabulary_definition/vocabulary_definition_appear_01.mp3',
+    'sfx/vocabulary_definition/vocabulary_definition_appear_02.mp3',
+    'sfx/vocabulary_definition/vocabulary_definition_appear_03.mp3',
+    'sfx/vocabulary_definition/vocabulary_definition_appear_04.mp3',
+    'sfx/vocabulary_definition/vocabulary_definition_appear_05.mp3',
+  ];
 
   @override
   void dispose() {

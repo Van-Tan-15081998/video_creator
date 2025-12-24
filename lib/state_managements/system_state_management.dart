@@ -1,3 +1,4 @@
+import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/helpful_study_advice_related_to_topic_animated_background_widget.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 import 'package:frame_creator_v2/state_managements/main_timeline/main_timeline_state_management.dart';
 import 'package:frame_creator_v2/state_managements/mixins/feature_mixin.dart';
@@ -18,6 +19,8 @@ class SystemStateManagement with ExecutionCore, FeatureMixin {
     ///
     return;
   }
+
+  static const helpfulStudyAdviceRelatedToTopicAnimatedBackgroundWidget = HelpfulStudyAdviceRelatedToTopicAnimatedBackgroundWidget(sizeDx: 3500.0, sizeDy: 3500.0);
 
   /// -----
   /// TODO: Attach Root

@@ -10,7 +10,7 @@ class BasicFirstSpeed {
   /// -----
   BasicSpeed? _tocDoCuongChe;
   BasicSpeed? get getTocDoCuongChe => _tocDoCuongChe;
-  Future<void> caiDatTocDoBayCuongChe({required BasicSpeed? value}) async {
+  Future<void> setTocDoBayCuongChe({required BasicSpeed? value}) async {
     _tocDoCuongChe = value;
     return;
   }
@@ -20,7 +20,7 @@ class BasicFirstSpeed {
   /// -----
   BasicSpeed? _tocDoToiDa;
   BasicSpeed? get getTocDoToiDa => _tocDoToiDa;
-  Future<void> caiDatTocDoToiDa({required BasicSpeed? value}) async {
+  Future<void> setTocDoToiDa({required BasicSpeed? value}) async {
     _tocDoToiDa = value;
     return;
   }
@@ -30,7 +30,7 @@ class BasicFirstSpeed {
   /// -----
   BasicSpeed? _tocDoToiThieu;
   BasicSpeed? get getTocDoToiThieu => _tocDoToiThieu;
-  Future<void> caiDatTocDoToiThieu({required BasicSpeed? value}) async {
+  Future<void> setTocDoToiThieu({required BasicSpeed? value}) async {
     _tocDoToiThieu = value;
     return;
   }
@@ -40,7 +40,7 @@ class BasicFirstSpeed {
   /// -----
   BasicIncreasingDecreasingSpeed? _heSoTangGiamTocDo;
   BasicIncreasingDecreasingSpeed? get getHeSoTangGiamTocDo => _heSoTangGiamTocDo;
-  Future<void> caiDatHeSoTangGiamTocDo({required BasicIncreasingDecreasingSpeed? value}) async {
+  Future<void> setHeSoTangGiamTocDo({required BasicIncreasingDecreasingSpeed? value}) async {
     _heSoTangGiamTocDo = value;
     return;
   }
@@ -65,10 +65,10 @@ class BasicFirstSpeed {
     required BasicSpeed? tocDoToiThieu,
     required BasicIncreasingDecreasingSpeed? heSoTangGiamTocDo,
   }) {
-    caiDatTocDoBayCuongChe(value: tocDoCuongChe);
-    caiDatTocDoToiDa(value: tocDoToiDa);
-    caiDatTocDoToiThieu(value: tocDoToiThieu);
-    caiDatHeSoTangGiamTocDo(value: heSoTangGiamTocDo);
+    setTocDoBayCuongChe(value: tocDoCuongChe);
+    setTocDoToiDa(value: tocDoToiDa);
+    setTocDoToiThieu(value: tocDoToiThieu);
+    setHeSoTangGiamTocDo(value: heSoTangGiamTocDo);
   }
 
   BasicFirstSpeed.onTangTocCoBan() {
