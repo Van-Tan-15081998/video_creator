@@ -34,8 +34,11 @@ main() async {
       // Tính toán vị trí để cửa sổ nằm giữa màn hình
       // final left = (screenFrame.width - windowWidth) / 2;
       // final top = (screenFrame.height - windowHeight) / 2;
-      final left = 1.0;
-      final top = 1.0;
+      // final left = 1.0;
+      // final top = 1.0;
+
+      final left = 0.0;
+      final top = 0.0;
 
       // Đặt vị trí + kích thước cửa sổ
       setWindowFrame(Rect.fromLTWH(left, top, windowWidth, windowHeight));
@@ -183,34 +186,41 @@ class _MyAppState extends State<MyApp> {
     } while (nextBgm == _currentBgm);
 
     _currentBgm = nextBgm;
+    double current = getSystemStateManagement?.getMusicAndSound?.getCurrentBackgroundMusicVolume ?? 0.1; // Volume hiện tại
 
-    FlameAudio.bgm.play(nextBgm, volume: 0.45);
+    if (getSystemStateManagement?.getMusicAndSound?.getIsFixedBackgroundMusicVolume == false) {
+      // FlameAudio.bgm.play(nextBgm, volume: 0.25);
+      if (getSystemStateManagement?.getMusicAndSound?.getCurrentBackgroundMusicVolume != 0) {
+        current = getSystemStateManagement?.getMusicAndSound?.getCurrentBackgroundMusicVolume ?? 0.1;
+      } else {
+        current = 0.15;
+      }
 
-    // 🔥 TẮT LOOP
-    // FlameAudio.bgm.audioPlayer.setReleaseMode(ReleaseMode.release);
+      FlameAudio.bgm.play(nextBgm, volume: current);
+    } else {
+      FlameAudio.bgm.play(nextBgm, volume: getSystemStateManagement?.getMusicAndSound?.getCurrentBackgroundMusicVolume ?? 0.1);
+    }
 
-    // Khi bài hát kết thúc → phát bài tiếp
-    // FlameAudio.bgm.audioPlayer.onPlayerComplete.listen((event) {
-    //   playRandomBgm();
-    // });
-
-    double current = 0.45; // Volume hiện tại
-    const int stepCount = 60; // số bước tăng
-    final double step = (current / stepCount) * 0.2;
-    final int delay = (60 * 1000 ~/ stepCount);
+    const int stepCount = 30; // số bước tăng
+    final double step = (current / stepCount) * 0.25;
+    final int delay = (30 * 1000 ~/ stepCount);
 
     for (int i = 0; i < stepCount; i++) {
       /// Không to hẳn
-      if (current <= 0.6) {
+      if (current <= 0.5) {
         current += step;
 
         if (current < 0) {
           current = 0;
         }
-        await player.setVolume(current);
+        if (getSystemStateManagement?.getMusicAndSound?.getIsFixedBackgroundMusicVolume == false) {
+          await player.setVolume(current);
+          getSystemStateManagement?.getMusicAndSound?.setCurrentBackgroundMusicVolume(value: current, isPriorityOverride: true);
+        }
+
         await Future.delayed(Duration(milliseconds: delay));
         if (kDebugMode) {
-          print('[FlameAudio-delay-increase] $current - $step');
+          print('[main][FlameAudio-delay-increase] $current - $step');
         }
       }
     }
@@ -222,24 +232,37 @@ class _MyAppState extends State<MyApp> {
   Future<void> fadeOutBGM({double duration = 1.5}) async {
     final player = FlameAudio.bgm.audioPlayer;
 
-    double current = 0.6; // Volume hiện tại
-    // const int stepCount = 30; // số bước giảm
-    const int stepCount = 60; // số bước giảm
-    final double step = (current / stepCount) * 0.2;
+    double current = getSystemStateManagement?.getMusicAndSound?.getCurrentBackgroundMusicVolume ?? 0.1; // Volume hiện tại
+
+    if (getSystemStateManagement?.getMusicAndSound?.getIsFixedBackgroundMusicVolume == false) {
+      if (getSystemStateManagement?.getMusicAndSound?.getCurrentBackgroundMusicVolume != 0) {
+        current = getSystemStateManagement?.getMusicAndSound?.getCurrentBackgroundMusicVolume ?? 0.1;
+      } else {
+        current = 0.15;
+      }
+    }
+
+    const int stepCount = 30; // số bước giảm
+    final double step = (current / stepCount) * 0.25;
     final int delay = (duration * 1000 ~/ stepCount);
 
     for (int i = 0; i < stepCount; i++) {
       /// Không tắt hẳn
-      if (current >= 0.45) {
+      if (current >= 0.05) {
         current -= step;
 
         if (current < 0) {
           current = 0;
         }
-        await player.setVolume(current);
+
+        if (getSystemStateManagement?.getMusicAndSound?.getIsFixedBackgroundMusicVolume == false) {
+          await player.setVolume(current);
+          getSystemStateManagement?.getMusicAndSound?.setCurrentBackgroundMusicVolume(value: current, isPriorityOverride: true);
+        }
+
         await Future.delayed(Duration(milliseconds: delay));
         if (kDebugMode) {
-          print('[FlameAudio-delay_decrease] $current - $step');
+          print('[main][FlameAudio-delay_decrease] $current - $step');
         }
       }
     }
@@ -248,7 +271,7 @@ class _MyAppState extends State<MyApp> {
     await FlameAudio.bgm.stop().whenComplete(() {
       playRandomBgm();
       if (kDebugMode) {
-        print('[FlameAudio] playRandomBgm');
+        print('[main][FlameAudio] playRandomBgm');
       }
     });
   }

@@ -2,6 +2,7 @@ import 'package:frame_creator_v2/components/animated_background/widgets/helpful_
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 import 'package:frame_creator_v2/state_managements/main_timeline/main_timeline_state_management.dart';
 import 'package:frame_creator_v2/state_managements/mixins/feature_mixin.dart';
+import 'package:frame_creator_v2/state_managements/music_and_sound/music_and_sound.dart';
 
 class SystemStateManagement with ExecutionCore, FeatureMixin {
   /// -----
@@ -20,7 +21,21 @@ class SystemStateManagement with ExecutionCore, FeatureMixin {
     return;
   }
 
-  static const helpfulStudyAdviceRelatedToTopicAnimatedBackgroundWidget = HelpfulStudyAdviceRelatedToTopicAnimatedBackgroundWidget(sizeDx: 3500.0, sizeDy: 3500.0);
+  /// -----
+  /// TODO:
+  /// -----
+  MusicAndSound? _musicAndSound;
+  MusicAndSound? get getMusicAndSound => _musicAndSound;
+  void setMusicAndSound({required MusicAndSound? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _musicAndSound = value;
+    } else {
+      _musicAndSound ??= value;
+    }
+
+    ///
+    return;
+  }
 
   /// -----
   /// TODO: Attach Root
@@ -81,6 +96,7 @@ class SystemStateManagement with ExecutionCore, FeatureMixin {
       /// -----
       setMainTimelineStateManagement(value: MainTimelineStateManagement());
 
+      setMusicAndSound(value: MusicAndSound());
       /// -----
       /// TODO: Setup Root For SubCom
       /// -----
@@ -146,6 +162,7 @@ class SystemStateManagement with ExecutionCore, FeatureMixin {
       /// TODO:
       /// -----
       await getMainTimelineStateManagement?.onSetupRoot();
+      await getMusicAndSound?.onSetupRoot();
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onSetupRootForSubCom]');
     }
@@ -164,6 +181,7 @@ class SystemStateManagement with ExecutionCore, FeatureMixin {
       /// TODO:
       /// -----
       await getMainTimelineStateManagement?.onInitRoot();
+      await getMusicAndSound?.onInitRoot();
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onInitRootForSubCom]');
     }

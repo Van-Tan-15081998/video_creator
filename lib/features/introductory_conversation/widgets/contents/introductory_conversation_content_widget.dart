@@ -88,11 +88,17 @@ class _IntroductoryConversationContentWidgetState extends State<IntroductoryConv
               setState(() {
                 // messageList.add(messageWidget(isLeftSide: true, isRightSide: false));
                 messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false));
+
+                /// Play Sound
+                widget.systemStateManagement?.getMusicAndSound?.onPlaySFXConversationSentenceAppear();
               });
             } else {
               setState(() {
                 // messageList.add(messageWidget(isLeftSide: false, isRightSide: true));
                 messageList.add(messageByWordWidget(isLeftSide: false, isRightSide: true));
+
+                /// Play Sound
+                widget.systemStateManagement?.getMusicAndSound?.onPlaySFXConversationSentenceAppear();
               });
             }
 

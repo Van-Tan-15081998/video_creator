@@ -141,6 +141,9 @@ class _PomodoroStartingConversationContentWidgetState extends State<PomodoroStar
                   });
 
                   messageStringList.removeAt(0);
+
+                  /// Play Sound
+                  widget.systemStateManagement?.getMusicAndSound?.onPlaySFXConversationSentenceAppear();
                 });
               }
               if (messageStringList[0] == startMessage && widget.systemStateManagement?.getPomodoroFeature?.getPomodoroTime?.getCurrentPomodoroItem?.isCompletedPreparing() == true) {
@@ -148,6 +151,9 @@ class _PomodoroStartingConversationContentWidgetState extends State<PomodoroStar
                   messageList.add(messageByWordWidget(isLeftSide: true, isRightSide: false, engSentence: messageStringList.first, vieSentence: messageStringList.first));
 
                   messageStringList.removeAt(0);
+
+                  /// Play Sound
+                  widget.systemStateManagement?.getMusicAndSound?.onPlaySFXConversationSentenceAppear();
                 });
 
                 /// Chỉ Định Chuyển Tiếp

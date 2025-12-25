@@ -31,7 +31,7 @@ class _GlobalAnnouncementContentWidgetState extends State<GlobalAnnouncementCont
   double leftPosition = 0;
   double topPosition = 0;
 
-  bool isAnnounce = false;
+  bool isAnnounce = true;
 
   @override
   void initState() {

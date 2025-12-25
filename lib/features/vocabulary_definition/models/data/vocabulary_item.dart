@@ -385,11 +385,94 @@ class VocabularyItem with ExecutionCore {
     'bgm/youtube_studio/Your_Love_Yung_Logos.mp3',
   ];
 
+  final List<String> longBgmList2 = [
+    'audio/bgm/youtube_studio/Catch_Up_Dan_Lebowitz.mp3',
+    'audio/bgm/youtube_studio/Clouds_Lifting_Telecasted.mp3',
+    'audio/bgm/youtube_studio/Come_With_Us_Nat_Keefe_Hot_Buttered_Rum.mp3',
+    'audio/bgm/youtube_studio/Communicator_Reed_Mathis.mp3',
+    'audio/bgm/youtube_studio/Country_Sky_Telecasted.mp3',
+    'audio/bgm/youtube_studio/Cuckoos_Nest_Nat_Keefe_Hot_Buttered_Rum.mp3',
+    'audio/bgm/youtube_studio/Denver_Avenue_Reed_Mathis.mp3',
+    'audio/bgm/youtube_studio/Fog_Kiss_The_Peat_Dan_Lebo_Lebowitz_Tone_Seeker.mp3',
+    'audio/bgm/youtube_studio/Forgiven_Fate_Dan_Lebowitz.mp3',
+    'audio/bgm/youtube_studio/From_Here_on_In_Everet_Almond.mp3',
+    'audio/bgm/youtube_studio/Future_King_of_Heaven_Zachariah_Hickman.mp3',
+    'audio/bgm/youtube_studio/Girasol_Quincas_Moreira.mp3',
+    'audio/bgm/youtube_studio/Gold_in_Them_Hills_Nathan_Moore.mp3',
+    'audio/bgm/youtube_studio/Hickory_Hollow_Dan_Lebowitz.mp3',
+    'audio/bgm/youtube_studio/Hulu_Ukulele_Chris_Haugen.mp3',
+    'audio/bgm/youtube_studio/Juneberry_Junction_Chris_Haugen.mp3',
+    'audio/bgm/youtube_studio/Leaning_On_the_Everlasting_Arms_Zachariah_Hickman.mp3',
+    'audio/bgm/youtube_studio/Lets_Do_This_Nat_Keefe_&_Hot_Buttered_Rum.mp3',
+    'audio/bgm/youtube_studio/Moonrise_Reed_Mathis.mp3',
+    'audio/bgm/youtube_studio/Oceanside_Bonfire_The_Great_North_Sound_Society.mp3',
+    'audio/bgm/youtube_studio/Outlaws_Farewell_Reed_Mathis.mp3',
+    'audio/bgm/youtube_studio/Sky_Map_Reed_Mathis.mp3',
+    'audio/bgm/youtube_studio/Take_Your_Time_Dan_Lebowitz.mp3',
+    'audio/bgm/youtube_studio/Tell_Em_What_They_Wanna_Hear_Everet_Almond.mp3',
+    'audio/bgm/youtube_studio/The_Slow_Rabbit_Nat_Keefe_Hot_Buttered_Rum.mp3',
+    'audio/bgm/youtube_studio/There_Are_Chirping_Birdies_In_My_Soul_Reed_Mathis.mp3',
+    'audio/bgm/youtube_studio/Top_Of_The_Morning_TrackTribe.mp3',
+    'audio/bgm/youtube_studio/Twilight_Train_Dan_Lebowitz.mp3',
+    'audio/bgm/youtube_studio/Under_The_Sun_Everet_Almond.mp3',
+    'audio/bgm/youtube_studio/Wager_With_Angels_Nathan_Moore.mp3',
+    'audio/bgm/youtube_studio/When_Irish_Eyes_Are_Smiling_Freedom_Trail_Studio.mp3',
+    'audio/bgm/youtube_studio/With_You_Everet_Almond.mp3',
+    'audio/bgm/youtube_studio/You_and_I_Telecasted.mp3',
+    'audio/bgm/youtube_studio/Your_Love_Yung_Logos.mp3',
+  ];
+
   final Random _random = Random();
   Future<void> playRandomSFX() async {
     String nextBgm;
     nextBgm = longBgmList[_random.nextInt(longBgmList.length)];
     FlameAudio.play(nextBgm, volume: 0.15);
+
+    getSequentialExecutionController?.getSystemStateManagement?.getMusicAndSound?.setIsFixedBackgroundMusicVolume(value: true, isPriorityOverride: true);
+    fadeOutBGM(duration: 5);
+  }
+
+  final AudioPlayer _player = AudioPlayer();
+  Future<void> playRandomSFXAudioPlayer() async {
+
+    getSequentialExecutionController?.getSystemStateManagement?.getMusicAndSound?.setIsFixedBackgroundMusicVolume(value: true, isPriorityOverride: true);
+    _player.onPlayerComplete.listen((_) {
+      getSequentialExecutionController?.getSystemStateManagement?.getMusicAndSound?.setIsFixedBackgroundMusicVolume(value: false, isPriorityOverride: true);
+    });
+
+    String nextBgm;
+    nextBgm = longBgmList2[_random.nextInt(longBgmList2.length)];
+    _player.play(AssetSource(nextBgm), volume: 0.15);
+    fadeOutBGM(duration: 2);
+  }
+
+  /// Giảm Âm Lượng Âm Thanh Trước Khi Tắt Hẳn
+  Future<void> fadeOutBGM({double duration = 1.5}) async {
+    final player = FlameAudio.bgm.audioPlayer;
+
+    double current = getSequentialExecutionController?.getSystemStateManagement?.getMusicAndSound?.getCurrentBackgroundMusicVolume ?? 0.1; // Volume hiện tại
+    const int stepCount = 20; // số bước giảm
+    final double step = (current / stepCount);
+    final int delay = (duration * 1000 ~/ stepCount);
+
+    for (int i = 0; i < stepCount; i++) {
+      /// Không tắt hẳn
+      if (current >= 0.05) {
+        current -= step;
+
+        if (current < 0.05) {
+          current = 0;
+        }
+
+        await player.setVolume(current);
+        getSequentialExecutionController?.getSystemStateManagement?.getMusicAndSound?.setCurrentBackgroundMusicVolume(value: current, isPriorityOverride: true);
+
+        await Future.delayed(Duration(milliseconds: delay));
+        if (kDebugMode) {
+          // print('[FlameAudio-delay_decrease] $current - $step');
+        }
+      }
+    }
   }
 
   /// -----
@@ -526,7 +609,8 @@ class VocabularyItem with ExecutionCore {
             getSequentialExecutionController?.getVocabularyEnglishDefinitionFeature?.onActivateWindow();
           }
           if (totalSeconds == 7) {
-            playRandomSFX();
+            // playRandomSFX();
+            playRandomSFXAudioPlayer();
           }
 
           /// -----

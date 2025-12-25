@@ -101,6 +101,9 @@ class _VocabularySceneTransitionContentWidgetState extends State<VocabularyScene
                   if (isShowContentWord == false) {
                     setState(() {
                       isShowContentWord = true;
+
+                      /// Play Sound
+                      widget.systemStateManagement?.getMusicAndSound?.onPlaySFXNewVocabularyAppear();
                     });
 
                     // return;
@@ -258,7 +261,6 @@ class _VocabularySceneTransitionContentWidgetState extends State<VocabularyScene
                           //     ),
                           //   ),
                           // ),
-
                           AnimatedPositioned(
                             duration: const Duration(milliseconds: 100),
 

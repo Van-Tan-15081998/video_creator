@@ -219,7 +219,7 @@ class _InterestingKnowledgeConversationContentWidgetState extends State<Interest
   }
 
   onPlaySFXInterestingKnowledgeConversationSentenceAppear() {
-    FlameAudio.play('sfx/text_appear/interesting_knowledge_conversation_sentence_appear2.mp3', volume: 0.25);
+    FlameAudio.play('sfx/text_appear/interesting_knowledge_conversation_sentence_appear_01.mp3', volume: 0.25);
   }
 
   @override

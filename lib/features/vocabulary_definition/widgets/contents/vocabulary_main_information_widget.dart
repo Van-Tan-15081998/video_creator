@@ -32,7 +32,7 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
   double limitedTimeProgressbarLength = 0;
   double limitedTimeProgressbar = 0;
 
-  final int totalSecondsConst = 24;
+  final int totalSecondsConst = 25;
 
   @override
   void initState() {
@@ -72,10 +72,18 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
           setState(() {
             definitionString = getCurrentVocabularyItem?.getVocabularyDataModel?.getTopicSpecificMeaning ?? '';
 
-            isShow = true;
+            isShowDefinitionString = true;
 
             onPlaySFXVocabularyMainInformationAppear();
           });
+        }
+
+        if (getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft != null || getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight != null) {
+          if (isShowMainTitle == '[DEFAULT]') {
+            setState(() {
+              isShowMainTitle = '[SHOW]';
+            });
+          }
         }
       })..start();
     });
@@ -111,7 +119,7 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
   }
 
   String definitionString = '';
-  bool isShow = false;
+  bool isShowDefinitionString = false;
 
   double bottomDefinitionTitle = 15.0;
 
@@ -133,6 +141,8 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
   String defaultImageSource = 'assets/images/interesting_knowledge/knowledge_01.jpg';
   String currentImageSource = '';
   String showImage = '[DEFAULT]';
+
+  String isShowMainTitle = '[DEFAULT]';
 
   final Random _random = Random();
   onPlaySFXVocabularyMainInformationAppear() {
@@ -215,7 +225,7 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
           height: 75.0,
           width: widget.sizeDx - 320.0,
           duration: const Duration(milliseconds: 100),
-          child: isShow
+          child: isShowDefinitionString
               ? FadeIn(
                   child: Container(
                     padding: const EdgeInsets.fromLTRB(10.0, 1.0, 1.0, 10.0),
@@ -320,85 +330,87 @@ class _VocabularyMainInformationWidgetState extends State<VocabularyMainInformat
               : Container(),
         ),
 
-        AnimatedPositioned(
-          duration: const Duration(milliseconds: 500),
-          left: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true ? 15.0 : null,
-          right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true ? 15.0 : null,
-          bottom: bottomDefinitionTitle,
-          height: 100.0,
-          child: Container(
-            width: 500.0,
-            height: 100.0,
-            decoration: BoxDecoration(
-              color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
-              border: Border.all(width: 8.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
-              borderRadius: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true
-                  ? BorderRadius.only(topLeft: Radius.circular(0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(15.0))
-                  : BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(0)),
-            ),
+        isShowMainTitle == '[SHOW]'
+            ? AnimatedPositioned(
+                duration: const Duration(milliseconds: 500),
+                left: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true ? 15.0 : null,
+                right: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnRight == true ? 15.0 : null,
+                bottom: bottomDefinitionTitle,
+                height: 100.0,
+                child: Container(
+                  width: 500.0,
+                  height: 100.0,
+                  decoration: BoxDecoration(
+                    color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+                    border: Border.all(width: 8.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
+                    borderRadius: getCurrentVocabularyItem?.getVocabularyDataModel?.getIsExampleOnLeft == true
+                        ? BorderRadius.only(topLeft: Radius.circular(0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(0), bottomLeft: Radius.circular(15.0))
+                        : BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(0)),
+                  ),
 
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                  child: Container(
-                    color: Colors.transparent,
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Container(
+                          color: Colors.transparent,
+                          child: Stack(
                             children: [
-                              Flexible(
-                                child: Text(
-                                  'Definition',
-                                  style: GoogleFonts.poetsenOne(
-                                    textStyle: TextStyle(
-                                      fontSize: 35.0,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FontStyle.normal,
-                                      foreground: Paint()
-                                        ..style = PaintingStyle.stroke
-                                        ..strokeWidth = 2.0
-                                        ..color = Color(0xFF000000), // Màu viền
-                                      letterSpacing: 5.0,
+                              Positioned(
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Flexible(
+                                      child: Text(
+                                        'Definition',
+                                        style: GoogleFonts.poetsenOne(
+                                          textStyle: TextStyle(
+                                            fontSize: 35.0,
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle: FontStyle.normal,
+                                            foreground: Paint()
+                                              ..style = PaintingStyle.stroke
+                                              ..strokeWidth = 2.0
+                                              ..color = Color(0xFF000000), // Màu viền
+                                            letterSpacing: 5.0,
+                                          ),
+                                        ),
+                                        textAlign: TextAlign.center,
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                      ),
                                     ),
-                                  ),
-                                  textAlign: TextAlign.center,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
+                                  ],
+                                ),
+                              ),
+                              Positioned(
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Flexible(
+                                      child: Text(
+                                        'Definition',
+                                        style: GoogleFonts.poetsenOne(
+                                          textStyle: TextStyle(fontSize: 35.0, fontWeight: FontWeight.w600, fontStyle: FontStyle.normal, color: Color(0xFFFFFFFF), letterSpacing: 5.0),
+                                        ),
+                                        textAlign: TextAlign.center,
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        Positioned(
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  'Definition',
-                                  style: GoogleFonts.poetsenOne(
-                                    textStyle: TextStyle(fontSize: 35.0, fontWeight: FontWeight.w600, fontStyle: FontStyle.normal, color: Color(0xFFFFFFFF), letterSpacing: 5.0),
-                                  ),
-                                  textAlign: TextAlign.center,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),
-        ),
+              )
+            : Container(),
       ],
     );
   }

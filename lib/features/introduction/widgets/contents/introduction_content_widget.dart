@@ -61,6 +61,7 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
           if (isCompleted == false) {
             isCompleted = true;
 
+            /// MỞ
             setState(() {
               leftPositionLayerA01 = -2100.0 - 200.0;
               leftPositionLayerA02 = -1800.0 - 400.0;
@@ -80,6 +81,8 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
               });
 
               // return;
+              /// Play Sound
+              widget.systemStateManagement?.getMusicAndSound?.onPlaySFXSwingWhoosh();
             });
           }
         }
@@ -256,6 +259,7 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
 
                             WidgetsBinding.instance.addPostFrameCallback((_) {
                               Future.delayed(Duration(seconds: 1), () {
+                                /// Đóng
                                 setState(() {
                                   leftPositionLayerA01 = -2100.0;
                                   leftPositionLayerA02 = -1800.0;
@@ -264,6 +268,9 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                                   rightPositionLayerB01 = -2100.0;
                                   rightPositionLayerB02 = -1800.0;
                                   rightPositionLayerB03 = -950.0;
+
+                                  /// Play Sound
+                                  widget.systemStateManagement?.getMusicAndSound?.onPlaySFXSwingWhoosh();
                                 });
 
                                 WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -316,6 +323,9 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                                   rightPositionLayerB03 = -950.0;
 
                                   isShowVocabularyIntroductionContent = false;
+
+                                  /// Play Sound
+                                  widget.systemStateManagement?.getMusicAndSound?.onPlaySFXSwingWhoosh();
                                 });
 
                                 WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -329,6 +339,9 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                                       rightPositionLayerB01 = -2100.0 - 400.0;
                                       rightPositionLayerB02 = -1800.0 - 600.0;
                                       rightPositionLayerB03 = -950.0 - 1300.0;
+
+                                      /// Play Sound
+                                      widget.systemStateManagement?.getMusicAndSound?.onPlaySFXSwingWhoosh();
                                     });
 
                                     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -384,22 +397,13 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(2.0), topRight: Radius.circular(2.0), bottomRight: Radius.circular(2.0), bottomLeft: Radius.circular(2.0)),
                 border: Border.all(width: 15.0, color: isShowPomodoroIntroductionContent ? Color(0xFF00BFFF).withValues(alpha: 1.0) : Color(0xFF2C2C2C)),
                 boxShadow: [
-                  BoxShadow(
-                    color: isShowPomodoroIntroductionContent ? Color(0xFF1C1C1C).withValues(alpha: 1) : Color(0xFF2C2C2C).withValues(alpha: 1),
-                    blurRadius: isShowPomodoroIntroductionContent ? 2.0 : 1.0,
-                    spreadRadius: isShowPomodoroIntroductionContent ? 2.0 : 1.0,
-                    offset: Offset(1, 1),
-                  ),
+                  BoxShadow(color: isShowPomodoroIntroductionContent ? Color(0xFF1C1C1C).withValues(alpha: 1) : Color(0xFF2C2C2C).withValues(alpha: 1), blurRadius: isShowPomodoroIntroductionContent ? 2.0 : 1.0, spreadRadius: isShowPomodoroIntroductionContent ? 2.0 : 1.0, offset: Offset(1, 1)),
                 ],
                 image: DecorationImage(image: AssetImage('assets/images/background/background_06.jpg'), fit: BoxFit.fitWidth),
               ),
               child: Stack(
                 alignment: AlignmentDirectional.centerEnd,
-                children: [
-                  isShowPomodoroIntroductionContent
-                      ? mainTitleWidget(title: 'Pomodoro', titleColor: Color(0xFFFFFFFF), width: 1000.0, height: 180.0)
-                      : mainTitleWidget(title: 'Pomodoro', titleColor: Color(0xFF3C3C3C), width: 1000.0, height: 180.0),
-                ],
+                children: [isShowPomodoroIntroductionContent ? mainTitleWidget(title: 'Pomodoro', titleColor: Color(0xFFFFFFFF), width: 1000.0, height: 180.0) : mainTitleWidget(title: 'Pomodoro', titleColor: Color(0xFF3C3C3C), width: 1000.0, height: 180.0)],
               ),
             ),
           ),
@@ -420,22 +424,13 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(2.0), topRight: Radius.circular(2.0), bottomRight: Radius.circular(2.0), bottomLeft: Radius.circular(2.0)),
                 border: Border.all(width: 15.0, color: isShowVocabularyIntroductionContent ? Color(0xFF00BFFF).withValues(alpha: 1.0) : Color(0xFF2C2C2C)),
                 boxShadow: [
-                  BoxShadow(
-                    color: isShowVocabularyIntroductionContent ? Color(0xFF1C1C1C).withValues(alpha: 1) : Color(0xFF2C2C2C).withValues(alpha: 1),
-                    blurRadius: isShowVocabularyIntroductionContent ? 2.0 : 1.0,
-                    spreadRadius: isShowVocabularyIntroductionContent ? 2.0 : 1.0,
-                    offset: Offset(1, 1),
-                  ),
+                  BoxShadow(color: isShowVocabularyIntroductionContent ? Color(0xFF1C1C1C).withValues(alpha: 1) : Color(0xFF2C2C2C).withValues(alpha: 1), blurRadius: isShowVocabularyIntroductionContent ? 2.0 : 1.0, spreadRadius: isShowVocabularyIntroductionContent ? 2.0 : 1.0, offset: Offset(1, 1)),
                 ],
                 image: DecorationImage(image: AssetImage('assets/images/background/background_06.jpg'), fit: BoxFit.fitWidth),
               ),
               child: Stack(
                 alignment: AlignmentDirectional.centerEnd,
-                children: [
-                  isShowVocabularyIntroductionContent
-                      ? mainTitleWidget(title: 'Topic', titleColor: Color(0xFFFFFFFF), width: 1000.0, height: 180.0)
-                      : mainTitleWidget(title: 'Topic', titleColor: Color(0xFF3C3C3C), width: 1000.0, height: 180.0),
-                ],
+                children: [isShowVocabularyIntroductionContent ? mainTitleWidget(title: 'Topic', titleColor: Color(0xFFFFFFFF), width: 1000.0, height: 180.0) : mainTitleWidget(title: 'Topic', titleColor: Color(0xFF3C3C3C), width: 1000.0, height: 180.0)],
               ),
             ),
           ),
@@ -654,12 +649,7 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                                   width: 3000.0,
                                   height: 1500.0,
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(30.0),
-                                      topRight: Radius.circular(15.0),
-                                      bottomRight: Radius.circular(15.0),
-                                      bottomLeft: Radius.circular(30.0),
-                                    ),
+                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(30.0)),
                                     child: TransparentEffectWallWidget(sizeDx: 3000.0, sizeDy: 1500.0),
                                   ),
                                 ),
@@ -755,12 +745,7 @@ class _IntroductionContentWidgetState extends State<IntroductionContentWidget> w
                                   width: 3000.0,
                                   height: 1500.0,
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(30.0),
-                                      topRight: Radius.circular(15.0),
-                                      bottomRight: Radius.circular(15.0),
-                                      bottomLeft: Radius.circular(30.0),
-                                    ),
+                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(30.0)),
                                     child: TransparentEffectWallWidget(sizeDx: 3000.0, sizeDy: 1500.0),
                                   ),
                                 ),

@@ -162,8 +162,8 @@ class _VocabularyConversationContentWidgetState extends State<VocabularyConversa
     // FlameAudio.play('sfx/text_appear/vocabulary_conversation_sentence_appear.mp3', volume: 0.25);
 
     String nextSFX;
-    nextSFX = sfxList[_random.nextInt(sfxList.length)];
-    FlameAudio.play(nextSFX, volume: 0.25);
+    nextSFX = sfxList2[_random.nextInt(sfxList2.length)];
+    FlameAudio.play(nextSFX, volume: 0.45);
   }
 
   final List<String> sfxList = [
@@ -175,6 +175,29 @@ class _VocabularyConversationContentWidgetState extends State<VocabularyConversa
     'sfx/text_appear/vocabulary_conversation_sentence_appear_06.mp3',
     'sfx/text_appear/vocabulary_conversation_sentence_appear_07.mp3',
     'sfx/text_appear/vocabulary_conversation_sentence_appear_08.mp3',
+  ];
+
+  final List<String> sfxList2 = [
+    'sfx/monster_message/monster_message_01.mp3',
+    'sfx/monster_message/monster_message_02.mp3',
+    'sfx/monster_message/monster_message_03.mp3',
+    'sfx/monster_message/monster_message_04.mp3',
+    'sfx/monster_message/monster_message_05.mp3',
+    'sfx/monster_message/monster_message_06.mp3',
+    'sfx/monster_message/monster_message_07.mp3',
+    'sfx/monster_message/monster_message_08.mp3',
+    'sfx/monster_message/monster_message_09.mp3',
+    'sfx/monster_message/monster_message_10.mp3',
+    'sfx/monster_message/monster_message_11.mp3',
+    'sfx/monster_message/monster_message_12.mp3',
+    'sfx/monster_message/monster_message_13.mp3',
+    'sfx/monster_message/monster_message_14.mp3',
+    'sfx/monster_message/monster_message_15.mp3',
+    'sfx/monster_message/monster_message_16.mp3',
+    'sfx/monster_message/monster_message_17.mp3',
+    'sfx/monster_message/monster_message_18.mp3',
+    'sfx/monster_message/monster_message_19.mp3',
+    'sfx/monster_message/monster_message_20.mp3',
   ];
 
   @override

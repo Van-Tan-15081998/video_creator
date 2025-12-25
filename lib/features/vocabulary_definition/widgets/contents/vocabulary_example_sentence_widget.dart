@@ -144,7 +144,7 @@ class _VocabularyExampleSentenceWidget extends State<VocabularyExampleSentenceWi
   }
 
   onPlaySFXVocabularyExampleAppear() {
-    FlameAudio.play('sfx/text_appear/vocabulary_example_appear.mp3', volume: 0.5);
+    FlameAudio.play('sfx/text_appear/vocabulary_example_sentence_appear.mp3', volume: 0.7);
   }
   onPlaySFXVocabularyExampleDisappear() {
     FlameAudio.play('sfx/text_appear/vocabulary_example_disappear.mp3', volume: 0.5);

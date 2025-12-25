@@ -78,11 +78,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
             isShowSimplifyType = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsSimplifyType ?? false;
 
             if (isShowSimplifyType == true) {
-              // isShowType = false;
               isShowFullType = '[HIDE]';
             }
-
-            onPlaySFXVocabularyTitleContentAppear();
           });
         }
 
@@ -91,7 +88,6 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
             _isNoun = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsNoun;
 
             if (isShowSimplifyType == false) {
-              // isShowType = true;
               isShowFullType = '[SHOW]';
             }
 
@@ -103,7 +99,6 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isPronoun = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsPronoun;
             if (isShowSimplifyType == false) {
-              // isShowType = true;
               isShowFullType = '[SHOW]';
             }
 
@@ -115,7 +110,6 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isVerb = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsVerb;
             if (isShowSimplifyType == false) {
-              // isShowType = true;
               isShowFullType = '[SHOW]';
             }
 
@@ -127,7 +121,6 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isAdjective = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsAdjective;
             if (isShowSimplifyType == false) {
-              // isShowType = true;
               isShowFullType = '[SHOW]';
             }
 
@@ -139,7 +132,6 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isAdverb = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsAdverb;
             if (isShowSimplifyType == false) {
-              // isShowType = true;
               isShowFullType = '[SHOW]';
             }
 
@@ -151,7 +143,6 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isPreposition = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsPreposition;
             if (isShowSimplifyType == false) {
-              // isShowType = true;
               isShowFullType = '[SHOW]';
             }
 
@@ -163,7 +154,6 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isConjunction = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsConjunction;
             if (isShowSimplifyType == false) {
-              // isShowType = true;
               isShowFullType = '[SHOW]';
             }
 
@@ -175,7 +165,6 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isInterjection = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsInterjection;
             if (isShowSimplifyType == false) {
-              // isShowType = true;
               isShowFullType = '[SHOW]';
             }
 
@@ -187,7 +176,6 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
           setState(() {
             _isOtherType = getCurrentVocabularyItem?.getVocabularyDataModel?.getIsOtherType;
             if (isShowSimplifyType == false) {
-              // isShowType = true;
               isShowFullType = '[SHOW]';
             }
 
@@ -218,8 +206,8 @@ class _VocabularyTitleContentWidgetState extends State<VocabularyTitleContentWid
   bool? _isOtherType = false;
 
   final Random _random = Random();
-  onPlaySFXVocabularyTitleContentAppear() {
 
+  onPlaySFXVocabularyTitleContentAppear() {
     String nextSFX;
     nextSFX = sfxList[_random.nextInt(sfxList.length)];
     FlameAudio.play(nextSFX, volume: 0.15);
