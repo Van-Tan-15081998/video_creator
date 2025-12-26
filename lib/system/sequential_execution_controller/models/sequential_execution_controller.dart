@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 import 'package:frame_creator_v2/core/sequential_execution_structure.dart';
 import 'package:frame_creator_v2/core/window_feature.dart';
+import 'package:frame_creator_v2/features/01_feature_formats/01_memory_game_feature/memory_game_board/models/memory_game_board_feature.dart';
+import 'package:frame_creator_v2/features/01_feature_formats/01_memory_game_feature/memory_game_board/models/script/memory_script_model.dart';
+import 'package:frame_creator_v2/features/01_feature_formats/01_memory_game_feature/memory_game_board_scene_transition/models/memory_game_board_scene_transition_feature.dart';
 import 'package:frame_creator_v2/features/background_image/models/background_image_feature.dart';
 import 'package:frame_creator_v2/features/blackboard/models/blackboard_feature.dart';
 import 'package:frame_creator_v2/features/break_time_space/models/break_time_space_feature.dart';
@@ -34,6 +37,7 @@ import 'package:frame_creator_v2/state_managements/mixins/feature_mixin.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 import 'package:frame_creator_v2/system/sequential_execution_controller/models/script_models/vocabulary_script_model.dart';
 import 'package:frame_creator_v2/system/sequential_execution_controller/models/sequential_execution_detail.dart';
+import 'package:frame_creator_v2/system_config.dart';
 
 class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeature {
   SequentialExecutionController({required SystemStateManagement? systemStateManagement, required double? sizeDx, required double? sizeDy}) {
@@ -133,6 +137,7 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       getSystemStateManagement?.setInterestingKnowledgeConversationFeature(value: getInterestingKnowledgeConversationFeature);
 
       getSystemStateManagement?.setVocabularyScript(value: getVocabularyScript);
+      getSystemStateManagement?.setMemoryScript(value: getMemoryScript);
 
       getSystemStateManagement?.setGlobalAnnouncementFeature(value: getGlobalAnnouncementFeature);
 
@@ -143,6 +148,12 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       getSystemStateManagement?.setVocabularySceneTransitionFeature(value: getVocabularySceneTransitionFeature);
 
       getSystemStateManagement?.setSystemTimelineFeature(value: getSystemTimelineFeature);
+
+      ///
+      ///
+      ///
+      getSystemStateManagement?.setMemoryGameBoardFeature(value: getMemoryGameBoardFeature);
+      getSystemStateManagement?.setMemoryGameBoardSceneTransitionFeature(value: getMemoryGameBoardSceneTransitionFeature);
 
       /// -----
       /// TODO: Init Root For SubCom
@@ -168,7 +179,18 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       /// TODO:
       /// -----
       setSequentialExecutionDetail(value: SequentialExecutionDetail(sequentialExecutionController: this));
-      setVocabularyScript(value: VocabularyScriptModel(sequentialExecutionController: this));
+
+      ///
+      /// TODO: Bắt Đầu Dựa Theo Format Video
+      /// TODO: Mở Comment Theo Format Đang Áp Dụng
+      ///
+
+      if (SystemConfig.isFormatVocabularyList == true) {
+        setVocabularyScript(value: VocabularyScriptModel(sequentialExecutionController: this));
+      }
+      if (SystemConfig.isFormatMemoryGameBoard == true) {
+        setMemoryScript(value: MemoryScriptModel(sequentialExecutionController: this));
+      }
 
       /// -----
       /// TODO:
@@ -403,6 +425,24 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       getBlackboardFeature?.setTopPosition(value: 15.0, isPriorityOverride: true, isSetActiveTopPosition: true);
       getBlackboardFeature?.setRightPosition(value: 15.0, isPriorityOverride: true, isSetActiveRightPosition: true);
 
+      ///
+      ///
+      ///
+      setMemoryGameBoardFeature(
+        value: MemoryGameBoardFeature(systemStateManagement: getSystemStateManagement, sequentialExecutionController: this, sizeDx: null, sizeDy: null),
+        isPriorityOverride: true,
+      );
+      getMemoryGameBoardFeature?.setSizeDx(value: getSizeDx * 0.6, isPriorityOverride: true, isSetActiveSizeDx: true);
+      getMemoryGameBoardFeature?.setSizeDy(value: getSizeDy * 1.0 - 30.0, isPriorityOverride: true, isSetActiveSizeDy: true);
+      getMemoryGameBoardFeature?.setTopPosition(value: 15.0, isPriorityOverride: true, isSetActiveTopPosition: true);
+      getMemoryGameBoardFeature?.setLeftPosition(value: 15.0, isPriorityOverride: true, isSetActiveLeftPosition: true);
+
+      setMemoryGameBoardSceneTransitionFeature(value: MemoryGameBoardSceneTransitionFeature(systemStateManagement: getSystemStateManagement, sizeDx: null, sizeDy: null), isPriorityOverride: true);
+      getMemoryGameBoardSceneTransitionFeature?.setSizeDx(value: getSizeDx * 0.6, isPriorityOverride: true, isSetActiveSizeDx: true);
+      getMemoryGameBoardSceneTransitionFeature?.setSizeDy(value: getSizeDy * 1.0 - 30.0, isPriorityOverride: true, isSetActiveSizeDy: true);
+      getMemoryGameBoardSceneTransitionFeature?.setBottomPosition(value: 15.0, isPriorityOverride: true, isSetActiveBottomPosition: true);
+      getMemoryGameBoardSceneTransitionFeature?.setLeftPosition(value: 15.0, isPriorityOverride: true, isSetActiveLeftPosition: true);
+
       setWindowWidget(
         value: LayoutBuilder(
           builder: (context, constraints) {
@@ -467,6 +507,17 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
                 /// TODO: InterestingKnowledgeConversationFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getInterestingKnowledgeConversationFeature?.getWindowWidget ?? Container()),
 
+                ///
+                ///
+                ///
+
+                /// TODO: MemoryGameBoardFeature
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getMemoryGameBoardFeature?.getWindowWidget ?? Container()),
+
+                ///
+                ///
+                ///
+
                 /// TODO: FlameWorldFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getFlameWorldFeature?.getWindowWidget ?? Container()),
 
@@ -475,6 +526,9 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
 
                 /// TODO: VocabularySceneTransitionFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getVocabularySceneTransitionFeature?.getWindowWidget ?? Container()),
+
+                /// TODO: MemoryGameBoardSceneTransitionFeature
+                AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getMemoryGameBoardSceneTransitionFeature?.getWindowWidget ?? Container()),
 
                 /// TODO: SystemTimelineFeature
                 AnimatedPositioned(duration: const Duration(milliseconds: 500), top: 0, left: 0, width: getSizeDx, height: getSizeDy, child: getSystemTimelineFeature?.getWindowWidget ?? Container()),
@@ -599,6 +653,10 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       await getSystemTimelineFeature?.onSetupRoot();
       await getBlackboardFeature?.onSetupRoot();
 
+      ///
+      await getMemoryGameBoardFeature?.onSetupRoot();
+      await getMemoryGameBoardSceneTransitionFeature?.onSetupRoot();
+
       getIntroductionFeature
         ?..setConditionActiveByTopDirection()
         ..onDeactivateWindow();
@@ -685,6 +743,14 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       getBlackboardFeature
         ?..setConditionActiveByTopDirection()
         ..onDeactivateWindow();
+
+      ///
+      getMemoryGameBoardFeature
+        ?..setConditionActiveByLeftDirection()
+        ..onDeactivateWindow();
+      getMemoryGameBoardSceneTransitionFeature
+        ?..setConditionActiveByLeftDirection()
+        ..onDeactivateWindow();
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onSetupRootForSubCom]');
     }
@@ -736,6 +802,10 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
       await getSceneTransitionFeature?.onInitRoot();
       await getSystemTimelineFeature?.onInitRoot();
       await getBlackboardFeature?.onInitRoot();
+
+      ///
+      await getMemoryGameBoardFeature?.onInitRoot();
+      await getMemoryGameBoardSceneTransitionFeature?.onInitRoot();
     } catch (e) {
       await onReportRootIssue(nameFunction: '[onInitRootForSubCom]');
     }
@@ -835,7 +905,12 @@ class SequentialExecutionController with ExecutionCore, FeatureMixin, WindowFeat
 
   void updateSeconds() {
     getPomodoroFeature?.getPomodoroTime?.onUpdate();
+
+    ///
     getVocabularyDefinitionFeature?.getVocabularyTime?.onUpdate();
+
+    ///
+    getMemoryGameBoardFeature?.getMemoryTime?.onUpdate();
 
     getSequentialExecutionDetail?.onUpdate();
 

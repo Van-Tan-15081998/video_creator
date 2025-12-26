@@ -3,9 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/helpful_advice_animated_background_widget.dart';
-import 'package:frame_creator_v2/components/animated_background/widgets/helpful_study_advice/helpful_study_advice_animated_background_widget.dart';
 import 'package:frame_creator_v2/features/helpful_advice/models/data/helpful_advice_data_model.dart';
-import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 import 'package:google_fonts/google_fonts.dart';
 

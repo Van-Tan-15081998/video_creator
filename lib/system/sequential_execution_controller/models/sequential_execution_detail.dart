@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 import 'package:frame_creator_v2/system/sequential_execution_controller/models/sequential_execution_controller.dart';
+import 'package:frame_creator_v2/system_config.dart';
 
 class SequentialExecutionDetail with ExecutionCore {
   SequentialExecutionDetail({required SequentialExecutionController? sequentialExecutionController}) {
@@ -203,8 +204,6 @@ class SequentialExecutionDetail with ExecutionCore {
     int totalMinutes = getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.getTotalMinutes ?? 0;
     int seconds = getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.getSeconds ?? 0;
 
-
-
     // getSequentialExecutionController?.getVocabularyDefinitionFeature?.onActivateWindow();
     // getSequentialExecutionController?.getVocabularyConversationFeature?.onActivateWindow();
     // getSequentialExecutionController?.getVocabularyParagraphFeature?.onActivateWindow();
@@ -224,6 +223,8 @@ class SequentialExecutionDetail with ExecutionCore {
       getSequentialExecutionController?.getBackgroundImageFeature?.onActivateWindow();
       getSequentialExecutionController?.getGlobalAnnouncementFeature?.onActivateWindow();
 
+      // getSequentialExecutionController?.getMemoryGameBoardFeature?.onActivateWindow();
+
       // getSequentialExecutionController?.getHelpfulAdviceFeature?.onActivateWindow();
       // getSequentialExecutionController?.getHelpfulStudyAdviceFeature?.onActivateWindow();
       // getSequentialExecutionController?.getHelpfulStudyAdviceRelatedToTopicFeature?.onActivateWindow();
@@ -236,14 +237,16 @@ class SequentialExecutionDetail with ExecutionCore {
       // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 999, isPriorityOverride: true);
       // return;
 
-      // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 0, isPriorityOverride: true);
-      // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 29, isPriorityOverride: true);
-      // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 59, isPriorityOverride: true);
+      getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 0, isPriorityOverride: true);
+      getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 29, isPriorityOverride: true);
+      getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 59, isPriorityOverride: true);
 
       // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalHours(value: 0, isPriorityOverride: true);
       // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setTotalMinutes(value: 0, isPriorityOverride: true);
       // getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.setSeconds(value: 6, isPriorityOverride: true);
     }
+
+    // return;
 
     if (totalHours == 0 && totalMinutes == 0 && seconds == 100) {
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
@@ -692,8 +695,12 @@ class SequentialExecutionDetail with ExecutionCore {
         /// Bắt đầu chạy Pomodoro đầu tiên
         getSequentialExecutionController?.getPomodoroFeature?.getPomodoroTime?.start();
 
-        /// Bắt đầu chạy Danh sách Từ vựng
-        getSequentialExecutionController?.getVocabularyScript?.onStartVocabularyDefinition();
+        if (SystemConfig.isFormatVocabularyList == true) {
+          getSequentialExecutionController?.getVocabularyScript?.onStartVocabularyDefinition();
+        }
+        if (SystemConfig.isFormatMemoryGameBoard == true) {
+          getSequentialExecutionController?.getMemoryScript?.onStartMemoryGame();
+        }
       }
 
       ///
@@ -1216,8 +1223,15 @@ class SequentialExecutionDetail with ExecutionCore {
       printTerminal(str: '00:30:02');
 
       if (getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.isRunning() == true) {
-        /// Bắt đầu chạy Danh sách Từ vựng
-        getSequentialExecutionController?.getVocabularyScript?.onStartVocabularyDefinition();
+        /// TODO: Bắt đầu chạy Theo Format - Bước nhảy tắt (Debug)
+        if (SystemConfig.isJumpOnDebugMode == true) {
+          if (SystemConfig.isFormatVocabularyList == true) {
+            getSequentialExecutionController?.getVocabularyScript?.onStartVocabularyDefinition();
+          }
+          if (SystemConfig.isFormatMemoryGameBoard == true) {
+            getSequentialExecutionController?.getMemoryScript?.onStartMemoryGame();
+          }
+        }
 
         /// Dừng Chuyển Tiếp
         getSequentialExecutionController?.getSystemStateManagement?.getMainTimelineStateManagement?.getTimeline?.pause();

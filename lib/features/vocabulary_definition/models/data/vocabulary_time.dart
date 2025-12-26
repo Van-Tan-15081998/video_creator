@@ -122,7 +122,7 @@ class VocabularyTime with ExecutionCore {
   }
 
   /// -----
-  /// TODO:
+  /// TODO: Hiển Thị Tại Màn Hình Scene
   /// -----
   VocabularyItem? _currentVocabularyItemForStart;
   VocabularyItem? get getCurrentVocabularyItemForStart => _currentVocabularyItemForStart;

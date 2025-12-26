@@ -1,6 +1,4 @@
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:frame_creator_v2/components/animated_background/widgets/animated_background_widget.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget_light.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 

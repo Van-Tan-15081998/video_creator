@@ -26,6 +26,7 @@ class VocabularyItem with ExecutionCore {
     setCurrentVocabularyItem(value: currentVocabularyItem, isPriorityOverride: true);
     setSequentialExecutionController(value: sequentialExecutionController, isPriorityOverride: true);
 
+    setCurrentVocabularyItemStack(value: currentVocabularyItemStack, isPriorityOverride: true);
     setCurrentHelpfulStudyAdvice(value: currentHelpfulStudyAdvice, isPriorityOverride: true);
     setCurrentHelpfulStudyAdviceRelatedToTopic(value: currentHelpfulStudyAdviceRelatedToTopic, isPriorityOverride: true);
   }

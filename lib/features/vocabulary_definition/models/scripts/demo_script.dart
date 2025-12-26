@@ -1,7 +1,6 @@
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_data_model.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_time.dart';
-import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_topic_data_model.dart';
 
 class DemoScript with ExecutionCore {
   DemoScript({required VocabularyTime? vocabularyTime}) {

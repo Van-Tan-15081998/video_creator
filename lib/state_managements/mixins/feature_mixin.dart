@@ -1,3 +1,6 @@
+import 'package:frame_creator_v2/features/01_feature_formats/01_memory_game_feature/memory_game_board/models/memory_game_board_feature.dart';
+import 'package:frame_creator_v2/features/01_feature_formats/01_memory_game_feature/memory_game_board/models/script/memory_script_model.dart';
+import 'package:frame_creator_v2/features/01_feature_formats/01_memory_game_feature/memory_game_board_scene_transition/models/memory_game_board_scene_transition_feature.dart';
 import 'package:frame_creator_v2/features/background_image/models/background_image_feature.dart';
 import 'package:frame_creator_v2/features/blackboard/models/blackboard_feature.dart';
 import 'package:frame_creator_v2/features/break_time_space/models/break_time_space_feature.dart';
@@ -365,6 +368,8 @@ mixin FeatureMixin {
     return;
   }
 
+
+
   /// -----
   /// TODO:
   /// -----
@@ -487,6 +492,59 @@ mixin FeatureMixin {
       _vocabularyScript = value;
     } else {
       _vocabularyScript ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  MemoryScriptModel? _memoryScriptModel;
+  MemoryScriptModel? get getMemoryScript => _memoryScriptModel;
+  void setMemoryScript({required MemoryScriptModel? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _memoryScriptModel = value;
+    } else {
+      _memoryScriptModel ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  ///
+  /// TODO: 01_feature_formats
+  ///
+
+  /// TODO: 01_memory_game_feature
+
+  /// TODO: memory_game_board
+
+  MemoryGameBoardFeature? _memoryGameBoardFeature;
+  MemoryGameBoardFeature? get getMemoryGameBoardFeature => _memoryGameBoardFeature;
+  void setMemoryGameBoardFeature({required MemoryGameBoardFeature? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _memoryGameBoardFeature = value;
+    } else {
+      _memoryGameBoardFeature ??= value;
+    }
+
+    ///
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
+  MemoryGameBoardSceneTransitionFeature? _memoryGameBoardSceneTransitionFeature;
+  MemoryGameBoardSceneTransitionFeature? get getMemoryGameBoardSceneTransitionFeature => _memoryGameBoardSceneTransitionFeature;
+  void setMemoryGameBoardSceneTransitionFeature({required MemoryGameBoardSceneTransitionFeature? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _memoryGameBoardSceneTransitionFeature = value;
+    } else {
+      _memoryGameBoardSceneTransitionFeature ??= value;
     }
 
     ///
