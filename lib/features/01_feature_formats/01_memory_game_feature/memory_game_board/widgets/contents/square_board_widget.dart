@@ -9,6 +9,7 @@ import 'package:frame_creator_v2/features/01_feature_formats/01_memory_game_feat
 import 'package:frame_creator_v2/features/01_feature_formats/01_memory_game_feature/memory_game_board/models/data/memory_item.dart';
 import 'package:frame_creator_v2/features/01_feature_formats/01_memory_game_feature/memory_game_board/models/data/memory_time.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SquareBoardWidget extends StatefulWidget {
   const SquareBoardWidget({super.key, required this.systemStateManagement, required this.sizeDx, required this.sizeDy});
@@ -25,385 +26,505 @@ class SquareBoardWidget extends StatefulWidget {
   State<SquareBoardWidget> createState() => _BlackboardContentWidgetState();
 }
 
-class _BlackboardContentWidgetState extends State<SquareBoardWidget> {
+class _BlackboardContentWidgetState extends State<SquareBoardWidget> with TickerProviderStateMixin {
+  late final Ticker _ticker;
+
+  /// -----
+  /// TODO:
+  /// -----
+  MemoryWordUnit? _currentMemoryWordUnit;
+  MemoryWordUnit? get getCurrentMemoryWordUnit => _currentMemoryWordUnit;
+  void setCurrentMemoryWordUnit({required MemoryWordUnit? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentMemoryWordUnit = value;
+    } else {
+      _currentMemoryWordUnit ??= value;
+    }
+
+    return;
+  }
+
+  String currentWord = '';
+
   @override
   void initState() {
     super.initState();
 
-    sizeUnit = widget.sizeDx / 4;
+    setCurrentMemoryWordUnit(value: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime?.getCurrentMemoryWordUnit, isPriorityOverride: true);
+
+    // sizeUnit = widget.sizeDx / 4;
+    sizeUnit = 900 / 4;
+
+    _ticker = createTicker((Duration elapsed) {
+      if (currentWord != getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.getId) {
+        setState(() {
+          currentWord = getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.getId ?? '...';
+        });
+      }
+
+      ///
+    })..start();
   }
 
   double sizeUnit = 0;
 
   @override
+  void dispose() {
+    _ticker.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: AlignmentDirectional.center,
+      alignment: AlignmentDirectional.topStart,
 
       children: [
-        Container(
-          padding: EdgeInsets.all(0),
-          width: widget.sizeDx,
-          height: widget.sizeDy,
-
-          decoration: BoxDecoration(
-            color: Color(0xFF002200).withValues(alpha: 0.5),
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+        AnimatedPositioned(
+          duration: const Duration(milliseconds: 100),
+          left: 0,
+          top: 0,
+          child: Container(
+            width: 520.0,
+            height: 200.0,
+            decoration: BoxDecoration(
+              color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+              border: Border.all(width: 8.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0), bottomRight: Radius.circular(30.0), bottomLeft: Radius.circular(30.0)),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 5.0),
+              child: Stack(
+                alignment: AlignmentDirectional.center,
+                children: [
+                  Positioned(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            currentWord,
+                            style: GoogleFonts.concertOne(
+                              textStyle: TextStyle(
+                                // fontSize: 35.0,
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FontStyle.normal,
+                                foreground: Paint()
+                                  ..style = PaintingStyle.stroke
+                                  ..strokeWidth = 2.0
+                                  ..color = Color(0xFF000000), // Màu viền
+                                letterSpacing: 5.0,
+                              ),
+                            ),
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            currentWord,
+                            style: GoogleFonts.concertOne(
+                              textStyle: TextStyle(
+                                // fontSize: 35.0,
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w600, //
+                                fontStyle: FontStyle.normal, //
+                                color: Color(0xFFFFFFFF), //
+                                letterSpacing: 5.0,
+                              ),
+                            ),
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-          child: Stack(
-            alignment: AlignmentDirectional.center,
-            children: [
-              Positioned(
-                top: 0,
-                left: 0,
-                width: widget.sizeDx,
-                height: widget.sizeDy,
-                child: Stack(
-                  alignment: AlignmentDirectional.center,
-                  children: [
-                    Positioned(
-                      child: TransparentEffectWallWidgetLight(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
-                    ),
-                  ],
-                ),
-              ),
+        ),
 
-              ///
-              /// ROW 1
-              ///
-              Positioned(
-                top: sizeUnit * 0,
-                left: sizeUnit * 0,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
+        Positioned(
+          top: 0,
+          right: 0,
+          width: 900.0,
+          height: 900.0,
+          child: Container(
+            padding: EdgeInsets.all(0),
+            width: 900.0,
+            height: 900.0,
 
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
-                    ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 1, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
+            decoration: BoxDecoration(
+              color: Color(0xFF002200).withValues(alpha: 0.5),
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+            ),
+            child: Stack(
+              alignment: AlignmentDirectional.center,
+              children: [
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  width: 900.0,
+                  height: 900.0,
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      Positioned(
+                        child: TransparentEffectWallWidgetLight(sizeDx: widget.sizeDx, sizeDy: widget.sizeDy),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              Positioned(
-                top: sizeUnit * 0,
-                left: sizeUnit * 1,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
 
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                ///
+                /// ROW 1
+                ///
+                Positioned(
+                  top: sizeUnit * 0,
+                  left: sizeUnit * 0,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
+
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 1, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 2, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
-              Positioned(
-                top: sizeUnit * 0,
-                left: sizeUnit * 2,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
+                Positioned(
+                  top: sizeUnit * 0,
+                  left: sizeUnit * 1,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
 
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 2, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 3, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
-              Positioned(
-                top: sizeUnit * 0,
-                left: sizeUnit * 3,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
+                Positioned(
+                  top: sizeUnit * 0,
+                  left: sizeUnit * 2,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
 
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 3, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 4, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
+                Positioned(
+                  top: sizeUnit * 0,
+                  left: sizeUnit * 3,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
 
-              ///
-              /// ROW 2
-              ///
-              Positioned(
-                top: sizeUnit * 1,
-                left: sizeUnit * 0,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
-
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 4, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 5, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
-              Positioned(
-                top: sizeUnit * 1,
-                left: sizeUnit * 1,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
 
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                ///
+                /// ROW 2
+                ///
+                Positioned(
+                  top: sizeUnit * 1,
+                  left: sizeUnit * 0,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
+
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 5, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 6, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
-              Positioned(
-                top: sizeUnit * 1,
-                left: sizeUnit * 2,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
+                Positioned(
+                  top: sizeUnit * 1,
+                  left: sizeUnit * 1,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
 
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 6, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 7, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
-              Positioned(
-                top: sizeUnit * 1,
-                left: sizeUnit * 3,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
+                Positioned(
+                  top: sizeUnit * 1,
+                  left: sizeUnit * 2,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
 
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 7, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 8, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
+                Positioned(
+                  top: sizeUnit * 1,
+                  left: sizeUnit * 3,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
 
-              ///
-              /// ROW 3
-              ///
-              Positioned(
-                top: sizeUnit * 2,
-                left: sizeUnit * 0,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
-
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 8, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 9, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
-              Positioned(
-                top: sizeUnit * 2,
-                left: sizeUnit * 1,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
 
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                ///
+                /// ROW 3
+                ///
+                Positioned(
+                  top: sizeUnit * 2,
+                  left: sizeUnit * 0,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
+
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 9, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 10, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
-              Positioned(
-                top: sizeUnit * 2,
-                left: sizeUnit * 2,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
+                Positioned(
+                  top: sizeUnit * 2,
+                  left: sizeUnit * 1,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
 
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 10, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 11, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
-              Positioned(
-                top: sizeUnit * 2,
-                left: sizeUnit * 3,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
+                Positioned(
+                  top: sizeUnit * 2,
+                  left: sizeUnit * 2,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
 
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 11, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 12, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
+                Positioned(
+                  top: sizeUnit * 2,
+                  left: sizeUnit * 3,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
 
-              ///
-              /// ROW 4
-              ///
-              Positioned(
-                top: sizeUnit * 3,
-                left: sizeUnit * 0,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
-
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 12, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 13, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
-              Positioned(
-                top: sizeUnit * 3,
-                left: sizeUnit * 1,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
 
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                ///
+                /// ROW 4
+                ///
+                Positioned(
+                  top: sizeUnit * 3,
+                  left: sizeUnit * 0,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
+
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 13, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 14, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
-              Positioned(
-                top: sizeUnit * 3,
-                left: sizeUnit * 2,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
+                Positioned(
+                  top: sizeUnit * 3,
+                  left: sizeUnit * 1,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
 
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 14, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 15, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
-              Positioned(
-                top: sizeUnit * 3,
-                left: sizeUnit * 3,
-                width: sizeUnit,
-                height: sizeUnit,
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.all(0),
-                    width: sizeUnit - 2.0,
-                    height: sizeUnit - 2.0,
+                Positioned(
+                  top: sizeUnit * 3,
+                  left: sizeUnit * 2,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
 
-                    decoration: BoxDecoration(
-                      color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                      border: Border.all(width: 5.0, color: Colors.black),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 15, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                     ),
-                    child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 16, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
                   ),
                 ),
-              ),
-            ],
+                Positioned(
+                  top: sizeUnit * 3,
+                  left: sizeUnit * 3,
+                  width: sizeUnit,
+                  height: sizeUnit,
+                  child: Center(
+                    child: Container(
+                      padding: EdgeInsets.all(0),
+                      width: sizeUnit - 2.0,
+                      height: sizeUnit - 2.0,
+
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF).withValues(alpha: 0.5),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), topRight: Radius.circular(15.0), bottomRight: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                        border: Border.all(width: 5.0, color: Colors.black),
+                      ),
+                      child: FlipCard(memoryTime: widget.systemStateManagement?.getMemoryGameBoardFeature?.getMemoryTime, index: 16, sizeDx: sizeUnit - 2.0, sizeDy: sizeUnit - 2.0),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],
@@ -513,6 +634,21 @@ class _FlipCardState extends State<FlipCard> with TickerProviderStateMixin {
             flipFront();
           }
         }
+
+        if (memoryWordUnit?.getMemoryWordUnitDataModel?.isHiddenUnderneath() == true) {
+          hiddenUnderneath();
+        }
+
+        if (memoryWordUnit?.getMemoryWordUnitDataModel?.isShowComplete() == true) {
+          unHiddenUnderneath();
+          Future.delayed(Duration(milliseconds: 100), () {
+            flipBack();
+          });
+        }
+
+        if (memoryWordUnit?.getMemoryWordUnitDataModel?.isUnHiddenUnderneath() == true) {
+          unHiddenUnderneath();
+        }
       }
 
       if (true) {
@@ -547,6 +683,24 @@ class _FlipCardState extends State<FlipCard> with TickerProviderStateMixin {
     }
   }
 
+  void hiddenUnderneath() {
+    if (isHiddenUnderneath == false) {
+      setState(() {
+        isHiddenUnderneath = true;
+      });
+    }
+  }
+
+  void unHiddenUnderneath() {
+    if (isHiddenUnderneath == true) {
+      setState(() {
+        isHiddenUnderneath = false;
+      });
+    }
+  }
+
+  bool isHiddenUnderneath = false;
+
   @override
   void dispose() {
     _controller.dispose();
@@ -557,19 +711,44 @@ class _FlipCardState extends State<FlipCard> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _controller,
-      builder: (context, child) {
-        final angle = _controller.value * pi;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12.0),
+      child: Stack(
+        alignment: AlignmentDirectional.center,
+        children: [
+          AnimatedBuilder(
+            animation: _controller,
+            builder: (context, child) {
+              final angle = _controller.value * pi;
 
-        return Transform(
-          alignment: Alignment.center,
-          transform: Matrix4.identity()
-            ..setEntry(3, 2, 0.001) // tạo hiệu ứng 3D
-            ..rotateY(angle),
-          child: angle <= pi / 2 ? front() : Transform(alignment: Alignment.center, transform: Matrix4.rotationY(pi), child: back()),
-        );
-      },
+              return Transform(
+                alignment: Alignment.center,
+                transform: Matrix4.identity()
+                  ..setEntry(3, 2, 0.001) // tạo hiệu ứng 3D
+                  ..rotateY(angle),
+                child: angle <= pi / 2 ? front() : Transform(alignment: Alignment.center, transform: Matrix4.rotationY(pi), child: back()),
+              );
+            },
+          ),
+
+          AnimatedPositioned(
+            top: isHiddenUnderneath ? 0 : -widget.sizeDy,
+            left: isHiddenUnderneath ? 0 : -widget.sizeDx,
+            duration: const Duration(milliseconds: 300),
+            width: widget.sizeDx,
+            height: widget.sizeDy,
+            child: Container(
+              width: widget.sizeDx,
+              height: widget.sizeDy,
+              decoration: BoxDecoration(
+                color: Color(0xFF2C2C2C).withValues(alpha: 0.85),
+                // border: Border.all(width: 8.0, color: Color(0xFF1C1C1C).withValues(alpha: 0.75)),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(12.0), topRight: Radius.circular(12.0), bottomRight: Radius.circular(12.0), bottomLeft: Radius.circular(12.0)),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

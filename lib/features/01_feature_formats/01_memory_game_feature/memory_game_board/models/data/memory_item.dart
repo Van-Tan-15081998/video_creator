@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
 import 'package:frame_creator_v2/features/01_feature_formats/01_memory_game_feature/memory_game_board/models/data/memory_data_model.dart';
@@ -8,12 +10,14 @@ class MemoryItem with ExecutionCore {
     required String? id, //
     required double? totalMinutes,
     required MemoryItem? currentMemoryItem, //
+    required MemoryWordUnit? currentMemoryWordUnit, //
     required List<MemoryItem>? currentMemoryItemStack, //
     required this.onComplete,
   }) {
     setId(value: id, isPriorityOverride: true);
     setTotalMinutes(value: totalMinutes, isPriorityOverride: true);
     setCurrentMemoryItem(value: currentMemoryItem, isPriorityOverride: true);
+    setCurrentMemoryWordUnit(value: currentMemoryWordUnit, isPriorityOverride: true);
   }
 
   /// -----
@@ -173,6 +177,21 @@ class MemoryItem with ExecutionCore {
   /// -----
   /// TODO:
   /// -----
+  MemoryWordUnit? _currentMemoryWordUnit;
+  MemoryWordUnit? get getCurrentMemoryWordUnit => _currentMemoryWordUnit;
+  void setCurrentMemoryWordUnit({required MemoryWordUnit? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentMemoryWordUnit = value;
+    } else {
+      _currentMemoryWordUnit ??= value;
+    }
+
+    return;
+  }
+
+  /// -----
+  /// TODO:
+  /// -----
   List<MemoryItem>? _currentMemoryItemStack;
   List<MemoryItem>? get getCurrentMemoryItemStack => _currentMemoryItemStack;
   void setCurrentMemoryItemStack({required List<MemoryItem>? value, bool? isPriorityOverride}) {
@@ -294,200 +313,613 @@ class MemoryItem with ExecutionCore {
           /// -----
           /// TODO: PhaseSS01
           /// -----
-          if (totalSeconds == 1) {
+          if (totalSeconds == 30) {
             getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS01?.getMemoryWordUnitDataModel?.show();
+
+            getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS01?.getMemoryWordUnitDataModel, isPriorityOverride: true);
           }
 
-          if (totalSeconds == 5) {
+          if (totalSeconds == 35) {
             Future.delayed(Duration(seconds: 0), () {
               getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS01?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
             });
             Future.delayed(Duration(seconds: 1), () {
               getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS02?.getMemoryWordUnitDataModel?.show();
-            });
-
-            ///
-          }
-          if (totalSeconds == 10) {
-            Future.delayed(Duration(seconds: 0), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS02?.getMemoryWordUnitDataModel?.hide();
-            });
-            Future.delayed(Duration(seconds: 1), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS03?.getMemoryWordUnitDataModel?.show();
-            });
-
-            ///
-          }
-          if (totalSeconds == 15) {
-            Future.delayed(Duration(seconds: 0), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS03?.getMemoryWordUnitDataModel?.hide();
-            });
-            Future.delayed(Duration(seconds: 1), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS04?.getMemoryWordUnitDataModel?.show();
-            });
-
-            ///
-          }
-          if (totalSeconds == 20) {
-            Future.delayed(Duration(seconds: 0), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS04?.getMemoryWordUnitDataModel?.hide();
-            });
-            Future.delayed(Duration(seconds: 1), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS05?.getMemoryWordUnitDataModel?.show();
-            });
-
-            ///
-          }
-          if (totalSeconds == 25) {
-            Future.delayed(Duration(seconds: 0), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS05?.getMemoryWordUnitDataModel?.hide();
-            });
-            Future.delayed(Duration(seconds: 1), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS06?.getMemoryWordUnitDataModel?.show();
-            });
-
-            ///
-          }
-          if (totalSeconds == 30) {
-            Future.delayed(Duration(seconds: 0), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS06?.getMemoryWordUnitDataModel?.hide();
-            });
-            Future.delayed(Duration(seconds: 1), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS07?.getMemoryWordUnitDataModel?.show();
-            });
-
-            ///
-          }
-          if (totalSeconds == 35) {
-            Future.delayed(Duration(seconds: 0), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS07?.getMemoryWordUnitDataModel?.hide();
-            });
-            Future.delayed(Duration(seconds: 1), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS08?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS02?.getMemoryWordUnitDataModel, isPriorityOverride: true);
             });
 
             ///
           }
           if (totalSeconds == 40) {
             Future.delayed(Duration(seconds: 0), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS08?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS02?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
             });
             Future.delayed(Duration(seconds: 1), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS09?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS03?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS03?.getMemoryWordUnitDataModel, isPriorityOverride: true);
             });
 
             ///
           }
           if (totalSeconds == 45) {
             Future.delayed(Duration(seconds: 0), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS09?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS03?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
             });
             Future.delayed(Duration(seconds: 1), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS10?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS04?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS04?.getMemoryWordUnitDataModel, isPriorityOverride: true);
             });
 
             ///
           }
-
           if (totalSeconds == 50) {
             Future.delayed(Duration(seconds: 0), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS10?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS04?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
             });
             Future.delayed(Duration(seconds: 1), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS11?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS05?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS05?.getMemoryWordUnitDataModel, isPriorityOverride: true);
             });
 
             ///
           }
           if (totalSeconds == 55) {
             Future.delayed(Duration(seconds: 0), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS11?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS05?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
             });
             Future.delayed(Duration(seconds: 1), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS12?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS06?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS06?.getMemoryWordUnitDataModel, isPriorityOverride: true);
             });
 
             ///
           }
           if (totalSeconds == 60) {
             Future.delayed(Duration(seconds: 0), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS12?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS06?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
             });
             Future.delayed(Duration(seconds: 1), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS13?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS07?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS07?.getMemoryWordUnitDataModel, isPriorityOverride: true);
             });
 
             ///
           }
           if (totalSeconds == 65) {
             Future.delayed(Duration(seconds: 0), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS13?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS07?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
             });
             Future.delayed(Duration(seconds: 1), () {
-              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS14?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS08?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS08?.getMemoryWordUnitDataModel, isPriorityOverride: true);
             });
 
             ///
           }
           if (totalSeconds == 70) {
             Future.delayed(Duration(seconds: 0), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS08?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
+            });
+            Future.delayed(Duration(seconds: 1), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS09?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS09?.getMemoryWordUnitDataModel, isPriorityOverride: true);
+            });
+
+            ///
+          }
+          if (totalSeconds == 85) {
+            Future.delayed(Duration(seconds: 0), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS09?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
+            });
+            Future.delayed(Duration(seconds: 1), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS10?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS10?.getMemoryWordUnitDataModel, isPriorityOverride: true);
+            });
+
+            ///
+          }
+
+          if (totalSeconds == 90) {
+            Future.delayed(Duration(seconds: 0), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS10?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
+            });
+            Future.delayed(Duration(seconds: 1), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS11?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS11?.getMemoryWordUnitDataModel, isPriorityOverride: true);
+            });
+
+            ///
+          }
+          if (totalSeconds == 95) {
+            Future.delayed(Duration(seconds: 0), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS11?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
+            });
+            Future.delayed(Duration(seconds: 1), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS12?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS12?.getMemoryWordUnitDataModel, isPriorityOverride: true);
+            });
+
+            ///
+          }
+          if (totalSeconds == 100) {
+            Future.delayed(Duration(seconds: 0), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS12?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
+            });
+            Future.delayed(Duration(seconds: 1), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS13?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS13?.getMemoryWordUnitDataModel, isPriorityOverride: true);
+            });
+
+            ///
+          }
+          if (totalSeconds == 105) {
+            Future.delayed(Duration(seconds: 0), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS13?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
+            });
+            Future.delayed(Duration(seconds: 1), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS14?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS14?.getMemoryWordUnitDataModel, isPriorityOverride: true);
+            });
+
+            ///
+          }
+          if (totalSeconds == 110) {
+            Future.delayed(Duration(seconds: 0), () {
               getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS14?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
             });
             Future.delayed(Duration(seconds: 1), () {
               getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS15?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS15?.getMemoryWordUnitDataModel, isPriorityOverride: true);
             });
 
             ///
           }
-          if (totalSeconds == 75) {
+          if (totalSeconds == 115) {
             Future.delayed(Duration(seconds: 0), () {
               getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS15?.getMemoryWordUnitDataModel?.hide();
+              getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
             });
             Future.delayed(Duration(seconds: 1), () {
               getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS16?.getMemoryWordUnitDataModel?.show();
+              getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS16?.getMemoryWordUnitDataModel, isPriorityOverride: true);
             });
 
             ///
           }
 
-          if (totalSeconds == 80) {
+          if (totalSeconds == 120) {
             getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS16?.getMemoryWordUnitDataModel?.hide();
+            getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
 
             ///
           }
 
-          if (totalSeconds == 100) {
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS01?.getMemoryWordUnitDataModel?.hide();
+          // 130,165,200,235,270,305,340,375,410,445,480,515,550,585,620,655
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS02?.getMemoryWordUnitDataModel?.hide();
+          int hookTimeStartMemoryWordUnitSS01 = 130;
+          int hookTimeStartMemoryWordUnitSS02 = 165;
+          int hookTimeStartMemoryWordUnitSS03 = 200;
+          int hookTimeStartMemoryWordUnitSS04 = 235;
+          int hookTimeStartMemoryWordUnitSS05 = 270;
+          int hookTimeStartMemoryWordUnitSS06 = 305;
+          int hookTimeStartMemoryWordUnitSS07 = 340;
+          int hookTimeStartMemoryWordUnitSS08 = 375;
+          int hookTimeStartMemoryWordUnitSS09 = 410;
+          int hookTimeStartMemoryWordUnitSS10 = 445;
+          int hookTimeStartMemoryWordUnitSS11 = 480;
+          int hookTimeStartMemoryWordUnitSS12 = 515;
+          int hookTimeStartMemoryWordUnitSS13 = 550;
+          int hookTimeStartMemoryWordUnitSS14 = 585;
+          int hookTimeStartMemoryWordUnitSS15 = 620;
+          int hookTimeStartMemoryWordUnitSS16 = 655;
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS03?.getMemoryWordUnitDataModel?.hide();
+          ///
+          /// TODO: START MemoryWordUnit SS01
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS01) {
+            onRandomMemoryWordUnit();
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS04?.getMemoryWordUnitDataModel?.hide();
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS01 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS01 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS01 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS05?.getMemoryWordUnitDataModel?.hide();
+          ///
+          /// TODO: START MemoryWordUnit SS02
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS02) {
+            onRandomMemoryWordUnit();
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS06?.getMemoryWordUnitDataModel?.hide();
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS02 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS02 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS02 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS07?.getMemoryWordUnitDataModel?.hide();
+          ///
+          /// TODO: START MemoryWordUnit SS03
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS03) {
+            onRandomMemoryWordUnit();
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS08?.getMemoryWordUnitDataModel?.hide();
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS03 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS03 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS03 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS09?.getMemoryWordUnitDataModel?.hide();
+          ///
+          /// TODO: START MemoryWordUnit SS04
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS04) {
+            onRandomMemoryWordUnit();
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS10?.getMemoryWordUnitDataModel?.hide();
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS04 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS04 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS04 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS11?.getMemoryWordUnitDataModel?.hide();
+          ///
+          /// TODO: START MemoryWordUnit SS05
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS05) {
+            onRandomMemoryWordUnit();
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS12?.getMemoryWordUnitDataModel?.hide();
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS05 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS05 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS05 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS13?.getMemoryWordUnitDataModel?.hide();
+          ///
+          /// TODO: START MemoryWordUnit SS06
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS06) {
+            onRandomMemoryWordUnit();
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS14?.getMemoryWordUnitDataModel?.hide();
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS06 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS06 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS06 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS15?.getMemoryWordUnitDataModel?.hide();
+          ///
+          /// TODO: START MemoryWordUnit SS07
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS07) {
+            onRandomMemoryWordUnit();
 
-            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS16?.getMemoryWordUnitDataModel?.hide();
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS07 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS07 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS07 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
+
+          ///
+          /// TODO: START MemoryWordUnit SS08
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS08) {
+            onRandomMemoryWordUnit();
+
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS08 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS08 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS08 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
+
+          ///
+          /// TODO: START MemoryWordUnit SS09
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS09) {
+            onRandomMemoryWordUnit();
+
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS09 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS09 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS09 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
+
+          ///
+          /// TODO: START MemoryWordUnit SS10
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS10) {
+            onRandomMemoryWordUnit();
+
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS10 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS10 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS10 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
+
+          ///
+          /// TODO: START MemoryWordUnit SS11
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS11) {
+            onRandomMemoryWordUnit();
+
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS11 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS11 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS11 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
+
+          ///
+          /// TODO: START MemoryWordUnit SS12
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS12) {
+            onRandomMemoryWordUnit();
+
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS12 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS12 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS12 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
+
+          ///
+          /// TODO: START MemoryWordUnit SS13
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS13) {
+            onRandomMemoryWordUnit();
+
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS13 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS13 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS13 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
+
+          ///
+          /// TODO: START MemoryWordUnit SS14
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS14) {
+            onRandomMemoryWordUnit();
+
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS14 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS14 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS14 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
+
+          ///
+          /// TODO: START MemoryWordUnit SS15
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS15) {
+            onRandomMemoryWordUnit();
+
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS15 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS15 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS15 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
+
+          ///
+          /// TODO: START MemoryWordUnit SS16
+          ///
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS16) {
+            onRandomMemoryWordUnit();
+
+            ///
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS16 + 20) {
+            /// Chuẩn Bị Show Đáp Án
+            prepareShowAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS16 + 25) {
+            /// Show Đáp Án
+            showAnswer();
+          }
+          if (totalSeconds == hookTimeStartMemoryWordUnitSS16 + 30) {
+            /// Về Trạng Thái Chuẩn Bị
+            returnToPrepare();
+          }
+
+          if (totalSeconds == 900) {
+            Future.delayed(Duration(milliseconds: 100), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS01?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            });
+            Future.delayed(Duration(milliseconds: 200), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS02?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS05?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            });
+            Future.delayed(Duration(milliseconds: 300), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS03?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS06?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS09?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            });
+            Future.delayed(Duration(milliseconds: 400), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS04?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS07?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS10?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS13?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            });
+            Future.delayed(Duration(milliseconds: 500), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS08?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS11?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS14?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            });
+            Future.delayed(Duration(milliseconds: 600), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS12?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS15?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            });
+            Future.delayed(Duration(milliseconds: 700), () {
+              getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS16?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            });
+          }
+
+          if (totalSeconds == 900) {
+            _randomMemoryWordUnit?.getMemoryWordUnitDataModel?.setIsCompleteTotally(value: true, isPriorityOverride: true);
+            _randomMemoryWordUnit?.getMemoryWordUnitDataModel?.showComplete();
+          }
+
+          if (totalSeconds == 900) {
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS01?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS02?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS03?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS04?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS05?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS06?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS07?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS08?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS09?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS10?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS11?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS12?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS13?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS14?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS15?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+            getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS16?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+
+            getCurrentMemoryWordUnit?.getMemoryWordUnitDataModel?.clear();
 
             ///
           }
@@ -509,6 +941,138 @@ class MemoryItem with ExecutionCore {
         }
       }
     }
+  }
+
+  void prepareShowAnswer() {
+    Future.delayed(Duration(milliseconds: 100), () {
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS01?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+    });
+    Future.delayed(Duration(milliseconds: 200), () {
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS02?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS05?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+    });
+    Future.delayed(Duration(milliseconds: 300), () {
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS03?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS06?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS09?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+    });
+    Future.delayed(Duration(milliseconds: 400), () {
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS04?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS07?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS10?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS13?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+    });
+    Future.delayed(Duration(milliseconds: 500), () {
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS08?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS11?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS14?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+    });
+    Future.delayed(Duration(milliseconds: 600), () {
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS12?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS15?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+    });
+    Future.delayed(Duration(milliseconds: 700), () {
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS16?.getMemoryWordUnitDataModel?.hiddenUnderneath();
+    });
+  }
+
+  void showAnswer() {
+    _randomMemoryWordUnit?.getMemoryWordUnitDataModel?.setIsCompleteTotally(value: true, isPriorityOverride: true);
+    _randomMemoryWordUnit?.getMemoryWordUnitDataModel?.showComplete();
+  }
+
+  void returnToPrepare() {
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS01?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS02?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS03?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS04?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS05?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS06?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS07?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS08?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS09?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS10?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS11?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS12?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS13?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS14?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS15?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    // getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS16?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+
+    Future.delayed(Duration(milliseconds: 700), () {
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS01?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    });
+    Future.delayed(Duration(milliseconds: 600), () {
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS02?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS05?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    });
+    Future.delayed(Duration(milliseconds: 500), () {
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS03?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS06?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS09?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    });
+    Future.delayed(Duration(milliseconds: 400), () {
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS04?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS07?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS10?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS13?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    });
+    Future.delayed(Duration(milliseconds: 300), () {
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS08?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS11?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS14?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    });
+    Future.delayed(Duration(milliseconds: 200), () {
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS12?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS15?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    });
+    Future.delayed(Duration(milliseconds: 100), () {
+      getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS16?.getMemoryWordUnitDataModel?.unHiddenUnderneath();
+    });
+  }
+
+  MemoryWordUnit? _randomMemoryWordUnit;
+  void onRandomMemoryWordUnit() {
+    try {
+      List<MemoryWordUnit?> memoryWordUnitList = [
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS01,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS02,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS03,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS04,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS05,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS06,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS07,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS08,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS09,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS10,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS11,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS12,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS13,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS14,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS15,
+        getCurrentMemoryItem?.getMemoryDataModel?.getMemoryWordUnitSS16,
+      ];
+
+      List<MemoryWordUnit?> memoryWordUnitListNew = [];
+
+      for (MemoryWordUnit? item in memoryWordUnitList) {
+        if (item?.getMemoryWordUnitDataModel?.getIsCompleteTotally != true) {
+          memoryWordUnitListNew.add(item);
+        }
+      }
+
+      final Random random = Random();
+
+      _randomMemoryWordUnit = memoryWordUnitListNew[random.nextInt(memoryWordUnitListNew.length)];
+
+      getCurrentMemoryWordUnit?.setMemoryWordUnitDataModel(value: _randomMemoryWordUnit?.getMemoryWordUnitDataModel, isPriorityOverride: true);
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+
+    ///
   }
 
   /// -----

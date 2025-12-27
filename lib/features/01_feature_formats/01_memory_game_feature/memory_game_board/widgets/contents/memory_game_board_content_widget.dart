@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:animate_do/animate_do.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:frame_creator_v2/components/transparent_effect_wall/transparent_effect_wall_widget.dart';
+import 'package:frame_creator_v2/features/01_feature_formats/01_memory_game_feature/memory_game_board/models/data/memory_data_model.dart';
 import 'package:frame_creator_v2/features/01_feature_formats/01_memory_game_feature/memory_game_board/widgets/contents/square_board_widget.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_data_model.dart';
 import 'package:frame_creator_v2/features/vocabulary_definition/models/data/vocabulary_item.dart';
@@ -25,8 +27,9 @@ class MemoryGameBoardContentWidget extends StatefulWidget {
   State<MemoryGameBoardContentWidget> createState() => _MemoryGameBoardContentWidgetState();
 }
 
-class _MemoryGameBoardContentWidgetState extends State<MemoryGameBoardContentWidget> {
+class _MemoryGameBoardContentWidgetState extends State<MemoryGameBoardContentWidget> with TickerProviderStateMixin {
   Timer? _timer;
+  late final Ticker _ticker;
 
   final ScrollController _scrollController = ScrollController();
 
@@ -44,6 +47,21 @@ class _MemoryGameBoardContentWidgetState extends State<MemoryGameBoardContentWid
   int counterMessage = 0;
 
   List<Widget> messageList = [];
+
+  /// -----
+  /// TODO:
+  /// -----
+  MemoryWordUnit? _currentMemoryWordUnit;
+  MemoryWordUnit? get getCurrentMemoryWordUnit => _currentMemoryWordUnit;
+  void setCurrentMemoryWordUnit({required MemoryWordUnit? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentMemoryWordUnit = value;
+    } else {
+      _currentMemoryWordUnit ??= value;
+    }
+
+    return;
+  }
 
   /// -----
   /// TODO:
@@ -217,6 +235,10 @@ class _MemoryGameBoardContentWidgetState extends State<MemoryGameBoardContentWid
         _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.easeOut);
       }
     });
+
+    _ticker = createTicker((Duration elapsed) {
+
+    })..start();
   }
 
   onPlaySFXInterestingKnowledgeConversationSentenceAppear() {
@@ -226,6 +248,7 @@ class _MemoryGameBoardContentWidgetState extends State<MemoryGameBoardContentWid
   @override
   void dispose() {
     _timer?.cancel();
+    _ticker.dispose();
     super.dispose();
   }
 
@@ -247,9 +270,11 @@ class _MemoryGameBoardContentWidgetState extends State<MemoryGameBoardContentWid
             duration: const Duration(milliseconds: 100),
             top: 40.0,
             right: 40.0,
-            width: 900.0,
-            height: 900.0,
-            child: SquareBoardWidget(systemStateManagement: widget.systemStateManagement, sizeDx: 900.0, sizeDy: 900.0,),
+            width: widget.sizeDx - 80.0,
+            height: widget.sizeDy - 80.0,
+            child: SquareBoardWidget(systemStateManagement: widget.systemStateManagement,
+                sizeDx: widget.sizeDx - 80.0,
+                sizeDy: widget.sizeDy - 80.0),
           ),
 
           Positioned(

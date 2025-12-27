@@ -12,7 +12,7 @@ class MemoryScriptModel with ExecutionCore {
         getSequentialExecutionController?.getMemoryGameBoardSceneTransitionFeature?.onActivateWindow(
           onDeactivatedWindowAsParameter: () {
             Future.delayed(Duration(seconds: 1), () {
-              onStartMemoryGameBoardSS04();
+              onStartMemoryGameBoardSS03();
             });
           },
         );
@@ -24,7 +24,7 @@ class MemoryScriptModel with ExecutionCore {
         getSequentialExecutionController?.getMemoryGameBoardSceneTransitionFeature?.onActivateWindow(
           onDeactivatedWindowAsParameter: () {
             Future.delayed(Duration(seconds: 1), () {
-              onStartMemoryGameBoardSS07();
+              onStartMemoryGameBoardSS05();
             });
           },
         );
@@ -36,7 +36,7 @@ class MemoryScriptModel with ExecutionCore {
         getSequentialExecutionController?.getMemoryGameBoardSceneTransitionFeature?.onActivateWindow(
           onDeactivatedWindowAsParameter: () {
             Future.delayed(Duration(seconds: 1), () {
-              onStartMemoryGameBoardSS10();
+              onStartMemoryGameBoardSS07();
             });
           },
         );
@@ -292,15 +292,15 @@ class MemoryScriptModel with ExecutionCore {
     /// -----
     /// TODO:
     /// -----
-    Future.delayed(Duration(seconds: 1), () {
-      getSequentialExecutionController?.getMemoryGameBoardSceneTransitionFeature?.onActivateWindow(
-        onDeactivatedWindowAsParameter: () {
-          Future.delayed(Duration(seconds: 1), () {
-            onStartMemoryGameBoardSS03();
-          });
-        },
-      );
-    });
+    // Future.delayed(Duration(seconds: 1), () {
+    //   getSequentialExecutionController?.getMemoryGameBoardSceneTransitionFeature?.onActivateWindow(
+    //     onDeactivatedWindowAsParameter: () {
+    //       Future.delayed(Duration(seconds: 1), () {
+    //         onStartMemoryGameBoardSS03();
+    //       });
+    //     },
+    //   );
+    // });
 
     ///
   }
@@ -317,15 +317,15 @@ class MemoryScriptModel with ExecutionCore {
     /// -----
     /// TODO:
     /// -----
-    // Future.delayed(Duration(seconds: 1), () {
-    //   getSequentialExecutionController?.getMemoryGameBoardSceneTransitionFeature?.onActivateWindow(
-    //     onDeactivatedWindowAsParameter: () {
-    //       Future.delayed(Duration(seconds: 1), () {
-    //         onStartMemoryGameBoardSS04();
-    //       });
-    //     },
-    //   );
-    // });
+    Future.delayed(Duration(seconds: 1), () {
+      getSequentialExecutionController?.getMemoryGameBoardSceneTransitionFeature?.onActivateWindow(
+        onDeactivatedWindowAsParameter: () {
+          Future.delayed(Duration(seconds: 1), () {
+            onStartMemoryGameBoardSS04();
+          });
+        },
+      );
+    });
 
     ///
   }
@@ -342,15 +342,15 @@ class MemoryScriptModel with ExecutionCore {
     /// -----
     /// TODO:
     /// -----
-    Future.delayed(Duration(seconds: 1), () {
-      getSequentialExecutionController?.getMemoryGameBoardSceneTransitionFeature?.onActivateWindow(
-        onDeactivatedWindowAsParameter: () {
-          Future.delayed(Duration(seconds: 1), () {
-            onStartMemoryGameBoardSS05();
-          });
-        },
-      );
-    });
+    // Future.delayed(Duration(seconds: 1), () {
+    //   getSequentialExecutionController?.getMemoryGameBoardSceneTransitionFeature?.onActivateWindow(
+    //     onDeactivatedWindowAsParameter: () {
+    //       Future.delayed(Duration(seconds: 1), () {
+    //         onStartMemoryGameBoardSS05();
+    //       });
+    //     },
+    //   );
+    // });
 
     ///
   }
@@ -442,15 +442,15 @@ class MemoryScriptModel with ExecutionCore {
     /// -----
     /// TODO:
     /// -----
-    Future.delayed(Duration(seconds: 1), () {
-      getSequentialExecutionController?.getMemoryGameBoardSceneTransitionFeature?.onActivateWindow(
-        onDeactivatedWindowAsParameter: () {
-          Future.delayed(Duration(seconds: 1), () {
-            onStartMemoryGameBoardSS09();
-          });
-        },
-      );
-    });
+    // Future.delayed(Duration(seconds: 1), () {
+    //   getSequentialExecutionController?.getMemoryGameBoardSceneTransitionFeature?.onActivateWindow(
+    //     onDeactivatedWindowAsParameter: () {
+    //       Future.delayed(Duration(seconds: 1), () {
+    //         onStartMemoryGameBoardSS09();
+    //       });
+    //     },
+    //   );
+    // });
 
     ///
   }

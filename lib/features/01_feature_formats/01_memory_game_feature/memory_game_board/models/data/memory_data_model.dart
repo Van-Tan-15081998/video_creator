@@ -577,6 +577,11 @@ class MemoryWordUnitDataModel with ExecutionCore {
     return;
   }
 
+  void clear() {
+    // setWord(value: '', isPriorityOverride: true);
+    // setId(value: '', isPriorityOverride: true);
+  }
+
   /// -----
   /// TODO:
   /// -----
@@ -607,8 +612,25 @@ class MemoryWordUnitDataModel with ExecutionCore {
     return;
   }
 
+  /// -----
+  /// TODO:
+  /// -----
+  bool? _isCompleteTotally;
+  bool? get getIsCompleteTotally => _isCompleteTotally;
+  void setIsCompleteTotally({required bool? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _isCompleteTotally = value;
+    } else {
+      _isCompleteTotally ??= value;
+    }
+
+    return;
+  }
+
   void hide() {
-    setShowStatus(value: '[HIDE]', isPriorityOverride: true);
+    if (getIsCompleteTotally != true) {
+      setShowStatus(value: '[HIDE]', isPriorityOverride: true);
+    }
   }
 
   bool isHide() {
@@ -620,7 +642,9 @@ class MemoryWordUnitDataModel with ExecutionCore {
   }
 
   void hiding() {
-    setShowStatus(value: '[HIDING]', isPriorityOverride: true);
+    if (getIsCompleteTotally != true) {
+      setShowStatus(value: '[HIDING]', isPriorityOverride: true);
+    }
   }
 
   bool isHiding() {
@@ -649,6 +673,51 @@ class MemoryWordUnitDataModel with ExecutionCore {
 
   bool isShowing() {
     if (getShowStatus == '[SHOWING]') {
+      return true;
+    }
+
+    return false;
+  }
+
+  ///
+  /// hidden underneath
+  ///
+  void hiddenUnderneath() {
+    setShowStatus(value: '[HIDDEN_UNDERNEATH]', isPriorityOverride: true);
+  }
+
+  bool isHiddenUnderneath() {
+    if (getShowStatus == '[HIDDEN_UNDERNEATH]') {
+      return true;
+    }
+
+    return false;
+  }
+
+  ///
+  /// un hidden underneath
+  ///
+  void unHiddenUnderneath() {
+    setShowStatus(value: '[UNHIDDEN_UNDERNEATH]', isPriorityOverride: true);
+  }
+
+  bool isUnHiddenUnderneath() {
+    if (getShowStatus == '[UNHIDDEN_UNDERNEATH]') {
+      return true;
+    }
+
+    return false;
+  }
+
+  ///
+  /// complete
+  ///
+  void showComplete() {
+    setShowStatus(value: '[SHOW_COMPLETE]', isPriorityOverride: true);
+  }
+
+  bool isShowComplete() {
+    if (getShowStatus == '[SHOW_COMPLETE]') {
       return true;
     }
 

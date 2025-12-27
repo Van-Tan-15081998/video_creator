@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:frame_creator_v2/core/cau_truc_thuc_thi_co_ban.dart';
+import 'package:frame_creator_v2/features/01_feature_formats/01_memory_game_feature/memory_game_board/models/data/memory_data_model.dart';
 import 'package:frame_creator_v2/features/01_feature_formats/01_memory_game_feature/memory_game_board/models/data/memory_item.dart';
 import 'package:frame_creator_v2/state_managements/system_state_management.dart';
 import 'package:frame_creator_v2/system/sequential_execution_controller/models/sequential_execution_controller.dart';
@@ -27,7 +28,7 @@ class MemoryTime with ExecutionCore {
   }
 
   /// -----
-  /// TODO:
+  /// TODO: Dùng Để Lấy Thông Tin Cho Mọi Màn Hình Liên Quan
   /// -----
   MemoryItem? _currentMemoryItem;
   MemoryItem? get getCurrentMemoryItem => _currentMemoryItem;
@@ -57,7 +58,7 @@ class MemoryTime with ExecutionCore {
   }
 
   /// -----
-  /// TODO:
+  /// TODO: Ngăn Xếp => Dùng Nhận Biết Tổng Số Lượng Đến Thời Điểm Hiện Tại
   /// -----
   List<MemoryItem>? _currentMemoryItemStack;
   List<MemoryItem>? get getCurrentMemoryItemStack => _currentMemoryItemStack;
@@ -71,14 +72,29 @@ class MemoryTime with ExecutionCore {
     return;
   }
 
+  /// -----
+  /// TODO: Dùng Để Chạy Chữ
+  /// -----
+  MemoryWordUnit? _currentMemoryWordUnit;
+  MemoryWordUnit? get getCurrentMemoryWordUnit => _currentMemoryWordUnit;
+  void setCurrentMemoryWordUnit({required MemoryWordUnit? value, bool? isPriorityOverride}) {
+    if (isPriorityOverride == true) {
+      _currentMemoryWordUnit = value;
+    } else {
+      _currentMemoryWordUnit ??= value;
+    }
+
+    return;
+  }
+
   void clearStack() {
-    if ((getCurrentMemoryItemStack?.length ?? 0) >= 3) {
+    if ((getCurrentMemoryItemStack?.length ?? 0) >= 2) {
       getCurrentMemoryItemStack?.clear();
     }
   }
 
   bool isCanStartNewMemoryGame() {
-    if ((getCurrentMemoryItemStack?.length ?? 0) < 3) {
+    if ((getCurrentMemoryItemStack?.length ?? 0) < 2) {
       return true;
     }
     return false;
@@ -281,7 +297,7 @@ class MemoryTime with ExecutionCore {
   }
 
   void onUpdate() {
-    if ((getCurrentMemoryItemStack?.length ?? 0) <= 3) {
+    if ((getCurrentMemoryItemStack?.length ?? 0) <= 2) {
       getMemoryItemSS001?.onUpdate();
       getMemoryItemSS002?.onUpdate();
       getMemoryItemSS003?.onUpdate();
@@ -360,8 +376,9 @@ class MemoryTime with ExecutionCore {
       setCurrentMemoryItem(
         value: MemoryItem(
           id: '[CURRENT_MEMORY_GAME]',
-          totalMinutes: 9,
+          totalMinutes: 12,
           currentMemoryItem: null,
+          currentMemoryWordUnit: null,
           currentMemoryItemStack: getCurrentMemoryItemStack,
           onComplete: () {
             if (kDebugMode) {
@@ -371,12 +388,14 @@ class MemoryTime with ExecutionCore {
         ),
         isPriorityOverride: true,
       );
+      setCurrentMemoryWordUnit(value: MemoryWordUnit(id: '[CURRENT_MEMORY_GAME]'), isPriorityOverride: true);
 
       setMemoryItemSS001(
         value: MemoryItem(
           id: '[MG_SS001]',
-          totalMinutes: 9,
+          totalMinutes: 12,
           currentMemoryItem: getCurrentMemoryItem,
+          currentMemoryWordUnit: getCurrentMemoryWordUnit,
           currentMemoryItemStack: getCurrentMemoryItemStack,
           onComplete: () {
             if (kDebugMode) {
@@ -392,8 +411,9 @@ class MemoryTime with ExecutionCore {
       setMemoryItemSS002(
         value: MemoryItem(
           id: '[MG_SS002]',
-          totalMinutes: 9,
+          totalMinutes: 12,
           currentMemoryItem: getCurrentMemoryItem,
+          currentMemoryWordUnit: getCurrentMemoryWordUnit,
           currentMemoryItemStack: getCurrentMemoryItemStack,
           onComplete: () {
             if (kDebugMode) {
@@ -409,8 +429,9 @@ class MemoryTime with ExecutionCore {
       setMemoryItemSS003(
         value: MemoryItem(
           id: '[MG_SS003]',
-          totalMinutes: 9,
+          totalMinutes: 12,
           currentMemoryItem: getCurrentMemoryItem,
+          currentMemoryWordUnit: getCurrentMemoryWordUnit,
           currentMemoryItemStack: getCurrentMemoryItemStack,
           onComplete: () {
             if (kDebugMode) {
@@ -425,8 +446,9 @@ class MemoryTime with ExecutionCore {
       setMemoryItemSS004(
         value: MemoryItem(
           id: '[MG_SS004]',
-          totalMinutes: 9,
+          totalMinutes: 12,
           currentMemoryItem: getCurrentMemoryItem,
+          currentMemoryWordUnit: getCurrentMemoryWordUnit,
           currentMemoryItemStack: getCurrentMemoryItemStack,
           onComplete: () {
             if (kDebugMode) {
@@ -441,8 +463,9 @@ class MemoryTime with ExecutionCore {
       setMemoryItemSS005(
         value: MemoryItem(
           id: '[MG_SS005]',
-          totalMinutes: 9,
+          totalMinutes: 12,
           currentMemoryItem: getCurrentMemoryItem,
+          currentMemoryWordUnit: getCurrentMemoryWordUnit,
           currentMemoryItemStack: getCurrentMemoryItemStack,
           onComplete: () {
             if (kDebugMode) {
@@ -457,8 +480,9 @@ class MemoryTime with ExecutionCore {
       setMemoryItemSS006(
         value: MemoryItem(
           id: '[MG_SS006]',
-          totalMinutes: 9,
+          totalMinutes: 12,
           currentMemoryItem: getCurrentMemoryItem,
+          currentMemoryWordUnit: getCurrentMemoryWordUnit,
           currentMemoryItemStack: getCurrentMemoryItemStack,
           onComplete: () {
             if (kDebugMode) {
@@ -473,8 +497,9 @@ class MemoryTime with ExecutionCore {
       setMemoryItemSS007(
         value: MemoryItem(
           id: '[MG_SS007]',
-          totalMinutes: 9,
+          totalMinutes: 12,
           currentMemoryItem: getCurrentMemoryItem,
+          currentMemoryWordUnit: getCurrentMemoryWordUnit,
           currentMemoryItemStack: getCurrentMemoryItemStack,
           onComplete: () {
             if (kDebugMode) {
@@ -489,8 +514,9 @@ class MemoryTime with ExecutionCore {
       setMemoryItemSS008(
         value: MemoryItem(
           id: '[MG_SS008]',
-          totalMinutes: 9,
+          totalMinutes: 12,
           currentMemoryItem: getCurrentMemoryItem,
+          currentMemoryWordUnit: getCurrentMemoryWordUnit,
           currentMemoryItemStack: getCurrentMemoryItemStack,
           onComplete: () {
             if (kDebugMode) {
@@ -505,8 +531,9 @@ class MemoryTime with ExecutionCore {
       setMemoryItemSS009(
         value: MemoryItem(
           id: '[MG_SS009]',
-          totalMinutes: 9,
+          totalMinutes: 12,
           currentMemoryItem: getCurrentMemoryItem,
+          currentMemoryWordUnit: getCurrentMemoryWordUnit,
           currentMemoryItemStack: getCurrentMemoryItemStack,
           onComplete: () {
             if (kDebugMode) {
@@ -521,8 +548,9 @@ class MemoryTime with ExecutionCore {
       setMemoryItemSS010(
         value: MemoryItem(
           id: '[MG_SS010]',
-          totalMinutes: 9,
+          totalMinutes: 12,
           currentMemoryItem: getCurrentMemoryItem,
+          currentMemoryWordUnit: getCurrentMemoryWordUnit,
           currentMemoryItemStack: getCurrentMemoryItemStack,
           onComplete: () {
             if (kDebugMode) {
@@ -537,8 +565,9 @@ class MemoryTime with ExecutionCore {
       setMemoryItemSS011(
         value: MemoryItem(
           id: '[MG_SS011]',
-          totalMinutes: 9,
+          totalMinutes: 12,
           currentMemoryItem: getCurrentMemoryItem,
+          currentMemoryWordUnit: getCurrentMemoryWordUnit,
           currentMemoryItemStack: getCurrentMemoryItemStack,
           onComplete: () {
             if (kDebugMode) {
@@ -553,8 +582,9 @@ class MemoryTime with ExecutionCore {
       setMemoryItemSS012(
         value: MemoryItem(
           id: '[MG_SS012]',
-          totalMinutes: 9,
+          totalMinutes: 12,
           currentMemoryItem: getCurrentMemoryItem,
+          currentMemoryWordUnit: getCurrentMemoryWordUnit,
           currentMemoryItemStack: getCurrentMemoryItemStack,
           onComplete: () {
             if (kDebugMode) {
